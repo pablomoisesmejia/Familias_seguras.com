@@ -97,7 +97,7 @@ class Cliente extends Validator{
 	public function createCliente()
 	{
 		$sql = "INSERT INTO clientes(nombre_completo, FK_ID_tipo_cliente, telefono, correo) VALUES(?, ?, ?, ?)";
-		$params = array($this->nombre, 2, $this->telefono, $this->correo);
+		$params = array($this->nombre, $this->id_tipo_cliente, $this->telefono, $this->correo);
 		$cliente = Database::executeRow($sql, $params);
 		if($cliente)
 		{

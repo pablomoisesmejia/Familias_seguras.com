@@ -254,7 +254,7 @@ function regresar_un_paso(){
 }
 
 //AQUI EMPIEZA MI PENDEJEZ HUMANA (F. Pablo)
-function enviar(){
+/*function enviar(){
   correo=$('#email_segv').val();
   if(correo != '')
   {
@@ -278,52 +278,125 @@ function enviar(){
   {
     alert('Ingrese correo');
   }
-};
+};*/
 
 
-/*-------------------------------------------------------------------------------------------
------------------------FUNCION PARA INSERTAR EL SEGURO Y EL CLIENTE--------------------------
--------------------------------------------------------------------------------------------*/
-$('.solicitar').click(function(){
-  console.log(formulario);
-  nombre=$('#nombre_segv').val();
-  telefono=$('#tel_segv').val();
-  correo=$('#email_segv').val();
-  hora_visita=$('#hora').val();
-  horario = '';
-  if(hora_visita==='manana_1'){
-    horario = '7:00 - 9:00am';
-  }
-  if(hora_visita==='manana_2'){
-    horario = '10:00 - 12:00pm';
-  }
-  if(hora_visita==='tarde_1'){
-    horario = '1:00 - 3:00pm'
-  }
-  if(hora_visita==='tarde_2'){
-    horario = '4:00 - 7:00pm'
-  }
-
-  if(formulario == 2)
-  {
-    createCliente();
-  }
-});
-
-function createCliente()
+/*-------------------------------------------------------------------------------------------------------------------
+-------------------------------FUNCION PARA LOS MENSAJES DE SWEETALERT-----------------------------------------------
+---------------------------------------------------------------------------------------------------------------------*/
+function AlertaSweet(icono, texto)
 {
-  $.ajax({
-    type: 'POST',
-    url: '../../app/controllers/public/index/create_cliente_controller.php',
-    data:{
-      nombre:nombre,
-      telefono:telefono,
-      correo:correo},
-    dataType: 'json',
-    success: function(cliente)
-    {
-      cliente.split(",");
-      console.log(cliente[0]);
-    }
+  var icon = '';
+  var titulo = '';
+  if(icono == 1)
+  {
+    titulo = "Éxito";
+    icon = "success";
+  }
+  if(icono == 2)
+  {
+    titulo = "Error";
+    icon = "error";
+  }
+  if(icono == 3)
+  {
+    titulo = "Advertencia";
+    icon = "warning";
+  }
+  if(icono == 4)
+  {
+    titulo = "Aviso";
+    icon = "info";
+  }
+
+  swal({
+    title: titulo,
+    text: texto,
+    icon: icon,
+    button: 'Aceptar',
+    closeOnClickOutside: false,
+    closeOnEsc: false
   });
 }
+
+$(document).ready(function(){
+var id_cliente = "";
+  /*-------------------------------------------------------------------------------------------
+  -----------------------FUNCION PARA INSERTAR EL SEGURO Y EL CLIENTE--------------------------
+  -------------------------------------------------------------------------------------------*/
+  $('.solicitar').click(function(){
+    console.log(formulario);
+    createCliente();
+  });
+
+  function createCliente()
+  {
+    nombre=$('#nombre_segv').val();
+    telefono=$('#tel_segv').val();
+    correo=$('#email_segv').val();
+    hora_visita=$('#hora').val();
+    horario = '';
+    if(hora_visita==='manana_1'){
+      horario = '7:00 - 9:00am';
+    }
+    if(hora_visita==='manana_2'){
+      horario = '10:00 - 12:00pm';
+    }
+    if(hora_visita==='tarde_1'){
+      horario = '1:00 - 3:00pm'
+    }
+    if(hora_visita==='tarde_2'){
+      horario = '4:00 - 7:00pm'
+    }
+    if(nombre != '')
+    {
+      if(telefono != '')
+      {
+        if(correo != '')
+        {
+          if(hora_visita != '')
+          {
+            $.ajax({
+              type: 'POST',
+              url: '../../app/controllers/public/index/create_cliente_controller.php',
+              data:{
+                nombre:nombre,
+                telefono:telefono,
+                correo:correo},
+              dataType: 'json',
+              success: function(cliente)
+              {
+                if(cliente[0][0] == 1)
+                {
+                  id_cliente = cliente[0][1];
+                  if(formulario == 2)
+                  {
+                    console.log(id_cliente);
+                  }
+                }
+              }
+            });
+          }
+          else
+          {
+            AlertaSweet(3, 'Seleccione la hora de visita');
+          }
+        }
+        else
+        {
+          AlertaSweet(3, 'Escriba su correo electrónico');
+        }
+      }
+      else
+      {
+        AlertaSweet(3, 'Escriba su número de teléfono');
+      }
+    }
+    else
+    {
+      AlertaSweet(3, 'Escriba su nombre completo');
+    }
+  }
+
+  function create(){}
+});

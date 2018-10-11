@@ -9,6 +9,7 @@ try
     $excepcion = 0;
     $cliente = new Cliente;
     $cliente->setNombre($_POST['nombre']);
+    $cliente->setIdTipoCliente(2);
     $cliente->setTelefono($_POST['telefono']);
     $cliente->setCorreo($_POST['correo']);
     if($cliente->createCliente())
@@ -17,7 +18,6 @@ try
     }
     else
     {
-        $resultado = 0;
         $excepcion = Database::getException();
     }
 
@@ -25,12 +25,13 @@ try
     if($cliente->getIdCliente() != null)
     {
         $resultado = 1;
-        $id = $resultado.','.$cliente->getIdCliente();
+        $id[] = [$resultado, $cliente->getIdCliente()];
         echo json_encode($id);
     }
     if($resultado == 0)
     {
-        echo json_encode($resultado.','.$excepcion);
+        $errores[] = [$resultado, $excepcion];
+        echo json_encode($errores);
     }
 }
 catch(Exception $error)
