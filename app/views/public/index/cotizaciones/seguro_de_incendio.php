@@ -5,6 +5,20 @@
 
 <form id="form_coti_incendio">
 
+
+<div class='row'>
+            <div class='input-field col s12 '>
+                <input  type="text" class="datepicker" required/>
+                <label class="" for="nombre_segv">Fecha de Nacimiento</label>
+            </div>
+        </div>
+        <div class='row'>
+		<div class='input-field col s12 '>
+			<input id="nombre_conyugue_segm" type="text" class="validate" required/>
+			<label class="" for="nombre_conyugue_segm">Nombre de asegurado principal</label>
+		</div>
+    </div>
+
         <div class='row'>
             <div class='input-field col s12 '>
                 <select name="" id="">
