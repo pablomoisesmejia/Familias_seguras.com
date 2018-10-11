@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `familias_seguras`
 --
-
+CREATE DATABASE IF NOT EXISTS `fs_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `fs_db`;
 -- --------------------------------------------------------
 
 --

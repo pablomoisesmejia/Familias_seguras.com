@@ -91,6 +91,7 @@ class Page extends Component{
 					 </footer>
 					 
 					 <script src='../../web/script/jquery-3.2.1.min.js'></script>
+					 <script src='../../web/script/sweetalert.min.js'></script>
 					 <script src='../../web/script/functions.js'></script>
 					 <script src='../../web/script/materialize.min.js'></script>
 					 

@@ -48,6 +48,9 @@ function llenar_progress_bar(){
   }
   
 }
+var date = new Date();
+var min = date.getFullYear()-100+','+(date.getMonth()+1)+','+(date.getDate());//Validacion de fecha minima del datepicker
+var max = date.getFullYear()-18+','+(date.getMonth()+1)+','+(date.getDate());//Validacion de fecha maxima del datepicker
 
 $( document ).ready(function(){
      
@@ -60,10 +63,11 @@ $( document ).ready(function(){
     today:'Actual',
     clear:'Limpiar',
     close:'Aceptar',
+    formatSubmmit: 'yyyy-mm-dd',
     closeOnSelect:false,
     container:undefined,
-    min: new Date(1940,1,1),
-    max: new Date(2000,1,22)
+    min: new Date(min),
+    max: new Date(max)
 
   })
     $("#blackground_walls").fadeIn(600).delay(4000).fadeOut(1000);
@@ -71,6 +75,7 @@ $( document ).ready(function(){
 
 })
 
+var formulario = 0;
 var seguro_frm=0;
 function abrir_form(){
   if(seguro_frm>0){
@@ -87,6 +92,7 @@ function abrir_form(){
           if(seguro_frm>0){
           $("main").css({"margin-left":"0"});
           $("#main_publico_forms").css({"display":"block","opacity":"1"});
+          formulario = seguro_frm;
           seguro_frm=0;
           
           }
@@ -274,7 +280,12 @@ function enviar(){
   }
 };
 
+
+/*-------------------------------------------------------------------------------------------
+-----------------------FUNCION PARA INSERTAR EL SEGURO Y EL CLIENTE--------------------------
+-------------------------------------------------------------------------------------------*/
 $('.solicitar').click(function(){
+  console.log(formulario);
   nombre=$('#nombre_segv').val();
   telefono=$('#tel_segv').val();
   correo=$('#email_segv').val();
@@ -293,5 +304,26 @@ $('.solicitar').click(function(){
     horario = '4:00 - 7:00pm'
   }
 
+  if(formulario == 2)
+  {
+    createCliente();
+  }
+});
 
-})
+function createCliente()
+{
+  $.ajax({
+    type: 'POST',
+    url: '../../app/controllers/public/index/create_cliente_controller.php',
+    data:{
+      nombre:nombre,
+      telefono:telefono,
+      correo:correo},
+    dataType: 'json',
+    success: function(cliente)
+    {
+      cliente.split(",");
+      console.log(cliente[0]);
+    }
+  });
+}

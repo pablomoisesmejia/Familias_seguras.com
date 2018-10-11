@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `familias_seguras`
 --
-
+CREATE DATABASE IF NOT EXISTS `fs_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `fs_db`;
 -- --------------------------------------------------------
 
 --
@@ -49,7 +50,7 @@ CREATE TABLE `cotizaciones_incendios` (
   `tipo_asegurado` int(11) NOT NULL,
   `valor_construccion` int(4) NOT NULL,
   `valor_contenido` int(4) NOT NULL,
-  `FK_cliente` int(11) NOT NULL
+  `FK_id_cliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
