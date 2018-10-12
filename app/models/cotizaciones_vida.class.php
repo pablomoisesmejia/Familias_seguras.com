@@ -132,7 +132,11 @@ class Cotizaciones_vida extends Validator
 	{
 		$sql = "INSERT INTO cotizaciones_vida(nombre_asegurado_ppal, fecha_nacimineto, fumador, suma_asegurada, cesion_bancaria, FK_id_cliente) VALUES(?, ?, ?, ?, ?, ?)";
 		$params = array($this->nombre_asegurado, $this->fecha_nacimiento, $this->fumador, $this->suma_asegurada, $this->cesion_bancaria, $this->id_cliente);
-		return Database::executeRow($sql, $params);
+		$seguro_vida =  Database::executeRow($sql, $params);
+		if($seguro_vida)
+		{
+			$this->id_cotizacion = Database::getLastRowId();
+		}
 	}
 }
 ?>

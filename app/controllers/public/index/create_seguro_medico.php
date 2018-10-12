@@ -16,11 +16,16 @@ try
 
     if($medico->createSeguroMedico())
     {
-        
+
     }
     else
     {
         echo Database::getException();
+    }
+
+    if($medico->getIdCotizacion() != null)
+    {
+        echo 1;
     }
 }
 catch(Exception $error)

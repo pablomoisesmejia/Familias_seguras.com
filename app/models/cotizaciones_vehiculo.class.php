@@ -61,7 +61,11 @@ class Cotizaciones_vehiculos extends Validator
 	{
 		$sql = "INSERT INTO cotizaciones_vehiculo(numero_licencia, FK_id_cliente) VALUES(?, ?)";
 		$params = array($this->numero_licencia, $this->id_cliente);
-		return Database::executeRow($sql, $params);
+		$seguro_vehiculo = Database::executeRow($sql, $params);
+		if($seguro_vehiculo)
+		{
+			$this->id_cotizacion = Database::getLastRowId();
+		}
 	}
 }
 ?>

@@ -254,7 +254,7 @@ function regresar_un_paso(){
 }
 
 //AQUI EMPIEZA MI PENDEJEZ HUMANA (F. Pablo)
-function enviar(){
+/*function enviar(){
   correo=$('#email_segv').val();
   if(correo != '')
   {
@@ -278,7 +278,7 @@ function enviar(){
   {
     alert('Ingrese correo');
   }
-};
+}*/
 
 
 /*-------------------------------------------------------------------------------------------------------------------
@@ -590,9 +590,23 @@ $(document).ready(function(){
         valor_construccion:valor_construccion,
         valor_contenido:valor_contenido,
         id_cliente:id_cliente},
-      success: function()
+      success: function(seguro_incendios)
       {
-        
+        if(seguro_incendios == 1)
+        {
+          swal({
+            title: 'Éxito',
+            text: 'Los datos ha sido guardados',
+            icon: 'success',
+            button: 'Aceptar',
+            closeOnClickOutside: false,
+            closeOnEsc: false
+          }).then(value=>{location.reload()});
+        }
+        else
+        {
+          AlertaSweet(2, 'Ocurrio un problema al momento de guardar los datos, contacte con el administrador');
+        }
       }
     });
   }
@@ -612,9 +626,23 @@ $(document).ready(function(){
         cesion_bancaria:cesion_bancaria,
         id_cliente:id_cliente
         },
-      success: function()
+      success: function(seguro_vida)
       {
-        
+        if(seguro_vida == 1)
+        {
+          swal({
+            title: 'Éxito',
+            text: 'Los datos ha sido guardados',
+            icon: 'success',
+            button: 'Aceptar',
+            closeOnClickOutside: false,
+            closeOnEsc: false
+          }).then(value=>{location.reload()});
+        }
+        else
+        {
+          AlertaSweet(2, 'Ocurrio un problema al momento de guardar los datos, contacte con el administrador');
+        }
       }
     });
   }
@@ -635,9 +663,23 @@ $(document).ready(function(){
         cobertura:cobertura,
         id_cliente:id_cliente
         },
-      success: function()
+      success: function(seguro_medico)
       {
-        
+        if(seguro_medico == 1)
+        {
+          swal({
+            title: 'Éxito',
+            text: 'Los datos ha sido guardados',
+            icon: 'success',
+            button: 'Aceptar',
+            closeOnClickOutside: false,
+            closeOnEsc: false
+          }).then(value=>{location.reload()});
+        }
+        else
+        {
+          AlertaSweet(2, 'Ocurrio un problema al momento de guardar los datos, contacte con el administrador');
+        }
       }
     });
   }
@@ -652,9 +694,24 @@ $(document).ready(function(){
       data: {
         numero_licencia:numero_licencia,
         id_cliente:id_cliente},
-      success: function()
+      success: function(seguro_vehiculo)
       {
         $('#numero_licencia').val('');
+        if(seguro_vehiculo == 1)
+        {
+          swal({
+            title: 'Éxito',
+            text: 'Los datos ha sido guardados',
+            icon: 'success',
+            button: 'Aceptar',
+            closeOnClickOutside: false,
+            closeOnEsc: false
+          }).then(value=>{location.reload()});
+        }
+        else
+        {
+          AlertaSweet(2, 'Ocurrio un problema al momento de guardar los datos, contacte con el administrador');
+        }
       }
     });
   }

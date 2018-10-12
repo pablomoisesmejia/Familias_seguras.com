@@ -116,7 +116,11 @@ class Cotizaciones_incendios extends Validator
 	{
 		$sql = "INSERT INTO cotizaciones_incendios(tipo_inmueble, direccion, valor_construccion, valor_contenido, FK_id_cliente) VALUES(?, ?, ?, ?, ?)";
 		$params = array($this->tipo_inmueble, $this->direccion, $this->valor_construccion, $this->valor_contenido, $this->id_cliente);
-		return Database::executeRow($sql, $params);
+		$seguro_incendios = Database::executeRow($sql, $params);
+		if($seguro_incendios)
+		{
+			$this->id_cotizacion = Database::getLastRowId();
+		}
 	}
 }
 ?>

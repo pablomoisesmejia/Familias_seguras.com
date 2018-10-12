@@ -20,6 +20,10 @@ try
     {
         echo Database::getException();
     }
+    if($vida->getIdCotizacion() != null)
+    {
+        echo 1;
+    }
 }
 catch(Exception $error)
 {
