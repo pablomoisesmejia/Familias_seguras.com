@@ -343,7 +343,7 @@ $(document).ready(function(){
             {
               if(cantidad_hijo != '')
               {
-                if(cantidad_hijo != '0' && cantidad_hijo.indexOf("-") != 0)
+                if(cantidad_hijo.indexOf("-") != 0)
                 {
                   if(cobertura != null)
                   {
@@ -357,7 +357,7 @@ $(document).ready(function(){
                 }
                 else
                 {
-                  AlertaSweet(3, 'La cantidad de hijos no puede ser negativa ni 0');
+                  AlertaSweet(3, 'La cantidad de hijos no puede ser negativa');
                 }
               }
               else
@@ -387,7 +387,49 @@ $(document).ready(function(){
     }
     else if(formulario == 2)//VALIDACIONES DEL FORMULARIO DE SEGURO DE VIDA
     {
-      console.log('este es el frm 2');
+      fecha_naci_vida = $('#fecha_naci_vida').val();
+      nombre_asegurado_vida = $('#nombre_asegurado_vida').val();
+      fumador = $('#fumador').val();
+      suma_asegurada = $('#suma_segv').val();
+      cesion_bancaria = $('#cesion_bancaria').val();
+
+      if(fecha_naci_vida != '')
+      {
+        if(nombre_asegurado_vida != '')
+        {
+          if(fumador != null)
+          {
+            if(suma_asegurada != '')
+            {
+              if(cesion_bancaria != null)
+              {
+                new_frm=2; 
+                next_frm();
+              }
+              else
+              {
+                AlertaSweet(3, 'Seleccione si el seguro lo necesita para un banco');
+              }
+            }
+            else
+            {
+              AlertaSweet(3, 'ingrese la suma asegurada');
+            }
+          }
+          else
+          {
+            AlertaSweet(3, 'Seleccione si se considera fumador');
+          }
+        }
+        else
+        {
+          AlertaSweet(3, 'Escriba el nombre del asegurado principal');
+        }
+      }
+      else
+      {
+        AlertaSweet(3, 'Seleccione la fecha de nacimiento');
+      }
 
     }
     else if(formulario == 3)//VALIDACIONES DEL FORMULARIO DE SEGURO DE INCENDIOS
@@ -431,7 +473,16 @@ $(document).ready(function(){
     }
     else if(formulario == 4)//VALIDACIONES DEL FORMULARIO DE SEGURO DE VEHICULOS
     {
-      console.log('este es el frm 4');
+      numero_licencia = $('#numero_licencia').val();
+      if(numero_licencia != '')
+      {
+        new_frm=2;
+        next_frm();
+      }
+      else
+      {
+        AlertaSweet(3, 'Ingrese su número de licencia');
+      }
 
     }
   });
@@ -486,11 +537,11 @@ $(document).ready(function(){
                   id_cliente = cliente[0][1];
                   if(formulario == 1)
                   {
-
+                    createSeguroMedico()
                   }
                   else if(formulario == 2)
                   {
-                    console.log(id_cliente);
+                    createSeguroVida()
                   }
                   else if(formulario == 3)
                   {
@@ -498,7 +549,7 @@ $(document).ready(function(){
                   }
                   else if(formulario == 4)
                   {
-                    createSeguroIncendios();
+                    createSeguroVehiculo()
                   }
                 }
               }
@@ -525,12 +576,15 @@ $(document).ready(function(){
     }
   }
 
+  /*----------------------------------------------------------------------------------------------------------------------------------
+  -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE INCENDIOS---------------------------------------
+  ------------------------------------------------------------------------------------------------------------------------------------*/
   function createSeguroIncendios()
   {
     $.ajax({
       type: 'POST',
-      url: '',
-      data: {
+      url: '../../app/controllers/public/index/create_seguro_incendio.php',
+      data:{
         tipo_inmueble:tipo_inmueble,
         direccion:direccion,
         valor_construccion:valor_construccion,
@@ -539,6 +593,68 @@ $(document).ready(function(){
       success: function()
       {
         
+      }
+    });
+  }
+  /*----------------------------------------------------------------------------------------------------------------------------------
+  -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE VIDA---------------------------------------
+  ------------------------------------------------------------------------------------------------------------------------------------*/
+  function createSeguroVida()
+  {
+    $.ajax({
+      type: 'POST',
+      url: '../../app/controllers/public/index/create_seguro_vida.php',
+      data:{
+        fecha_naci_vida:fecha_naci_vida,
+        nombre_asegurado_vida:nombre_asegurado_vida,
+        fumador:fumador,
+        suma_asegurada:suma_asegurada,
+        cesion_bancaria:cesion_bancaria,
+        id_cliente:id_cliente
+        },
+      success: function()
+      {
+        
+      }
+    });
+  }
+  /*----------------------------------------------------------------------------------------------------------------------------------
+  -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE MEDICO---------------------------------------
+  ------------------------------------------------------------------------------------------------------------------------------------*/
+  function createSeguroMedico()
+  {
+    $.ajax({
+      type: 'POST',
+      url: '../../app/controllers/public/index/create_seguro_medico.php',
+      data:{
+        fecha_naci_medico:fecha_naci_medico,
+        nombre_conyugue:nombre_conyugue,
+        nombre_asegurado_medico:nombre_asegurado_medico,
+        fecha_naci_conyugue:fecha_naci_conyugue,
+        cantidad_hijo:cantidad_hijo,
+        cobertura:cobertura,
+        id_cliente:id_cliente
+        },
+      success: function()
+      {
+        
+      }
+    });
+  }
+  /*----------------------------------------------------------------------------------------------------------------------------------
+  -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE VEHICULO---------------------------------------
+  ------------------------------------------------------------------------------------------------------------------------------------*/
+  function createSeguroVehiculo()
+  {
+    $.ajax({
+      type: 'POST',
+      url: '../../app/controllers/public/index/create_seguro_vehiculo.php',
+      data: {
+        numero_licencia:numero_licencia,
+        id_cliente:id_cliente},
+      success: function()
+      {
+        $('#numero_licencia').val('');
       }
     });
   }

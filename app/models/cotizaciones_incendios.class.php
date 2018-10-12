@@ -63,7 +63,7 @@ class Cotizaciones_incendios extends Validator
     
     public function setValorConstruccion($value)
 	{
-		if($this->validateAlphanumeric($value))
+		if($this->validateAlphanumeric($value, 1, 15))
 		{
 			$this->valor_construccion = $value;
 			return true;
@@ -80,7 +80,7 @@ class Cotizaciones_incendios extends Validator
 
     public function setValorContenido($value)
 	{
-		if($this->validateAlphanumeric($value))
+		if($this->validateAlphanumeric($value, 1, 30))
 		{
 			$this->valor_contenido = $value;
 			return true;
@@ -110,6 +110,13 @@ class Cotizaciones_incendios extends Validator
 	public function getIdCliente()
 	{
 		return $this->id_cliente;
+	}
+
+	public function createSeguroIncendio()
+	{
+		$sql = "INSERT INTO cotizaciones_incendios(tipo_inmueble, direccion, valor_construccion, valor_contenido, FK_id_cliente) VALUES(?, ?, ?, ?, ?)";
+		$params = array($this->tipo_inmueble, $this->direccion, $this->valor_construccion, $this->valor_contenido, $this->id_cliente);
+		return Database::executeRow($sql, $params);
 	}
 }
 ?>

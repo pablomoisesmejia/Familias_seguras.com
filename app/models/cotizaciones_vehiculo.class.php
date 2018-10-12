@@ -24,7 +24,7 @@ class Cotizaciones_vehiculos extends Validator
 
     public function setNumeroLicencia($value)
 	{
-		if($this->validateNumeric($value, 1, 20))
+		if($this->validateAlphanumeric($value, 1, 20))
 		{
 			$this->numero_licencia = $value;
 			return true;
@@ -54,6 +54,14 @@ class Cotizaciones_vehiculos extends Validator
 	public function getIdCliente()
 	{
 		return $this->id_cliente;
+	}
+
+
+	public function createSeguroVehiculo()
+	{
+		$sql = "INSERT INTO cotizaciones_vehiculo(numero_licencia, FK_id_cliente) VALUES(?, ?)";
+		$params = array($this->numero_licencia, $this->id_cliente);
+		return Database::executeRow($sql, $params);
 	}
 }
 ?>

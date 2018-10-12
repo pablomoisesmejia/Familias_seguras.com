@@ -127,5 +127,12 @@ class Cotizaciones_vida extends Validator
 	{
 		return $this->id_cliente;
 	}
+
+	public function createSeguroVida()
+	{
+		$sql = "INSERT INTO cotizaciones_vida(nombre_asegurado_ppal, fecha_nacimineto, fumador, suma_asegurada, cesion_bancaria, FK_id_cliente) VALUES(?, ?, ?, ?, ?, ?)";
+		$params = array($this->nombre_asegurado, $this->fecha_nacimiento, $this->fumador, $this->suma_asegurada, $this->cesion_bancaria, $this->id_cliente);
+		return Database::executeRow($sql, $params);
+	}
 }
 ?>
