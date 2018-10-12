@@ -13,7 +13,7 @@
          
         
 
-            <a onclick="new_frm=2; next_frm();" id="return_btn">Continuar</a> 
+            <a onclick="new_frm=2; next_frm();" id="return_btn" class="continuar">Continuar</a> 
 </form>
 
 

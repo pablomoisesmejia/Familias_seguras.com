@@ -6,7 +6,7 @@
 <form id="form_coti_medico">
         <div class='row'>
             <div class='input-field col s12 '>
-                <input  type="text" class="datepicker" required/>
+                <input  type="text" class="datepicker" id="fecha_naci" required/>
                 <label class="" for="fecha_nac_segm">Fecha de Nacimiento</label>
             </div>
         </div>
@@ -19,13 +19,13 @@
     </div>
     <div class='row'>
 		<div class='input-field col s12 '>
-			<input id="nombre_conyugue_segm" type="text" class="validate" required/>
+			<input id="nombre_asegurado_medico" type="text" class="validate" required/>
 			<label class="" for="nombre_asegurado_segm">Nombre de asegurado principal</label>
 		</div>
     </div>
     <div class='row'>
             <div class='input-field col s12 '>
-                <input  type="text" class="datepicker" required/>
+                <input  type="text" class="datepicker" id="fecha_naci_conyugue" required/>
                 <label class="" for="fecha_nac_segm">Fecha de Nacimiento del conyugue</label>
             </div>
         </div>
@@ -42,9 +42,10 @@
 
               <div class='row'>
             <div class='input-field col s12 '>
-                <select name="" id="">
-                    <option value="1">Centroamericana</option>
-                    <option value="1">Mundial</option>
+                <select name="" id="cobertura">
+                    <option value="" selected disabled>Seleccione una opción</option>
+                    <option value="Centroamericana">Centroamericana</option>
+                    <option value="Mundial">Mundial</option>
                 </select>
                 <label class="" for="tel_segv">Cobertura deseada</label>
             </div>
@@ -52,5 +53,5 @@
             
         </div>
 
-            <a onclick="new_frm=2; next_frm();" id="return_btn">Continuar</a> 
+            <a onclick="new_frm=2; next_frm();" id="return_btn" class="continuar">Continuar</a> 
 </form>

@@ -9,7 +9,7 @@
 
         <div class='row'>
             <div class='input-field col s12 '>
-                <select name="" id="">
+                <select name="" id="tipo_inmueble">
                     <option value="" selected disabled>Seleccione una opción</option>
                     <option value="Casa de Habitación">Casa de Habitación</option>
                     <option value="Oficina">Oficina</option>
@@ -47,7 +47,7 @@
 
         <div class='row'>
             <div class='input-field col s12 '>
-                <select name="" id="">
+                <select name="" id="valor_contenido">
                     <option value="" selected disabled>Seleccione una opción</option>
                     <option value="Propietario">Propietario</option>
                     <option value="Inquilino">Inquilino</option>
@@ -78,5 +78,5 @@
 
         
 
-            <a onclick="new_frm=2; next_frm();" id="return_btn">Continuar</a> 
+            <a id="return_btn" class="continuar">Continuar</a> 
 </form>

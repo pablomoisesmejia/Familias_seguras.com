@@ -57,22 +57,22 @@ $( document ).ready(function(){
      verificar_telefono_o_pc();
   show_info_section();
   $("select").material_select();
-  $('.datepicker').pickadate({
-    selectMonths:true,
-    selectYears:15,
-    today:'Actual',
-    clear:'Limpiar',
-    close:'Aceptar',
-    formatSubmmit: 'yyyy-mm-dd',
-    closeOnSelect:false,
-    container:undefined,
-    min: new Date(min),
-    max: new Date(max)
-
-  })
+  
     $("#blackground_walls").fadeIn(600).delay(4000).fadeOut(1000);
     cambiar_fondo();
-
+    $('.datepicker').pickadate({
+      selectMonths:true,
+      selectYears:20,
+      today:'Actual',
+      clear:'Limpiar',
+      close:'Aceptar',
+      formatSubmit: 'yyyy-mm-dd',
+      closeOnSelect:false,
+      container:undefined,
+      min: new Date(min),
+      max: new Date(max)
+    
+    });
 })
 
 var formulario = 0;
@@ -320,10 +320,75 @@ function AlertaSweet(icono, texto)
 }
 
 $(document).ready(function(){
-var id_cliente = "";
+
+  $('.continuar').click(function(){
+    console.log(formulario);
+
+    if(formulario == 1)//VALIDACIONES DEL FORMULARIO DE SEGUROS MEDICOS
+    {
+      fecha_naci_medico = $('#fecha_naci').val();
+      nombre_conyugue = $('#nombre_conyugue_segm').val();
+      nombre_asegurado_medico = $('#nombre_asegurado_medico').val();
+      fecha_naci_conyugue = $('#fecha_naci_conyugue').val();
+      cantidad_hijo = $('#hijos_cantidad_segm').val();
+      cobertura = $('#cobertura').val();
+
+      console.log(fecha_naci_medico);
+    }
+    else if(formulario == 2)//VALIDACIONES DEL FORMULARIO DE SEGURO DE VIDA
+    {
+      console.log('este es el frm 2');
+
+    }
+    else if(formulario == 3)//VALIDACIONES DEL FORMULARIO DE SEGURO DE INCENDIOS
+    {
+      tipo_inmueble = $('#tipo_inmueble').val();
+      direccion = $('#address').val();
+      valor_construccion = $('#valor_de_constr_segm').val();
+      valor_contenido = $('#valor_contenido').val();
+
+      if(tipo_inmueble != null)
+      {
+        if(direccion != '')
+        {
+          if(valor_contenido != null)
+          {
+            if(valor_construccion != '')
+            {
+              new_frm=2; 
+              next_frm();
+            }
+            else
+            {
+              AlertaSweet(3, 'Escriba el valor de la construcción');
+            }
+          }
+          else
+          {
+            AlertaSweet(3, 'Seleccione el inmueble de calidad'); 
+          }
+        }
+        else
+        {
+          AlertaSweet(3, 'Escriba su dirección');
+        }
+      }
+      else
+      {
+        AlertaSweet(3, 'Seleccione el tipo de inmueble');
+      }
+
+    }
+    else if(formulario == 4)//VALIDACIONES DEL FORMULARIO DE SEGURO DE VEHICULOS
+    {
+      console.log('este es el frm 4');
+
+    }
+  });
   /*-------------------------------------------------------------------------------------------
   -----------------------FUNCION PARA INSERTAR EL SEGURO Y EL CLIENTE--------------------------
   -------------------------------------------------------------------------------------------*/
+  var id_cliente = "";
   $('.solicitar').click(function(){
     console.log(formulario);
     createCliente();
@@ -369,9 +434,21 @@ var id_cliente = "";
                 if(cliente[0][0] == 1)
                 {
                   id_cliente = cliente[0][1];
-                  if(formulario == 2)
+                  if(formulario == 1)
+                  {
+
+                  }
+                  else if(formulario == 2)
                   {
                     console.log(id_cliente);
+                  }
+                  else if(formulario == 3)
+                  {
+                    createSeguroIncendios();
+                  }
+                  else if(formulario == 4)
+                  {
+                    createSeguroIncendios();
                   }
                 }
               }
@@ -400,6 +477,19 @@ var id_cliente = "";
 
   function createSeguroIncendios()
   {
-    
+    $.ajax({
+      type: 'POST',
+      url: '',
+      data: {
+        tipo_inmueble:tipo_inmueble,
+        direccion:direccion,
+        valor_construccion:valor_construccion,
+        valor_contenido:valor_contenido,
+        id_cliente:id_cliente},
+      success: function()
+      {
+        
+      }
+    });
   }
 });
