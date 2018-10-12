@@ -146,5 +146,12 @@ class Cotizaciones_Medico extends Validator
 	{
 		return $this->id_cliente;
 	}
+
+	public function createSeguroMedico()
+	{
+		$sql = "INSERT INTO cotizaciones_medico(nombre_asegurado_ppal, fecha_nacimineto, nombre_conyugue, fecha_nacimiento_conyuge, cantidad_hijo, cobertura, FK_id_cliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		$params = array($this->nombre_asegurado, $this->fecha_nacimiento, $this->nombre_conyugue, $this->fecha_nacimiento_conyugue, $this->cantidad_hijo, $this->cobertura, $this->id_cliente);
+		return Database::executeRow($sql, $params);
+	}
 }
 ?>
