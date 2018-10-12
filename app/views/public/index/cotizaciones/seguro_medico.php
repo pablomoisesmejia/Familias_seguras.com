@@ -7,32 +7,32 @@
         <div class='row'>
             <div class='input-field col s12 '>
                 <input  type="text" class="datepicker" id="fecha_naci" required/>
-                <label class="" for="fecha_nac_segm">Fecha de Nacimiento</label>
+                <label class="" for="fecha_naci">Fecha de Nacimiento</label>
             </div>
         </div>
         
         <div class='row'>
 		<div class='input-field col s12 '>
-			<input id="nombre_conyugue_segm" type="text" class="validate" required/>
-			<label class="" for="nombre_conyugue_segm">Nombre de conyugue</label>
+			<input id="nombre_conyugue_medico" type="text" class="validate" required/>
+			<label class="" for="nombre_conyugue_medico">Nombre de conyugue</label>
 		</div>
     </div>
     <div class='row'>
 		<div class='input-field col s12 '>
 			<input id="nombre_asegurado_medico" type="text" class="validate" required/>
-			<label class="" for="nombre_asegurado_segm">Nombre de asegurado principal</label>
+			<label class="" for="nombre_asegurado_medico">Nombre de asegurado principal</label>
 		</div>
     </div>
     <div class='row'>
             <div class='input-field col s12 '>
                 <input  type="text" class="datepicker" id="fecha_naci_conyugue" required/>
-                <label class="" for="fecha_nac_segm">Fecha de Nacimiento del conyugue</label>
+                <label class="" for="fecha_naci_conyugue">Fecha de Nacimiento del conyugue</label>
             </div>
         </div>
         <div class='row'>
 		<div class='input-field col s12 '>
-			<input id="hijos_cantidad_segm" type="number" class="validate" min="0" max="15" step="1" value="0"required/>
-			<label class="" for="hijos_cantidad_segm">Cantidad de hijos menores de 25 años </label>
+			<input id="hijos_cantidad_medico" type="number" class="validate" min="0" max="15" step="1" value="0"required/>
+			<label class="" for="hijos_cantidad_medico">Cantidad de hijos menores de 25 años </label>
 		</div>
 
 
@@ -53,5 +53,5 @@
             
         </div>
 
-            <a onclick="new_frm=2; next_frm();" id="return_btn" class="continuar">Continuar</a> 
+            <a id="return_btn" class="continuar">Continuar</a> 
 </form>

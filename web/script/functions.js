@@ -327,13 +327,63 @@ $(document).ready(function(){
     if(formulario == 1)//VALIDACIONES DEL FORMULARIO DE SEGUROS MEDICOS
     {
       fecha_naci_medico = $('#fecha_naci').val();
-      nombre_conyugue = $('#nombre_conyugue_segm').val();
+      nombre_conyugue = $('#nombre_conyugue_medico').val();
       nombre_asegurado_medico = $('#nombre_asegurado_medico').val();
       fecha_naci_conyugue = $('#fecha_naci_conyugue').val();
-      cantidad_hijo = $('#hijos_cantidad_segm').val();
+      cantidad_hijo = $('#hijos_cantidad_medico').val();
       cobertura = $('#cobertura').val();
 
-      console.log(fecha_naci_medico);
+      if(fecha_naci_medico != '')
+      {
+        if(nombre_conyugue != '')
+        {
+          if(nombre_asegurado_medico != '')
+          {
+            if(fecha_naci_conyugue != '')
+            {
+              if(cantidad_hijo != '')
+              {
+                if(cantidad_hijo != '0' && cantidad_hijo.indexOf("-") != 0)
+                {
+                  if(cobertura != null)
+                  {
+                    new_frm=2; 
+                    next_frm();
+                  }
+                  else
+                  {
+                    AlertaSweet(3, 'Seleccione una cobertura');
+                  }
+                }
+                else
+                {
+                  AlertaSweet(3, 'La cantidad de hijos no puede ser negativa ni 0');
+                }
+              }
+              else
+              {
+                AlertaSweet(3, 'ingrese la cantidad de hijos');
+              }
+            }
+            else
+            {
+              AlertaSweet(3, 'Seleccione la fecha de nacimiento del conyugue');
+            }
+          }
+          else
+          {
+            AlertaSweet(3, 'Escriba el nombre del asegurado principal');
+          }
+        }
+        else
+        {
+          AlertaSweet(3, 'Escriba el nombre del conyugue');
+        }
+      }
+      else
+      {
+        AlertaSweet(3, 'Seleccione la fecha de nacimiento');
+      }
     }
     else if(formulario == 2)//VALIDACIONES DEL FORMULARIO DE SEGURO DE VIDA
     {
