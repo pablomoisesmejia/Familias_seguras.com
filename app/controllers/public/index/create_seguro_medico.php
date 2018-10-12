@@ -16,7 +16,7 @@ try
 
     if($medico->createSeguroMedico())
     {
-
+        
     }
     else
     {

@@ -254,7 +254,7 @@ function regresar_un_paso(){
 }
 
 //AQUI EMPIEZA MI PENDEJEZ HUMANA (F. Pablo)
-/*function enviar(){
+function enviar(){
   correo=$('#email_segv').val();
   if(correo != '')
   {
@@ -278,7 +278,7 @@ function regresar_un_paso(){
   {
     alert('Ingrese correo');
   }
-};*/
+};
 
 
 /*-------------------------------------------------------------------------------------------------------------------
