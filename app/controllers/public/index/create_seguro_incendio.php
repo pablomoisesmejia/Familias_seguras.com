@@ -20,7 +20,7 @@ try
     {
         echo Database::getException();
     }
-    if($vida->getIdCotizacion() != null)
+    if($incendios->getIdCotizacion() != null)
     {
         echo 1;
     }

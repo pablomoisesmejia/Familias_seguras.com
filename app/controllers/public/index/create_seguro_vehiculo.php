@@ -18,7 +18,7 @@ try
         echo Database::getException();
     }
 
-    if($vida->getIdCotizacion() != null)
+    if($vehiculo->getIdCotizacion() != null)
     {
         echo 1;
     }

@@ -37,6 +37,6 @@
         </div>
         
 
-        <a  onclick="new_frm=3;" name="cotizar" id="return_btn" class="solicitar">Solicitar Cotización</a>
+        <a name="cotizar" id="return_btn" class="solicitar">Solicitar Cotización</a>
        
 </form>

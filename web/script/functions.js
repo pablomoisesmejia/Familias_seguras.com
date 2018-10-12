@@ -253,32 +253,28 @@ function regresar_un_paso(){
     
 }
 
-//AQUI EMPIEZA MI PENDEJEZ HUMANA (F. Pablo)
-/*function enviar(){
-  correo=$('#email_segv').val();
-  if(correo != '')
-  {
-    $.ajax({
-      type:'POST', 
-      url:'resources/views/insert_datos.php?action=enviar',
-      data:{correo:correo},
-      success:function(dato){
-        console.log(dato);
+//AQUI EMPIEZA 
+function enviar(){
+  $.ajax({
+    type:'POST', 
+    url:'../../app/helpers/insert_datos.php?action=enviar',
+    data:{correo:correo},
+    success:function(dato){
+      console.log(dato);
+    
+      if(dato == 1)
+      {
       
-        if(dato == 1)
-        {
-        
-          new_frm=3;
-          next_frm();
-        }
+        new_frm=3;
+        next_frm();
       }
-    });
-  }
-  else
-  {
-    alert('Ingrese correo');
-  }
-}*/
+      else
+      {
+        AlertaSweet(3, 'Ocurrio un problema al enviar el correo');
+      }
+    }
+  });
+}
 
 
 /*-------------------------------------------------------------------------------------------------------------------
@@ -594,14 +590,7 @@ $(document).ready(function(){
       {
         if(seguro_incendios == 1)
         {
-          swal({
-            title: 'Éxito',
-            text: 'Los datos ha sido guardados',
-            icon: 'success',
-            button: 'Aceptar',
-            closeOnClickOutside: false,
-            closeOnEsc: false
-          }).then(value=>{location.reload()});
+          enviar();
         }
         else
         {
@@ -630,14 +619,7 @@ $(document).ready(function(){
       {
         if(seguro_vida == 1)
         {
-          swal({
-            title: 'Éxito',
-            text: 'Los datos ha sido guardados',
-            icon: 'success',
-            button: 'Aceptar',
-            closeOnClickOutside: false,
-            closeOnEsc: false
-          }).then(value=>{location.reload()});
+          enviar();
         }
         else
         {
@@ -667,14 +649,7 @@ $(document).ready(function(){
       {
         if(seguro_medico == 1)
         {
-          swal({
-            title: 'Éxito',
-            text: 'Los datos ha sido guardados',
-            icon: 'success',
-            button: 'Aceptar',
-            closeOnClickOutside: false,
-            closeOnEsc: false
-          }).then(value=>{location.reload()});
+          enviar();
         }
         else
         {
@@ -699,14 +674,7 @@ $(document).ready(function(){
         $('#numero_licencia').val('');
         if(seguro_vehiculo == 1)
         {
-          swal({
-            title: 'Éxito',
-            text: 'Los datos ha sido guardados',
-            icon: 'success',
-            button: 'Aceptar',
-            closeOnClickOutside: false,
-            closeOnEsc: false
-          }).then(value=>{location.reload()});
+          enviar();
         }
         else
         {
