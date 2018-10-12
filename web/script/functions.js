@@ -270,7 +270,7 @@ function enviar(){
       }
       else
       {
-        AlertaSweet(3, 'Ocurrio un problema al enviar el correo');
+        AlertaSweet(3, 'Ocurrio un problema al enviar el correo, dar clic de nuevo al boton "Solicitar Cotizacion"');
       }
     }
   });
@@ -488,7 +488,14 @@ $(document).ready(function(){
   var id_cliente = "";
   $('.solicitar').click(function(){
     console.log(formulario);
-    createCliente();
+    if(id_cliente == "")
+    {
+      createCliente();
+    }
+    else
+    {
+      enviar();
+    }
   });
 
   function createCliente()
