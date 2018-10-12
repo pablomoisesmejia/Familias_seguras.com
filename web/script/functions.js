@@ -398,5 +398,8 @@ var id_cliente = "";
     }
   }
 
-  function create(){}
+  function createSeguroIncendios()
+  {
+    
+  }
 });

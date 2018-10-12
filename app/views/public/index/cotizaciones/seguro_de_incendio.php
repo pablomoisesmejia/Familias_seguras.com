@@ -10,13 +10,14 @@
         <div class='row'>
             <div class='input-field col s12 '>
                 <select name="" id="">
-                    <option value="1">Casa de Habitación</option>
-                    <option value="2">Oficina</option>
-                    <option value="3">Local Comercial</option>
-                    <option value="4">Apartamento</option>
-                    <option value="5">Casa de playa</option>
-                    <option value="6">Casa de campo</option>
-                    <option value="7">Casa de de lago</option>
+                    <option value="" selected disabled>Seleccione una opción</option>
+                    <option value="Casa de Habitación">Casa de Habitación</option>
+                    <option value="Oficina">Oficina</option>
+                    <option value="Local Comercial">Local Comercial</option>
+                    <option value="Apartamento">Apartamento</option>
+                    <option value="Casa de playa">Casa de playa</option>
+                    <option value="Casa de campo">Casa de campo</option>
+                    <option value="Casa de de lago">Casa de de lago</option>
                 </select>
                 <label class="" for="tipo_inmueble_segv">Tipo de Inmueble</label>
             </div>           
@@ -47,9 +48,10 @@
         <div class='row'>
             <div class='input-field col s12 '>
                 <select name="" id="">
-                    <option value="1">Propietario</option>
-                    <option value="2">Inquilino</option>
-                    <option value="3">Arrendante</option>
+                    <option value="" selected disabled>Seleccione una opción</option>
+                    <option value="Propietario">Propietario</option>
+                    <option value="Inquilino">Inquilino</option>
+                    <option value="Arrendante">Arrendante</option>
                 </select>
                 <label class="" for="tipo_inmueble_segv">Asegurar Inmueble en calidad de:</label>
             </div>           
