@@ -20,10 +20,11 @@ class Page extends Component{
 			<title>Familias Seguras</title>
 		
 			
-			<link rel='stylesheet href='../../web/fonts/roboto/letras.css'>
+			
 			<link rel='stylesheet' href='../../web/css/material_icons.css'>
 			<link rel='stylesheet' href='../../web/css/materialize.css'>
 			<link rel='stylesheet' href='../../web/css/public_style.css'>
+			<link rel='stylesheet' href='../../web/fonts/roboto/letras.css'>
 		
 		</head>
 		<body onload='myFunction();'>

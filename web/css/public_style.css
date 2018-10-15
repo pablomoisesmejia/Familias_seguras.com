@@ -25,6 +25,14 @@
     margin-left: 10px;
 
 }
+.frm_p_text_gray {
+    max-width: 400px;
+    font-size: 1em;
+    color: gray;
+    margin: 0;
+    padding: 0;
+    
+}
 #myMap {
     height: 200px;
     width: 100%;;
@@ -507,6 +515,7 @@ h5{
     font-size: 1.6em;
     margin: 0;
     padding: 0;
+    margin-bottom: 16px;
 }
 .frm_txt{
     color: rgb(48, 48, 48);
