@@ -62,7 +62,7 @@ $( document ).ready(function(){
     cambiar_fondo();
     $('.datepicker').pickadate({
       selectMonths:true,
-      selectYears:20,
+      selectYears:100,
       today:'Actual',
       clear:'Limpiar',
       close:'Aceptar',
@@ -254,11 +254,66 @@ function regresar_un_paso(){
 }
 
 //AQUI EMPIEZA 
-function enviar(){
+function enviar()
+{
+  if(formulario == 1)
+  {
+    datos = {
+      formulario:formulario,
+      fecha_naci_medico:fecha_naci_medico,
+      nombre_conyugue:nombre_conyugue,
+      nombre_asegurado_medico:nombre_asegurado_medico,
+      fecha_naci_conyugue:fecha_naci_conyugue,
+      cantidad_hijo:cantidad_hijo,
+      cobertura:cobertura,
+      nombre:nombre,
+      telefono:telefono,
+      correo:correo
+    }
+  }
+  else if(formulario == 2)
+  {
+    datos = {
+      formulario:formulario,
+      fecha_naci_vida:fecha_naci_vida,
+      nombre_asegurado_vida:nombre_asegurado_vida,
+      fumador:fumador,
+      suma_asegurada:suma_asegurada,
+      cesion_bancaria:cesion_bancaria,
+      nombre:nombre,
+      telefono:telefono,
+      correo:correo
+    }
+  }
+  else if(formulario == 3)
+  {
+    datos = {
+      formulario:formulario,
+      fecha_naci_medico:fecha_naci_medico,
+      nombre_conyugue:nombre_conyugue,
+      nombre_asegurado_medico:nombre_asegurado_medico,
+      fecha_naci_conyugue:fecha_naci_conyugue,
+      cantidad_hijo:cantidad_hijo,
+      cobertura:cobertura,
+      nombre:nombre,
+      telefono:telefono,
+      correo:correo
+    }
+  }
+  else if(formulario == 4)
+  {
+    datos = {
+      formulario:formulario,
+      numero_licencia:numero_licencia,
+      nombre:nombre,
+      telefono:telefono,
+      correo:correo
+    }
+  }
   $.ajax({
     type:'POST', 
     url:'../../app/helpers/insert_datos.php?action=enviar',
-    data:{correo:correo},
+    data:datos,
     success:function(dato){
       console.log(dato);
     
@@ -273,6 +328,7 @@ function enviar(){
         AlertaSweet(3, 'Ocurrio un problema al enviar el correo, dar clic de nuevo al boton "Solicitar Cotizacion"');
       }
     }
+
   });
 }
 
@@ -409,7 +465,7 @@ $(document).ready(function(){
             }
             else
             {
-              AlertaSweet(3, 'ingrese la suma asegurada');
+              AlertaSweet(3, 'Ingrese la suma asegurada');
             }
           }
           else

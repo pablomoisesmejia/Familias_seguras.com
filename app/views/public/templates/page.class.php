@@ -8,7 +8,7 @@ require_once("../../app/helpers/component.class.php");
 class Page extends Component{
 	//este es el header
 	public static function templateHeader($title){
-		session_start();
+	    //session_start();
 		ini_set("date.timezone","America/El_Salvador");
 		print("
 		<!DOCTYPE html>
@@ -20,11 +20,11 @@ class Page extends Component{
 			<title>Familias Seguras</title>
 		
 			
-			
+			<link rel='stylesheet' href='../../web/fonts/roboto/letras.css'>
 			<link rel='stylesheet' href='../../web/css/material_icons.css'>
 			<link rel='stylesheet' href='../../web/css/materialize.css'>
 			<link rel='stylesheet' href='../../web/css/public_style.css'>
-			<link rel='stylesheet' href='../../web/fonts/roboto/letras.css'>
+			
 		
 		</head>
 		<body onload='myFunction();'>

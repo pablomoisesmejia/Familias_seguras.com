@@ -36,6 +36,6 @@ try
 }
 catch(Exception $error)
 {
-    echo json_encode($error->getMenssage());
+    echo json_encode($error->getMessage());
 }
 ?>

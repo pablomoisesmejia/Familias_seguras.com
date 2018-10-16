@@ -1,0 +1,114 @@
+[14-Oct-2018 21:27:21 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:27:21 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:27:55 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:27:55 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:28:19 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:28:19 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:29:37 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:29:37 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:29:41 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:29:41 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:29:42 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:29:42 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:48 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:48 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:48 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:48 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:48 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:48 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:48 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:48 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:48 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:48 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:49 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:49 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:49 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:49 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:49 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:49 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:49 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:49 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:49 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:49 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:50 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:50 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:50 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:50 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:50 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:50 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:50 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:50 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:50 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:50 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:50 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:51 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:51 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:51 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:51 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:51 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:30:51 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:30:51 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:35:03 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:35:03 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:35:22 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:35:22 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:36:45 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:36:45 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:37:05 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:37:05 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:52:43 America/Chicago] PHP Strict Standards:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:52:43 America/Chicago] PHP Fatal error:  Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:55:23 America/Chicago] PHP Deprecated:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:55:23 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:55:35 America/Chicago] PHP Deprecated:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:55:35 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:56:18 America/Chicago] PHP Deprecated:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:56:18 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:56:28 America/Chicago] PHP Deprecated:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:56:28 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 21:58:53 America/Chicago] PHP Deprecated:  Non-static method Database::connect() should not be called statically in /home/fs/public_html/app/models/database.class.php on line 26
+[14-Oct-2018 21:58:53 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 22:05:29 America/Chicago] PHP Fatal error:  Multiple access type modifiers are not allowed in /home/fs/public_html/app/models/database.class.php on line 20
+[14-Oct-2018 22:08:22 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 22:09:17 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 22:09:31 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 22:09:31 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 22:09:32 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 22:09:32 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
+[14-Oct-2018 22:10:13 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method Exception::getMenssage() in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/fs/public_html/app/controllers/public/index/create_cliente_controller.php on line 39
