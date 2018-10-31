@@ -83,6 +83,29 @@ class Page extends Component{
 		</header>
 			 ");
 	}
+	public static function templateHeaderbasic($title){
+	    //session_start();
+		ini_set("date.timezone","America/El_Salvador");
+		print("
+		<!DOCTYPE html>
+		<html lang='es'>
+		<head>
+			<meta charset='UTF-8'>
+			<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+			<meta http-equiv='X-UA-Compatible' content='ie=edge'>
+			<title>Familias Seguras</title>
+		
+			
+			<link rel='stylesheet' href='../../web/fonts/roboto/letras.css'>
+			<link rel='stylesheet' href='../../web/css/material_icons.css'>
+			<link rel='stylesheet' href='../../web/css/materialize.css'>
+			<link rel='stylesheet' href='../../web/css/public_style.css'>
+			
+		
+		</head>
+		
+			 ");
+	}
 
 	//aqui ponemos el footer y sus referencias
 	public static function templateFooter(){
