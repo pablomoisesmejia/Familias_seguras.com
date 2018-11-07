@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2018 a las 05:07:09
+-- Tiempo de generación: 08-11-2018 a las 00:51:56
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -225,7 +225,7 @@ CREATE TABLE `cuadro_comparativo` (
   `FK_id_aseguradora` int(11) NOT NULL,
   `plan` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `oferta` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `FK_id_solicitud` int(11) NOT NULL,
+  `FK_id_cliente_prospecto` int(11) NOT NULL,
   `valor_recuperacion_50` double(9,2) DEFAULT NULL,
   `valor_recuperacion_60` double(9,2) DEFAULT NULL,
   `valor_recuperacion_70` double(9,2) DEFAULT NULL
@@ -370,7 +370,27 @@ CREATE TABLE `solicitudes` (
   `FK_id_estado_correo` int(11) NOT NULL,
   `fecha_envio` date DEFAULT NULL,
   `hora_envio` time DEFAULT NULL,
-  `observasiones` int(11) DEFAULT NULL,
+  `observasiones` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `comentario` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `interpretacion_recomendacion` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `solicitudes_atencion_cliente`
+--
+
+CREATE TABLE `solicitudes_atencion_cliente` (
+  `PK_id_solicitud_atencion_cliente` int(11) NOT NULL,
+  `FK_id_cliente_prospecto` int(11) NOT NULL,
+  `fecha_reparticion` date NOT NULL,
+  `hora_reparticion` time NOT NULL,
+  `FK_id_estado_solicitud` int(11) NOT NULL,
+  `FK_id_estado_correo` int(11) NOT NULL,
+  `fecha_envio` date DEFAULT NULL,
+  `hora_envio` time DEFAULT NULL,
+  `observaciones` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   `comentario` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   `interpretacion_recomendacion` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -534,7 +554,7 @@ ALTER TABLE `cotizaciones_vida`
 ALTER TABLE `cuadro_comparativo`
   ADD PRIMARY KEY (`PK_id_cuadro_comparativo`),
   ADD KEY `FK_id_aseguradora` (`FK_id_aseguradora`),
-  ADD KEY `FK_id_solicitud` (`FK_id_solicitud`);
+  ADD KEY `FK_id_solicitud` (`FK_id_cliente_prospecto`);
 
 --
 -- Indices de la tabla `empleados`
@@ -610,6 +630,15 @@ ALTER TABLE `solicitudes`
   ADD KEY `FK_id_empleado` (`FK_id_empleado`),
   ADD KEY `FK_id_estado_solicitud` (`FK_id_estado_solicitud`),
   ADD KEY `FK_id_estado_correo` (`FK_id_estado_correo`);
+
+--
+-- Indices de la tabla `solicitudes_atencion_cliente`
+--
+ALTER TABLE `solicitudes_atencion_cliente`
+  ADD PRIMARY KEY (`PK_id_solicitud_atencion_cliente`),
+  ADD KEY `FK_id_estado_solicitud` (`FK_id_estado_solicitud`),
+  ADD KEY `FK_id_estado_correo` (`FK_id_estado_correo`),
+  ADD KEY `FK_id_cliente_prospecto` (`FK_id_cliente_prospecto`);
 
 --
 -- Indices de la tabla `solicitudes_procesadas`
@@ -782,6 +811,12 @@ ALTER TABLE `solicitudes`
   MODIFY `PK_id_solicitud` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `solicitudes_atencion_cliente`
+--
+ALTER TABLE `solicitudes_atencion_cliente`
+  MODIFY `PK_id_solicitud_atencion_cliente` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `solicitudes_procesadas`
 --
 ALTER TABLE `solicitudes_procesadas`
@@ -871,7 +906,7 @@ ALTER TABLE `cotizaciones_vida`
 --
 ALTER TABLE `cuadro_comparativo`
   ADD CONSTRAINT `cuadro_comparativo_ibfk_1` FOREIGN KEY (`FK_id_aseguradora`) REFERENCES `aseguradoras` (`PK_id_aseguradora`),
-  ADD CONSTRAINT `cuadro_comparativo_ibfk_2` FOREIGN KEY (`FK_id_solicitud`) REFERENCES `solicitudes` (`PK_id_solicitud`);
+  ADD CONSTRAINT `cuadro_comparativo_ibfk_2` FOREIGN KEY (`FK_id_cliente_prospecto`) REFERENCES `clientes_prospectos` (`PK_id_cliente_prospecto`);
 
 --
 -- Filtros para la tabla `empleados`
@@ -906,6 +941,14 @@ ALTER TABLE `solicitudes`
   ADD CONSTRAINT `solicitudes_ibfk_2` FOREIGN KEY (`FK_id_empleado`) REFERENCES `empleados` (`PK_id_empleado`),
   ADD CONSTRAINT `solicitudes_ibfk_3` FOREIGN KEY (`FK_id_estado_correo`) REFERENCES `estados_correo` (`PK_id_estado_correo`),
   ADD CONSTRAINT `solicitudes_ibfk_4` FOREIGN KEY (`FK_id_estado_solicitud`) REFERENCES `estado_solicitud` (`PK_id_estado_solicitud`);
+
+--
+-- Filtros para la tabla `solicitudes_atencion_cliente`
+--
+ALTER TABLE `solicitudes_atencion_cliente`
+  ADD CONSTRAINT `solicitudes_atencion_cliente_ibfk_1` FOREIGN KEY (`FK_id_cliente_prospecto`) REFERENCES `clientes_prospectos` (`PK_id_cliente_prospecto`),
+  ADD CONSTRAINT `solicitudes_atencion_cliente_ibfk_2` FOREIGN KEY (`FK_id_estado_solicitud`) REFERENCES `estado_solicitud` (`PK_id_estado_solicitud`),
+  ADD CONSTRAINT `solicitudes_atencion_cliente_ibfk_3` FOREIGN KEY (`FK_id_estado_correo`) REFERENCES `estados_correo` (`PK_id_estado_correo`);
 
 --
 -- Filtros para la tabla `solicitudes_procesadas`
