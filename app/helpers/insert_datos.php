@@ -227,6 +227,7 @@ class enviarmail
         }
     }
 }
+}
 $object = new enviarmail;
 $object->enviar();
 ?>
