@@ -416,7 +416,7 @@ class Cantidad_Solicitud_Dias extends Validator
     ////////////////////////////////////////////////////////////////////////
     public function setFechaCastigoLunes($value)
     {
-        if($this->validateDate($value, 1, 10))
+        if($this->validateAlphanumeric($value, 1, 10))
         {
             $this->fecha_castigo_lunes = $value;
             return true;
@@ -433,7 +433,7 @@ class Cantidad_Solicitud_Dias extends Validator
 
     public function setFechaCastigoMartes($value)
     {
-        if($this->validateDate($value, 1, 10))
+        if($this->validateAlphanumeric($value, 1, 10))
         {
             $this->fecha_castigo_martes = $value;
             return true;
@@ -450,7 +450,7 @@ class Cantidad_Solicitud_Dias extends Validator
 
     public function setFechaCastigoMiercoles($value)
     {
-        if($this->validateDate($value, 1, 10))
+        if($this->validateAlphanumeric($value, 1, 10))
         {
             $this->fecha_castigo_miercoles = $value;
             return true;
@@ -467,7 +467,7 @@ class Cantidad_Solicitud_Dias extends Validator
 
     public function setFechaCastigoJueves($value)
     {
-        if($this->validateDate($value, 1, 10))
+        if($this->validateAlphanumeric($value, 1, 10))
         {
             $this->fecha_castigo_jueves = $value;
             return true;
@@ -484,7 +484,7 @@ class Cantidad_Solicitud_Dias extends Validator
 
     public function setFechaCastigoViernes($value)
     {
-        if($this->validateDate($value, 1, 10))
+        if($this->validateAlphanumeric($value, 1, 10))
         {
             $this->fecha_castigo_viernes = $value;
             return true;
@@ -501,7 +501,7 @@ class Cantidad_Solicitud_Dias extends Validator
 
     public function setFechaCastigoSabado($value)
     {
-        if($this->validateDate($value, 1, 10))
+        if($this->validateAlphanumeric($value, 1, 10))
         {
             $this->fecha_castigo_sabado = $value;
             return true;
@@ -518,7 +518,7 @@ class Cantidad_Solicitud_Dias extends Validator
 
     public function setFechaCastigoDomingo($value)
     {
-        if($this->validateDate($value, 1, 10))
+        if($this->validateAlphanumeric($value, 1, 10))
         {
             $this->fecha_castigo_domingo = $value;
             return true;
