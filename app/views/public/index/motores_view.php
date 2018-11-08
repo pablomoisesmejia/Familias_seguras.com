@@ -9,16 +9,16 @@
         </div>
         </div>
         <div class="container">
-        <div class="card-tabs" >
-          <ul class="tabs tabs-fixed-width" style="color:blue;">
-            <li class="tab"><a class="active"  href="#test4">Paso 1</a></li>
-            <li class="tab"><a  href="#test5">Paso 2</a></li>
-            <li class="tab"><a href="#test6">Paso 3</a></li>
-          </ul>
-        </div>
+          <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width" style="color:blue;">
+              <li class="tab"><a class="active" id="frm1">Paso 1</a></li>
+              <li class="tab"><a id="frm2">Paso 2</a></li>
+              <li class="tab"><a id="frm3">Paso 3</a></li>
+            </ul>
+          </div>
         </div>
         <div class="card-content grey lighten-4">
-        <div id="test4">
+        <div id="paso1">
          <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
           <div class="container">
               <div class='row'>
@@ -84,7 +84,7 @@
         </div>
 
 
-          <div id="test5">
+          <div id="paso2">
           <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
             <div class="container">
 
@@ -124,7 +124,7 @@
             
           </div>
 
-          <div id="test6">
+          <div id="paso3">
           <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
             <div class="container">
               <div class='row'>

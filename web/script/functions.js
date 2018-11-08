@@ -74,15 +74,18 @@ $( document ).ready(function(){
     max: new Date(max)
   });
 
+  //Desactivar los tabs por estetica
   document.getElementById("frm1").disabled = true;
   document.getElementById("frm2").disabled = true;
   document.getElementById("frm3").disabled = true;
 
+  //Mostrar solo el formulario del paso 1 y los demas ocultarlos
   $('#paso1').css({"display":"block"});
   $('#paso2').css({"display":"none"});
   $('#paso3').css({"display":"none"});
 
   $('#siguiente2').click(function(){
+    Paso1();
     $('#frm2').addClass('active');
     $('#frm1').removeClass('active');
 
@@ -109,7 +112,37 @@ $( document ).ready(function(){
     $('.indicator').removeAttr('style');
     $('.indicator').css({"right": "471px", "left": "0px","transform":"translate(469px, 0px)", "transition": "transform .5s"});
   });
+
+  $('#anterior1').click(function(){
+    $('#frm1').addClass('active');
+    $('#frm2').removeClass('active');
+
+    $('#paso1').addClass('active');
+    $('#paso2').removeClass('active');
+
+    $('#paso2').css({"display":"none"});
+    $('#paso1').css({"display":"block"});
+
+    $('.indicator').removeAttr('style');
+    $('.indicator').css({"right": "471px", "left": "0px","transform":"translate(0px, 0px)", "transition": "transform .5s"});
+  });
+
+  $('#anterior2').click(function(){
+    $('#frm2').addClass('active');
+    $('#frm3').removeClass('active');
+
+    $('#paso2').addClass('active');
+    $('#paso3').removeClass('active');
+
+    $('#paso3').css({"display":"none"});
+    $('#paso2').css({"display":"block"});
+
+    $('.indicator').removeAttr('style');
+    $('.indicator').css({"right": "471px", "left": "0px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
+  });
 });
+
+
 
 var formulario = 0;
 var seguro_frm=0;

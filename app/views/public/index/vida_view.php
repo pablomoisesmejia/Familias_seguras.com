@@ -10,7 +10,7 @@
       </div>
       <div class="container">
         <div class="card-tabs">
-          <ul class="tabs tabs-fixed-width" id="frm" style="color:blue;">
+          <ul class="tabs tabs-fixed-width" style="color:blue;">
             <li class="tab"><a class="active" id="frm1">Paso 1</a></li>
             <li class="tab"><a id="frm2">Paso 2</a></li>
             <li class="tab"><a id="frm3">Paso 3</a></li>
@@ -67,7 +67,7 @@
               </div>
             </div>
             <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
-            <a id="siguiente2" class="waves-effect waves-light btn  light-blue">Siguiente</a>
+            <a id="siguiente2" class="waves-effect waves-light btn light-blue right">Siguiente</a>
           </div>
         </div>
         <!-- Formulario del paso 2-->
@@ -103,7 +103,10 @@
               <label>Selecciona la cantidad de pagos, en la que deseas pagar tu seguro</label>
             </div>
             <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
-            <a id="siguiente3" class="waves-effect waves-light btn  light-blue">Siguiente</a>
+            <div class="right">
+              <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>
+              <a id="siguiente3" class="waves-effect waves-light btn  light-blue">Siguiente</a>
+            </div>
           </div>
         </div>
           <!-- Formulario del paso 3-->
@@ -147,7 +150,12 @@
                 </select>
               </div>
             </div>
-            <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+            <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
+            
+            <div class="right">
+              <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>
+              <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+            </div>
           </div>
         </div>
       </div>
