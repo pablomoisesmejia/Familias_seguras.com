@@ -2,7 +2,7 @@
 	<div class="container-login100">
 		<div class="wrap-login100">
 			<div class="login100-pic js-tilt" data-tilt>
-				<img src="framework/images/img-01.png" alt="IMG">
+				<img src="web/img/dashboard/img-01.png" alt="IMG">
 			</div>
 
 			<form class="login100-form validate-form">
@@ -47,5 +47,3 @@
 		</div>
 	</div>
 </div>
-	
-	
