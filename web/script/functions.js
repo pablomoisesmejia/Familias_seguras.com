@@ -54,26 +54,62 @@ var max = date.getFullYear()-18+','+(date.getMonth()+1)+','+(date.getDate());//V
 
 $( document ).ready(function(){
      
-     verificar_telefono_o_pc();
+  verificar_telefono_o_pc();
   show_info_section();
   $("select").material_select();
   
-    $("#blackground_walls").fadeIn(600).delay(4000).fadeOut(1000);
-    cambiar_fondo();
-    $('.datepicker').pickadate({
-      selectMonths:true,
-      selectYears:100,
-      today:'Actual',
-      clear:'Limpiar',
-      close:'Aceptar',
-      formatSubmit: 'yyyy-mm-dd',
-      closeOnSelect:false,
-      container:undefined,
-      min: new Date(min),
-      max: new Date(max)
-    
-    });
-})
+  $("#blackground_walls").fadeIn(600).delay(4000).fadeOut(1000);
+  cambiar_fondo();
+
+  $('.datepicker').pickadate({
+    selectMonths:true,
+    selectYears:100,
+    today:'Actual',
+    clear:'Limpiar',
+    close:'Aceptar',
+    formatSubmit: 'yyyy-mm-dd',
+    closeOnSelect:false,
+    container:undefined,
+    min: new Date(min),
+    max: new Date(max)
+  });
+
+  document.getElementById("frm1").disabled = true;
+  document.getElementById("frm2").disabled = true;
+  document.getElementById("frm3").disabled = true;
+
+  $('#paso1').css({"display":"block"});
+  $('#paso2').css({"display":"none"});
+  $('#paso3').css({"display":"none"});
+
+  $('#siguiente2').click(function(){
+    $('#frm2').addClass('active');
+    $('#frm1').removeClass('active');
+
+    $('#paso2').addClass('active');
+    $('#paso1').removeClass('active');
+
+    $('#paso1').css({"display":"none"});
+    $('#paso2').css({"display":"block"});
+
+    $('.indicator').removeAttr('style');
+    $('.indicator').css({"right": "471px", "left": "0px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
+  });
+
+  $('#siguiente3').click(function(){
+    $('#frm3').addClass('active');
+    $('#frm2').removeClass('active');
+
+    $('#paso3').addClass('active');
+    $('#paso2').removeClass('active');
+
+    $('#paso2').css({"display":"none"});
+    $('#paso3').css({"display":"block"});
+
+    $('.indicator').removeAttr('style');
+    $('.indicator').css({"right": "471px", "left": "0px","transform":"translate(469px, 0px)", "transition": "transform .5s"});
+  });
+});
 
 var formulario = 0;
 var seguro_frm=0;

@@ -110,17 +110,18 @@ class Page extends Component{
 	//aqui ponemos el footer y sus referencias
 	public static function templateFooter(){
 		print("
-						<footer>
-						
-					 </footer>
-					 
-					 <script src='../../web/script/jquery-3.2.1.min.js'></script>
-					 <script src='../../web/script/sweetalert.min.js'></script>
-					 <script src='../../web/script/functions.js'></script>
-					 <script src='../../web/script/materialize.min.js'></script>
-					 
-					 </body>
-					 </html> <!-- Aqui Cerramos la vita de la pagina -->
+			<footer>
+			
+			</footer>
+			
+			<script src='../../web/script/jquery-3.2.1.min.js'></script>
+			<script src='../../web/script/sweetalert.min.js'></script>
+			<script src='../../web/script/functions.js'></script>
+			<script src='../../web/script/js_seguro_vida.js'></script>
+			<script src='../../web/script/materialize.min.js'></script>
+			
+			</body>
+			</html> <!-- Aqui Cerramos la vita de la pagina -->
 		");
 	}
 
