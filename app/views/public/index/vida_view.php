@@ -66,7 +66,7 @@
                   <label class="" for="tel_segv">¿La necesita para un banco?</label>
               </div>
             </div>
-            <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
+            <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>
             <a id="siguiente2" class="waves-effect waves-light btn light-blue right">Siguiente</a>
           </div>
         </div>
@@ -102,10 +102,12 @@
               </select>
               <label>Selecciona la cantidad de pagos, en la que deseas pagar tu seguro</label>
             </div>
-            <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
-            <div class="right">
-              <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>
-              <a id="siguiente3" class="waves-effect waves-light btn  light-blue">Siguiente</a>
+            <div class="col s12">
+              <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
+              <div class="right">
+                <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>
+                <a id="siguiente3" class="waves-effect waves-light btn  light-blue">Siguiente</a>
+              </div>
             </div>
           </div>
         </div>
@@ -151,7 +153,6 @@
               </div>
             </div>
             <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
-            
             <div class="right">
               <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>
               <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>

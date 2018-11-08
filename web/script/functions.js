@@ -96,7 +96,7 @@ $( document ).ready(function(){
     $('#paso2').css({"display":"block"});
 
     $('.indicator').removeAttr('style');
-    $('.indicator').css({"right": "471px", "left": "0px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
+    $('.indicator').css({"right": "483px", "left": "12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
   });
 
   $('#siguiente3').click(function(){
@@ -110,7 +110,7 @@ $( document ).ready(function(){
     $('#paso3').css({"display":"block"});
 
     $('.indicator').removeAttr('style');
-    $('.indicator').css({"right": "471px", "left": "0px","transform":"translate(469px, 0px)", "transition": "transform .5s"});
+    $('.indicator').css({"right": "469px", "left": "27px","transform":"translate(469px, 0px)", "transition": "transform .5s"});
   });
 
   $('#anterior1').click(function(){
@@ -124,7 +124,7 @@ $( document ).ready(function(){
     $('#paso1').css({"display":"block"});
 
     $('.indicator').removeAttr('style');
-    $('.indicator').css({"right": "471px", "left": "0px","transform":"translate(0px, 0px)", "transition": "transform .5s"});
+    $('.indicator').css({"right": "496px", "left": "0px","transform":"translate(0px, 0px)", "transition": "transform .5s"});
   });
 
   $('#anterior2').click(function(){
@@ -138,7 +138,7 @@ $( document ).ready(function(){
     $('#paso2').css({"display":"block"});
 
     $('.indicator').removeAttr('style');
-    $('.indicator').css({"right": "471px", "left": "0px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
+    $('.indicator').css({"right": "483px", "left": "12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
   });
 });
 

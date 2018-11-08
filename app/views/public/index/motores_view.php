@@ -1,88 +1,99 @@
 <body>
-      <div class="container">
+  <div class="container">
         <!-- los datos de la pagina -->
-        <div class="card">
-        <div class="container">
+    <div class="card">
+      <div class="container">
         <div class="card-content">
           <h4>Seguro de motores</h4>
           <p style="color: black;"> Cotización</p>
         </div>
+      </div>
+      <div class="container">
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width" style="color:blue;">
+            <li class="tab"><a class="active" id="frm1">Paso 1</a></li>
+            <li class="tab"><a id="frm2">Paso 2</a></li>
+            <li class="tab"><a id="frm3">Paso 3</a></li>
+          </ul>
         </div>
-        <div class="container">
-          <div class="card-tabs">
-            <ul class="tabs tabs-fixed-width" style="color:blue;">
-              <li class="tab"><a class="active" id="frm1">Paso 1</a></li>
-              <li class="tab"><a id="frm2">Paso 2</a></li>
-              <li class="tab"><a id="frm3">Paso 3</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="card-content grey lighten-4">
+      </div>
+      <div class="card-content grey lighten-4">
         <div id="paso1">
          <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
           <div class="container">
               <div class='row'>
 		            <div class='input-field col s12 '>
-                <i  style="color:black;"class="material-icons prefix">directions_car</i>
+                  <i style="color:black;"class="material-icons prefix">directions_car</i>
                   <input id="marca" type="text" class="validate" required/>
                   <label class="" for="nombre_segv">Marca</label>
                 </div>
               </div>
               <div class='row'>
 		            <div class='input-field col s12 '>
-                <i  style="color:black;"class="material-icons prefix">description</i>
+                  <i style="color:black;"class="material-icons prefix">description</i>
                   <input id="modelo" type="text" class="validate" required/>
                   <label class="" for="nombre_segv">Modelo</label>
                 </div>
               </div>
               <div class='row'>
 		            <div class='input-field col s12 '>
-                <i  style="color:black;"class="material-icons prefix">book</i>
+                  <i style="color:black;"class="material-icons prefix">book</i>
                   <input id="ano" type="number" class="validate" required/>
                   <label class="" for="nombre_segv">Año</label>
                 </div>
               </div>
               <div class='row'>
 		            <div class='input-field col s12 '>
-                <i  style="color:black;"class="material-icons prefix">menu</i>
+                  <i style="color:black;"class="material-icons prefix">menu</i>
                   <input id="placa" type="number" class="validate" required/>
                   <label class="" for="nombre_segv">Placa</label>
                 </div>
               </div>
-              <div class="input-field col s12">
-              <i  style="color:black;"class="material-icons prefix">find_in_page</i>
-                <select multiple>
-                  <option value="" disabled selected></option>
-                  <option value="1" >Agencia</option>
-                  <option value="2">Importado</option>
-                </select>
-                <label>Origen del vehiculo</label>
+              <div class="row">
+                <div class="input-field col s12">
+                  <i style="color:black;"class="material-icons prefix">find_in_page</i>
+                  <select>
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option value="1" >Agencia</option>
+                    <option value="2">Importado</option>
+                  </select>
+                  <label>Origen del vehiculo</label>
+                </div>
               </div>
               <div class='row'>
 		            <div class='input-field col s12 '>
-                <i  style="color:black;"class="material-icons prefix">attach_money</i>
+                  <i style="color:black;"class="material-icons prefix">attach_money</i>
                   <input id="valor" type="number" class="validate" required/>
                   <label class="" for="nombre_segv">Valor del Vehiculo</label>
                 </div>
               </div>
-
-              <a class="waves-effect waves-light btn modal-trigger" href="#modalautos">Ver carros</a>
-              <a class="waves-effect waves-light btn modal-trigger" href="">Agregar</a>
-
-                <!-- Modal Structure -->
-              <div id="modalautos" class="modal">
-                <div class="modal-content">
-                  <h4>Modal Header</h4>
-                  <p>A bunch of text</p>
-                </div>
-                <div class="modal-footer">
-                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <a class="waves-effect waves-light btn modal-trigger" href="#modalautos">Ver carros</a>
+                  <a class="waves-effect waves-light btn modal-trigger" href="">Agregar</a>
                 </div>
               </div>
-
+              &nbsp
+              <div class="row">
+                <div class="col s6 m6 l6">
+                  <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+                </div>
+                <div class="col push-l4 push-m3">              
+                  <a id="siguiente2" class="waves-effect waves-light btn light-blue">Siguiente</a>
+                </div>
+              </div>
           </div>  
         </div>
-
+ <!-- Modal Structure -->
+ <div id="modalautos" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
 
           <div id="paso2">
           <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
@@ -119,8 +130,16 @@
             </select>
             <label>Selecciona la cantidad de pagos, en la que deseas pagar tu seguro</label>
           </div>
-          <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
+          <div class="row">
+            <div class="col s6 m4 l5">
+              <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
             </div>
+            <div class="col s12 m8 l7 push-l2 push-m2">
+              <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>              
+              <a id="siguiente3" class="waves-effect waves-light btn light-blue">Siguiente</a>
+            </div>
+          </div>
+        </div>
             
           </div>
 
