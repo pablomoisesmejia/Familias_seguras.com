@@ -1,20 +1,20 @@
 <?php
 class Cotizaciones_Medico extends Validator
 {
-    private $id_cotizacion = null;
+    private $PK_id_cotizacion = null;
     private $nombre_asegurado = null;
     private $fecha_nacimiento = null;
     private $nombre_conyugue = null;
     private $fecha_nacimiento_conyugue = null;
     private $cantidad_hijo = null;
     private $cobertura = null;
-    private $id_cliente = null;
+    private $FK_id_cliente_prospecto = null;
 
     public function setIdCotizacion($value)
 	{
 		if($this->validateId($value))
 		{
-			$this->id_cotizacion = $value;
+			$this->PK_id_cotizacion = $value;
 			return true;
 		}
 		else
@@ -130,11 +130,11 @@ class Cotizaciones_Medico extends Validator
 		return $this->cobertura;
     }
 
-    public function setIdCliente($value)
+    public function setIdClienteProspecto($value)
 	{
 		if($this->validateId($value))
 		{
-			$this->id_cliente = $value;
+			$this->FK_id_cliente_prospecto = $value;
 			return true;
 		}
 		else
@@ -142,12 +142,12 @@ class Cotizaciones_Medico extends Validator
 			return false;
 		}
 	}
-	public function getIdCliente()
+	public function getIdClienteProspecto()
 	{
-		return $this->id_cliente;
+		return $this->FK_id_cliente_prospecto;
 	}
 
-	public function createSeguroMedico()
+	/*public function createSeguroMedico()
 	{
 		$sql = "INSERT INTO cotizaciones_medico(nombre_asegurado_ppal, fecha_nacimineto, nombre_conyugue, fecha_nacimiento_conyuge, cantidad_hijo, cobertura, FK_id_cliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		$params = array($this->nombre_asegurado, $this->fecha_nacimiento, $this->nombre_conyugue, $this->fecha_nacimiento_conyugue, $this->cantidad_hijo, $this->cobertura, $this->id_cliente);
@@ -156,6 +156,6 @@ class Cotizaciones_Medico extends Validator
 		{
 			$this->id_cotizacion = Database::getLastRowId();
 		}
-	}
+	}*/
 }
 ?>

@@ -1,13 +1,13 @@
 <?php
 class Cotizaciones_vida extends Validator
 {
-    private $id_cotizacion = null;
+    private $PK_id_cotizacion = null;
     private $nombre_asegurado = null;
     private $fecha_nacimiento = null;
     private $fumador = null;
     private $suma_asegurada = null;
     private $cesion_bancaria = null;
-    private $id_cliente = null;
+    private $FK_id_cliente_prospecto = null;
 
     public function setIdCotizacion($value)
 	{

@@ -2,19 +2,20 @@
 class Cotizaciones_incendios extends Validator
 {
     //Declaracion de variables
-    private $id_cotizacion = null;
+    private $PK_id_cotizacion = null;
     private $tipo_inmueble = null;
-    private $direccion = null;
+	private $direccion = null;
+	private $asegurado_calidad = null;
     private $valor_construccion = null;
     private $valor_contenido = null;
-    private $id_cliente = null;
+    private $FK_id_cliente_prospecto = null;
 
     //Métodos para sobrecarga de propiedades
     public function setIdCotizacion($value)
 	{
 		if($this->validateId($value))
 		{
-			$this->id_cotizacion = $value;
+			$this->PK_id_cotizacion = $value;
 			return true;
 		}
 		else
@@ -24,7 +25,7 @@ class Cotizaciones_incendios extends Validator
 	}
 	public function getIdCotizacion()
 	{
-		return $this->id_cotizacion;
+		return $this->PK_id_cotizacion;
     }
     
     public function setTipoInmueble($value)
@@ -59,7 +60,24 @@ class Cotizaciones_incendios extends Validator
 	public function getDireccion()
 	{
 		return $this->direccion;
-    }
+	}
+	
+	public function setAseguradoCalidad($value)
+	{
+		if($this->validateAlphanumeric($value, 1, 30))
+		{
+			$this->asegurado_calidad = $value;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function getAseguradoCalidad()
+	{
+		return $this->asegurado_calidad;
+	}
     
     public function setValorConstruccion($value)
 	{
@@ -95,11 +113,11 @@ class Cotizaciones_incendios extends Validator
 		return $this->valor_contenido;
     }
 
-    public function setIdCliente($value)
+    public function setIdClienteProspecto($value)
 	{
 		if($this->validateId($value))
 		{
-			$this->id_cliente = $value;
+			$this->FK_id_cliente_prospecto = $value;
 			return true;
 		}
 		else
@@ -107,12 +125,14 @@ class Cotizaciones_incendios extends Validator
 			return false;
 		}
 	}
-	public function getIdCliente()
+	public function getIdClienteProspecto()
 	{
-		return $this->id_cliente;
+		return $this->FK_id_cliente_prospecto;
 	}
 
-	public function createSeguroIncendio()
+
+
+	/*public function createSeguroIncendio()
 	{
 		$sql = "INSERT INTO cotizaciones_incendios(tipo_inmueble, direccion, valor_construccion, valor_contenido, FK_id_cliente) VALUES(?, ?, ?, ?, ?)";
 		$params = array($this->tipo_inmueble, $this->direccion, $this->valor_construccion, $this->valor_contenido, $this->id_cliente);
@@ -121,6 +141,6 @@ class Cotizaciones_incendios extends Validator
 		{
 			$this->id_cotizacion = Database::getLastRowId();
 		}
-	}
+	}*/
 }
 ?>
