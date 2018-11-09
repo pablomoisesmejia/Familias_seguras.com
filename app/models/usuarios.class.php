@@ -505,7 +505,38 @@ class Usuarios extends Validator
 	public function getMotivoFinalizacion()
 	{
 		return $this->motivo_finalizacion;
-    }
+	}
+	
+	//Funciones para inicio de sesion
+	public function checkUsuarios(){
+		$sql = "SELECT PK_id_usuario FROM usuarios WHERE usuario = ?";
+		$params = array($this->usuario);
+		$data = Database::getRow($sql, $params);
+		if($data){
+			$this->PK_id_usuario = $data['PK_id_usuario'];
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function checkContrasena(){
+		$sql = "SELECT clave FROM usuarios WHERE PK_id_usuario = ?";
+		$params = array($this->PK_id_usuario);
+		$data = Database::getRow($sql, $params);
+		if(password_verify($this->clave, $data['clave'])){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	//Funciones
+	public function getEmpleados(){
+		$sql = "SELECT * FROM usuarios";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
 }
 
 ?>

@@ -70,7 +70,7 @@ class Page extends Component{
 			");
 			$filename = basename($_SERVER['PHP_SELF']);
 			if($filename != "login.php" && $filename != "register.php" && $filename != "correo.php"){
-				self::showMessage(3, "¡Debe iniciar sesión!", "../cuenta/login.php");
+				self::showMessage(3, "¡Debe iniciar sesión!", "../empleado/login.php");
 				self::templateFooter();
 				exit;
 			}else{
