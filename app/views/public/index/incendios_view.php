@@ -11,14 +11,14 @@
         <div class="container">
         <div class="card-tabs" >
           <ul class="tabs tabs-fixed-width" style="color:blue;">
-            <li class="tab"><a class="active"  href="#test4">Paso 1</a></li>
-            <li class="tab"><a  href="#test5">Paso 2</a></li>
-            <li class="tab"><a href="#test6">Paso 3</a></li>
+            <li class="tab"><a class="active" id="frm1">Paso 1</a></li>
+            <li class="tab"><a id="frm2">Paso 2</a></li>
+            <li class="tab"><a id="frm3">Paso 3</a></li>
           </ul>
         </div>
         </div>
         <div class="card-content grey lighten-4">
-        <div id="test4">
+        <div id="paso1">
          <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
           <div class="container">
 
@@ -83,12 +83,19 @@
           </div>  
          
         </div>
-        <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
+        <div class="row">
+            <div class="col s6 m6 l6">
+              <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+            </div>
+            <div class="col push-l4 push-m3">              
+              <a id="siguiente2" class="waves-effect waves-light btn light-blue">Siguiente</a>
+            </div>
+          </div>
       </div>
     </div>
 
 
-          <div id="test5">
+          <div id="paso2">
           <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
             <div class="container">
 
@@ -123,12 +130,20 @@
             </select>
             <label>Selecciona la cantidad de pagos, en la que deseas pagar tu seguro</label>
           </div>
-          <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
+          <div class="row">
+            <div class="col s6 m4 l5">
+              <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
             </div>
+            <div class="col s12 m8 l7 push-l2 push-m2">
+              <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>              
+              <a id="siguiente3" class="waves-effect waves-light btn light-blue">Siguiente</a>
+            </div>
+          </div>
+        </div>
             
           </div>
 
-          <div id="test6">
+          <div id="paso3">
           <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
             <div class="container">
               <div class='row'>
@@ -169,7 +184,15 @@
               </div>
               
         </div>
-        <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+        <div class="row">
+          <div class="col s6 m4 l5">
+            <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+          </div>
+          <div class="col s12 m8 l7 push-l2 push-m2">
+            <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
+            <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+          </div>
+        </div>
       
        </div>
 

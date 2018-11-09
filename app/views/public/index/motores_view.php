@@ -184,7 +184,16 @@
               </div>
               
         </div>
-        <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+        <div class="row">
+          <div class="col s6 m4 l5">
+            <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+          </div>
+          <div class="col s12 m8 l7 push-l2 push-m2">
+            <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
+            <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+          </div>
+        </div>
+        
       
        </div>
 

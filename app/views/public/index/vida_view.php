@@ -52,7 +52,7 @@
               <div class='input-field col s12 '>
                   <i style="color:black;"class="material-icons prefix">monetization_on</i>
                   <input id="suma_segv" type="number" class="validate" required/>
-                  <label class="" for="email_segv">Suma Asegurada</label>
+                  <label class="" for="suma_segv">Suma Asegurada</label>
               </div>
             </div>
             <div class='row'>
@@ -66,8 +66,14 @@
                   <label class="" for="tel_segv">¿La necesita para un banco?</label>
               </div>
             </div>
-            <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>
-            <a id="siguiente2" class="waves-effect waves-light btn light-blue right">Siguiente</a>
+            <div class="row">
+              <div class="col s6 m6 l6">
+                <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+              </div>
+              <div class="col push-l4 push-m3">              
+                <a id="siguiente2" class="waves-effect waves-light btn light-blue">Siguiente</a>
+              </div>
+            </div>
           </div>
         </div>
         <!-- Formulario del paso 2-->
@@ -76,37 +82,39 @@
           <div class="container">
             <div class="input-field col s12">
               <i style="color:black;"class="material-icons prefix">verified_user</i>
-              <select multiple>
-                <option value="" disabled selected></option>
-                <option value="1" data-icon="../../web/img/aseguradoras/acsa.png">ACSA</option>
-                <option value="2" data-icon="../../web/img/aseguradoras/asesuisa.jpg">ASESUISA</option>
-                <option value="3" data-icon="../../web/img/aseguradoras/mapfre.jpg">MAPFRE</option>
-                <option value="4" data-icon="../../web/img/aseguradoras/panamericanlife.jpg">PAN AMERICAN LIFE</option>
-                <option value="5" data-icon="../../web/img/aseguradoras/scotiaseguros.png">SCOTIA SEGUROS</option>
-                <option value="6" data-icon="../../web/img/aseguradoras/sisa.png">SISA</option>
-                <option value="7" data-icon="../../web/img/aseguradoras/vivir.png">VIVIR</option>
-                <option value="8" data-icon="../../web/img/aseguradoras/davivienda.jpg">DAVIVIENDA SEGUROS</option>
+              <select multiple id="aseguradoras">
+                <option value="" disabled selected>Seleccione una o varias opciones</option>
+                <option value="ACSA" data-icon="../../web/img/aseguradoras/acsa.png">ACSA</option>
+                <option value="ASESUISA" data-icon="../../web/img/aseguradoras/asesuisa.jpg">ASESUISA</option>
+                <option value="MAPRE" data-icon="../../web/img/aseguradoras/mapfre.jpg">MAPFRE</option>
+                <option value="PAN AMERICAN LIFE" data-icon="../../web/img/aseguradoras/panamericanlife.jpg">PAN AMERICAN LIFE</option>
+                <option value="SCOTIA SEGUROS" data-icon="../../web/img/aseguradoras/scotiaseguros.png">SCOTIA SEGUROS</option>
+                <option value="SISA" data-icon="../../web/img/aseguradoras/sisa.png">SISA</option>
+                <option value="VIVIR" data-icon="../../web/img/aseguradoras/vivir.png">VIVIR</option>
+                <option value="DAVIVIENDA SEGUROS" data-icon="../../web/img/aseguradoras/davivienda.jpg">DAVIVIENDA SEGUROS</option>
               </select>
               <label>Selecciona las aseguras, en las cuales desees cotizar</label>
             </div>
             <div class="input-field col s12">
-              <i  style="color:black;"class="material-icons prefix">attach_money</i>
-              <select>
-                <optgroup label="Se te proporcionara tambien, el costo total (en en un unico pago)">
-                  <option value="9">Dos</option>
-                  <option value="10">Tres </option>
-                  <option value="11">Cuatro</option>
-                  <option value="12">Seis</option>
-                  <option value="13">Doce</option>
+              <i style="color:black;"class="material-icons prefix">attach_money</i>
+              <select id="cantidad_pagos">
+                <optgroup selected label="Se te proporcionara tambien, el costo total (en un unico pago)">
+                  <option value="2">Dos</option>
+                  <option value="3">Tres </option>
+                  <option value="4">Cuatro</option>
+                  <option value="6">Seis</option>
+                  <option value="12">Doce</option>
                 </optgroup>
               </select>
               <label>Selecciona la cantidad de pagos, en la que deseas pagar tu seguro</label>
             </div>
-            <div class="col s12">
-              <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
-              <div class="right">
-                <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>
-                <a id="siguiente3" class="waves-effect waves-light btn  light-blue">Siguiente</a>
+            <div class="row">
+              <div class="col s6 m4 l5">
+                <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+              </div>
+              <div class="col s12 m8 l7 push-l2 push-m2">
+                <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>              
+                <a id="siguiente3" class="waves-effect waves-light btn light-blue">Siguiente</a>
               </div>
             </div>
           </div>
@@ -140,7 +148,7 @@
               <p class="frm_p_text_gray">¿Hora para Contactarle?</p>
               <div class='input-field col s12 '>
                 <i style="color:black;"class="material-icons prefix">phone_in_talk</i>
-                <select id="hora"> 
+                <select id="hora_contacto"> 
                   <optgroup label="Mañana">
                       <option value="manana_1">7:00 - 9:00am</option>
                       <option value="manana_2">10:00 - 12:00am</option>
@@ -152,10 +160,14 @@
                 </select>
               </div>
             </div>
-            <a href="index.php"class="waves-effect waves-light btn grey darken-1">Cancelar</a>
-            <div class="right">
-              <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>
-              <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+            <div class="row">
+              <div class="col s6 m4 l5">
+                <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+              </div>
+              <div class="col s12 m8 l7 push-l2 push-m2">
+                <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
+                <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+              </div>
             </div>
           </div>
         </div>

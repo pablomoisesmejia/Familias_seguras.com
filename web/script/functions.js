@@ -1,3 +1,122 @@
+var date = new Date();
+var min = date.getFullYear()-100+','+(date.getMonth()+1)+','+(date.getDate());//Validacion de fecha minima del datepicker
+var max = date.getFullYear()-18+','+(date.getMonth()+1)+','+(date.getDate());//Validacion de fecha maxima del datepicker
+
+//FUNCIONES PARA CAMBIAR AL SIGUIENTE PASO
+function siguiente2()
+{
+    $('#frm2').addClass('active');
+    $('#frm1').removeClass('active');
+
+    $('#paso2').addClass('active');
+    $('#paso1').removeClass('active');
+
+    $('#paso1').css({"display":"none"});
+    $('#paso2').css({"display":"block"});
+
+    $('.indicator').removeAttr('style');
+    $('.indicator').css({"right": "483px", "left": "12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
+}
+
+function siguiente3()
+{
+    $('#frm3').addClass('active');
+    $('#frm2').removeClass('active');
+
+    $('#paso3').addClass('active');
+    $('#paso2').removeClass('active');
+
+    $('#paso2').css({"display":"none"});
+    $('#paso3').css({"display":"block"});
+
+    $('.indicator').removeAttr('style');
+    $('.indicator').css({"right": "469px", "left": "27px","transform":"translate(469px, 0px)", "transition": "transform .5s"});
+}
+
+//FUNCIONES PARA CAMBIAR AL ANTERIOR CASO
+function anterior1()
+{
+  $('#frm1').addClass('active');
+  $('#frm2').removeClass('active');
+
+  $('#paso1').addClass('active');
+  $('#paso2').removeClass('active');
+
+  $('#paso2').css({"display":"none"});
+  $('#paso1').css({"display":"block"});
+
+  $('.indicator').removeAttr('style');
+  $('.indicator').css({"right": "496px", "left": "0px","transform":"translate(0px, 0px)", "transition": "transform .5s"});
+}
+
+function anterior2()
+{
+  $('#frm2').addClass('active');
+  $('#frm3').removeClass('active');
+
+  $('#paso2').addClass('active');
+  $('#paso3').removeClass('active');
+
+  $('#paso3').css({"display":"none"});
+  $('#paso2').css({"display":"block"});
+
+  $('.indicator').removeAttr('style');
+  $('.indicator').css({"right": "483px", "left": "12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
+}
+
+
+$( document ).ready(function(){
+     
+  verificar_telefono_o_pc();
+  show_info_section();
+  $("select").material_select();
+  
+  $("#blackground_walls").fadeIn(600).delay(4000).fadeOut(1000);
+  cambiar_fondo();
+
+  $('.datepicker').pickadate({
+    selectMonths:true,
+    selectYears:100,
+    today:'Actual',
+    clear:'Limpiar',
+    close:'Aceptar',
+    formatSubmit: 'yyyy-mm-dd',
+    closeOnSelect:false,
+    container:undefined,
+    min: new Date(min),
+    max: new Date(max)
+  });
+
+
+  //Desactivar los tabs por estetica
+  document.getElementById("frm1").disabled = true;
+  document.getElementById("frm2").disabled = true;
+  document.getElementById("frm3").disabled = true;
+
+  //Mostrar solo el formulario del paso 1 y los demas ocultarlos
+  $('#paso1').css({"display":"block"});
+  $('#paso2').css({"display":"none"});
+  $('#paso3').css({"display":"none"});
+
+  $('#siguiente2').click(function(){
+    Paso1();
+    
+  });
+
+  $('#siguiente3').click(function(){
+    
+  });
+
+  $('#anterior1').click(function(){
+    
+  });
+
+  $('#anterior2').click(function(){
+    
+  });
+});
+
+
 //VARIABLES DE METODOS
 var seg=0;
 var section_selected=1;
@@ -48,100 +167,6 @@ function llenar_progress_bar(){
   }
   
 }
-var date = new Date();
-var min = date.getFullYear()-100+','+(date.getMonth()+1)+','+(date.getDate());//Validacion de fecha minima del datepicker
-var max = date.getFullYear()-18+','+(date.getMonth()+1)+','+(date.getDate());//Validacion de fecha maxima del datepicker
-
-$( document ).ready(function(){
-     
-  verificar_telefono_o_pc();
-  show_info_section();
-  $("select").material_select();
-  
-  $("#blackground_walls").fadeIn(600).delay(4000).fadeOut(1000);
-  cambiar_fondo();
-
-  $('.datepicker').pickadate({
-    selectMonths:true,
-    selectYears:100,
-    today:'Actual',
-    clear:'Limpiar',
-    close:'Aceptar',
-    formatSubmit: 'yyyy-mm-dd',
-    closeOnSelect:false,
-    container:undefined,
-    min: new Date(min),
-    max: new Date(max)
-  });
-
-  //Desactivar los tabs por estetica
-  document.getElementById("frm1").disabled = true;
-  document.getElementById("frm2").disabled = true;
-  document.getElementById("frm3").disabled = true;
-
-  //Mostrar solo el formulario del paso 1 y los demas ocultarlos
-  $('#paso1').css({"display":"block"});
-  $('#paso2').css({"display":"none"});
-  $('#paso3').css({"display":"none"});
-
-  $('#siguiente2').click(function(){
-    Paso1();
-    $('#frm2').addClass('active');
-    $('#frm1').removeClass('active');
-
-    $('#paso2').addClass('active');
-    $('#paso1').removeClass('active');
-
-    $('#paso1').css({"display":"none"});
-    $('#paso2').css({"display":"block"});
-
-    $('.indicator').removeAttr('style');
-    $('.indicator').css({"right": "483px", "left": "12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
-  });
-
-  $('#siguiente3').click(function(){
-    $('#frm3').addClass('active');
-    $('#frm2').removeClass('active');
-
-    $('#paso3').addClass('active');
-    $('#paso2').removeClass('active');
-
-    $('#paso2').css({"display":"none"});
-    $('#paso3').css({"display":"block"});
-
-    $('.indicator').removeAttr('style');
-    $('.indicator').css({"right": "469px", "left": "27px","transform":"translate(469px, 0px)", "transition": "transform .5s"});
-  });
-
-  $('#anterior1').click(function(){
-    $('#frm1').addClass('active');
-    $('#frm2').removeClass('active');
-
-    $('#paso1').addClass('active');
-    $('#paso2').removeClass('active');
-
-    $('#paso2').css({"display":"none"});
-    $('#paso1').css({"display":"block"});
-
-    $('.indicator').removeAttr('style');
-    $('.indicator').css({"right": "496px", "left": "0px","transform":"translate(0px, 0px)", "transition": "transform .5s"});
-  });
-
-  $('#anterior2').click(function(){
-    $('#frm2').addClass('active');
-    $('#frm3').removeClass('active');
-
-    $('#paso2').addClass('active');
-    $('#paso3').removeClass('active');
-
-    $('#paso3').css({"display":"none"});
-    $('#paso2').css({"display":"block"});
-
-    $('.indicator').removeAttr('style');
-    $('.indicator').css({"right": "483px", "left": "12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
-  });
-});
-
 
 
 var formulario = 0;
