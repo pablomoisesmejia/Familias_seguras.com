@@ -129,12 +129,28 @@
                 </div>
               </div>
               <div class='row'>
-                <div class='input-field col s12 '>
-                <i  style="color:black;"class="material-icons prefix">phone</i>
-                  <input id="tel_segv" type="number" class="validate" required/>
-                  <label class="" for="tel_segv">Telefono</label>
+              <div class='input-field col s1 '>   
+              <i  style="color:black;"class="material-icons prefix">phone</i>
+              </div>  
+              <div class='input-field col s6 '>
+                    <input id="tel_segv" type="number" class="validate" required/>
+                    <label class="" for="valor_de_constr_segm">Telefono</label>      
+              </div>  
+  
+              <div class='input-field col s5 '>   
+              <div>
+                <p >Esta información es opcional.</p>
+                </div> 
+                <div class="switch">
+                <label>
+                  Whatssap
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  Movil
+                </label>
                 </div>
-              </div>
+              </div> 
+            </div>
               <div class='row'>
                 <div class='input-field col s12 '>
                 <i  style="color:black;"class="material-icons prefix">email</i>
