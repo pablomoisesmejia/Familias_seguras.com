@@ -76,17 +76,17 @@
           <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
             <div class="container">
 
-            <div class="input-field col s12">
+            <div class="input-field col s12" id="asegurador">
             <i  style="color:black;"class="material-icons prefix">verified_user</i>
-              <select multiple>
-                <option value="" disabled selected></option>
-                <option value="1" data-icon="../../web/img/aseguradoras/acsa.png">ACSA</option>
-                <option value="2" data-icon="../../web/img/aseguradoras/asesuisa.jpg">ASESUISA</option>
-                <option value="3" data-icon="../../web/img/aseguradoras/mapfre.jpg">MAPFRE</option>
-                <option value="4" data-icon="../../web/img/aseguradoras/panamericanlife.jpg">PAN AMERICAN LIFE</option>
-                <option value="5" data-icon="../../web/img/aseguradoras/scotiaseguros.png">SCOTIA SEGUROS</option>
-                <option value="6" data-icon="../../web/img/aseguradoras/sisa.png">SISA</option>
-                <option value="7" data-icon="../../web/img/aseguradoras/vivir.png">VIVIR</option>
+              <select multiple id="aseguradoras">
+                <option value="" disabled selected>Seleccione una o varias opciones</option>
+                <option value="ACSA" data-icon="../../web/img/aseguradoras/acsa.png">ACSA</option>
+                <option value="ASESUISA" data-icon="../../web/img/aseguradoras/asesuisa.jpg">ASESUISA</option>
+                <option value="MAPRE" data-icon="../../web/img/aseguradoras/mapfre.jpg">MAPFRE</option>
+                <option value="PAN AMERICAN LIFE" data-icon="../../web/img/aseguradoras/panamericanlife.jpg">PAN AMERICAN LIFE</option>
+                <option value="SCOTIA SEGUROS" data-icon="../../web/img/aseguradoras/scotiaseguros.png">SCOTIA SEGUROS</option>
+                <option value="SISA" data-icon="../../web/img/aseguradoras/sisa.png">SISA</option>
+                <option value="VIVIR" data-icon="../../web/img/aseguradoras/vivir.png">VIVIR</option>
               </select>
              
               <label>Selecciona las aseguras, en las cuales desees cotizar</label>
@@ -95,15 +95,14 @@
             
             <div class="input-field col s12">
             <i  style="color:black;"class="material-icons prefix">attach_money</i>
-            <select>
-              <optgroup label="Se te proporcionara tambien, el costo total (en en un unico pago)">
-                <option value="8">Dos</option>
-                <option value="9">Tres </option>
-                <option value="10">Cuatro</option>
-                <option value="11">Seis</option>
+            <select id="cantidad_pagos">
+                <option value="" disabled selected>Se te proporcionara tambien, el costo total (en un unico pago)</option>
+                <option value="2">Dos</option>
+                <option value="3">Tres </option>
+                <option value="4">Cuatro</option>
+                <option value="6">Seis</option>
                 <option value="12">Doce</option>
-              </optgroup>
-            </select>
+              </select>
             <label>Selecciona la cantidad de pagos, en la que deseas pagar tu seguro</label>
           </div>
           <div class="row">

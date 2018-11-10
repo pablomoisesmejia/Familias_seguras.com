@@ -64,6 +64,28 @@ function anterior2()
   $('.indicator').css({"right": "483px", "left": "12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
 }
 
+function paso2()
+{ 
+    cantidad_pagos = $('#cantidad_pagos').val();
+
+    console.log(aseguradoras);
+    
+    if(aseguradoras != null)
+    {
+        if(cantidad_pagos != null)
+        {
+            siguiente3();
+        }
+        else
+        {
+            AlertaSweet(3, 'Seleccione la cantidad de pagos que desee pagar tú seguro');
+        }
+    }
+    else
+    {
+        AlertaSweet(3, 'Seleccione una o varias aseguradoras con las cuales desee cotizar');
+    }
+}
 
 $( document ).ready(function(){
      
@@ -86,12 +108,60 @@ $( document ).ready(function(){
     min: new Date(min),
     max: new Date(max)
   });
-
-
   //Desactivar los tabs por estetica
   document.getElementById("frm1").disabled = true;
   document.getElementById("frm2").disabled = true;
   document.getElementById("frm3").disabled = true;
+
+  /*var ultimoValorValido = null;
+    $("#aseguradoras").on("change", function() {
+      if ($("#aseguradoras option:checked").length > 5)
+      {
+          $("#aseguradoras").val(ultimoValorValido);
+      }
+      else 
+      {
+          ultimoValorValido = $("#aseguradoras").val();
+          console.log(ultimoValorValido);
+      }
+      console.log(ultimoValorValido);
+  });*/
+
+
+  //PARA EL ORDEN QUE SELECCIONO LAS ASEGURADORAS
+  aseguradoras = null;
+  aseguradoras_select = 0;
+  $('#aseguradoras').change(function(){
+ 
+    aseguradoras = $('#asegurador input.select-dropdown').val();
+    if(aseguradoras == 'Seleccione una o varias opciones')
+    {
+      aseguradoras = null;
+      aseguradoras_select = aseguradoras
+    }  
+
+    if(aseguradoras != null)
+    {
+      aseguradoras = aseguradoras.split(", ");
+  
+      for(i = 0; i<aseguradoras.length; i++)
+      {
+        if(aseguradoras.length < 6)
+        {
+          aseguradoras_select = aseguradoras
+        }
+        else
+        {
+          AlertaSweet(3, 'Solo puede seleccionar 5 aseguradoras como maximo');
+          $('#asegurador input.select-dropdown').val(aseguradoras_select.toString());
+          
+          //nombre de la ultima aseguradora
+          aseguradoras[aseguradoras.length-1]
+        }
+      }
+    }
+    console.log(aseguradoras_select); 
+  });
 
   //Mostrar solo el formulario del paso 1 y los demas ocultarlos
   $('#paso1').css({"display":"block"});
@@ -99,22 +169,28 @@ $( document ).ready(function(){
   $('#paso3').css({"display":"none"});
 
   $('#siguiente2').click(function(){
-    Paso1();
-    
+    //Paso1();
+    siguiente2();
   });
 
   $('#siguiente3').click(function(){
-    
+    paso2();
   });
 
   $('#anterior1').click(function(){
-    
+    anterior1()
   });
 
   $('#anterior2').click(function(){
-    
+    anterior2();
   });
+
+  $('#cotizar').click(function(){
+    paso3();
+  });
+
 });
+
 
 
 //VARIABLES DE METODOS

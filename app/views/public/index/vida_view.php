@@ -80,7 +80,7 @@
         <div id="paso2">
           <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
           <div class="container">
-            <div class="input-field col s12">
+            <div class="input-field col s12" id="asegurador">
               <i style="color:black;"class="material-icons prefix">verified_user</i>
               <select multiple id="aseguradoras">
                 <option value="" disabled selected>Seleccione una o varias opciones</option>
@@ -98,13 +98,12 @@
             <div class="input-field col s12">
               <i style="color:black;"class="material-icons prefix">attach_money</i>
               <select id="cantidad_pagos">
-                <optgroup selected label="Se te proporcionara tambien, el costo total (en un unico pago)">
-                  <option value="2">Dos</option>
-                  <option value="3">Tres </option>
-                  <option value="4">Cuatro</option>
-                  <option value="6">Seis</option>
-                  <option value="12">Doce</option>
-                </optgroup>
+                <option value="" disabled selected>Se te proporcionara tambien, el costo total (en un unico pago)</option>
+                <option value="2">Dos</option>
+                <option value="3">Tres </option>
+                <option value="4">Cuatro</option>
+                <option value="6">Seis</option>
+                <option value="12">Doce</option>
               </select>
               <label>Selecciona la cantidad de pagos, en la que deseas pagar tu seguro</label>
             </div>
@@ -127,7 +126,14 @@
               <div class='input-field col s12 '>
                 <i style="color:black;"class="material-icons prefix">account_circle</i>
                   <input id="nombre_segv" type="text" class="validate" required/>
-                  <label class="" for="nombre_segv">Tu Nombre</label>
+                  <label class="" for="nombre_segv">Tus Nombres</label>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='input-field col s12 '>
+                <i style="color:black;"class="material-icons prefix">account_circle</i>
+                  <input id="nombre_segv" type="text" class="validate" required/>
+                  <label class="" for="apellido_segv">Tus Apellidos</label>
               </div>
             </div>
             <div class='row'>
@@ -166,7 +172,7 @@
               </div>
               <div class="col s12 m8 l7 push-l2 push-m2">
                 <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
-                <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+                <a id="cotizar" class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
               </div>
             </div>
           </div>

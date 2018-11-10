@@ -45,7 +45,65 @@ function Paso1()
     }
 }
 
-function paso2()
+function paso3()
 {
-    
+    nombres=$('#nombre_segv').val();
+    apellidos=$('#apellido_segv').val();
+    telefono=$('#tel_segv').val();
+    correo=$('#email_segv').val();
+    hora_visita=$('#hora').val();
+    horario = '';
+    if(hora_visita==='manana_1')
+    {
+      horario = '7:00 - 9:00am';
+    }
+    if(hora_visita==='manana_2')
+    {
+      horario = '10:00 - 12:00pm';
+    }
+    if(hora_visita==='tarde_1')
+    {
+      horario = '1:00 - 3:00pm'
+    }
+    if(hora_visita==='tarde_2')
+    {
+      horario = '4:00 - 7:00pm'
+    }
+
+    if(nombres != '')
+    {
+        if(apellidos != '')
+        {
+            if(telefono != '')
+            {
+                if(correo != '')
+                {
+                    if(hora_visita != '')
+                    {
+                        
+                    }
+                    else
+                    {
+                        AlertaSweet(3, 'Seleccione la hora de visita');
+                    }
+                }
+                else
+                {
+                AlertaSweet(3, 'Escriba su correo electrónico');
+                }
+            }
+            else
+            {
+                AlertaSweet(3, 'Escriba su número de teléfono');
+            }
+        }
+        else
+        {
+            AlertaSweet(3, 'Escriba sus apellidos completo');
+        }
+    }
+    else
+    {
+      AlertaSweet(3, 'Escriba su nombre completo');
+    }
 }
