@@ -537,6 +537,19 @@ class Usuarios extends Validator
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
+
+	//Funciones para SCRUD
+	public function createUsuario()
+	{
+		$sql = "INSERT INTO usuarios(fecha_inclusion, hora_inclusion, nombres, apellidos, FK_id_tipo_team, FK_id_estado, fecha_inicio, direccion, departamento, ciudad, pais, correo, telefono, celular, whatsapp, fecha_nacimiento, dui_frontal, dui_reverso, nit_frontal, nit_reverso, nrc, giro, usuario, clave, observaciones, fecha_finalizacion, motivo_finalizacion) 
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$params = array($this->fecha_inclusion, $this->hora_inclusion, $this->nombres, $this->apellidos, $this->FK_id_tipo_team, $this->FK_id_estado, $this->fecha_inicio, $this->direccion, $this->departamento, $this->ciudad, $this->pais, $this->correo, $this->telefono, $this->celular, $this->whatsapp, $this->fecha_nacimiento, $this->dui_frontal, $this->dui_reverso, $this->nit_frontal, $this->nit_reverso, $this->nrc, $this->giro, $this->usuario, $this->clave, $this->observaciones, $this->fecha_finalizacion, $this->motivo_finalizacion);
+		$usuario = Database::executeRow($sql, $params);
+		if($usuario)
+		{
+			$this->PK_id_usuario = Database::getLastRowId();
+		}
+	}
 }
 
 ?>
