@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2018 a las 00:51:56
+-- Tiempo de generación: 10-11-2018 a las 17:52:05
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -173,7 +173,6 @@ CREATE TABLE `cotizaciones_incendios` (
 
 CREATE TABLE `cotizaciones_medico_hosp` (
   `PK_id_cotizacion_medico` int(11) NOT NULL,
-  `nombre_asegurado_ppal` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `nombre_conyugue` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_nacimiento_conyugue` date NOT NULL,
@@ -206,7 +205,6 @@ CREATE TABLE `cotizaciones_vehiculos` (
 
 CREATE TABLE `cotizaciones_vida` (
   `PK_id_cotizacion_vida` int(11) NOT NULL,
-  `nombre_asegurado_ppal` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `fumador` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `suma_asegurado` double(9,2) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
@@ -254,6 +252,15 @@ CREATE TABLE `estados` (
   `PK_id_estado` int(11) NOT NULL,
   `estado` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `estados`
+--
+
+INSERT INTO `estados` (`PK_id_estado`, `estado`) VALUES
+(1, 'Activo'),
+(2, 'Suspendido'),
+(3, 'Inactivo');
 
 -- --------------------------------------------------------
 
@@ -418,6 +425,16 @@ CREATE TABLE `tipos_seguro` (
   `tipo_seguro` varchar(40) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `tipos_seguro`
+--
+
+INSERT INTO `tipos_seguro` (`PK_id_tipo_seguro`, `tipo_seguro`) VALUES
+(1, 'Seguro Medico'),
+(2, 'Seguro de Vida'),
+(3, 'Seguro de Incendios'),
+(4, 'Seguro de Vehiculo');
+
 -- --------------------------------------------------------
 
 --
@@ -428,6 +445,20 @@ CREATE TABLE `tipos_team` (
   `PK_id_tipo_team` int(11) NOT NULL,
   `tipo_team` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tipos_team`
+--
+
+INSERT INTO `tipos_team` (`PK_id_tipo_team`, `tipo_team`) VALUES
+(1, 'FamiliasSeguras.com'),
+(2, 'Minus Risk'),
+(3, 'SeguroDeAutomotores.com'),
+(4, 'Agente Independiente'),
+(5, 'Corredor de Seguros'),
+(6, 'Compañia de Seguros'),
+(7, 'Prospecto'),
+(8, 'Cliente');
 
 -- --------------------------------------------------------
 
@@ -452,7 +483,7 @@ CREATE TABLE `usuarios` (
   `telefono` int(8) DEFAULT NULL,
   `celular` int(8) DEFAULT NULL,
   `whatsapp` int(8) DEFAULT NULL,
-  `fecha_nacimiento` date NOT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
   `dui_frontal` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `dui_reverso` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `nit_frontal` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -754,7 +785,7 @@ ALTER TABLE `empleados`
 -- AUTO_INCREMENT de la tabla `estados`
 --
 ALTER TABLE `estados`
-  MODIFY `PK_id_estado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `estados_correo`
@@ -826,13 +857,13 @@ ALTER TABLE `solicitudes_procesadas`
 -- AUTO_INCREMENT de la tabla `tipos_seguro`
 --
 ALTER TABLE `tipos_seguro`
-  MODIFY `PK_id_tipo_seguro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_tipo_seguro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos_team`
 --
 ALTER TABLE `tipos_team`
-  MODIFY `PK_id_tipo_team` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_tipo_team` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

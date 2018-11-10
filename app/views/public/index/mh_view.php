@@ -24,13 +24,6 @@
 
           <div class='row'>
             <div class='input-field col s12 '>
-              <i  style="color:black;"class="material-icons prefix">account_circle</i>
-              <input id="nombre_asegurado_medico" type="text" class="validate" required/>
-              <label class="" for="nombre_asegurado_medico">Nombre de asegurado principal</label>
-            </div>
-          </div>
-          <div class='row'>
-            <div class='input-field col s12 '>
                 <i  style="color:black;"class="material-icons prefix">event_note</i>
                 <input  type="text" class="datepicker" id="fecha_naci" required/>
                 <label class="" for="fecha_naci">Fecha de Nacimiento</label> 

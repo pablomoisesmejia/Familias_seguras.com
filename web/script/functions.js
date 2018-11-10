@@ -64,6 +64,7 @@ function anterior2()
   $('.indicator').css({"right": "470px", "left": "-12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
 }
 
+//VALIDACIONES PARA EL PASO 2
 function paso2()
 { 
     cantidad_pagos = $('#cantidad_pagos').val();
@@ -87,6 +88,69 @@ function paso2()
     }
 }
 
+//VALIDACIONES PARA EL PASO 3
+function paso3()
+{
+    nombres=$('#nombre_segv').val();
+    apellidos=$('#apellido_segv').val();
+    telefono=$('#tel_segv').val();
+    correo=$('#email_segv').val();
+    hora_visita=$('#hora').val();
+    horario = '';
+    if(hora_visita==='manana_1')
+    {
+      horario = '7:00 - 9:00am';
+    }
+    if(hora_visita==='manana_2')
+    {
+      horario = '10:00 - 12:00pm';
+    }
+    if(hora_visita==='tarde_1')
+    {
+      horario = '1:00 - 3:00pm'
+    }
+    if(hora_visita==='tarde_2')
+    {
+      horario = '4:00 - 7:00pm'
+    }
+
+    if(nombres != '')
+    {
+        if(apellidos != '')
+        {
+            if(telefono != '')
+            {
+                if(correo != '')
+                {
+                    if(hora_visita != '')
+                    {
+                        createUsuario();
+                    }
+                    else
+                    {
+                        AlertaSweet(3, 'Seleccione la hora de visita');
+                    }
+                }
+                else
+                {
+                AlertaSweet(3, 'Escriba su correo electrónico');
+                }
+            }
+            else
+            {
+                AlertaSweet(3, 'Escriba su número de teléfono');
+            }
+        }
+        else
+        {
+            AlertaSweet(3, 'Escriba sus apellidos completo');
+        }
+    }
+    else
+    {
+      AlertaSweet(3, 'Escriba su nombre completo');
+    }
+}
 $(document).ready(function(){
      
   verificar_telefono_o_pc();
@@ -108,25 +172,11 @@ $(document).ready(function(){
     min: new Date(min),
     max: new Date(max)
   });
+  
   //Desactivar los tabs por estetica
   document.getElementById("frm1").disabled = true;
   document.getElementById("frm2").disabled = true;
   document.getElementById("frm3").disabled = true;
-
-  /*var ultimoValorValido = null;
-    $("#aseguradoras").on("change", function() {
-      if ($("#aseguradoras option:checked").length > 5)
-      {
-          $("#aseguradoras").val(ultimoValorValido);
-      }
-      else 
-      {
-          ultimoValorValido = $("#aseguradoras").val();
-          console.log(ultimoValorValido);
-      }
-      console.log(ultimoValorValido);
-  });*/
-
 
   //PARA EL ORDEN QUE SELECCIONO LAS ASEGURADORAS
   aseguradoras = null;
@@ -169,8 +219,8 @@ $(document).ready(function(){
   $('#paso3').css({"display":"none"});
 
   $('#siguiente2').click(function(){
-    //Paso1();
-    siguiente2();
+    Paso1();
+    //siguiente2();
   });
 
   $('#siguiente3').click(function(){
@@ -541,7 +591,7 @@ function AlertaSweet(icono, texto)
   });
 }
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 
   $('.continuar').click(function(){
     console.log(formulario);
@@ -711,7 +761,7 @@ $(document).ready(function(){
   /*-------------------------------------------------------------------------------------------
   -----------------------FUNCION PARA INSERTAR EL SEGURO Y EL CLIENTE--------------------------
   -------------------------------------------------------------------------------------------*/
-  var id_cliente = "";
+  /*var id_cliente = "";
   $('.solicitar').click(function(){
     console.log(formulario);
     if(id_cliente == "")
@@ -808,7 +858,7 @@ $(document).ready(function(){
   /*----------------------------------------------------------------------------------------------------------------------------------
   -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE INCENDIOS---------------------------------------
   ------------------------------------------------------------------------------------------------------------------------------------*/
-  function createSeguroIncendios()
+  /*function createSeguroIncendios()
   {
     $.ajax({
       type: 'POST',
@@ -835,7 +885,7 @@ $(document).ready(function(){
   /*----------------------------------------------------------------------------------------------------------------------------------
   -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE VIDA---------------------------------------
   ------------------------------------------------------------------------------------------------------------------------------------*/
-  function createSeguroVida()
+  /*function createSeguroVida()
   {
     $.ajax({
       type: 'POST',
@@ -864,7 +914,7 @@ $(document).ready(function(){
   /*----------------------------------------------------------------------------------------------------------------------------------
   -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE MEDICO---------------------------------------
   ------------------------------------------------------------------------------------------------------------------------------------*/
-  function createSeguroMedico()
+  /*function createSeguroMedico()
   {
     $.ajax({
       type: 'POST',
@@ -894,7 +944,7 @@ $(document).ready(function(){
   /*----------------------------------------------------------------------------------------------------------------------------------
   -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE VEHICULO---------------------------------------
   ------------------------------------------------------------------------------------------------------------------------------------*/
-  function createSeguroVehiculo()
+  /*function createSeguroVehiculo()
   {
     $.ajax({
       type: 'POST',
@@ -916,4 +966,4 @@ $(document).ready(function(){
       }
     });
   }
-});
+});*/

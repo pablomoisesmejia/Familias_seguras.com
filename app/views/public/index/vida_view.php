@@ -23,17 +23,10 @@
       <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
           <div class="container">
             <div class='row'>
-              <div class='input-field col s12'>
-                <i style="color:black;"class="material-icons prefix">account_circle</i>
-                <input id="nombre_asegurado_vida" type="text" class="validate" required/>
-                <label class="" for="nombre_asegurado_vida">Nombre de asegurado principal</label>
-              </div>
-            </div>
-            <div class='row'>
               <div class='input-field col s12 '>
                 <i style="color:black;"class="material-icons prefix">event</i>
                 <input  type="text" class="datepicker" id="fecha_naci_vida" required/>
-                <label class="" for="nombre_naci_vida">Fecha de Nacimiento</label>
+                <label class="" for="fecha_naci_vida">Fecha de Nacimiento</label>
               </div>
             </div>
             <div class='row'>
