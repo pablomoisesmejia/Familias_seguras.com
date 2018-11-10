@@ -125,7 +125,7 @@
             <div class='row'>
               <div class='input-field col s12 '>
                 <i style="color:black;"class="material-icons prefix">account_circle</i>
-                  <input id="nombre_segv" type="text" class="validate" required/>
+                  <input id="apellido_segv" type="text" class="validate" required/>
                   <label class="" for="apellido_segv">Tus Apellidos</label>
               </div>
             </div>
@@ -166,6 +166,7 @@
               <div class='input-field col s12 '>
                 <i style="color:black;"class="material-icons prefix">phone_in_talk</i>
                 <select id="hora_contacto"> 
+                  <option value="" selected disabled>Seleccione una opción</option>
                   <optgroup label="Mañana">
                       <option value="manana_1">7:00 - 9:00am</option>
                       <option value="manana_2">10:00 - 12:00am</option>

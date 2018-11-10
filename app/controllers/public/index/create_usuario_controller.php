@@ -13,18 +13,27 @@ try
     $hora = date('H:i:s');
 
     $usuario = new Usuarios;
-    $usuario->setFechaInclusion();
-    $usuario->setHoraInclusion();
-    $usuario->setNombres();
-    $usuario->setApellidos();
-    $usuario->setIdTipoTeam();
-    $usuario->setIdEstado();
-    $usuario->setCorreo();
-    
-    if($cliente->getIdCliente() != null)
+    $usuario->setFechaInclusion($fecha);
+    $usuario->setHoraInclusion($hora);
+    $usuario->setNombres($_POST['nombres']);
+    $usuario->setApellidos($_POST['apellidos']);
+    $usuario->setIdTipoTeam(7);
+    $usuario->setIdEstado(1);
+    $usuario->setFechaNacimiento($_POST['fecha_nacimiento']);
+    $usuario->setCorreo($_POST['correo']);
+    $usuario->setTelefono($_POST['telefono']);
+    if($usuario->createUsuario())
+    {
+
+    }
+    else
+    {
+        $excepcion = Database::getException();
+    } 
+    if($usuario->getIdUsuario() != null)
     {
         $resultado = 1;
-        $id[] = [$resultado, $cliente->getIdCliente()];
+        $id[] = [$resultado, $usuario->getIdUsuario()];
         echo json_encode($id);
     }
     if($resultado == 0)

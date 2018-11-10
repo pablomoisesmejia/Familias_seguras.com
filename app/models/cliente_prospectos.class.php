@@ -80,6 +80,23 @@ class Cliente_Prospecto extends Validator{
 		return $this->hora_contactarle;
 	}
 
+	public function setCantidadPagos($value)
+	{
+		if($this->validateAlphanumeric($value, 1, 30))
+		{
+			$this->cantidad_pagos = $value;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function getCantidadPagos()
+	{
+		return $this->cantidad_pagos;
+	}
+
 	public function setFormaPago($value)
 	{
 		if($this->validateAlphanumeric($value, 1, 30))
@@ -149,15 +166,16 @@ class Cliente_Prospecto extends Validator{
 	}
 	
 
-	/*public function createCliente()
+	public function createClienteProspecto()
 	{
-		$sql = "INSERT INTO clientes(nombre_completo, FK_ID_tipo_cliente, telefono, correo) VALUES(?, ?, ?, ?)";
-		$params = array($this->nombre, $this->id_tipo_cliente, $this->telefono, $this->correo);
-		$cliente = Database::executeRow($sql, $params);
-		if($cliente)
+		$sql = "INSERT INTO clientes_prospectos(FK_id_usuario, FK_id_tipo_seguro, hora_contactarle, cantidad_pagos, forma_pago, fecha_cita, hora_cita, fecha_aceptacion) 
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		$params = array($this->FK_id_usuario, $this->FK_id_tipo_seguro, $this->hora_contactarle, $this->cantidad_pagos, $this->forma_pago, $this->fecha_cita, $this->hora_cita, $this->fecha_aceptacion);
+		$cliente_prospecto = Database::executeRow($sql, $params);
+		if($cliente_prospecto)
 		{
-			$this->id_cliente = Database::getLastRowId();
+			$this->PK_id_cliente_prospecto = Database::getLastRowId();
 		}
-	}*/
+	}
 }
 ?>

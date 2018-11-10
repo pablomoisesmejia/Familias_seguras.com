@@ -1,11 +1,18 @@
-//Declaracion de variables
-var fecha_naci_vida = $('#fecha_naci_vida').val();
-var fumador = $('#fumador').val();
-var suma_asegurada = $('#suma_segv').val();
-var cesion_bancaria = $('#cesion_bancaria').val();
+var fecha_nacimiento = "";
+var fumador = "";
+var suma_asegurada = "";
+var cesion_bancaria = "";
+
+var tipo_seguro = 2;
 
 function Paso1()
 {  
+    //Declaracion de variables
+    fecha_nacimiento = $('#fecha_naci_vida').val();
+    fumador = $('#fumador').val();
+    suma_asegurada = $('#suma_segv').val();
+    cesion_bancaria = $('#cesion_bancaria').val();
+
     if(fecha_naci_vida != '')
     {
         if(fumador != null)
@@ -37,18 +44,24 @@ function Paso1()
     }
 }
 
-function createUsuario()
-{
-    console.log(fecha_naci_vida);
-    
-    $.ajax({
-        type: 'POST',
-        url: '',
-        data:{},
-        dataType: 'json',
-        success:function()
-        {
+/*---------------------------------------------------------------------------------------------
+  -----------------------FUNCION PARA INSERTAR EN LA TABLA CLIENTES_PROSPECTOS-----------------
+  -------------------------------------------------------------------------------------------*/
+  function createCotizacion()
+  {
+      $.ajax({
+          type: 'POST',
+          url: '../../app/controllers/public/index/create_seguro_vida.php',
+          data:{
+            fumador:fumador,
+            suma_asegurada:suma_asegurada,
+            cesion_bancaria:cesion_bancaria,
+            id_cliente_prospecto:id_cliente_prospecto
+          },
+          dataType: 'json',
+          success: function()
+          {
 
-        }
-    });
-}
+          }
+      });
+  }

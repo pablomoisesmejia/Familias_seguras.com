@@ -2,8 +2,6 @@
 class Cotizaciones_vida extends Validator
 {
     private $PK_id_cotizacion = null;
-    private $nombre_asegurado = null;
-    private $fecha_nacimiento = null;
     private $fumador = null;
     private $suma_asegurada = null;
     private $cesion_bancaria = null;
@@ -13,7 +11,7 @@ class Cotizaciones_vida extends Validator
 	{
 		if($this->validateId($value))
 		{
-			$this->id_cotizacion = $value;
+			$this->PK_id_cotizacion = $value;
 			return true;
 		}
 		else
@@ -23,41 +21,7 @@ class Cotizaciones_vida extends Validator
 	}
 	public function getIdCotizacion()
 	{
-		return $this->id_cotizacion;
-    }
-    
-    public function setNombreAsegurado($value)
-	{
-		if($this->validateAlphanumeric($value, 1, 50))
-		{
-			$this->nombre_asegurado = $value;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	public function getNombreAsegurado()
-	{
-		return $this->nombre_asegurado;
-    }
-    
-    public function setFechaNacimiento($value)
-	{
-		if($this->validateAlphanumeric($value, 1, 10))
-		{
-			$this->fecha_nacimiento = $value;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	public function getFechaNacimiento()
-	{
-		return $this->fecha_nacimiento;
+		return $this->PK_id_cotizacion;
     }
     
     public function setFumador($value)
@@ -111,11 +75,11 @@ class Cotizaciones_vida extends Validator
 		return $this->cesion_bancaria;
     }
 
-    public function setIdCliente($value)
+    public function setIdClienteProspecto($value)
 	{
 		if($this->validateId($value))
 		{
-			$this->id_cliente = $value;
+			$this->FK_id_cliente_prospecto = $value;
 			return true;
 		}
 		else
@@ -123,19 +87,19 @@ class Cotizaciones_vida extends Validator
 			return false;
 		}
 	}
-	public function getIdCliente()
+	public function getIdClienteProspecto()
 	{
-		return $this->id_cliente;
+		return $this->FK_id_cliente_prospecto;
 	}
 
 	public function createSeguroVida()
 	{
-		$sql = "INSERT INTO cotizaciones_vida(nombre_asegurado_ppal, fecha_nacimineto, fumador, suma_asegurada, cesion_bancaria, FK_id_cliente) VALUES(?, ?, ?, ?, ?, ?)";
-		$params = array($this->nombre_asegurado, $this->fecha_nacimiento, $this->fumador, $this->suma_asegurada, $this->cesion_bancaria, $this->id_cliente);
+		$sql = "INSERT INTO cotizaciones_vida(fumador, suma_asegurada, cesion_bancaria, FK_id_cliente_prospecto) VALUES(?, ?, ?, ?)";
+		$params = array($this->fumador, $this->suma_asegurada, $this->cesion_bancaria, $this->FK_id_cliente_prospecto);
 		$seguro_vida =  Database::executeRow($sql, $params);
 		if($seguro_vida)
 		{
-			$this->id_cotizacion = Database::getLastRowId();
+			$this->PK_id_cotizacion = Database::getLastRowId();
 		}
 	}
 }

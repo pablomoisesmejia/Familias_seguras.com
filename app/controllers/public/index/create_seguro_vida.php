@@ -5,13 +5,14 @@ require_once('../../../models/cotizaciones_vida.class.php');
 
 try
 {
+    $resultado = 0;
+    $excepcion = 0;
+
     $vida = new Cotizaciones_vida;
-    $vida->setNombreAsegurado($_POST['nombre_asegurado_vida']);
-    $vida->setFechaNacimiento($_POST['fecha_naci_vida']);
     $vida->setFumador($_POST['fumador']);
     $vida->setSumaAsegurada($_POST['suma_asegurada']);
     $vida->setCesionBancaria($_POST['cesion_bancaria']);
-    $vida->setIdCliente($_POST['id_cliente']);
+    $vida->setIdClienteProspecto($_POST['id_cliente_prospecto']);
 
     if($vida->createSeguroVida())
     {
@@ -19,12 +20,19 @@ try
     }
     else
     {
-        echo Database::getException();
+        $excepcion = Database::getException();
     }
 
     if($vida->getIdCotizacion() != null)
     {
-        echo 1;
+        $resultado = 1;
+        $id[] = [$resultado, $vida->getIdCotizacion()];
+        echo json_encode($id);
+    }
+    if($resultado == 0)
+    {
+        $errores[] = [$resultado, $excepcion];
+        echo json_encode($errores);
     }
 }
 catch(Exception $error)

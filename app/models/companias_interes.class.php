@@ -74,5 +74,14 @@ class Companias_Interes extends Validator
     {
         return $this->FK_id_cliente_prospecto;
     }
+
+    //FUNCIONES PARA EL SCRUD
+    public function createCompaniasInteres()
+    {
+        $sql = 'INSERT INTO companias_interes(compania_interes, numero_seleccion, FK_id_cliente_prospecto) 
+        VALUES (?, ?, ?)';
+        $params = array($this->compania_interes, $this->numero_seleccion, $this->FK_id_cliente_prospecto);
+        return Database::executeRow($sql, $params);
+    }
 }
 ?>

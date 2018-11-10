@@ -95,8 +95,7 @@ function paso3()
     apellidos=$('#apellido_segv').val();
     telefono=$('#tel_segv').val();
     correo=$('#email_segv').val();
-    hora_visita=$('#hora').val();
-    horario = '';
+    hora_visita=$('#hora_contacto').val();
     if(hora_visita==='manana_1')
     {
       horario = '7:00 - 9:00am';
@@ -151,6 +150,97 @@ function paso3()
       AlertaSweet(3, 'Escriba su nombre completo');
     }
 }
+
+//DECLARACION DE VARIABLES A UTILIZAR
+var id_usuario = '';
+var id_cliente_prospecto = '';
+var nombres = '';
+var apellidos = '';
+var telefono = '';
+var correo = '';
+var hora_visita = '';
+var horario = '';
+var cantidad_pagos = ''
+
+/*-------------------------------------------------------------------------------------------
+  -----------------------FUNCION PARA INSERTAR EN LA TABLA USUARIOS--------------------------
+  -------------------------------------------------------------------------------------------*/
+
+function createUsuario()
+{  
+    $.ajax({
+        type: 'POST',
+        url: '../../app/controllers/public/index/create_usuario_controller.php',
+        data:{
+            nombres:nombres,
+            apellidos:apellidos,
+            telefono:telefono,
+            correo:correo,
+            fecha_nacimiento:fecha_nacimiento
+        },
+        dataType: 'json',
+        success: function(usuario)
+        {
+          if(usuario[0][0] == 1)
+          {
+            id_usuario = usuario[0][1];
+            createClienteProspecto();
+          }
+        }
+    });
+}
+
+/*---------------------------------------------------------------------------------------------
+  -----------------------FUNCION PARA INSERTAR EN LA TABLA CLIENTES_PROSPECTOS-----------------
+  -------------------------------------------------------------------------------------------*/
+
+function createClienteProspecto()
+{
+  $.ajax({
+    type: 'POST',
+    url: '../../app/controllers/public/index/create_cliente_prospecto_controller.php',
+    data:
+    {
+      id_usuario:id_usuario,
+      tipo_seguro:tipo_seguro,
+      horario:horario,
+      cantidad_pagos:cantidad_pagos
+    },
+    dataType: 'json',
+    success: function(cliente)
+    {
+      console.log(cliente);
+      if(cliente[0][0] == 1)
+      {
+        id_cliente_prospecto = cliente[0][1]
+        createCotizacion();
+        createCompaniasInteres();
+      }
+    }
+  });
+}
+
+/*---------------------------------------------------------------------------------------------
+  -----------------------FUNCION PARA INSERTAR EN LA TABLA COMPANIAS_INTERES-------------------
+  -------------------------------------------------------------------------------------------*/
+  
+function createCompaniasInteres()
+{
+  $.ajax({
+    type: 'POST',
+    url: '../../app/controllers/public/index/create_compania_interes_controller.php',
+    data:{
+      aseguradoras_select:aseguradoras_select,
+      id_cliente_prospecto:id_cliente_prospecto
+    },
+    dataType: 'json',
+    success: function()
+    {
+
+    }
+  });
+}
+
 $(document).ready(function(){
      
   verificar_telefono_o_pc();
@@ -220,7 +310,6 @@ $(document).ready(function(){
 
   $('#siguiente2').click(function(){
     Paso1();
-    //siguiente2();
   });
 
   $('#siguiente3').click(function(){
