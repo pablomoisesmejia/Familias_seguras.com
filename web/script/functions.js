@@ -15,7 +15,7 @@ function siguiente2()
     $('#paso2').css({"display":"block"});
 
     $('.indicator').removeAttr('style');
-    $('.indicator').css({"right": "483px", "left": "12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
+    $('.indicator').css({"right": "458px", "left": "-12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
 }
 
 function siguiente3()
@@ -30,7 +30,7 @@ function siguiente3()
     $('#paso3').css({"display":"block"});
 
     $('.indicator').removeAttr('style');
-    $('.indicator').css({"right": "469px", "left": "27px","transform":"translate(469px, 0px)", "transition": "transform .5s"});
+    $('.indicator').css({"right": "469px", "left": "-21px","transform":"translate(469px, 0px)", "transition": "transform .5s"});
 }
 
 //FUNCIONES PARA CAMBIAR AL ANTERIOR CASO
@@ -46,7 +46,7 @@ function anterior1()
   $('#paso1').css({"display":"block"});
 
   $('.indicator').removeAttr('style');
-  $('.indicator').css({"right": "496px", "left": "0px","transform":"translate(0px, 0px)", "transition": "transform .5s"});
+  $('.indicator').css({"right": "445px", "left": "0px","transform":"translate(0px, 0px)", "transition": "transform .5s"});
 }
 
 function anterior2()
@@ -61,7 +61,7 @@ function anterior2()
   $('#paso2').css({"display":"block"});
 
   $('.indicator').removeAttr('style');
-  $('.indicator').css({"right": "483px", "left": "12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
+  $('.indicator').css({"right": "470px", "left": "-12px","transform":"translate(235px, 0px)", "transition": "transform .5s"});
 }
 
 function paso2()
@@ -87,7 +87,7 @@ function paso2()
     }
 }
 
-$( document ).ready(function(){
+$(document).ready(function(){
      
   verificar_telefono_o_pc();
   show_info_section();
