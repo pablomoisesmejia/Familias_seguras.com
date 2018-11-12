@@ -12,8 +12,11 @@ try{
 					//if($object->checkPermisos()){
 						if($object->setClave($_POST['pass'])){
 							if($object2->checkContrasena($object->getClave())){
-								$_SESSION['id_empleado_d'] = $object2->getIdEmpleado(); //Obtiene el id_empleado para usarlo luego en la pagina template								
-                                Page::showMessage(1, "Autenticación correcta", "index.php");
+								$_SESSION['id_empleado_d'] = $object2->getIdEmpleado(); //Obtiene el id_empleado para usarlo luego en la pagina template
+								$_SESSION['tipo_team_d'] = $object2->getTipo();
+								if($_SESSION['tipo_team_d'] == 'FamiliasSeguras.com'){
+									Page::showMessage(1, "Autenticación correcta", "index.php");
+								}						
 							}else{
 								throw new Exception("Contraseña incorrecta");
                             }

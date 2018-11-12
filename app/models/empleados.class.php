@@ -6,6 +6,8 @@ class Empleados extends Validator
     private $FK_id_cargo_gerencia = null;
 	private $activo_reparticion = null;
 
+	private $tipo = null;
+
     public function setIdEmpleado($value)
 	{
 		if($this->validateId($value))
@@ -74,6 +76,23 @@ class Empleados extends Validator
 		return $this->activo_reparticion;
 	}
 
+	public function setTipo($value)
+	{
+		if($this->validateAlphanumeric($value, 1, 100))
+		{
+			$this->tipo = $value;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function getTipo()
+	{
+		return $this->tipo;
+	}
+
 
 	//Funciones para inicio de sesion
 	public function checkUsuarios($usuario){
@@ -89,10 +108,11 @@ class Empleados extends Validator
 	}
 
 	public function checkContrasena($clave){
-		$sql = "SELECT clave FROM usuarios, empleados WHERE PK_id_empleado = ?";
+		$sql = "SELECT clave, tipo_team FROM usuarios, empleados, tipos_team WHERE PK_id_empleado = ?";
 		$params = array($this->PK_id_empleado);
 		$data = Database::getRow($sql, $params);
 		if($clave == $data['clave']){
+			$this->tipo = $data['tipo_team'];
 			return true;
 		}else{
 			return false;
