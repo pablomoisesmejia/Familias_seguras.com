@@ -56,5 +56,12 @@ class Modelos_vehiculos extends Validator
 		return $this->modelos_vehiculo;
 	}
 
+	//FUNCIONES PARA EL SCRUD
+	public function getModelosxMarca()
+	{
+		$sql = 'SELECT PK_id_modelo_vehiculo, modelos_vehiculo FROM modelos_vehiculos WHERE FK_id_marca_vehiculo = ?';
+		$params = array($this->FK_id_marca_vehiculo);
+		return Database::getRows($sql, $params);
+	}
 }
 ?>

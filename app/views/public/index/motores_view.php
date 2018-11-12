@@ -22,31 +22,35 @@
          <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
           <div class="container">
               <div class='row'>
-		            <div class='input-field col s12 '>
+                <div class="input-field col s12">
                   <i style="color:black;"class="material-icons prefix">directions_car</i>
-                  <input id="marca" type="text" class="validate" required/>
-                  <label class="" for="nombre_segv">Marca</label>
+                  <select id="marca_vehiculo">
+                    
+                  </select>
+                  <label>Marca</label>
                 </div>
               </div>
               <div class='row'>
-		            <div class='input-field col s12 '>
+                <div class="input-field col s12">
                   <i style="color:black;"class="material-icons prefix">description</i>
-                  <input id="modelo" type="text" class="validate" required/>
-                  <label class="" for="nombre_segv">Modelo</label>
+                  <select id="modelo_vehiculo">
+                    <option value="" disabled selected>Seleccione una marca para mostrar los modelos</option>
+                  </select>
+                  <label>Modelo</label>
                 </div>
               </div>
               <div class='row'>
 		            <div class='input-field col s12 '>
                   <i style="color:black;"class="material-icons prefix">book</i>
-                  <input id="ano" type="number" class="validate" required/>
-                  <label class="" for="nombre_segv">Año</label>
+                  <input id="anio" type="number" class="validate" required/>
+                  <label class="" for="anio">Año</label>
                 </div>
               </div>
               <div class='row'>
 		            <div class='input-field col s12 '>
                   <i style="color:black;"class="material-icons prefix">menu</i>
                   <input id="placa" type="number" class="validate" required/>
-                  <label class="" for="nombre_segv">Placa</label>
+                  <label class="" for="placa">Placa</label>
                 </div>
               </div>
               <div class="row">

@@ -24,7 +24,7 @@ class Cotizaciones_Medico extends Validator
 	}
 	public function getIdCotizacion()
 	{
-		return $this->id_cotizacion;
+		return $this->PK_id_cotizacion;
     }
     
     public function setNombreAsegurado($value)
@@ -147,15 +147,16 @@ class Cotizaciones_Medico extends Validator
 		return $this->FK_id_cliente_prospecto;
 	}
 
-	/*public function createSeguroMedico()
+	public function createSeguroMedico()
 	{
-		$sql = "INSERT INTO cotizaciones_medico(nombre_asegurado_ppal, fecha_nacimineto, nombre_conyugue, fecha_nacimiento_conyuge, cantidad_hijo, cobertura, FK_id_cliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
-		$params = array($this->nombre_asegurado, $this->fecha_nacimiento, $this->nombre_conyugue, $this->fecha_nacimiento_conyugue, $this->cantidad_hijo, $this->cobertura, $this->id_cliente);
+		$sql = "INSERT INTO cotizaciones_medico_hosp(nombre_conyugue, fecha_nacimiento_conyugue, cantidad_hijo, FK_id_cliente_prospecto) 
+		VALUES (?, ?, ?, ?)";
+		$params = array($this->nombre_conyugue, $this->fecha_nacimiento_conyugue, $this->cantidad_hijo, $this->FK_id_cliente_prospecto);
 		$seguro_medico = Database::executeRow($sql, $params);
 		if($seguro_medico)
 		{
-			$this->id_cotizacion = Database::getLastRowId();
+			$this->PK_id_cotizacion = Database::getLastRowId();
 		}
-	}*/
+	}
 }
 ?>

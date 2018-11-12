@@ -130,17 +130,16 @@ class Cotizaciones_incendios extends Validator
 		return $this->FK_id_cliente_prospecto;
 	}
 
-
-
-	/*public function createSeguroIncendio()
+	public function createSeguroIncendio()
 	{
-		$sql = "INSERT INTO cotizaciones_incendios(tipo_inmueble, direccion, valor_construccion, valor_contenido, FK_id_cliente) VALUES(?, ?, ?, ?, ?)";
-		$params = array($this->tipo_inmueble, $this->direccion, $this->valor_construccion, $this->valor_contenido, $this->id_cliente);
+		$sql = "INSERT INTO cotizaciones_incendios(tipo_inmueble, direccion, asegurado_calidad, valor_construccion, valor_contenido, FK_id_cliente_prospecto) 
+		VALUES (?, ?, ?, ?, ?, ?)";
+		$params = array($this->tipo_inmueble, $this->direccion, $this->asegurado_calidad, $this->valor_construccion, $this->valor_contenido, $this->FK_id_cliente_prospecto);
 		$seguro_incendios = Database::executeRow($sql, $params);
 		if($seguro_incendios)
 		{
-			$this->id_cotizacion = Database::getLastRowId();
+			$this->PK_id_cotizacion = Database::getLastRowId();
 		}
-	}*/
+	}
 }
 ?>

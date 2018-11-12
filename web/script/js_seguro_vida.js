@@ -13,7 +13,7 @@ function Paso1()
     suma_asegurada = $('#suma_segv').val();
     cesion_bancaria = $('#cesion_bancaria').val();
 
-    if(fecha_naci_vida != '')
+    if(fecha_nacimiento != '')
     {
         if(fumador != null)
         {
@@ -45,23 +45,23 @@ function Paso1()
 }
 
 /*---------------------------------------------------------------------------------------------
-  -----------------------FUNCION PARA INSERTAR EN LA TABLA CLIENTES_PROSPECTOS-----------------
+  -----------------------FUNCION PARA INSERTAR EN LA TABLA COTIZACIONES_VIDA-----------------
   -------------------------------------------------------------------------------------------*/
   function createCotizacion()
   {
-      $.ajax({
-          type: 'POST',
-          url: '../../app/controllers/public/index/create_seguro_vida.php',
-          data:{
+    $.ajax({
+        type: 'POST',
+        url: '../../app/controllers/public/index/create_seguro_vida.php',
+        data:{
             fumador:fumador,
             suma_asegurada:suma_asegurada,
             cesion_bancaria:cesion_bancaria,
             id_cliente_prospecto:id_cliente_prospecto
-          },
-          dataType: 'json',
-          success: function()
-          {
+        },
+        dataType: 'json',
+        success: function()
+        {
 
-          }
-      });
+        }
+    });
   }

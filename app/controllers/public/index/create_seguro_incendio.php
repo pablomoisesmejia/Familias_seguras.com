@@ -7,10 +7,11 @@ try
 {
     $incendios = new Cotizaciones_incendios;
     $incendios->setTipoInmueble($_POST['tipo_inmueble']);
-    $incendios->setDireccion($_POST['direccion']);
+    $incendios->setDireccion($_POST['direccion_inmueble']);
+    $incendios->setAseguradoCalidad($_POST['asegurado_calidad']);
     $incendios->setValorConstruccion($_POST['valor_construccion']);
     $incendios->setValorContenido($_POST['valor_contenido']);
-    $incendios->setIdCliente($_POST['id_cliente']);
+    $incendios->setIdClienteProspecto($_POST['id_cliente_prospecto']);
 
     if($incendios->createSeguroIncendio())
     {

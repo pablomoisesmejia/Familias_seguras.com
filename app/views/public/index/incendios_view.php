@@ -42,15 +42,15 @@
           <div class='row' style="margin-bottom:15px;">
             <div class='input-field col s12 '>
             <i  style="color:black;"class="material-icons prefix">directions</i>
-                <input id="address" type="text" class="validate" required/>
-                <label class="active" for="address">Dirección de Inmueble</label>
+                <input id="direccion_inmueble" type="text" class="validate" required/>
+                <label class="active" for="direccion_inmueble">Dirección de Inmueble</label>
             </div>
         </div>
 
         <div class='row'>
             <div class='input-field col s12 '>
             <i  style="color:black;"class="material-icons prefix">directions_walk</i>
-                <select name="" id="valor_contenido">
+                <select name="" id="asegurado_calidad">
                     <option value="" selected disabled>Seleccione una opción</option>
                     <option value="Propietario">Propietario</option>
                     <option value="Inquilino">Inquilino</option>
@@ -65,8 +65,8 @@
             <p class="signo_de_campo">$</p>
           </div>  
           <div class='input-field col s6 '>
-                <input id="valor_de_constr_segm" type="number" class="validate" min="1000" step="500" value="1000" required/>
-                <label class="" for="valor_de_constr_segm">Valor de Construcciones</label>      
+                <input id="valor_construccion" type="number" class="validate" min="1000" step="500" value="1000" required/>
+                <label class="" for="valor_construccion">Valor de Construcciones</label>      
           </div>  
           <div class='input-field col s5 '>    
             <p class="frm_p_text_alert">No incluir terreno.</p>
@@ -78,8 +78,8 @@
             <p class="signo_de_campo">$</p>
           </div>  
           <div class='input-field col s6 '>
-                <input id="valor_de_constr_segm" type="number" class="validate" min="1000" step="500" value="1000" required/>
-                <label class="" for="valor_de_constr_segm">Valor del contenido</label>      
+                <input id="valor_contenido" type="number" class="validate" min="1000" step="500" value="1000" required/>
+                <label class="" for="valor_contenido">Valor del contenido</label>      
           </div>  
          
         </div>
@@ -101,7 +101,7 @@
 
             <div class="input-field col s12" id="asegurador">
             <i  style="color:black;"class="material-icons prefix">verified_user</i>
-              <select multiple d="aseguradoras">
+              <select multiple id="aseguradoras">
               <option value="" disabled selected>Seleccione una o varias opciones</option>
                 <option value="ACSA" data-icon="../../web/img/aseguradoras/acsa.png">ACSA</option>
                 <option value="ASESUISA" data-icon="../../web/img/aseguradoras/asesuisa.jpg">ASESUISA</option>
@@ -118,7 +118,7 @@
 
             
             <div class="input-field col s12">
-            <i  style="color:black;"class="material-icons prefix">attach_money</i>
+            <i  style="color:black;" class="material-icons prefix">attach_money</i>
               <select id="cantidad_pagos">
                 <option value="" disabled selected>Se te proporcionara tambien, el costo total (en un unico pago)</option>
                 <option value="2">Dos</option>
@@ -146,30 +146,25 @@
           <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
             <div class="container">
               <div class='row'>
-		            <div class='input-field col s12 '>
-                <i  style="color:black;"class="material-icons prefix">account_circle</i>
-                  <input id="nombre_segv" type="text" class="validate" required/>
-                  <label class="" for="nombre_segv">Tu Nombre</label>
-                </div>
-              </div>
-
-              <div class="col s12 m12 l12">
-
-              <div class='row'>
-                <div class='input-field col s6 m6 l6 '>
-                <i  style="color:black;"class="material-icons prefix">phone</i>
-                  <input id="tel_segv" type="number" class="validate" required/>
-                  <label class="" for="tel_segv">Telefono</label>
+                <div class='input-field col s12 '>
+                  <i style="color:black;"class="material-icons prefix">account_circle</i>
+                    <input id="nombre_segv" type="text" class="validate" required/>
+                    <label class="" for="nombre_segv">Tus Nombres</label>
                 </div>
               </div>
               <div class='row'>
-                <div class='input-field col s6 m6 l6 '>
-                <i  style="color:black;"class="material-icons prefix">phone</i>
-                  <input id="tel_segv" type="number" class="validate" required/>
-                  <label class="" for="tel_segv">Whatssaap</label>
+                <div class='input-field col s12 '>
+                  <i style="color:black;"class="material-icons prefix">account_circle</i>
+                    <input id="apellido_segv" type="text" class="validate" required/>
+                    <label class="" for="apellido_segv">Tus Apellidos</label>
                 </div>
               </div>
-
+              <div class='row'>
+                <div class='input-field col s12 '>
+                  <i style="color:black;"class="material-icons prefix">event</i>
+                  <input  type="text" class="datepicker" id="fecha_nacimiento" required/>
+                  <label class="" for="fecha_nacimiento">Fecha de Nacimiento</label>
+                </div>
               </div>
 
               <div class='row'>
@@ -207,7 +202,8 @@
                 <p class="frm_p_text_gray">¿Hora para Contactarle?</p>
                   <div class='input-field col s12 '>
                   <i  style="color:black;"class="material-icons prefix">phone_in_talk</i>
-                  <select id="hora"> 
+                  <select id="hora_contacto"> 
+                    <option value="" selected disabled>Seleccione una opción</option>
                     <optgroup label="Mañana">
                         <option value="manana_1">7:00 - 9:00am</option>
                         <option value="manana_2">10:00 - 12:00am</option>
@@ -226,7 +222,7 @@
           </div>
           <div class="col s12 m8 l7 push-l2 push-m2">
             <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
-            <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+            <a id="cotizar" class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
           </div>
         </div>
       

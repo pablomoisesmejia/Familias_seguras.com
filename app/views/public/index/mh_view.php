@@ -115,16 +115,26 @@
           <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
             <div class="container">
               <div class='row'>
-		            <div class='input-field col s12 '>
-                <i  style="color:black;"class="material-icons prefix">account_circle</i>
-                  <input id="nombre_segv" type="text" class="validate" required/>
-                  <label class="" for="nombre_segv">Tu Nombre</label>
+                <div class='input-field col s12 '>
+                  <i style="color:black;"class="material-icons prefix">account_circle</i>
+                    <input id="nombre_segv" type="text" class="validate" required/>
+                    <label class="" for="nombre_segv">Tus Nombres</label>
                 </div>
               </div>
               <div class='row'>
+                <div class='input-field col s12 '>
+                  <i style="color:black;"class="material-icons prefix">account_circle</i>
+                    <input id="apellido_segv" type="text" class="validate" required/>
+                    <label class="" for="apellido_segv">Tus Apellidos</label>
+                </div>
+              </div>
+
+
+              <div class='row'>
               <div class='input-field col s1 '>   
               <i  style="color:black;"class="material-icons prefix">phone</i>
-              </div>  
+              </div>
+
               <div class='input-field col s6 '>
                     <input id="tel_segv" type="number" class="validate" required/>
                     <label class="" for="valor_de_constr_segm">Telefono</label>      
@@ -155,7 +165,8 @@
                 <p class="frm_p_text_gray">¿Hora para Contactarle?</p>
                   <div class='input-field col s12 '>
                   <i  style="color:black;"class="material-icons prefix">phone_in_talk</i>
-                  <select id="hora"> 
+                  <select id="hora_contacto"> 
+                    <option value="" selected disabled>Seleccione una opción</option>
                     <optgroup label="Mañana">
                         <option value="manana_1">7:00 - 9:00am</option>
                         <option value="manana_2">10:00 - 12:00am</option>
@@ -174,7 +185,7 @@
           </div>
           <div class="col s12 m8 l7 push-l2 push-m2">
             <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
-            <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+            <a id="cotizar" class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
           </div>
         </div>
       

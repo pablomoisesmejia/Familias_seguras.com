@@ -91,6 +91,7 @@ function paso2()
 //VALIDACIONES PARA EL PASO 3
 function paso3()
 {
+    fecha_nacimiento = $('#fecha_nacimiento').val();
     nombres=$('#nombre_segv').val();
     apellidos=$('#apellido_segv').val();
     telefono=$('#tel_segv').val();
@@ -113,32 +114,41 @@ function paso3()
       horario = '4:00 - 7:00pm'
     }
 
+    if(tipo_seguro == 3)
+    {
+      if(fecha_nacimiento == '')
+      {
+        AlertaSweet(3, 'Seleccione la fecha de nacimiento');
+      }
+    }
+
     if(nombres != '')
     {
         if(apellidos != '')
         {
-            if(telefono != '')
+          
+          if(telefono != '')
+          {
+            if(correo != '')
             {
-                if(correo != '')
+                if(hora_visita != null)
                 {
-                    if(hora_visita != '')
-                    {
-                        createUsuario();
-                    }
-                    else
-                    {
-                        AlertaSweet(3, 'Seleccione la hora de visita');
-                    }
+                    createUsuario();
                 }
                 else
                 {
-                AlertaSweet(3, 'Escriba su correo electrónico');
+                    AlertaSweet(3, 'Seleccione la hora de visita');
                 }
             }
             else
             {
-                AlertaSweet(3, 'Escriba su número de teléfono');
+            AlertaSweet(3, 'Escriba su correo electrónico');
             }
+          }
+          else
+          {
+              AlertaSweet(3, 'Escriba su número de teléfono');
+          }
         }
         else
         {
