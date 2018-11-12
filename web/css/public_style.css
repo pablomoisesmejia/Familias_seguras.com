@@ -80,6 +80,7 @@ background-color: rgba(21, 21, 21, 0.8);
     padding-left: 5%;
     padding-right: 5%;
     transition: 0.5s;
+    display: none;
 }
 #blackground_walls{
     width: 100%;

@@ -38,5 +38,13 @@ class Origenes_vehiculo extends Validator
 		return $this->origen_vehiculo;
 	}
 
+	//FUNCIONES PARA EL SCRUD
+	public function getOrigenesVehiculo()
+	{
+		$sql = 'SELECT PK_id_origen_vehiculo, origen_vehiculo FROM origenes_vehiculo';
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+
 }
 ?>

@@ -22,7 +22,7 @@
          <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
           <div class="container">
               <div class='row'>
-                <div class="input-field col s12">
+                <div class="input-field col s12" id="marca">
                   <i style="color:black;"class="material-icons prefix">directions_car</i>
                   <select id="marca_vehiculo">
                     
@@ -31,7 +31,7 @@
                 </div>
               </div>
               <div class='row'>
-                <div class="input-field col s12">
+                <div class="input-field col s12" id="modelo">
                   <i style="color:black;"class="material-icons prefix">description</i>
                   <select id="modelo_vehiculo">
                     <option value="" disabled selected>Seleccione una marca para mostrar los modelos</option>
@@ -54,12 +54,10 @@
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field col s12" id="origen">
                   <i style="color:black;"class="material-icons prefix">find_in_page</i>
-                  <select>
-                    <option value="" disabled selected>Seleccione una opción</option>
-                    <option value="1" >Agencia</option>
-                    <option value="2">Importado</option>
+                  <select id="origen_vehiculo">
+                    
                   </select>
                   <label>Origen del vehiculo</label>
                 </div>
@@ -67,14 +65,14 @@
               <div class='row'>
 		            <div class='input-field col s12 '>
                   <i style="color:black;"class="material-icons prefix">attach_money</i>
-                  <input id="valor" type="number" class="validate" required/>
+                  <input id="valor_vehiculo" type="number" class="validate" required/>
                   <label class="" for="nombre_segv">Valor del Vehiculo</label>
                 </div>
               </div>
               <div class="row">
                 <div class="col s12 m12 l12">
                   <a class="waves-effect waves-light btn modal-trigger" href="#modalautos">Ver carros</a>
-                  <a class="waves-effect waves-light btn modal-trigger" href="">Agregar</a>
+                  <a id="agregar" class="waves-effect waves-light btn">Agregar</a>
                 </div>
               </div>
               &nbsp
@@ -88,14 +86,26 @@
               </div>
           </div>  
         </div>
- <!-- Modal Structure -->
- <div id="modalautos" class="modal">
+<!-- Modal de vehiculos -->
+<div id="modalautos" class="modal modal-fixed-footer">
   <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
+  <h3>Vehiculos</h3>
+    <table class="bordered highlight">
+      <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Placa</th>
+            <th>Borrar</th>
+        </tr>
+      </thead>
+      <tbody id = "vehiculos">
+
+      </tbody>
+    </table>
   </div>
   <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
   </div>
 </div>
 
@@ -150,12 +160,27 @@
           <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
             <div class="container">
               <div class='row'>
-		            <div class='input-field col s12 '>
-                <i  style="color:black;"class="material-icons prefix">account_circle</i>
-                  <input id="nombre_segv" type="text" class="validate" required/>
-                  <label class="" for="nombre_segv">Tu Nombre</label>
+                <div class='input-field col s12 '>
+                  <i style="color:black;"class="material-icons prefix">account_circle</i>
+                    <input id="nombre_segv" type="text" class="validate" required/>
+                    <label class="" for="nombre_segv">Tus Nombres</label>
                 </div>
               </div>
+              <div class='row'>
+                <div class='input-field col s12 '>
+                  <i style="color:black;"class="material-icons prefix">account_circle</i>
+                    <input id="apellido_segv" type="text" class="validate" required/>
+                    <label class="" for="apellido_segv">Tus Apellidos</label>
+                </div>
+              </div>
+              <div class='row'>
+                <div class='input-field col s12 '>
+                  <i style="color:black;"class="material-icons prefix">event</i>
+                  <input  type="text" class="datepicker" id="fecha_nacimiento" required/>
+                  <label class="" for="fecha_nacimiento">Fecha de Nacimiento</label>
+                </div>
+              </div>
+
               <div class='row'>
               <div class='input-field col s1 '>   
               <i  style="color:black;"class="material-icons prefix">phone</i>
@@ -190,7 +215,8 @@
                 <p class="frm_p_text_gray">¿Hora para Contactarle?</p>
                   <div class='input-field col s12 '>
                   <i  style="color:black;"class="material-icons prefix">phone_in_talk</i>
-                  <select id="hora"> 
+                  <select id="hora_contacto"> 
+                    <option value="" selected disabled>Seleccione una opción</option>
                     <optgroup label="Mañana">
                         <option value="manana_1">7:00 - 9:00am</option>
                         <option value="manana_2">10:00 - 12:00am</option>
@@ -209,7 +235,7 @@
           </div>
           <div class="col s12 m8 l7 push-l2 push-m2">
             <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
-            <a href="index.php"class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+            <a id="cotizar" class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
           </div>
         </div>
         

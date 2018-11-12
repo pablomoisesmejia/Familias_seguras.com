@@ -91,7 +91,10 @@ function paso2()
 //VALIDACIONES PARA EL PASO 3
 function paso3()
 {
-    fecha_nacimiento = $('#fecha_nacimiento').val();
+    if(tipo_seguro == 3)
+    {
+      fecha_nacimiento = $('#fecha_nacimiento').val();
+    }
     nombres=$('#nombre_segv').val();
     apellidos=$('#apellido_segv').val();
     telefono=$('#tel_segv').val();
@@ -225,6 +228,7 @@ function createClienteProspecto()
         id_cliente_prospecto = cliente[0][1]
         createCotizacion();
         createCompaniasInteres();
+        enviarCorreo()
       }
     }
   });
@@ -251,8 +255,31 @@ function createCompaniasInteres()
   });
 }
 
+function enviarCorreo()
+{
+  $.ajax({
+    type: 'POST',
+    url:'../../app/helpers/correo_cliente.php',
+    data:{correo:correo},
+    success:function(dato)
+    {
+      console.log(dato);
+    
+      if(dato == 1)
+      {
+        $("#view_email_send").show(0);
+      }
+      else
+      {
+        AlertaSweet(3, 'Ocurrio un problema al enviar el correo, dar clic de nuevo al boton "Solicitar Cotizacion"');
+      }
+    }
+  });
+}
+
 $(document).ready(function(){
      
+  $("#view_email_send").hide(0);
   verificar_telefono_o_pc();
   show_info_section();
   $("select").material_select();
@@ -323,7 +350,7 @@ $(document).ready(function(){
   });
 
   $('#siguiente3').click(function(){
-    paso2();
+    paso2();    
   });
 
   $('#anterior1').click(function(){
@@ -633,7 +660,8 @@ function enviar()
     type:'POST', 
     url:'../../app/helpers/insert_datos.php?action=enviar',
     data:datos,
-    success:function(dato){
+    success:function(dato)
+    {
       console.log(dato);
     
       if(dato == 1)

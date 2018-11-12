@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    $('.modal').modal();
     cargarMarcas();
     function cargarMarcas()
     {
@@ -20,6 +21,33 @@ $(document).ready(function(){
                             '<option value="'+marcas[i].PK_id_marca_vehiculo+'">'+marcas[i].marca_vehiculo+'</option>'
                         );
                         $('#marca_vehiculo').append(option);
+                    }
+                    $('select').material_select();
+                }
+            }
+        });
+    }
+
+    cargarOrigenVehiculo();
+    function cargarOrigenVehiculo()
+    {
+        $.ajax({
+            url: '../../app/controllers/public/index/origenes_vehiculo_controller.php',
+            dataType: 'json',
+            success:  function(origenes)
+            {
+                $('#origen_vehiculo').empty();
+                $('#origen_vehiculo').append('<option value="" disabled selected>Seleccione una opción</option>');
+                if(origenes != '')
+                {
+                    i = 0;
+                    for(i; i<origenes.length; i++)
+                    {
+                        var option = '';
+                        option = option.concat(
+                            '<option value="'+origenes[i].PK_id_origen_vehiculo+'">'+origenes[i].origen_vehiculo+'</option>'
+                        );
+                        $('#origen_vehiculo').append(option);
                     }
                     $('select').material_select();
                 }
@@ -62,9 +90,124 @@ $(document).ready(function(){
             }
         });
     });
+
+
+    $('#agregar').click(function(){
+        marca_vehiculo = $('#marca_vehiculo').val();
+        modelo_vehiculo = $('#modelo_vehiculo').val();
+        anio = $('#anio').val();
+        placa = $('#placa').val();
+        origen_vehiculo = $('#origen_vehiculo').val();
+        valor_vehiculo = $('#valor_vehiculo').val();
+
+        nombre_marca = $('#marca input.select-dropdown').val();
+        nombre_modelo = $('#modelo input.select-dropdown').val();
+        console.log(nombre_marca);
+        if(marca_vehiculo != null)
+        {
+            if(modelo_vehiculo != null)
+            {
+                if(anio != '')
+                {
+                    if(placa != '')
+                    {
+                        if(origen_vehiculo != null)
+                        {
+                            if(valor_vehiculo != '')
+                            {
+                                
+                            }
+                            else
+                            {
+                                AlertaSweet(3, 'Ingrese el valor del vehiculo');
+                            }
+                        }
+                        else
+                        {
+                            AlertaSweet(3, 'Seleccione el origen del vehiculo');
+                        }
+                    }
+                    else
+                    {
+                        AlertaSweet(3, 'Ingrese la placa del vehiculo');
+                    }
+                }
+                else
+                {
+                    AlertaSweet(3, 'Ingrese el año del vehiculo');
+                }
+            }
+            else
+            {
+                AlertaSweet(3, 'Seleccione el modelo del vehiculo');
+            }
+        }
+        else
+        {
+            AlertaSweet(3, 'Seleccione la marca del vehiculo');
+        }
+    });
 });
+
+var marca_vehiculo = '';
+var modelo_vehiculo = '';
+var anio = '';
+var placa = '';
+var origen_vehiculo = '';
+var valor_vehiculo = '';
+
+var tipo_seguro = 4;
 
 function Paso1()
 {
+    marca_vehiculo = $('#marca_vehiculo').val();
+    modelo_vehiculo = $('#modelo_vehiculo').val();
+    anio = $('#anio').val();
+    placa = $('#placa').val();
+    origen_vehiculo = $('#origen_vehiculo').val();
+    valor_vehiculo = $('#valor_vehiculo').val();
 
+    if(marca_vehiculo != null)
+    {
+        if(modelo_vehiculo != null)
+        {
+            if(anio != '')
+            {
+                if(placa != '')
+                {
+                    if(origen_vehiculo != null)
+                    {
+                        if(valor_vehiculo != '')
+                        {
+                            siguiente2();
+                        }
+                        else
+                        {
+                            AlertaSweet(3, 'Ingrese el valor del vehiculo');
+                        }
+                    }
+                    else
+                    {
+                        AlertaSweet(3, 'Seleccione el origen del vehiculo');
+                    }
+                }
+                else
+                {
+                    AlertaSweet(3, 'Ingrese la placa del vehiculo');
+                }
+            }
+            else
+            {
+                AlertaSweet(3, 'Ingrese el año del vehiculo');
+            }
+        }
+        else
+        {
+            AlertaSweet(3, 'Seleccione el modelo del vehiculo');
+        }
+    }
+    else
+    {
+        AlertaSweet(3, 'Seleccione la marca del vehiculo');
+    }
 }
