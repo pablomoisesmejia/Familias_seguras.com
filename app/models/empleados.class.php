@@ -74,5 +74,36 @@ class Empleados extends Validator
 		return $this->activo_reparticion;
 	}
 
+
+	//Funciones para inicio de sesion
+	public function checkUsuarios($usuario){
+		$sql = "SELECT PK_id_empleado, correo FROM empleados, usuarios WHERE (usuarios.PK_id_usuario = empleados.FK_id_usuario) AND usuarios.correo = ?";
+		$params = array($usuario);
+		$data = Database::getRow($sql, $params);
+		if($data){
+			$this->PK_id_empleado = $data['PK_id_empleado'];
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function checkContrasena($clave){
+		$sql = "SELECT clave FROM usuarios, empleados WHERE PK_id_empleado = ?";
+		$params = array($this->PK_id_empleado);
+		$data = Database::getRow($sql, $params);
+		if($clave == $data['clave']){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	//Funciones
+	public function getEmpleados(){
+		$sql = "SELECT * FROM empleados";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
 }
 ?>

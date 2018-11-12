@@ -5,7 +5,7 @@
 				<img src="web/img/dashboard/img-01.png" alt="IMG">
 			</div>
 
-			<form class="login100-form validate-form">
+			<form class="login100-form validate-form" method="post">
 				<span class="login100-form-title">
 					Inicia sesión
 				</span>
@@ -27,10 +27,7 @@
 				</div>
 				
 				<div class="container-login100-form-btn">
-					
-					<button class="login100-form-btn">
-					<a href="inicio.php" style="color:white;">Login</a>
-					</button>
+					<button type='submit' name='iniciar' class='login100-form-btn' style="color:white;">Iniciar sesi&oacute;n</button>
 					
 				</div>
 

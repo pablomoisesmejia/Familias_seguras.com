@@ -25,7 +25,7 @@ class Page extends Component{
             <body>
         ");
 
-        if(isset($_SESSION['id_usuario_d'])){
+        if(isset($_SESSION['id_empleado_d'])){
             print("
                 <div class='container'>
                 

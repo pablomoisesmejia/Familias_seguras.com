@@ -1,21 +1,21 @@
 <?php
 require_once("../../app/models/usuarios.class.php");
+require_once("../../app/models/empleados.class.php");
 try{
-
 	$object = new Usuarios;
-	if($object->getEmpleados()){
+	$object2 = new Empleados;
 		if(isset($_POST['iniciar'])){
 			$_POST = $object->validateForm($_POST);
-			if($object->setUsuario($_POST['nombre_usuario'])){
+			if($object->setCorreo($_POST['email'])){
 				$_SESSION['usuario_d'] = $object->getUsuario();
-				if($object->checkUsuarios()){
+				if($object2->checkUsuarios($object->getCorreo())){
 					//if($object->checkPermisos()){
-						if($object->setClave($_POST['contrasena'])){
-							if($object->checkContrasena()){
-								$_SESSION['id_usuario_d'] = $object->getIdUsuario(); //Obtiene el id_empleado para usarlo luego en la pagina template								
+						if($object->setClave($_POST['pass'])){
+							if($object2->checkContrasena($object->getClave())){
+								$_SESSION['id_empleado_d'] = $object2->getIdEmpleado(); //Obtiene el id_empleado para usarlo luego en la pagina template								
                                 Page::showMessage(1, "Autenticación correcta", "index.php");
 							}else{
-
+								throw new Exception("Contraseña incorrecta");
                             }
 						}else{
 							throw new Exception("La clave debe tener al menos 8 dígitos");
@@ -30,9 +30,6 @@ try{
 				throw new Exception("Nombre de usuario incorrecto");
 			}
 		}
-	}else{
-		Page::showMessage(3, "No hay usuarios disponibles", "register.php");
-	}
 }catch(Exception $error){
 	Page::showMessage(2, $error->getMessage(), null);
 }
