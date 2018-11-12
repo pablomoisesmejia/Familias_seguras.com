@@ -1,6 +1,6 @@
 <?php
 
-class Solicitudes extends Validator
+class Solicitudes_atencion_cliente extends Validator
 {
     private $PK_id_solicitud = null;
     private $FK_id_cliente_prospecto = null;
