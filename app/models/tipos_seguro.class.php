@@ -38,5 +38,11 @@ class Tipos_seguro extends Validator
 		return $this->tipo_seguro;
 	}
 
+	public function getTiposSeguros()
+	{
+		$sql = 'SELECT PK_id_tipo_seguro, tipo_seguro FROM tipos_seguro';
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
 }
 ?>

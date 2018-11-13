@@ -2,7 +2,8 @@
 class Solicitudes_procesadas extends Validator
 {
     private $PK_id_solicitud_procesada = null;
-    private $FK_id_cantidad_solicitud_dia = null;
+	private $FK_id_cantidad_solicitud_dia = null;
+	private $FK_id_tipo_seguro = null;
     private $FK_id_empleado = null;
 
     public function setIdSolicitud($value)
@@ -37,7 +38,24 @@ class Solicitudes_procesadas extends Validator
 	public function getIdCantidad()
 	{
 		return $this->FK_id_cantidad_solicitud_dia;
-    }
+	}
+	
+	public function setIdTipoSeguro($value)
+	{
+		if($this->validateId($value))
+		{
+			$this->FK_id_tipo_seguro = $value;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function getIdTipoSeguro()
+	{
+		return $this->FK_id_tipo_seguro;
+	}
 
 	public function setIdEmpleado($value)
 	{
@@ -57,6 +75,20 @@ class Solicitudes_procesadas extends Validator
 	}
 
 	//FUNCIONES PARA LAS TAREAS PROGRAMADAS
+	public function getEmpleadosVentas()
+	{
+		$sql = 'SELECT e.PK_id_empleado, e.FK_id_usuario, e.FK_id_cargo_gerencia, e.activo_reparticion, es.estado
+		FROM empleados e 
+        INNER JOIN usuarios u ON e.FK_id_usuario = u.PK_id_usuario
+        INNER JOIN estados es ON u.FK_id_estado = es.PK_id_estado
+		INNER JOIN solicitudes_procesadas sp ON e.PK_id_empleado = sp.FK_id_empleado
+		INNER JOIN tipos_seguro ts ON sp.FK_id_tipo_seguro = ts.PK_id_tipo_seguro
+		INNER JOIN cargos_gerencias cg ON e.FK_id_cargo_gerencia = cg.PK_id_cargo_gerencia
+		WHERE cg.nombre_cargo = "ejecutivo de ventas" AND ts.PK_id_tipo_seguro = ? ';
+		$params = array($this->FK_id_tipo_seguro);
+		return Database::getRows($sql, $params);
+	}
+
 	public function getDiasxEmpleado($dia)
 	{
 		$sql = 'SELECT csd.PK_id_cantidad_solicitud_dias, csd.lunes, csd.martes, csd.miercoles, csd.jueves, csd.viernes, csd.sabado, csd.domingo, 
@@ -69,10 +101,11 @@ class Solicitudes_procesadas extends Validator
 		INNER JOIN empleados e ON sp.FK_id_empleado = e.PK_id_empleado 
 		INNER JOIN usuarios u ON e.FK_id_usuario = u.PK_id_usuario 
 		INNER JOIN estados es ON u.FK_id_estado = es.PK_id_estado
-		WHERE e.PK_id_empleado = ? AND csd.'.$dia.' > 0';
-		$params = array($this->FK_id_empleado);
-		return Database::getRow($sql, $params);
+		WHERE e.PK_id_empleado = ? AND csd.'.$dia.' > 0 AND sp.FK_id_tipo_seguro = ?';
+		$params = array($this->FK_id_empleado, $this->FK_id_tipo_seguro);
+		return Database::getRows($sql, $params);
 	}
+
 	//FIN DE LAS FUNCIONES PARA LAS TAREAS PROGRAMADAS
 
 }

@@ -112,15 +112,7 @@ class Empleados extends Validator
 	}
 
 	//FUNCIONES PARA LAS TAREAS PROGRAMADAS
-	public function getEmpleadosVentas()
-	{
-		$sql = 'SELECT e.PK_id_empleado, e.FK_id_usuario, e.FK_id_cargo_gerencia, e.activo_reparticion 
-		FROM empleados e 
-		INNER JOIN cargos_gerencias cg ON e.FK_id_cargo_gerencia = cg.PK_id_cargo_gerencia
-		WHERE cg.nombre_cargo = "ejecutivo de ventas" ';
-		$params = array(null);
-		return Database::getRows($sql, $params);
-	}
+	
 	//FIN DE FUNCIONES PARA LAS TAREAS PROGRAMADAS
 
 
