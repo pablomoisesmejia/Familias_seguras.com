@@ -10,16 +10,34 @@ try{
 			Page::showMessage(4, "Se encontraron $rows resuldatos", null);
 		}else{
 			Page::showMessage(4, "No se encontraron resultados", null);
-			$data = $prospecto->getClientesProspectos();
+			$data = $prospecto->getClientesProspectos2();
 		}
 	}else{
 		$data = $prospecto->getClientesProspectos2();
-	}
-	if($data){
+	}    
+
+
+    if(isset($_POST['buscar2'])){
+		$_POST = $prospecto->validateForm($_POST);
+		$data2 = $prospecto->searchProspecto2($_POST['busqueda2']);
+		if($data2){
+			$rows = count($data2);
+			Page::showMessage(4, "Se encontraron $rows resuldatos", null);
+		}else{
+			Page::showMessage(4, "No se encontraron resultados", null);
+			$data2 = $prospecto->getClientesProspectos3();
+		}
+	}else{
+		$data2 = $prospecto->getClientesProspectos3();
+    }
+    
+
+
+    if($data){
 		require_once("../../app/views/dashboard/empleado/index_view.php");
 	}else{
-		Page::showMessage(4, "No hay prospectos disponibles", "index.php");
-	}
+		require_once("../../app/views/dashboard/empleado/index_view.php");
+    }
 }catch(Exception $error){
 	Page::showMessage(2, $error->getMessage(), "../empleado/");
 }

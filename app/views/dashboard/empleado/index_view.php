@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col s12">
         <ul class="tabs blue-grey-text text-darken-4">
-            <li class="tab col s4"><a class="active black-text" href="#test1">Solicitudes nuevas</a></li>
+            <li class="tab col s4"><a class="black-text" href="#test1">Solicitudes nuevas</a></li>
             <li class="tab col s4"><a class="black-text" href="#test2">Solicitudes procesadas</a></li>
             <li class="tab col s4"><a class="black-text" href="#test3">Primas</a></li>
         </ul>
@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <!--Parte de clasificacion de la tabla-->
-                <table class="bordered highlight responsive-table">
+                <table class="bordered highlight responsive-table z-depth-2">
                     <thead class="morado white-text">
                         <tr>
                             <th>Solicitud No.</th>
@@ -40,7 +40,7 @@
                                     <td>$row[fecha_reparticion]</td>
                                     <td>$row[tipo_seguro]</td>
                                     <td>
-                                        <a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Elaborar cuadro' href='update.php?id=$row[PK_id_solicitud]'><i class='material-icons blue-text text-darken-3 prefix'>edit</i></a>
+                                        <a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Elaborar cuadro' href='create_cuadro.php?id=$row[PK_id_solicitud]'><i class='material-icons blue-text text-darken-3 prefix'>assignment</i></a>
                                     </td>
                                 </tr>
                                 ");
@@ -60,62 +60,49 @@
     
     <!--Contenido del tab de marcas-->
     <div id="test2" class="col s12">
-    
-        <!-- Barra de busqueda -->
-        <div class="container">
-            <div class="row">
-                <form method="post">
-                    <div class="col s12">
-                        <div class="row">
-                            <div class="input-field col s10">
-                                <i class="material-icons prefix">search</i>
-                                <input type="text" id="autocomplete-input" name="busqueda_marca" class="autocomplete">
-                                <label for="autocomplete-input" class="black-text">Buscar marca</label>
-                            </div>
-                            <div class="input-field col s2">
-                                <button type='submit' name='buscar_marca' class='btn waves-effect blue-grey darken-4 tooltipped' data-tooltip='Buscar por nombre'><i class='material-icons'>search</i></button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    
-        <!--Boton fijo en la pantalla para agregar nuevos marcas-->
-        <div class="fixed-action-btn">
-            <a class="btn-floating btn-large modal-trigger blue-grey darken-3 tooltipped" data-position="top" data-delay="50" data-tooltip="Agregar nueva marca" href="create_marca.php">
-                <i class="large material-icons">add</i>
-            </a>
-        </div>
 
+		<div class="white-text">.</div>
+		<div class="white-text">.</div>
+		<div class="white-text">.</div>
+    
         <div class="container">
-            <!--Parte de clasificacion de la tabla-->
-            <table class="bordered highlight responsive-table espacio_inf">
-                <thead class="blue-grey darken-4 white-text">
-                    <tr>
-                        <th>Nombre de marca</th>
-                        <th></th>
-                    </tr>
-                </thead>
+			<div class="row">
+				<!--Parte de clasificacion de la tabla-->
+				<table class="bordered highlight responsive-table z-depth-2">
+					<thead class="morado white-text">
+						<tr>
+							<th>Solicitud No.</th>
+							<th>Fecha</th>
+							<th>Ramo</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
 
-                <tbody>
-                    <?php
-                    if($data_marcas){
-                        foreach($data_marcas as $marca){
-                            print("
-                            <tr>
-                                <td>$marca[marca]</td>
-                                <td>
-                                    <a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Editar marca' href='update_marca.php?id=$marca[id_marca]'><i class='material-icons blue-text text-darken-3 prefix'>edit</i></a>
-                                    <a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Eliminar marca' href='delete_marca.php?id=$marca[id_marca]'><i class='material-icons red-text text-darken-3 prefix'>delete</i></a>
-                                </td>
-                            </tr>
-                            ");
-                        }
-                    }
-                    ?>
-                </tbody>
-            </table>
+					<tbody>
+					<!--Producto de ejemplo 1-->
+						<?php
+						if($data2){
+							foreach($data2 as $row2){
+								print("
+								<tr>
+									<td>$row2[PK_id_solicitud]</td>
+									<td>$row2[fecha_reparticion]</td>
+									<td>$row2[tipo_seguro]</td>
+									<td>
+										<a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Elaborar cuadro' href='create_cuadro.php?id=$row2[PK_id_solicitud]'><i class='material-icons blue-text text-darken-3 prefix'>assignment</i></a>
+									</td>
+								</tr>
+								");
+							}
+						}
+						?>
+
+					</tbody>
+				</table>
+			</div>
+			<div class="white-text">.</div>
+			<div class="white-text">.</div>
         </div>
 
     </div>
