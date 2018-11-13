@@ -14,7 +14,8 @@ try{
 							if($object2->checkContrasena($object->getClave())){
 								$_SESSION['id_empleado_d'] = $object2->getIdEmpleado(); //Obtiene el id_empleado para usarlo luego en la pagina template
 								$_SESSION['tipo_team_d'] = $object2->getTipo();
-								if($_SESSION['tipo_team_d'] == 'FamiliasSeguras.com'){
+								$_SESSION['usuario_d'] = $object2->getUsuario();
+								if($_SESSION['tipo_team_d'] == '1'){
 									Page::showMessage(1, "Autenticación correcta", "index.php");
 								}						
 							}else{

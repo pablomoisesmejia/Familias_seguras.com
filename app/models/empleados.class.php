@@ -7,6 +7,7 @@ class Empleados extends Validator
 	private $activo_reparticion = null;
 
 	private $tipo = null;
+	private $usuario = null;
 
     public function setIdEmpleado($value)
 	{
@@ -93,6 +94,23 @@ class Empleados extends Validator
 		return $this->tipo;
 	}
 
+	public function setUsuario($value)
+	{
+		if($this->validateAlphanumeric($value, 1, 50))
+		{
+			$this->usuario = $value;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function getUsuario()
+	{
+		return $this->usuario;
+	}
+
 	//FUNCIONES PARA LAS TAREAS PROGRAMADAS
 	public function getEmpleadosVentas()
 	{
@@ -120,15 +138,20 @@ class Empleados extends Validator
 	}
 
 	public function checkContrasena($clave){
-		$sql = "SELECT clave, tipo_team FROM usuarios, empleados, tipos_team WHERE PK_id_empleado = ?";
+		$sql = "SELECT clave, FK_id_tipo_team, usuario FROM usuarios, empleados WHERE (empleados.FK_id_usuario = usuarios.PK_id_usuario) AND PK_id_empleado = ?";
 		$params = array($this->PK_id_empleado);
 		$data = Database::getRow($sql, $params);
 		if($clave == $data['clave']){
-			$this->tipo = $data['tipo_team'];
+			$this->tipo = $data['FK_id_tipo_team'];
+			$this->usuario = $data['usuario'];
 			return true;
 		}else{
 			return false;
 		}
+	}
+
+	public function logOut(){
+		return session_destroy();
 	}
 
 	//Funciones

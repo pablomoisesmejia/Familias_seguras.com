@@ -15,10 +15,9 @@ class Page extends Component{
             <head>
                 <meta charset='utf-8'>
                 <title>Dashboard - $title</title>
-                <link type='text/css' rel='stylesheet' href='../../web/css/materialize.min.css'/>
-                <link type='text/css' rel='stylesheet' href='../../web/css/icon.css'/>
-                <link type='text/css' rel='stylesheet' href='../../web/css/dashboard.css'/>
-                <script type='text/javascript' src='../../web/script/Chart.bundle.min.js'></script>
+                <link type='text/css' rel='stylesheet' href='../../web/css/materialize.css'/>
+				<link type='text/css' rel='stylesheet' href='../../web/css/material_icons.css'/>
+				<link type='text/css' rel='stylesheet' href='../../web/css/dashboard.css'/>
                 <script type='text/javascript' src='../../web/script/sweetalert.min.js'></script>
                 <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
             </head>
@@ -27,32 +26,37 @@ class Page extends Component{
 
         if(isset($_SESSION['id_empleado_d'])){
             print("
-                <div class='container'>
-                
-                    <!-- Top Navigation -->
-                    <div class='codrops-top clearfix navbar-fixed'>
-                        <a   style='color:black;' ><span>FS | Administación </span></a>
-                        <span class='right'><a class='codrops-icon codrops-icon-drop' style='color:black;'  href='index.php'><span>Cerrar sesión</span></a></span>
-                    </div>
+			<header class='navbar-fixed'>
+				<!-- Dropdown Structure -->
+				<ul id='dropdown1' class='dropdown-content'>
+					<li><a href='logout.php'>Cerrar sesi&oacute;n</a></li>
+				</ul>
+				<!-- Dropdown Structure Mobile -->
+				<ul id='dropdown2' class='dropdown-content'>
+					<li><a href='logout.php'>Cerrar sesi&oacute;n</a></li>
+				</ul>
+				
+				<div class='navbar-fixed'>  
+					<nav>
+					<!--Navbar Color gris azulado-->
+						<div class='nav-wrapper  blue-grey darken-4'>
+						<img class='brand-logo' src='../../web/img/mipintura.png'>
+						<a href='#' data-activates='mobile-demo' class='button-collapse'><i class='material-icons'>menu</i></a>
+						<ul class='right hide-on-med-and-down'>
+							<li><a href='#'>Cootizaciones</a></li>
+							<li><a class='dropdown-button' href='#!' data-activates='dropdown1'>Bienvenido <b>$_SESSION[usuario_d]</b><i class='material-icons right'>arrow_drop_down</i></a></li>
+						</ul>
+						</div>
+					</nav>
+				</div>
+			</header>
 
+			<ul class='side-nav' id='mobile-demo'>
+				<li><a href='#'>Cootizaciones</a></li>
+				<li><a class='dropdown-button' href='#!' data-activates='dropdown2'>Bienvenido <b>$_SESSION[usuario_d]</b><i class='material-icons right'>arrow_drop_down</i></a></li>
+			</ul>
 
-                    <div class='component'>
-                        <!-- Start Nav Structure -->
-                        <button class='cn-button' id='cn-button'>+</button>
-                        <div class='cn-wrapper' id='cn-wrapper'>
-                            <ul>
-                            <li><a href='#'><i class='material-icons'>add</i></a></li>
-                            <li><a href='#'><i class='material-icons'>add</i></a></li>
-                            <li><a href='#'><i class='material-icons'>add</i></a></li>
-                            <li><a href='#'><i class='material-icons'>add</i></span></a></li>
-                            <li><a href='#'><i class='material-icons'>add</i></a></li>
-                            </ul>
-                        </div>
-                        <div id='cn-overlay' class='cn-overlay'></div>
-                        <!-- End Nav Structure -->
-                    </div>
-                </div>
-                <div style='  background-color: rgb(237, 237, 237);'>
+			<main class=''>
             ");
         }else{
 			print("
@@ -106,8 +110,6 @@ class Page extends Component{
 				</footer>
 				<!--Import jQuery before materialize.js-->
 				<script type='text/javascript' src='../../web/script/jquery-3.2.1.min.js'></script>
-        		<script type='text/javascript' src='../../web/script/main.js'></script>
-				<script type='text/javascript' src='../../web/script/ini.js'></script>
 				<script type='text/javascript' src='../../web/script/materialize.min.js'></script>
 			</body>
 			</html>
