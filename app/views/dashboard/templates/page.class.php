@@ -39,7 +39,7 @@ class Page extends Component{
 				<div class='navbar-fixed'>  
 					<nav>
 					<!--Navbar Color gris azulado-->
-						<div class='nav-wrapper  blue-grey darken-4'>
+						<div class='nav-wrapper morado'>
 						<img class='brand-logo' src='../../web/img/mipintura.png'>
 						<a href='#' data-activates='mobile-demo' class='button-collapse'><i class='material-icons'>menu</i></a>
 						<ul class='right hide-on-med-and-down'>
@@ -64,7 +64,7 @@ class Page extends Component{
 				<div class='navbar-fixed'>  
 					<nav>
 					<!--Navbar Color gris azulado-->
-						<div class='nav-wrapper  blue-grey darken-4'>
+						<div class='nav-wrapper morado'>
 						<img class='brand-logo' src='../../web/img/mipintura.png'>
 						</div>
 					</nav>
@@ -86,7 +86,7 @@ class Page extends Component{
     public static function templateFooter(){
         print("
 				</main>
-				<footer class='page-footer  blue-grey darken-4'>
+				<footer class='page-footer morado'>
 					<div class='container'>
 						<div class='row'>
 						<div class='col l6 s12'>

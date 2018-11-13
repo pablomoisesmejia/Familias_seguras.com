@@ -188,5 +188,18 @@ class Cliente_Prospecto extends Validator{
 			$this->PK_id_cliente_prospecto = Database::getLastRowId();
 		}
 	}
+
+	public function getClientesProspectos2()
+	{
+		$sql = 'SELECT * FROM solicitudes, clientes_prospectos, usuarios WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario) AND FK_id_estado_solicitud = 1';
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+
+	public function searchProspecto($value){
+		$sql = 'SELECT * FROM solicitudes, clientes_prospectos, usuarios WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario) AND (FK_id_estado_solicitud = 1) AND nombres = ('%Apellido%' OR apellidos = '%Apellido%')';
+		$params = array("%$value%");
+		return Database::getRows($sql, $params);
+	}
 }
 ?>
