@@ -18,7 +18,7 @@ class Page extends Component{
                 <link type='text/css' rel='stylesheet' href='../../web/css/materialize.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/material_icons.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/dashboard.css'/>
-                <script type='text/javascript' src='../../web/script/sweetalert.min.js'></script>
+				<script type='text/javascript' src='../../web/script/sweetalert.min.js'></script>
                 <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
             </head>
             <body>
@@ -110,6 +110,8 @@ class Page extends Component{
 				</footer>
 				<!--Import jQuery before materialize.js-->
 				<script type='text/javascript' src='../../web/script/jquery-3.2.1.min.js'></script>
+				<script type='text/javascript' src='../../web/script/main.js'></script>
+				<script type='text/javascript' src='../../web/script/inicializador.js'></script>
 				<script type='text/javascript' src='../../web/script/materialize.min.js'></script>
 			</body>
 			</html>

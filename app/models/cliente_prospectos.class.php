@@ -191,14 +191,14 @@ class Cliente_Prospecto extends Validator{
 
 	public function getClientesProspectos2()
 	{
-		$sql = 'SELECT * FROM solicitudes, clientes_prospectos, usuarios WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario) AND FK_id_estado_solicitud = 1';
+		$sql = 'SELECT * FROM solicitudes, clientes_prospectos, usuarios, tipos_seguro WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario AND clientes_prospectos.FK_id_tipo_seguro = tipos_seguro.PK_id_tipo_seguro) AND FK_id_estado_solicitud = 1';
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
 
 	public function searchProspecto($value){
-		$sql = 'SELECT * FROM solicitudes, clientes_prospectos, usuarios WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario) AND (FK_id_estado_solicitud = 1) AND nombres = ('%Apellido%' OR apellidos = '%Apellido%')';
-		$params = array("%$value%");
+		$sql = 'SELECT * FROM solicitudes, clientes_prospectos, usuarios, tipos_seguro WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario AND clientes_prospectos.FK_id_tipo_seguro = tipos_seguro.PK_id_tipo_seguro) AND (FK_id_estado_solicitud = 1) AND (nombres = ? OR apellidos = ?)';
+		$params = array("%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}
 }
