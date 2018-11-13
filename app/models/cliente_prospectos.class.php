@@ -165,7 +165,18 @@ class Cliente_Prospecto extends Validator{
 		return $this->fecha_aceptacion;
 	}
 	
+	//FUNCIONES PARA LAS TAREAS PROGRAMADAS
+	public function getClientesProspectos()
+	{
+		$sql = 'SELECT PK_id_cliente_prospecto, FK_id_usuario, FK_id_tipo_seguro, hora_contactarle, cantidad_pagos, forma_pago, fecha_cita, hora_cita, fecha_aceptacion, asignacion 
+		FROM clientes_prospectos 
+		WHERE asignacion = 0';
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+	//FIN DE FUNCIONES PARA LAS TAREAS PROGRAMADAS
 
+	//FUNCIONES PARA EL SCRUD
 	public function createClienteProspecto()
 	{
 		$sql = "INSERT INTO clientes_prospectos(FK_id_usuario, FK_id_tipo_seguro, hora_contactarle, cantidad_pagos, forma_pago, fecha_cita, hora_cita, fecha_aceptacion) 
