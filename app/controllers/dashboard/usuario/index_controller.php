@@ -1,7 +1,9 @@
 <?php
 require_once("../../app/models/cliente_prospectos.class.php");
+require_once("../../app/models/primas.class.php");
 try{
 	$prospecto = new Cliente_Prospecto;
+	$prima = new Primas;
 	if(isset($_POST['buscar'])){
 		$_POST = $prospecto->validateForm($_POST);
 		$data = $prospecto->searchProspecto($_POST['busqueda']);
@@ -31,6 +33,20 @@ try{
 		$data2 = $prospecto->getClientesProspectos3();
     }
     
+
+	if(isset($_POST['buscar3'])){
+		$_POST = $prima->validateForm($_POST);
+		$data3 = $prima->searchPrima($_POST['busqueda3']);
+		if($data3){
+			$rows = count($data3);
+			Page::showMessage(4, "Se encontraron $rows resuldatos", null);
+		}else{
+			Page::showMessage(4, "No se encontraron resultados", null);
+			$data3 = $prima->getPrimas();
+		}
+	}else{
+		$data3 = $prima->getPrimas();
+    }
 
 
     if($data){
