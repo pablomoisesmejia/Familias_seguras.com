@@ -74,7 +74,7 @@
 							<th>Solicitud No.</th>
 							<th>Fecha</th>
 							<th>Ramo</th>
-							<th></th>
+							<!--<th></th>-->
 							<th></th>
 						</tr>
 					</thead>
@@ -89,9 +89,9 @@
 									<td>$row2[PK_id_solicitud]</td>
 									<td>$row2[fecha_reparticion]</td>
 									<td>$row2[tipo_seguro]</td>
-									<td>
-										<a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Elaborar cuadro' href='create_cuadro.php?id=$row2[PK_id_solicitud]'><i class='material-icons blue-text text-darken-3 prefix'>assignment</i></a>
-									</td>
+									<!--<td>
+										<a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Editar cuadro' href='update_cuadro.php?id=$row2[PK_id_solicitud]&id2=$row2[FK_id_tipo_seguro]&id3=$row2[FK_id_cliente_prospecto]'><i class='material-icons blue-text text-darken-3 prefix'>edit</i></a>
+									</td>-->
 								</tr>
 								");
 							}
