@@ -85,21 +85,22 @@ class Solicitudes_procesadas extends Validator
         INNER JOIN cantidad_solicitud_dias csd ON sp.FK_id_cantidad_solicitud_dia = csd.PK_id_cantidad_solicitud_dias
 		INNER JOIN tipos_seguro ts ON sp.FK_id_tipo_seguro = ts.PK_id_tipo_seguro
 		INNER JOIN cargos_gerencias cg ON e.FK_id_cargo_gerencia = cg.PK_id_cargo_gerencia
-		WHERE cg.nombre_cargo = "ejecutivo de ventas" AND csd.'.$dia.' > 0 AND ts.PK_id_tipo_seguro = ? ';
+		WHERE cg.nombre_cargo = "ejecutivo de ventas" AND csd.'.$dia.' > 0 AND ts.PK_id_tipo_seguro = ? AND csd.'.$dia.' > csd.cant_'.$dia.'';
 		$params = array($this->FK_id_tipo_seguro);
 		return Database::getRows($sql, $params);
 	}
 
-	public function getEmpleadosVentas()
+	public function getEmpleadosVentas($dia)
 	{
-		$sql = 'SELECT e.PK_id_empleado, e.FK_id_usuario, e.FK_id_cargo_gerencia, e.activo_reparticion, es.estado
-		FROM empleados e 
+		$sql = 'SELECT e.PK_id_empleado, e.FK_id_usuario, e.FK_id_cargo_gerencia, e.activo_reparticion, es.estado, csd.PK_id_cantidad_solicitud_dias, csd.'.$dia.', csd.cant_'.$dia.', csd.cant_castigo_'.$dia.', csd.fecha_castigo_'.$dia.'
+		FROM empleados e
         INNER JOIN usuarios u ON e.FK_id_usuario = u.PK_id_usuario
         INNER JOIN estados es ON u.FK_id_estado = es.PK_id_estado
 		INNER JOIN solicitudes_procesadas sp ON e.PK_id_empleado = sp.FK_id_empleado
+        INNER JOIN cantidad_solicitud_dias csd ON sp.FK_id_cantidad_solicitud_dia = csd.PK_id_cantidad_solicitud_dias
 		INNER JOIN tipos_seguro ts ON sp.FK_id_tipo_seguro = ts.PK_id_tipo_seguro
 		INNER JOIN cargos_gerencias cg ON e.FK_id_cargo_gerencia = cg.PK_id_cargo_gerencia
-		WHERE cg.nombre_cargo = "ejecutivo de ventas" AND ts.PK_id_tipo_seguro = ? ';
+		WHERE cg.nombre_cargo = "ejecutivo de ventas" AND csd.'.$dia.' > 0 AND ts.PK_id_tipo_seguro = ?';
 		$params = array($this->FK_id_tipo_seguro);
 		return Database::getRows($sql, $params);
 	}

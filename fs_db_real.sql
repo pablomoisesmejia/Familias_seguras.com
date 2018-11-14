@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2018 a las 04:24:09
+-- Tiempo de generación: 14-11-2018 a las 04:47:18
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -84,6 +84,21 @@ CREATE TABLE `cargos_gerencias` (
   `nombre_cargo` varchar(35) COLLATE utf8_spanish_ci NOT NULL,
   `FK_id_gerencia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `cargos_gerencias`
+--
+
+INSERT INTO `cargos_gerencias` (`PK_id_cargo_gerencia`, `nombre_cargo`, `FK_id_gerencia`) VALUES
+(1, 'gerente general', 1),
+(2, 'asistente general', 1),
+(3, 'gerente comercial', 2),
+(4, 'asistente comercial', 2),
+(5, 'gerente de cobros', 3),
+(6, 'ejecutivo de cobros', 3),
+(7, 'gerente de ventas', 5),
+(8, 'asistente de ventas', 5),
+(9, 'ejecutivo de ventas', 5);
 
 -- --------------------------------------------------------
 
@@ -251,6 +266,15 @@ CREATE TABLE `estados` (
   `estado` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `estados`
+--
+
+INSERT INTO `estados` (`PK_id_estado`, `estado`) VALUES
+(1, 'Activo'),
+(2, 'Suspendido'),
+(3, 'Inactivo');
+
 -- --------------------------------------------------------
 
 --
@@ -261,6 +285,14 @@ CREATE TABLE `estados_correo` (
   `PK_id_estado_correo` int(11) NOT NULL,
   `estado_correo` varchar(40) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `estados_correo`
+--
+
+INSERT INTO `estados_correo` (`PK_id_estado_correo`, `estado_correo`) VALUES
+(1, 'pendiente'),
+(2, 'enviado');
 
 -- --------------------------------------------------------
 
@@ -273,6 +305,16 @@ CREATE TABLE `estado_solicitud` (
   `estado_solicitud` varchar(40) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `estado_solicitud`
+--
+
+INSERT INTO `estado_solicitud` (`PK_id_estado_solicitud`, `estado_solicitud`) VALUES
+(1, 'pendiente'),
+(2, 'procesada'),
+(3, 'no se puede procesar'),
+(4, 'urgente');
+
 -- --------------------------------------------------------
 
 --
@@ -284,6 +326,23 @@ CREATE TABLE `gerencias` (
   `nombre_gerencia` varchar(35) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `gerencias`
+--
+
+INSERT INTO `gerencias` (`PK_id_gerencia`, `nombre_gerencia`) VALUES
+(1, 'Gerencia General'),
+(2, 'Gerencia Comercial'),
+(3, 'Gerencia de Cobros'),
+(4, 'Gerencia de Reclamos'),
+(5, 'Gerencia de Ventas'),
+(6, 'Gerencia de Mercadeo'),
+(7, 'Gerencia Administrativa'),
+(8, 'Gerencia de Recursos Humanos'),
+(9, 'Gerencia de Atención al Cliente'),
+(10, 'Gerencia de IT'),
+(11, 'Gerencia de Comunicaciones');
+
 -- --------------------------------------------------------
 
 --
@@ -294,6 +353,40 @@ CREATE TABLE `marcas_vehiculos` (
   `PK_id_marca_vehiculo` int(11) NOT NULL,
   `marca_vehiculo` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `marcas_vehiculos`
+--
+
+INSERT INTO `marcas_vehiculos` (`PK_id_marca_vehiculo`, `marca_vehiculo`) VALUES
+(1, 'Acura'),
+(2, 'Audi'),
+(3, 'BMW'),
+(4, 'Chevrolet'),
+(5, 'Dodge'),
+(6, 'Ford'),
+(7, 'GMC'),
+(8, 'Honda'),
+(9, 'Hyundai'),
+(10, 'Isuzu'),
+(11, 'Jaguar'),
+(12, 'Jeep'),
+(13, 'Kia'),
+(14, 'Land Rover'),
+(15, 'Lexus'),
+(16, 'Mazda'),
+(17, 'Mercedez-Benz'),
+(18, 'Mercury'),
+(19, 'Mitsubishi'),
+(20, 'Nissan'),
+(21, 'Pontiac'),
+(22, 'Scion'),
+(23, 'Subaru'),
+(24, 'Suzuki'),
+(25, 'Toyota'),
+(26, 'Volkswagen'),
+(27, 'Volvo'),
+(28, 'Hummer');
 
 -- --------------------------------------------------------
 
@@ -307,6 +400,15 @@ CREATE TABLE `modelos_vehiculos` (
   `FK_id_marca_vehiculo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `modelos_vehiculos`
+--
+
+INSERT INTO `modelos_vehiculos` (`PK_id_modelo_vehiculo`, `modelos_vehiculo`, `FK_id_marca_vehiculo`) VALUES
+(44, 'Lancer Evolution', 19),
+(45, 'Lancer', 19),
+(46, 'Civic', 8);
+
 -- --------------------------------------------------------
 
 --
@@ -317,6 +419,14 @@ CREATE TABLE `origenes_vehiculo` (
   `PK_id_origen_vehiculo` int(11) NOT NULL,
   `origen_vehiculo` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `origenes_vehiculo`
+--
+
+INSERT INTO `origenes_vehiculo` (`PK_id_origen_vehiculo`, `origen_vehiculo`) VALUES
+(1, 'Agencia'),
+(2, 'Importado');
 
 -- --------------------------------------------------------
 
@@ -415,6 +525,16 @@ CREATE TABLE `tipos_seguro` (
   `tipo_seguro` varchar(40) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `tipos_seguro`
+--
+
+INSERT INTO `tipos_seguro` (`PK_id_tipo_seguro`, `tipo_seguro`) VALUES
+(1, 'Seguro Medico'),
+(2, 'Seguro de Vida'),
+(3, 'Seguro de Incendios'),
+(4, 'Seguro de Vehiculo');
+
 -- --------------------------------------------------------
 
 --
@@ -425,6 +545,20 @@ CREATE TABLE `tipos_team` (
   `PK_id_tipo_team` int(11) NOT NULL,
   `tipo_team` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tipos_team`
+--
+
+INSERT INTO `tipos_team` (`PK_id_tipo_team`, `tipo_team`) VALUES
+(1, 'FamiliasSeguras.com'),
+(2, 'Minus Risk'),
+(3, 'SeguroDeAutomotores.com'),
+(4, 'Agente Independiente'),
+(5, 'Corredor de Seguros'),
+(6, 'Compañia de Seguros'),
+(7, 'Prospecto'),
+(8, 'Cliente');
 
 -- --------------------------------------------------------
 
@@ -806,13 +940,13 @@ ALTER TABLE `referidos`
 -- AUTO_INCREMENT de la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
-  MODIFY `PK_id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `PK_id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitudes_atencion_cliente`
 --
 ALTER TABLE `solicitudes_atencion_cliente`
-  MODIFY `PK_id_solicitud_atencion_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `PK_id_solicitud_atencion_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitudes_procesadas`

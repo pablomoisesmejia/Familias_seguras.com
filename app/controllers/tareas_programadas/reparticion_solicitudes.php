@@ -23,14 +23,14 @@ $tipo_seguro = new Tipos_seguro;
 
 
 $tipos_seguros = $tipo_seguro->getTiposSeguros();
-//for($k = 0; $k<count($tipos_seguros); $k++)
-//{
+for($k = 0; $k<count($tipos_seguros); $k++)
+{
    // echo $k.' tipo seguro';
     echo '<br>';
-    $solicitud_procesada->setIdTipoSeguro($tipos_seguros[0]['PK_id_tipo_seguro']);
-    $empleados = $solicitud_procesada->getEmpleadosVentas();//Obtiene los empleados
+    $solicitud_procesada->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
+    $empleados = $solicitud_procesada->getEmpleadosVentas($dias_semana[$dia]);//Obtiene los empleados
 
-    $cliente_prospecto->setIdTipoSeguro($tipos_seguros[0]['PK_id_tipo_seguro']);
+    $cliente_prospecto->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
     $clientes_prospectos = $cliente_prospecto->getClientesProspectos();//Obtiene los clientes ó prospectos que aun no se han asignado a un empleado para generar el cuadro comparativo de los seguros
     
 
@@ -49,71 +49,124 @@ $tipos_seguros = $tipo_seguro->getTiposSeguros();
                 echo $i.'--empleado';
                 echo '<br>';
                 $empleados_disponibles = $solicitud_procesada->getEmpleadosDisponibles($dias_semana[$dia]);
-                $id_cantidad_dia = $empleados_disponibles[$i]['PK_id_cantidad_solicitud_dias'];
+                echo count($empleados_disponibles);
 
-                $cliente_prospecto->setIdTipoSeguro($tipos_seguros[0]['PK_id_tipo_seguro']);
+                $cliente_prospecto->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
                 $clientes_prospectos = $cliente_prospecto->getClientesProspectos();//Obtiene los clientes ó prospectos que aun no se han asignado a un empleado para generar el cuadro comparativo de los seguros
                 $contador_cliente_prospecto = count($clientes_prospectos);
-                echo $contador_cliente_prospecto;
-                
-                if($contador_cliente_prospecto != 0)
+
+                if($empleados_disponibles > 0)
                 {
-                    if($empleados[$i]['estado'] === 'Activo')//Se comprueba el estado del empleado
+                    for($n = 0; $n < count($empleados_disponibles); $n++)
                     {
-                        $cant_pred = $empleados_disponibles[$i][$dias_semana[$dia]];//Obtiene la cantidad de solicitudes predeterminadas(Cantidad cuando se registro) 
-                        $cant_dia = $empleados_disponibles[$i]['cant_'.$dias_semana[$dia]];//Obtiene la cantidad de solicitud repartida en el dia
+                        echo $n.'---empleado disponible';
+                        echo '<br>';
+                        
+                        $cliente_prospecto->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
+                        $clientes_prospectos = $cliente_prospecto->getClientesProspectos();//Obtiene los clientes ó prospectos que aun no se han asignado a un empleado para generar el cuadro comparativo de los seguros
+                        $contador_cliente_prospecto = count($clientes_prospectos);
 
-                        if($cant_pred > $cant_dia)//Comprobar si tiene disponibilidad para solicitudes                          
+                                      
+                        if($contador_cliente_prospecto > 0)
                         {
-                            echo 'tiene disponible';
-                            $fecha = date('Y-m-d');
-                            $hora = date('H:i:s');
-
-                            $solicitud->setIdClienteProspecto($clientes_prospectos[0]['PK_id_cliente_prospecto']);
-                            $solicitud->setIdEmpleado($empleados[$i]['PK_id_empleado']);
-                            $solicitud->setFechaReparticion($fecha);
-                            $solicitud->setHoraReparticion($hora);
-                            $solicitud->setIdEstadoSolicitud(1);
-                            $solicitud->setIdEstadoCorreo(1);
-                            if($solicitud->createSolicitud())
+                            if(count($empleados_disponibles) != 0)
                             {
-                                $cliente_prospecto->setAsignacion(1);
-                                $cliente_prospecto->setIdClienteProspecto($clientes_prospectos[0]['PK_id_cliente_prospecto']);
-                                if($cliente_prospecto->updateAsignacion())
+                                $id_cantidad_dia = $empleados_disponibles[$n]['PK_id_cantidad_solicitud_dias'];
+                                if($empleados_disponibles[$n]['estado'] === 'Activo')//Se comprueba el estado del empleado
                                 {
-                                    $cant_dia = $cant_dia + 1;
-                                    $solicitud_procesada->setIdCantidad($id_cantidad_dia);
-                                    if($solicitud_procesada->updateCantidadEstadoA($dias_semana[$dia], $cant_dia))
+                                    $cant_pred = $empleados_disponibles[$n][$dias_semana[$dia]];//Obtiene la cantidad de solicitudes predeterminadas(Cantidad cuando se registro) 
+                                    $cant_dia = $empleados_disponibles[$n]['cant_'.$dias_semana[$dia]];//Obtiene la cantidad de solicitud repartida en el dia
+
+                                    if($cant_pred > $cant_dia)//Comprobar si tiene disponibilidad para solicitudes                          
                                     {
-                                        $contador = $contador + 1;
-                                        if($contador_cliente_prospecto > 0 && $i < count($empleados) || $contador == $i)
+                                        //echo 'tiene disponible';
+                                        $fecha = date('Y-m-d');
+                                        $hora = date('H:i:s');
+
+                                        $solicitud->setIdClienteProspecto($clientes_prospectos[0]['PK_id_cliente_prospecto']);
+                                        $solicitud->setIdEmpleado($empleados_disponibles[$n]['PK_id_empleado']);
+                                        $solicitud->setFechaReparticion($fecha);
+                                        $solicitud->setHoraReparticion($hora);
+                                        $solicitud->setIdEstadoSolicitud(1);
+                                        $solicitud->setIdEstadoCorreo(1);
+                                        if($solicitud->createSolicitud())
                                         {
-                                            $i = 0;
+                                            $cliente_prospecto->setAsignacion(1);
+                                            $cliente_prospecto->setIdClienteProspecto($clientes_prospectos[0]['PK_id_cliente_prospecto']);
+                                            if($cliente_prospecto->updateAsignacion())
+                                            {
+                                                $cant_dia = $cant_dia + 1;
+                                                $solicitud_procesada->setIdCantidad($id_cantidad_dia);
+                                                if($solicitud_procesada->updateCantidadEstadoA($dias_semana[$dia], $cant_dia))
+                                                {
+                                                    $empleados_dispo = $solicitud_procesada->getEmpleadosDisponibles($dias_semana[$dia]);
+
+                                                    $cliente_prospecto->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
+                                                    $clientes_prospectos = $cliente_prospecto->getClientesProspectos();//Obtiene los clientes ó prospectos que aun no se han asignado a un empleado para generar el cuadro comparativo de los seguros
+                                                    $contador_cliente_prospecto = count($clientes_prospectos);
+                                                    if($contador_cliente_prospecto > 0 && count($empleados_dispo) == 0)
+                                                    {
+                                                        
+                                                        for($j = 0; $j<count($clientes_prospectos); $j++)
+                                                        {
+                                                            $fecha = date('Y-m-d');
+                                                            $hora = date('H:i:s');
+                                                            $solicitud_atencion_cliente->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
+                                                            $solicitud_atencion_cliente->setFechaReparticion($fecha);
+                                                            $solicitud_atencion_cliente->setHoraReparticion($hora);
+                                                            $solicitud_atencion_cliente->setIdEstadoCorreo(1);
+                                                            $solicitud_atencion_cliente->setIdEstadoSolicitud(1);
+                                                            if($solicitud_atencion_cliente->createSolicitudAtencionCliente())
+                                                            {
+                                                                $cliente_prospecto->setAsignacion(1);
+                                                                $cliente_prospecto->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
+                                                                if($cliente_prospecto->updateAsignacion())
+                                                                {
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    print('atencion al cliente cliente_prospecto '.Database::getException());
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                print('solicitud_atencion_cliente '.Database::getException());
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    print('solicitud_procesada '.Database::getException());
+                                                }
+                                            }
+                                            else
+                                            {
+                                                print('cliente_prospecto '.Database::getException());
+                                            }
+                                        }
+                                        else
+                                        {
+                                            print('solicitud '.Database::getException());
                                         }
                                     }
                                     else
                                     {
-                                        print('solicitud_procesada '.Database::getException());
+                                        $contador = $contador + 1;//Cada vez que el empleado no tenga disponibilidad para solicitud se sumara 1
+                                        echo 'no tiene disponible';
                                     }
                                 }
-                                else
+                                else if($empleados_disponibles[$n]['estado'] === 'Suspendido')//Se comprueba el estado del empleado
                                 {
-                                    print('cliente_prospecto '.Database::getException());
+                                    if($empleados_disponibles[$n]['cant_castigo_'.$dias_semana[$dia]] > $empleados_disponibles[$n]['cant_'.$dias_semana[$dia]])//Comprobar si tiene disponibilidad para solicitudes                         
+                                    {
+                                        
+                                    }
                                 }
                             }
                             else
                             {
-                                print('solicitud '.Database::getException());
-                            }
-                        }
-                        else
-                        {
-                            $contador = $contador + 1;//Cada vez que el empleado no tenga disponibilidad para solicitud se sumara 1
-                            echo 'no tiene disponible';
-                            if($contador >= count($empleados))//Si el contador es mayor o igual a la cantidad de empleados que inserta los clientes_prospectos a la tabla de solicitud atencion al cliente
-                            {
-                                //codigo para inserta en la tabla solicitudes atencion al cliente
-                                echo 'insertar en atencion al cliente';
                                 for($j = 0; $j<count($clientes_prospectos); $j++)
                                 {
                                     $fecha = date('Y-m-d');
@@ -141,15 +194,37 @@ $tipos_seguros = $tipo_seguro->getTiposSeguros();
                                         print('solicitud_atencion_cliente '.Database::getException());
                                     }
                                 }
-                                
                             }
                         }
                     }
-                    if($empleados[$i]['estado'] === 'Suspendido')//Se comprueba el estado del empleado
+                }
+                else
+                {
+                    for($j = 0; $j<count($clientes_prospectos); $j++)
                     {
-                        if($empleados_disponibles[$i]['cant_castigo_'.$dias_semana[$dia]] > $empleados_disponibles[$i]['cant_'.$dias_semana[$dia]])//Comprobar si tiene disponibilidad para solicitudes                         
+                        $fecha = date('Y-m-d');
+                        $hora = date('H:i:s');
+                        $solicitud_atencion_cliente->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
+                        $solicitud_atencion_cliente->setFechaReparticion($fecha);
+                        $solicitud_atencion_cliente->setHoraReparticion($hora);
+                        $solicitud_atencion_cliente->setIdEstadoCorreo(1);
+                        $solicitud_atencion_cliente->setIdEstadoSolicitud(1);
+                        if($solicitud_atencion_cliente->createSolicitudAtencionCliente())
                         {
-                            
+                            $cliente_prospecto->setAsignacion(1);
+                            $cliente_prospecto->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
+                            if($cliente_prospecto->updateAsignacion())
+                            {
+
+                            }
+                            else
+                            {
+                                print('atencion al cliente cliente_prospecto '.Database::getException());
+                            }
+                        }
+                        else
+                        {
+                            print('solicitud_atencion_cliente '.Database::getException());
                         }
                     }
                 }
@@ -186,7 +261,41 @@ $tipos_seguros = $tipo_seguro->getTiposSeguros();
             }
         }
     }   
-//}
+}
+/*
+if($contador >= count($empleados))//Si el contador es mayor o igual a la cantidad de empleados que inserta los clientes_prospectos a la tabla de solicitud atencion al cliente
+{
+    //codigo para inserta en la tabla solicitudes atencion al cliente
+    echo 'insertar en atencion al cliente';
+    for($j = 0; $j<count($clientes_prospectos); $j++)
+    {
+        $fecha = date('Y-m-d');
+        $hora = date('H:i:s');
+        $solicitud_atencion_cliente->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
+        $solicitud_atencion_cliente->setFechaReparticion($fecha);
+        $solicitud_atencion_cliente->setHoraReparticion($hora);
+        $solicitud_atencion_cliente->setIdEstadoCorreo(1);
+        $solicitud_atencion_cliente->setIdEstadoSolicitud(1);
+        if($solicitud_atencion_cliente->createSolicitudAtencionCliente())
+        {
+            $cliente_prospecto->setAsignacion(1);
+            $cliente_prospecto->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
+            if($cliente_prospecto->updateAsignacion())
+            {
+
+            }
+            else
+            {
+                print('atencion al cliente cliente_prospecto '.Database::getException());
+            }
+        }
+        else
+        {
+            print('solicitud_atencion_cliente '.Database::getException());
+        }
+    }
+    
+}
 
 /* if($contador_cliente_prospecto != 0)
 {
