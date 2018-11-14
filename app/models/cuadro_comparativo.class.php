@@ -62,21 +62,24 @@ class Cuadro_Comparativo extends Validator
         return $this->plan;
     }
 
-    public function setOferta($value)
-    {
-        if($this->validateAlphanumeric($value, 1, 100))
-        {
-            $this->oferta = $value;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    public function getOferta()
-    {
-        return $this->oferta;
+    public function setOferta($file){
+		if($this->validateArchive($file, $this->oferta, "../../web/dashboard/ofertas/")){
+			$this->oferta = $this->getArchiveName();
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getOferta(){
+		return $this->oferta;
+	}
+	public function unsetOderta(){
+		if(unlink("../../web/dashboard/ofertas/".$this->oferta)){
+			$this->oferta = null;
+			return true;
+		}else{
+			return false;
+		}
     }
 
     public function setIdClienteProspecto($value)

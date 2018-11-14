@@ -10,19 +10,22 @@ try{
     $cuadro = new Cuadro_Comparativo;
     $solicitud = new Solicitudes;
     if(isset($_GET['id']) && isset($_GET['id2']) && isset($_GET['id3'])){
-        if(isset($_POST['crear'])){ //El controlador funcionara con el modelo que se llame asi
+        if(isset($_POST['crear'])){
+
             $num = $cuadro->getNumCompanias($_GET['id3']);
-                $n = $num['n'];
-                for($i = 1;$i <= $n;$i++){
-                    if($_GET['id2'] == 2){
-                        $_POST = $cuadro->validateForm($_POST);
-                        if($cuadro->setIdAseguradora($_POST['aseguradora'])){
-                            if($cuadro->setPlan($_POST['plan'])){
-                                if($cuadro->setOferta($_POST['oferta'])){
+            $n = $num['n'];
+            for($i = 1;$i <= $n;$i++){
+
+                if($_GET['id2'] == 2){
+                    $_POST = $cuadro->validateForm($_POST);
+                    if($cuadro->setIdAseguradora($_POST['aseguradora'.$i])){
+                        if($cuadro->setPlan($_POST['plan'.$i])){
+                            if(is_uploaded_file($_FILES['oferta'.$i]['tmp_name'])){
+                                if($cuadro->setOferta($_FILES['oferta'.$i])){
                                     if($cuadro->setIdClienteProspecto($_GET['id3'])){
-                                        if($cuadro->setValorRecuperacion50($_POST['recup50'])){
-                                            if($cuadro->setValorRecuperacion60($_POST['recup60'])){
-                                                if($cuadro->setValorRecuperacion70($_POST['recup70'])){
+                                        if($cuadro->setValorRecuperacion50($_POST['recup50'.$i])){
+                                            if($cuadro->setValorRecuperacion60($_POST['recup60'.$i])){
+                                                if($cuadro->setValorRecuperacion70($_POST['recup70'.$i])){
                                                     if($cuadro->createCuadro()){ //Crea una presentacion
                                                         $solicitud->updateEstado($fecha, $hora, $_GET['id']);
                                                         Page::showMessage(1, "Cuadro creado", "index.php");
@@ -41,22 +44,24 @@ try{
                                     }else{
                                         throw new Exception("Prospecto incorrecto");
                                     }
-                                    
                                 }else{
                                     throw new Exception("Oferta incorrecta");
                                 }
-                                            
                             }else{
-                                throw new Exception("Plan incorrecto");
-                            } 
+                                throw new Exception($cuadro->getArchiveError());
+                            }     
                         }else{
-                            throw new Exception("Aseguradora incorrecta");
-                        }
+                            throw new Exception("Plan incorrecto");
+                        } 
                     }else{
-                        $_POST = $cuadro->validateForm($_POST);
-                        if($cuadro->setIdAseguradora($_POST['aseguradora'])){
-                            if($cuadro->setPlan($_POST['plan'])){
-                                if($cuadro->setOferta($_POST['oferta'])){
+                        throw new Exception("Aseguradora incorrecta");
+                    }
+                }else{
+                    $_POST = $cuadro->validateForm($_POST);
+                    if($cuadro->setIdAseguradora($_POST['aseguradora'.$i])){
+                        if($cuadro->setPlan($_POST['plan'.$i])){
+                            if(is_uploaded_file($_FILES['oferta'.$i]['tmp_name'])){
+                                if($cuadro->setOferta($_FILES['oferta'.$i])){
                                     if($cuadro->setIdClienteProspecto($_GET['id3'])){
                                         if($cuadro->createCuadro()){ //Crea una presentacion
                                             if($solicitud->updateEstado($fecha, $hora, $_GET['id'])){
@@ -74,15 +79,17 @@ try{
                                 }else{
                                     throw new Exception("Oferta incorrecta");
                                 }
-                                            
                             }else{
-                                throw new Exception("Plan incorrecto");
-                            } 
+                                throw new Exception($cuadro->getArchiveError());
+                            }            
                         }else{
-                            throw new Exception("Aseguradora incorrecta");
-                        }
+                            throw new Exception("Plan incorrecto");
+                        } 
+                    }else{
+                        throw new Exception("Aseguradora incorrecta");
                     }
-                }        
+                }
+            }        
         }
     }else{
 
