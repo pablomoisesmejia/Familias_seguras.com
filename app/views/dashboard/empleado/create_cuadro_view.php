@@ -31,10 +31,6 @@
                                 <input id='pla' type='text' name='plan$i' class='validate' autocomplete='off' value='' required />
                                 <label for='pla' class='black-text'>Plan $i</label>
                             </div>
-                            <div class='input-field col s12'>
-                                <input id='pri' type='text' name='prima$i' class='validate' autocomplete='off' value='' required />
-                                <label for='pri' class='black-text'>Prima $i</label>
-                            </div>
                             <div class='file-field input-field col s12'>
                                 <div class='waves-effect waves-light btn morado'>
                                     <span><i class='material-icons'>image</i></span>
@@ -49,6 +45,10 @@
                                 if($_GET['id2'] == 2){
                                     print("
                                     <div class='input-field col s12'>
+                                        <input id='pri' type='text' name='prima$i' class='validate' autocomplete='off' value='' required />
+                                        <label for='pri' class='black-text'>Prima $i</label>
+                                    </div>
+                                    <div class='input-field col s12'>
                                         <input id='recu50' type='number' min='0.01' max='9999999.99' step='any' name='recup50$i' class='validate' autocomplete='off' value='' required />
                                         <label for='recu50' class='black-text'>Recuperaci&oacute;n a los 50 años $i</label>
                                     </div>
@@ -61,8 +61,24 @@
                                         <label for='recu70' class='black-text'>Recuperaci&oacute;n a los 70 años $i</label>
                                     </div>
                                     ");
+                                }else if($_GET['id2'] == 4){
+                                    $nume = $cuadro->getNumVehiculos($_GET['id3']);
+                                    $o = $nume['n'];
+                                    for($j = 1;$j <= $o;$j++){
+                                        print("
+                                            <div class='input-field col s12'>
+                                                <input id='pri' type='text' name='prima$j$i' class='validate' autocomplete='off' value='' required />
+                                                <label for='pri' class='black-text'>Prima del vehiculo $j</label>
+                                            </div>
+                                        ");
+                                    }
                                 }else{
-                                    print("");
+                                    print("
+                                        <div class='input-field col s12'>
+                                            <input id='pri' type='text' name='prima$i' class='validate' autocomplete='off' value='' required />
+                                            <label for='pri' class='black-text'>Prima $i</label>
+                                        </div>
+                                    ");
                                 }
                     print("    
                         </div>

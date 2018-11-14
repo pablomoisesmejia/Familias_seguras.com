@@ -168,6 +168,11 @@ class Cuadro_Comparativo extends Validator
 		$params = array($id);
 		return Database::getRow($sql, $params);
     }
+    public function getNumVehiculos($id){
+		$sql = "SELECT COUNT(PK_id_cotizacion_vehiculo) AS n FROM cotizaciones_vehiculos WHERE FK_id_cliente_prospecto = ?";
+		$params = array($id);
+		return Database::getRow($sql, $params);
+    }
     public function getCompanias($id){
 		$sql = "SELECT compania_interes FROM companias_interes WHERE FK_id_cliente_prospecto = ?";
 		$params = array($id);

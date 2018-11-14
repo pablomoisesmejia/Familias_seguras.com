@@ -84,20 +84,24 @@ try{
                                             $arr = $prima->getCuadros();
                                             $var = $arr['PK_id_cuadro_comparativo']; 
 
-                                            if($prima->setIdCuadro($var)){
-                                                if($prima->setPrima($_POST['prima'.$i])){
-                                                    if($prima->createPrima()){
-                                                        Page::showMessage(1, "Cuadro creado", "index.php");
+                                            $nume = $cuadro->getNumVehiculos($_GET['id3']);
+                                            $o = $nume['n'];
+                                            for($j = 1;$j <= $o;$j++){
+                                                if($prima->setIdCuadro($var)){
+                                                    if($prima->setPrima($_POST['prima'.$j.$i])){
+                                                        if($prima->createPrima()){
+                                                            Page::showMessage(1, "Cuadro creado", "index.php");
+                                                        }else{
+                                                            throw new Exception(Database::getException());
+                                                        }
                                                     }else{
-                                                        throw new Exception(Database::getException());
+                                                        throw new Exception("Prima incorrecta");
                                                     }
                                                 }else{
-                                                    throw new Exception("Prima incorrecta");
+                                                    throw new Exception("No se pudo introducir la prima.");
                                                 }
-                                            }else{
-                                                throw new Exception("No se pudo introducir la prima.");
                                             }
-                                                                               
+                                        
                                         }else{
                                             throw new Exception(Database::getException());        
                                         }
