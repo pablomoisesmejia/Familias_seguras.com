@@ -66,13 +66,30 @@ class Primas extends Validator
 
 	public function getCuadros()
 	{
-		$sql = 'SELECT * FROM cuadro_comparativo, clientes_prospectos WHERE (cuadro_comparativo.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto) AND FK_id_tipo_seguro = 4';
+		$sql = 'SELECT * FROM cuadro_comparativo';
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
 	public function createPrima(){
 		$sql = "INSERT INTO primas(prima, FK_id_cuadro_comparativo) VALUES (?, ?)";
 		$params = array($this->prima, $this->FK_id_cuadro_comparativo);
+		return Database::executeRow($sql, $params);
+	}
+	public function readPrima(){
+		$sql = "SELECT prima, FK_id_cuadro_comparativo, plan FROM primas, cuadro_comparativo WHERE (primas.FK_id_cuadro_comparativo = cuadro_comparativo.PK_id_cuadro_comparativo) AND PK_id_prima = ?";
+		$params = array($this->PK_id_prima);
+		$data = Database::getRow($sql, $params);
+		if($data){
+			$this->prima = $data['prima'];
+			$this->FK_id_cuadro_comparativo = $data['FK_id_cuadro_comparativo'];
+			return true;
+		}else{
+			return null;
+		}
+	}
+	public function updatePrima(){
+		$sql = "UPDATE primas SET prima = ?, FK_id_cuadro_comparativo = ? WHERE PK_id_prima = ?";
+		$params = array($this->prima, $this->FK_id_cuadro_comparativo, $this->PK_id_prima);
 		return Database::executeRow($sql, $params);
 	}
 }

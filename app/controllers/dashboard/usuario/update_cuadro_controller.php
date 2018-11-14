@@ -12,7 +12,7 @@ try{
     if(isset($_GET['id']) && isset($_GET['id2']) && isset($_GET['id3'])){
         if($cuadro->setIdCuadroComparativo()){
             if($cuadro->readCuadro()){
-                if(isset($_POST['crear'])){ //El controlador funcionara con el modelo que se llame asi
+                if(isset($_POST['actualizar'])){ //El controlador funcionara con el modelo que se llame asi
                     if($_GET['id2'] == 2){
                         $_POST = $cuadro->validateForm($_POST);
                         if($cuadro->setIdAseguradora($_POST['aseguradora'])){
@@ -95,5 +95,5 @@ try{
 }catch (Exception $error){
     Page::showMessage(2, $error->getMessage(), null);
 }
-require_once("../../app/views/dashboard/empleado/create_cuadro_view.php");
+require_once("../../app/views/dashboard/empleado/update_cuadro_view.php");
 ?>

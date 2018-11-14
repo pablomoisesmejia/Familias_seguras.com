@@ -153,6 +153,12 @@ class Cuadro_Comparativo extends Validator
 		$params = array(null);
 		return Database::getRows($sql, $params);
     }
+
+    public function getCuadros(){
+		$sql = "SELECT * FROM cuadro_comparativo";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+    }
     
     public function createCuadro(){
 		$sql = "INSERT INTO cuadro_comparativo(FK_id_aseguradora, plan, oferta, FK_id_cliente_prospecto, valor_recuperacion_50, valor_recuperacion_60, valor_recuperacion_70) VALUES (?, ?, ?, ?, ?, ?, ?)";

@@ -37,6 +37,7 @@
                                 print("
                                 <tr>
                                     <td>$row[PK_id_solicitud]</td>
+                                    <td>$row[PK_id_solicitud]</td>
                                     <td>$row[fecha_reparticion]</td>
                                     <td>$row[tipo_seguro]</td>
                                     <td>
@@ -142,10 +143,10 @@
                             <tr>
                                 <td>$row3[FK_id_cuadro_comparativo]</td>
                                 <td>$row3[prima]</td>
-                                <!--<td>
-                                    <a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Editar categoria' href='update_categoria.php?id=$row3[PK_id_prima]'><i class='material-icons blue-text text-darken-3 prefix'>edit</i></a>
-                                    <a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Eliminar categoria' href='delete_categoria.php?id=$row3[PK_id_prima]'><i class='material-icons red-text text-darken-3 prefix'>delete</i></a>
-                                </td>-->
+                                <td>
+                                    <a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Editar prima' href='update_prima.php?id=$row3[PK_id_prima]'><i class='material-icons blue-text text-darken-3 prefix'>edit</i></a>
+                                    <!--<a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Eliminar categoria' href='delete_categoria.php?id=$row3[PK_id_prima]'><i class='material-icons red-text text-darken-3 prefix'>delete</i></a>-->
+                                </td>
                             </tr>
                             ");
                         }
