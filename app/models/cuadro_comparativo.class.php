@@ -146,5 +146,18 @@ class Cuadro_Comparativo extends Validator
     {
         return $this->valor_recuperacion_70;
     }
+
+    //Funciones para el SCRUD
+    public function getAseguradoras(){
+		$sql = "SELECT * FROM aseguradoras";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+    }
+    
+    public function createCuadro(){
+		$sql = "INSERT INTO cuadro_comparativo(FK_id_aseguradora, plan, oferta, FK_id_cliente_prospecto, valor_recuperacion_50, valor_recuperacion_60, valor_recuperacion_70) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		$params = array($this->FK_id_aseguradora, $this->plan, $this->oferta, $this->FK_id_cliente_prospecto, $this->valor_recuperacion_50, $this->valor_recuperacion_60, $this->valor_recuperacion_70);
+		return Database::executeRow($sql, $params);
+	}
 }
 ?>

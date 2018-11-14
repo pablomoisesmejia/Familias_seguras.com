@@ -227,5 +227,11 @@ class Solicitudes extends Validator
 		$params = array($this->FK_id_cliente_prospecto, $this->FK_id_empleado, $this->fecha_reparticion, $this->hora_reparticion, $this->FK_id_estado_solicitud, $this->FK_id_estado_correo, $this->fecha_envio, $this->hora_envio, $this->observaciones, $this->comentario, $this->interpretacion_recomendacion);
 		return Database::executeRow($sql, $params);
 	}
+
+	public function updateEstado($fecha, $hora, $id){
+		$sql = "UPDATE solicitudes SET FK_id_estado_solicitud = ?, fecha_envio = ?, hora_envio = ? WHERE PK_id_solicitud = ?";
+		$params = array(2, $fecha, $hora, $id);
+		return Database::executeRow($sql, $params);
+	}
 }
 ?>

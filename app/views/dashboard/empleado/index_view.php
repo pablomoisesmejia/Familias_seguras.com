@@ -40,7 +40,7 @@
                                     <td>$row[fecha_reparticion]</td>
                                     <td>$row[tipo_seguro]</td>
                                     <td>
-                                        <a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Elaborar cuadro' href='create_cuadro.php?id=$row[PK_id_solicitud]'><i class='material-icons blue-text text-darken-3 prefix'>assignment</i></a>
+                                        <a class='waves-effect waves-light modal-trigger espacio tooltipped' data-position='right' data-delay='50' data-tooltip='Elaborar cuadro' href='create_cuadro.php?id=$row[PK_id_solicitud]&id2=$row[FK_id_tipo_seguro]&id3=$row[FK_id_cliente_prospecto] '><i class='material-icons blue-text text-darken-3 prefix'>assignment</i></a>
                                     </td>
                                 </tr>
                                 ");
