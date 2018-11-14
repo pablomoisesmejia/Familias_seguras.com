@@ -201,5 +201,13 @@ class Solicitudes_atencion_cliente extends Validator
 	{
 		return $this->interpretacion_recomendacion;
 	}
+
+	public function createSolicitudAtencionCliente()
+	{
+		$sql = 'INSERT INTO solicitudes_atencion_cliente(FK_id_cliente_prospecto, fecha_reparticion, hora_reparticion, FK_id_estado_correo, FK_id_estado_solicitud, fecha_envio, hora_envio, observaciones, comentario, interpretacion_recomendacion) 
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$params = array($this->FK_id_cliente_prospecto, $this->fecha_reparticion, $this->hora_reparticion, $this->FK_id_estado_correo, $this->FK_id_estado_solicitud, $this->fecha_envio, $this->hora_envio, $this->observaciones, $this->comentario, $this->interpretacion_recomendacion);
+		return Database::executeRow($sql, $params);
+	}
 }
 ?>

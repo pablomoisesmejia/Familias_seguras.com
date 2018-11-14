@@ -532,5 +532,6 @@ class Cantidad_Solicitud_Dias extends Validator
     {
         return $this->fecha_castigo_domingo;
     }
+
 }
 ?>

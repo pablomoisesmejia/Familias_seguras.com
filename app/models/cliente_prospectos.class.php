@@ -10,6 +10,7 @@ class Cliente_Prospecto extends Validator{
 	private $fecha_cita = null;
 	private $hora_cita = null;
 	private $fecha_aceptacion = null;
+	private $asignacion = 0;
 
 	//Métodos para sobrecarga de propiedades
 	public function setIdClienteProspecto($value)
@@ -164,6 +165,23 @@ class Cliente_Prospecto extends Validator{
 	{
 		return $this->fecha_aceptacion;
 	}
+
+	public function setAsignacion($value)
+	{
+		if($this->validateId($value))
+		{
+			$this->asignacion = $value;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function getAsignacion()
+	{
+		return $this->asignacion;
+	}
 	
 	//FUNCIONES PARA LAS TAREAS PROGRAMADAS
 	public function getClientesProspectos()
@@ -173,6 +191,13 @@ class Cliente_Prospecto extends Validator{
 		WHERE asignacion = 0 AND FK_id_tipo_seguro = ?';
 		$params = array($this->FK_id_tipo_seguro);
 		return Database::getRows($sql, $params);
+	}
+
+	public function updateAsignacion()
+	{
+		$sql = 'UPDATE clientes_prospectos SET asignacion = ? WHERE PK_id_cliente_prospecto = ?';
+		$params = array($this->asignacion, $this->PK_id_cliente_prospecto);
+		return Database::executeRow($sql, $params);
 	}
 	//FIN DE FUNCIONES PARA LAS TAREAS PROGRAMADAS
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2018 a las 17:52:05
+-- Tiempo de generación: 14-11-2018 a las 04:24:09
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -43,27 +43,27 @@ CREATE TABLE `aseguradoras` (
 
 CREATE TABLE `cantidad_solicitud_dias` (
   `PK_id_cantidad_solicitud_dias` int(11) NOT NULL,
-  `lunes` int(11) NOT NULL,
-  `martes` int(11) NOT NULL,
-  `miercoles` int(11) NOT NULL,
-  `jueves` int(11) NOT NULL,
-  `viernes` int(11) NOT NULL,
-  `sabado` int(11) NOT NULL,
-  `domingo` int(11) NOT NULL,
-  `cant_lunes` int(11) DEFAULT NULL,
-  `cant_martes` int(11) DEFAULT NULL,
-  `cant_miercoles` int(11) DEFAULT NULL,
-  `cant_jueves` int(11) DEFAULT NULL,
-  `cant_viernes` int(11) DEFAULT NULL,
-  `cant_sabado` int(11) DEFAULT NULL,
-  `cant_domingo` int(11) DEFAULT NULL,
-  `cant_castigo_lunes` int(11) DEFAULT NULL,
-  `cant_castigo_martes` int(11) DEFAULT NULL,
-  `cant_castigo_miercoles` int(11) DEFAULT NULL,
-  `cant_castigo_jueves` int(11) DEFAULT NULL,
-  `cant_castigo_viernes` int(11) DEFAULT NULL,
-  `cant_castigo_sabado` int(11) DEFAULT NULL,
-  `cant_castigo_domingo` int(11) DEFAULT NULL,
+  `lunes` int(11) NOT NULL DEFAULT '0',
+  `martes` int(11) NOT NULL DEFAULT '0',
+  `miercoles` int(11) NOT NULL DEFAULT '0',
+  `jueves` int(11) NOT NULL DEFAULT '0',
+  `viernes` int(11) NOT NULL DEFAULT '0',
+  `sabado` int(11) NOT NULL DEFAULT '0',
+  `domingo` int(11) NOT NULL DEFAULT '0',
+  `cant_lunes` int(11) DEFAULT '0',
+  `cant_martes` int(11) DEFAULT '0',
+  `cant_miercoles` int(11) DEFAULT '0',
+  `cant_jueves` int(11) DEFAULT '0',
+  `cant_viernes` int(11) DEFAULT '0',
+  `cant_sabado` int(11) DEFAULT '0',
+  `cant_domingo` int(11) DEFAULT '0',
+  `cant_castigo_lunes` int(11) DEFAULT '0',
+  `cant_castigo_martes` int(11) DEFAULT '0',
+  `cant_castigo_miercoles` int(11) DEFAULT '0',
+  `cant_castigo_jueves` int(11) DEFAULT '0',
+  `cant_castigo_viernes` int(11) DEFAULT '0',
+  `cant_castigo_sabado` int(11) DEFAULT '0',
+  `cant_castigo_domingo` int(11) DEFAULT '0',
   `fecha_castigo_lunes` date DEFAULT NULL,
   `fecha_castigo_martes` date DEFAULT NULL,
   `fecha_castigo_miercoles` date DEFAULT NULL,
@@ -100,7 +100,8 @@ CREATE TABLE `clientes_prospectos` (
   `forma_pago` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
   `fecha_cita` date DEFAULT NULL,
   `hora_cita` time DEFAULT NULL,
-  `fecha_aceptacion` date DEFAULT NULL
+  `fecha_aceptacion` date DEFAULT NULL,
+  `asignacion` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -173,11 +174,9 @@ CREATE TABLE `cotizaciones_incendios` (
 
 CREATE TABLE `cotizaciones_medico_hosp` (
   `PK_id_cotizacion_medico` int(11) NOT NULL,
-  `fecha_nacimiento` date NOT NULL,
   `nombre_conyugue` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_nacimiento_conyugue` date NOT NULL,
   `cantidad_hijo` int(3) NOT NULL,
-  `cobertura` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `FK_id_cliente_prospecto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -206,9 +205,8 @@ CREATE TABLE `cotizaciones_vehiculos` (
 CREATE TABLE `cotizaciones_vida` (
   `PK_id_cotizacion_vida` int(11) NOT NULL,
   `fumador` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `suma_asegurado` double(9,2) NOT NULL,
-  `fecha_nacimiento` date NOT NULL,
-  `cesion_bancaia` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `suma_asegurada` double(9,2) NOT NULL,
+  `cesion_bancaria` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `FK_id_cliente_prospecto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -252,15 +250,6 @@ CREATE TABLE `estados` (
   `PK_id_estado` int(11) NOT NULL,
   `estado` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `estados`
---
-
-INSERT INTO `estados` (`PK_id_estado`, `estado`) VALUES
-(1, 'Activo'),
-(2, 'Suspendido'),
-(3, 'Inactivo');
 
 -- --------------------------------------------------------
 
@@ -370,7 +359,6 @@ CREATE TABLE `referidos` (
 CREATE TABLE `solicitudes` (
   `PK_id_solicitud` int(11) NOT NULL,
   `FK_id_cliente_prospecto` int(11) NOT NULL,
-  `FK_id_empleado` int(11) NOT NULL,
   `fecha_reparticion` date NOT NULL,
   `hora_reparticion` time NOT NULL,
   `FK_id_estado_solicitud` int(11) NOT NULL,
@@ -379,7 +367,8 @@ CREATE TABLE `solicitudes` (
   `hora_envio` time DEFAULT NULL,
   `observasiones` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   `comentario` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `interpretacion_recomendacion` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL
+  `interpretacion_recomendacion` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `FK_id_empleado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -393,8 +382,8 @@ CREATE TABLE `solicitudes_atencion_cliente` (
   `FK_id_cliente_prospecto` int(11) NOT NULL,
   `fecha_reparticion` date NOT NULL,
   `hora_reparticion` time NOT NULL,
-  `FK_id_estado_solicitud` int(11) NOT NULL,
   `FK_id_estado_correo` int(11) NOT NULL,
+  `FK_id_estado_solicitud` int(11) NOT NULL,
   `fecha_envio` date DEFAULT NULL,
   `hora_envio` time DEFAULT NULL,
   `observaciones` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -410,8 +399,9 @@ CREATE TABLE `solicitudes_atencion_cliente` (
 
 CREATE TABLE `solicitudes_procesadas` (
   `PK_id_solicitud_procesada` int(11) NOT NULL,
-  `FK_id_cantidad_solicitud_dia` int(11) NOT NULL,
-  `FK_id_empleado` int(11) NOT NULL
+  `FK_id_tipo_seguro` int(11) NOT NULL,
+  `FK_id_empleado` int(11) NOT NULL,
+  `FK_id_cantidad_solicitud_dia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -425,16 +415,6 @@ CREATE TABLE `tipos_seguro` (
   `tipo_seguro` varchar(40) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `tipos_seguro`
---
-
-INSERT INTO `tipos_seguro` (`PK_id_tipo_seguro`, `tipo_seguro`) VALUES
-(1, 'Seguro Medico'),
-(2, 'Seguro de Vida'),
-(3, 'Seguro de Incendios'),
-(4, 'Seguro de Vehiculo');
-
 -- --------------------------------------------------------
 
 --
@@ -445,20 +425,6 @@ CREATE TABLE `tipos_team` (
   `PK_id_tipo_team` int(11) NOT NULL,
   `tipo_team` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `tipos_team`
---
-
-INSERT INTO `tipos_team` (`PK_id_tipo_team`, `tipo_team`) VALUES
-(1, 'FamiliasSeguras.com'),
-(2, 'Minus Risk'),
-(3, 'SeguroDeAutomotores.com'),
-(4, 'Agente Independiente'),
-(5, 'Corredor de Seguros'),
-(6, 'Compañia de Seguros'),
-(7, 'Prospecto'),
-(8, 'Cliente');
 
 -- --------------------------------------------------------
 
@@ -677,7 +643,8 @@ ALTER TABLE `solicitudes_atencion_cliente`
 ALTER TABLE `solicitudes_procesadas`
   ADD PRIMARY KEY (`PK_id_solicitud_procesada`),
   ADD KEY `FK_id_cantidad_solicitud_dia` (`FK_id_cantidad_solicitud_dia`),
-  ADD KEY `FK_id_empleado` (`FK_id_empleado`);
+  ADD KEY `FK_id_empleado` (`FK_id_empleado`),
+  ADD KEY `FK_id_tipo_seguro` (`FK_id_tipo_seguro`);
 
 --
 -- Indices de la tabla `tipos_seguro`
@@ -713,19 +680,19 @@ ALTER TABLE `aseguradoras`
 -- AUTO_INCREMENT de la tabla `cantidad_solicitud_dias`
 --
 ALTER TABLE `cantidad_solicitud_dias`
-  MODIFY `PK_id_cantidad_solicitud_dias` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_cantidad_solicitud_dias` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `cargos_gerencias`
 --
 ALTER TABLE `cargos_gerencias`
-  MODIFY `PK_id_cargo_gerencia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_cargo_gerencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes_prospectos`
 --
 ALTER TABLE `clientes_prospectos`
-  MODIFY `PK_id_cliente_prospecto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_cliente_prospecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `comisiones_pactadas`
@@ -737,7 +704,7 @@ ALTER TABLE `comisiones_pactadas`
 -- AUTO_INCREMENT de la tabla `companias_interes`
 --
 ALTER TABLE `companias_interes`
-  MODIFY `PK_id_compania_interes` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_compania_interes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `contrataciones`
@@ -749,13 +716,13 @@ ALTER TABLE `contrataciones`
 -- AUTO_INCREMENT de la tabla `cotizaciones_incendios`
 --
 ALTER TABLE `cotizaciones_incendios`
-  MODIFY `PK_id_cotizacion_incendio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_cotizacion_incendio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `cotizaciones_medico_hosp`
 --
 ALTER TABLE `cotizaciones_medico_hosp`
-  MODIFY `PK_id_cotizacion_medico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_cotizacion_medico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `cotizaciones_vehiculos`
@@ -767,7 +734,7 @@ ALTER TABLE `cotizaciones_vehiculos`
 -- AUTO_INCREMENT de la tabla `cotizaciones_vida`
 --
 ALTER TABLE `cotizaciones_vida`
-  MODIFY `PK_id_cotizacion_vida` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_cotizacion_vida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `cuadro_comparativo`
@@ -779,7 +746,7 @@ ALTER TABLE `cuadro_comparativo`
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `PK_id_empleado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `estados`
@@ -791,37 +758,37 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `estados_correo`
 --
 ALTER TABLE `estados_correo`
-  MODIFY `PK_id_estado_correo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_estado_correo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `estado_solicitud`
 --
 ALTER TABLE `estado_solicitud`
-  MODIFY `PK_id_estado_solicitud` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_estado_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `gerencias`
 --
 ALTER TABLE `gerencias`
-  MODIFY `PK_id_gerencia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_gerencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas_vehiculos`
 --
 ALTER TABLE `marcas_vehiculos`
-  MODIFY `PK_id_marca_vehiculo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_marca_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `modelos_vehiculos`
 --
 ALTER TABLE `modelos_vehiculos`
-  MODIFY `PK_id_modelo_vehiculo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_modelo_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `origenes_vehiculo`
 --
 ALTER TABLE `origenes_vehiculo`
-  MODIFY `PK_id_origen_vehiculo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_origen_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `primas`
@@ -839,19 +806,19 @@ ALTER TABLE `referidos`
 -- AUTO_INCREMENT de la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
-  MODIFY `PK_id_solicitud` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitudes_atencion_cliente`
 --
 ALTER TABLE `solicitudes_atencion_cliente`
-  MODIFY `PK_id_solicitud_atencion_cliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_solicitud_atencion_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitudes_procesadas`
 --
 ALTER TABLE `solicitudes_procesadas`
-  MODIFY `PK_id_solicitud_procesada` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_solicitud_procesada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos_seguro`
@@ -869,7 +836,7 @@ ALTER TABLE `tipos_team`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `PK_id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Restricciones para tablas volcadas
@@ -950,7 +917,7 @@ ALTER TABLE `empleados`
 -- Filtros para la tabla `modelos_vehiculos`
 --
 ALTER TABLE `modelos_vehiculos`
-  ADD CONSTRAINT `modelos_vehiculos_ibfk_1` FOREIGN KEY (`FK_id_marca_vehiculo`) REFERENCES `marcas_vehiculos` (`PK_id_marca_vehiculo`);
+  ADD CONSTRAINT `modelos_vehiculos_ibfk_1` FOREIGN KEY (`FK_id_marca_vehiculo`) REFERENCES `marcas_vehiculos` (`PK_id_marca_vehiculo`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `primas`
@@ -986,7 +953,8 @@ ALTER TABLE `solicitudes_atencion_cliente`
 --
 ALTER TABLE `solicitudes_procesadas`
   ADD CONSTRAINT `solicitudes_procesadas_ibfk_1` FOREIGN KEY (`FK_id_empleado`) REFERENCES `empleados` (`PK_id_empleado`),
-  ADD CONSTRAINT `solicitudes_procesadas_ibfk_2` FOREIGN KEY (`FK_id_cantidad_solicitud_dia`) REFERENCES `cantidad_solicitud_dias` (`PK_id_cantidad_solicitud_dias`);
+  ADD CONSTRAINT `solicitudes_procesadas_ibfk_2` FOREIGN KEY (`FK_id_cantidad_solicitud_dia`) REFERENCES `cantidad_solicitud_dias` (`PK_id_cantidad_solicitud_dias`),
+  ADD CONSTRAINT `solicitudes_procesadas_ibfk_3` FOREIGN KEY (`FK_id_tipo_seguro`) REFERENCES `tipos_seguro` (`PK_id_tipo_seguro`);
 
 --
 -- Filtros para la tabla `usuarios`
