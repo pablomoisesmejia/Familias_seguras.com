@@ -31,6 +31,10 @@
                                 <input id='pla' type='text' name='plan$i' class='validate' autocomplete='off' value='' required />
                                 <label for='pla' class='black-text'>Plan $i</label>
                             </div>
+                            <div class='input-field col s12'>
+                                <input id='pri' type='text' name='prima$i' class='validate' autocomplete='off' value='' required />
+                                <label for='pri' class='black-text'>Prima $i</label>
+                            </div>
                             <div class='file-field input-field col s12'>
                                 <div class='waves-effect waves-light btn morado'>
                                     <span><i class='material-icons'>image</i></span>

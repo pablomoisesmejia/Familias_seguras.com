@@ -66,9 +66,9 @@ class Primas extends Validator
 
 	public function getCuadros()
 	{
-		$sql = 'SELECT * FROM cuadro_comparativo';
+		$sql = 'SELECT PK_id_cuadro_comparativo FROM cuadro_comparativo ORDER BY PK_id_cuadro_comparativo DESC LIMIT 1';
 		$params = array(null);
-		return Database::getRows($sql, $params);
+		return Database::getRow($sql, $params);
 	}
 	public function createPrima(){
 		$sql = "INSERT INTO primas(prima, FK_id_cuadro_comparativo) VALUES (?, ?)";

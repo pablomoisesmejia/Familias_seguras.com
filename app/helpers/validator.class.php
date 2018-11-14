@@ -36,7 +36,7 @@ class Validator{
 				$error = "El tipo de archivo es incorrecto";
 				break;
 			case 3:
-				$error = "El tamaño del archivo debe ser menor a 20MB";
+				$error = "El tamaño del archivo debe ser menor a 2 MB";
 				break;
 			default:
 				$error = "Ocurrió un problema con el archivo";
