@@ -11,7 +11,7 @@ try{
 				if($object2->checkUsuarios($object->getCorreo())){
 					//if($object->checkPermisos()){
 						if($object->setClave($_POST['pass'])){
-							if($object2->checkContrasena($object->getClave())){
+							if($object2->checkContrasena()){
 								$_SESSION['id_empleado_d'] = $object2->getIdEmpleado(); //Obtiene el id_empleado para usarlo luego en la pagina template
 								$_SESSION['tipo_team_d'] = $object2->getTipo();
 								$_SESSION['usuario_d'] = $object2->getUsuario();

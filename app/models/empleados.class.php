@@ -133,9 +133,9 @@ class Empleados extends Validator
 		$sql = "SELECT clave, FK_id_tipo_team, usuario FROM usuarios, empleados WHERE (empleados.FK_id_usuario = usuarios.PK_id_usuario) AND PK_id_empleado = ?";
 		$params = array($this->PK_id_empleado);
 		$data = Database::getRow($sql, $params);
-		if($clave == $data['clave']){
-			$this->tipo = $data['FK_id_tipo_team'];
-			$this->usuario = $data['usuario'];
+		if(password_verify($this->clave, $data['clave'])){
+			$this->estado = $data['estado'];
+			$this->fecha2 = $data['fecha_bloqueo'];
 			return true;
 		}else{
 			return false;
