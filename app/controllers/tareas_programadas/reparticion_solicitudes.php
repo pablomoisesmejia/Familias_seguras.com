@@ -11,7 +11,7 @@ require_once('../../models/tipos_seguro.class.php');
 
 date_default_timezone_set('America/El_Salvador');
 $dias_semana = ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
-$dia = date('N');
+$dia = date('N');//Se obtiene el dia pero en numero entero (0 es para domingo y 6 es sabado)
 //echo $dias_semana[$dia]; UPDATE `clientes_prospectos` SET `asignacion`= 0
 
 $solicitud_procesada = new Solicitudes_procesadas;
@@ -22,10 +22,10 @@ $cliente_prospecto = new Cliente_Prospecto;
 $tipo_seguro = new Tipos_seguro;
 
 
-$tipos_seguros = $tipo_seguro->getTiposSeguros();
+$tipos_seguros = $tipo_seguro->getTiposSeguros();//Se obtienen todos los tipos de seguro
 for($k = 0; $k<count($tipos_seguros); $k++)
 {
-   // echo $k.' tipo seguro';
+    echo $k.' tipo seguro';
     echo '<br>';
     $solicitud_procesada->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
     $empleados = $solicitud_procesada->getEmpleadosVentas($dias_semana[$dia]);//Obtiene los empleados
@@ -33,29 +33,27 @@ for($k = 0; $k<count($tipos_seguros); $k++)
     $cliente_prospecto->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
     $clientes_prospectos = $cliente_prospecto->getClientesProspectos();//Obtiene los clientes ó prospectos que aun no se han asignado a un empleado para generar el cuadro comparativo de los seguros
     
-
-    $id_empleado = '';
     $contador_empleados = count($empleados);
     $contador_cliente_prospecto = count($clientes_prospectos);
     $contador = 0;
 
-    if($contador_cliente_prospecto > 0)
+    if($contador_cliente_prospecto > 0)//Se comprueba que aun existan clientes o prospectos sin asignacion
     {
-        if($contador_empleados > 0)
+        if($contador_empleados > 0)//Se comprueba que aun existan empleados disponibles con el dia actual
         {
             for($i = 0; $i<count($empleados); $i++)
             {
                 echo '<br>';
                 echo $i.'--empleado';
                 echo '<br>';
-                $empleados_disponibles = $solicitud_procesada->getEmpleadosDisponibles($dias_semana[$dia]);
+                $empleados_disponibles = $solicitud_procesada->getEmpleadosDisponibles($dias_semana[$dia]);//Obtiene los empleados con disponiblidad 
                 echo count($empleados_disponibles);
 
                 $cliente_prospecto->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
                 $clientes_prospectos = $cliente_prospecto->getClientesProspectos();//Obtiene los clientes ó prospectos que aun no se han asignado a un empleado para generar el cuadro comparativo de los seguros
                 $contador_cliente_prospecto = count($clientes_prospectos);
 
-                if($empleados_disponibles > 0)
+                if(count($empleados_disponibles) > 0)//Se comprueba que aun existan empleados disponibles
                 {
                     for($n = 0; $n < count($empleados_disponibles); $n++)
                     {
@@ -67,9 +65,9 @@ for($k = 0; $k<count($tipos_seguros); $k++)
                         $contador_cliente_prospecto = count($clientes_prospectos);
 
                                       
-                        if($contador_cliente_prospecto > 0)
+                        if($contador_cliente_prospecto > 0)//Se comprueba que aun existan clientes o prospectos sin asignacion
                         {
-                            if(count($empleados_disponibles) != 0)
+                            if(count($empleados_disponibles) != 0)//Se comprueba que aun existan empleados disponibles
                             {
                                 $id_cantidad_dia = $empleados_disponibles[$n]['PK_id_cantidad_solicitud_dias'];
                                 if($empleados_disponibles[$n]['estado'] === 'Activo')//Se comprueba el estado del empleado
@@ -83,6 +81,7 @@ for($k = 0; $k<count($tipos_seguros); $k++)
                                         $fecha = date('Y-m-d');
                                         $hora = date('H:i:s');
 
+                                        //Se cargar los metodos SET para hacer el insert a la tabla
                                         $solicitud->setIdClienteProspecto($clientes_prospectos[0]['PK_id_cliente_prospecto']);
                                         $solicitud->setIdEmpleado($empleados_disponibles[$n]['PK_id_empleado']);
                                         $solicitud->setFechaReparticion($fecha);
@@ -91,26 +90,30 @@ for($k = 0; $k<count($tipos_seguros); $k++)
                                         $solicitud->setIdEstadoCorreo(1);
                                         if($solicitud->createSolicitud())
                                         {
+                                            //Se cargar los metodos SET para hacer el update a la tabla
                                             $cliente_prospecto->setAsignacion(1);
                                             $cliente_prospecto->setIdClienteProspecto($clientes_prospectos[0]['PK_id_cliente_prospecto']);
                                             if($cliente_prospecto->updateAsignacion())
                                             {
+                                                //Se cargar los metodos SET para hacer el update a la tabla
                                                 $cant_dia = $cant_dia + 1;
                                                 $solicitud_procesada->setIdCantidad($id_cantidad_dia);
                                                 if($solicitud_procesada->updateCantidadEstadoA($dias_semana[$dia], $cant_dia))
                                                 {
-                                                    $empleados_dispo = $solicitud_procesada->getEmpleadosDisponibles($dias_semana[$dia]);
+                                                    $empleados_dispo = $solicitud_procesada->getEmpleadosDisponibles($dias_semana[$dia]);//Obtiene los empleados con disponiblidad 
 
                                                     $cliente_prospecto->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
                                                     $clientes_prospectos = $cliente_prospecto->getClientesProspectos();//Obtiene los clientes ó prospectos que aun no se han asignado a un empleado para generar el cuadro comparativo de los seguros
                                                     $contador_cliente_prospecto = count($clientes_prospectos);
                                                     if($contador_cliente_prospecto > 0 && count($empleados_dispo) == 0)
                                                     {
-                                                        
+                                                        //Cuando ya no hay empleados disponibles y aun sobre clientes o prospecto sin asignacion se guardaran en la tabla de solicitudes atencion al cliente
                                                         for($j = 0; $j<count($clientes_prospectos); $j++)
                                                         {
+                                                            //Se obtiene la fecha y hora actual
                                                             $fecha = date('Y-m-d');
                                                             $hora = date('H:i:s');
+                                                            //Se cargar los metodos SET para hacer el insert a la tabla
                                                             $solicitud_atencion_cliente->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
                                                             $solicitud_atencion_cliente->setFechaReparticion($fecha);
                                                             $solicitud_atencion_cliente->setHoraReparticion($hora);
@@ -118,6 +121,7 @@ for($k = 0; $k<count($tipos_seguros); $k++)
                                                             $solicitud_atencion_cliente->setIdEstadoSolicitud(1);
                                                             if($solicitud_atencion_cliente->createSolicitudAtencionCliente())
                                                             {
+                                                                //Se cargar los metodos SET para hacer el update a la tabla
                                                                 $cliente_prospecto->setAsignacion(1);
                                                                 $cliente_prospecto->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
                                                                 if($cliente_prospecto->updateAsignacion())
@@ -167,10 +171,13 @@ for($k = 0; $k<count($tipos_seguros); $k++)
                             }
                             else
                             {
+                                //Cuando ya no hay empleados disponibles y aun sobre clientes o prospecto sin asignacion se guardaran en la tabla de solicitudes atencion al cliente
                                 for($j = 0; $j<count($clientes_prospectos); $j++)
                                 {
+                                    //Se obtiene la fecha y hora actual
                                     $fecha = date('Y-m-d');
                                     $hora = date('H:i:s');
+                                    //Se cargar los metodos SET para hacer el insert a la tabla
                                     $solicitud_atencion_cliente->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
                                     $solicitud_atencion_cliente->setFechaReparticion($fecha);
                                     $solicitud_atencion_cliente->setHoraReparticion($hora);
@@ -178,6 +185,7 @@ for($k = 0; $k<count($tipos_seguros); $k++)
                                     $solicitud_atencion_cliente->setIdEstadoSolicitud(1);
                                     if($solicitud_atencion_cliente->createSolicitudAtencionCliente())
                                     {
+                                        //Se cargar los metodos SET para hacer el update a la tabla
                                         $cliente_prospecto->setAsignacion(1);
                                         $cliente_prospecto->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
                                         if($cliente_prospecto->updateAsignacion())
@@ -200,10 +208,13 @@ for($k = 0; $k<count($tipos_seguros); $k++)
                 }
                 else
                 {
+                    //Cuando ya no hay empleados disponibles y aun sobre clientes o prospecto sin asignacion se guardaran en la tabla de solicitudes atencion al cliente
                     for($j = 0; $j<count($clientes_prospectos); $j++)
                     {
+                        //Se obtiene la fecha y hora actual
                         $fecha = date('Y-m-d');
                         $hora = date('H:i:s');
+                        //Se cargar los metodos SET para hacer el insert a la tabla
                         $solicitud_atencion_cliente->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
                         $solicitud_atencion_cliente->setFechaReparticion($fecha);
                         $solicitud_atencion_cliente->setHoraReparticion($hora);
@@ -211,6 +222,7 @@ for($k = 0; $k<count($tipos_seguros); $k++)
                         $solicitud_atencion_cliente->setIdEstadoSolicitud(1);
                         if($solicitud_atencion_cliente->createSolicitudAtencionCliente())
                         {
+                            //Se cargar los metodos SET para hacer el update a la tabla
                             $cliente_prospecto->setAsignacion(1);
                             $cliente_prospecto->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
                             if($cliente_prospecto->updateAsignacion())
@@ -232,10 +244,13 @@ for($k = 0; $k<count($tipos_seguros); $k++)
         }
         else
         {
+            //Cuando ya no hay empleados disponibles y aun sobre clientes o prospecto sin asignacion se guardaran en la tabla de solicitudes atencion al cliente
             for($j = 0; $j<count($clientes_prospectos); $j++)
             {
+                //Se obtiene la fecha y hora actual
                 $fecha = date('Y-m-d');
                 $hora = date('H:i:s');
+                //Se cargar los metodos SET para hacer el insert a la tabla
                 $solicitud_atencion_cliente->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
                 $solicitud_atencion_cliente->setFechaReparticion($fecha);
                 $solicitud_atencion_cliente->setHoraReparticion($hora);
@@ -243,6 +258,7 @@ for($k = 0; $k<count($tipos_seguros); $k++)
                 $solicitud_atencion_cliente->setIdEstadoSolicitud(1);
                 if($solicitud_atencion_cliente->createSolicitudAtencionCliente())
                 {
+                    //Se cargar los metodos SET para hacer el update a la tabla
                     $cliente_prospecto->setAsignacion(1);
                     $cliente_prospecto->setIdClienteProspecto($clientes_prospectos[$j]['PK_id_cliente_prospecto']);
                     if($cliente_prospecto->updateAsignacion())
