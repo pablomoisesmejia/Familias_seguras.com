@@ -216,7 +216,7 @@ class Cliente_Prospecto extends Validator{
 
 	public function getClientesProspectos2()
 	{
-		$sql = 'SELECT * FROM solicitudes, clientes_prospectos, usuarios, tipos_seguro WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario AND clientes_prospectos.FK_id_tipo_seguro = tipos_seguro.PK_id_tipo_seguro) AND FK_id_estado_solicitud = 1';
+		$sql = 'SELECT * FROM solicitudes, clientes_prospectos, usuarios, tipos_seguro, estado_solicitud WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario AND clientes_prospectos.FK_id_tipo_seguro = tipos_seguro.PK_id_tipo_seguro AND estado_solicitud.PK_id_estado_solicitud = solicitudes.FK_id_estado_solicitud) AND FK_id_estado_solicitud = 1';
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
@@ -229,7 +229,7 @@ class Cliente_Prospecto extends Validator{
 
 	public function getClientesProspectos3()
 	{
-		$sql = 'SELECT * FROM solicitudes, clientes_prospectos, usuarios, tipos_seguro WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario AND clientes_prospectos.FK_id_tipo_seguro = tipos_seguro.PK_id_tipo_seguro) AND FK_id_estado_solicitud = 2';
+		$sql = 'SELECT * FROM solicitudes, clientes_prospectos, usuarios, tipos_seguro, estado_solicitud WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario AND clientes_prospectos.FK_id_tipo_seguro = tipos_seguro.PK_id_tipo_seguro AND estado_solicitud.PK_id_estado_solicitud = solicitudes.FK_id_estado_solicitud) AND FK_id_estado_solicitud = 2';
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}

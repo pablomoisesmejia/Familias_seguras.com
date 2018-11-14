@@ -24,6 +24,26 @@ class Validator{
 		return $error;
 	}
 
+	public function getArchiveName(){
+		return $this->archiveName;
+	}
+	public function getArchiveError(){
+		switch($this->archiveError){
+			case 1:
+				$error = "No se puede guardar el archivo";
+				break;
+			case 2:
+				$error = "El tipo de archivo es incorrecto";
+				break;
+			case 3:
+				$error = "El tamaño del archivo debe ser menor a 20MB";
+				break;
+			default:
+				$error = "Ocurrió un problema con el archivo";
+		}
+		return $error;
+	}
+
 	public function validateForm($fields){
 		foreach($fields as $index => $value){
 			$value = htmlentities(trim($value));
@@ -73,7 +93,34 @@ class Validator{
 		   $this->imageError = 3;
 		   return false;
 		}
-   	}
+	   }
+	   
+	   public function validateArchive($file, $value, $path){
+        if($file['size'] <= 20971520){
+            if($file['type'] == "application/pdf"){
+                if($value){
+                    $filename = $value;
+                }else{
+                    $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+                    $filename = uniqid().".".$extension;
+                }
+                $url = $path.$filename;
+                if(move_uploaded_file($file['tmp_name'], $url)){
+                    $this->archiveName = $filename;
+                    return true;
+                }else{
+                    $this->archiveError = 1;
+                    return false;
+                }
+            }else{
+                $this->archiveError = 2;
+                return false;
+            }
+        }else{
+			$this->archiveError = 3;
+			return false;
+		}
+    }
 
 	public function validateEmail($email){
 		if(filter_var($email, FILTER_VALIDATE_EMAIL)){

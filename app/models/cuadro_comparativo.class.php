@@ -159,6 +159,17 @@ class Cuadro_Comparativo extends Validator
 		$params = array(null);
 		return Database::getRows($sql, $params);
     }
+
+    public function getNumCompanias($id){
+		$sql = "SELECT COUNT(PK_id_compania_interes) AS n FROM companias_interes WHERE FK_id_cliente_prospecto = ?";
+		$params = array($id);
+		return Database::getRow($sql, $params);
+    }
+    public function getCompanias($id){
+		$sql = "SELECT compania_interes FROM companias_interes WHERE FK_id_cliente_prospecto = ?";
+		$params = array($id);
+		return Database::getRows($sql, $params);
+    }
     
     public function createCuadro(){
 		$sql = "INSERT INTO cuadro_comparativo(FK_id_aseguradora, plan, oferta, FK_id_cliente_prospecto, valor_recuperacion_50, valor_recuperacion_60, valor_recuperacion_70) VALUES (?, ?, ?, ?, ?, ?, ?)";
