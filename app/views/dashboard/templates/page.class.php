@@ -43,7 +43,7 @@ class Page extends Component{
 						<img class='brand-logo' src='../../web/img/mipintura.png'>
 						<a href='#' data-activates='mobile-demo' class='button-collapse'><i class='material-icons'>menu</i></a>
 						<ul class='right hide-on-med-and-down'>
-							<li><a href='#'>Prospectos</a></li>
+							<li><a href='#'>Cootizaciones</a></li>
 							<li><a class='dropdown-button' href='#!' data-activates='dropdown1'>Bienvenido <b>$_SESSION[usuario_d]</b><i class='material-icons right'>arrow_drop_down</i></a></li>
 						</ul>
 						</div>
@@ -52,7 +52,7 @@ class Page extends Component{
 			</header>
 
 			<ul class='side-nav' id='mobile-demo'>
-				<li><a href='#'>Prospectos</a></li>
+				<li><a href='#'>Cootizaciones</a></li>
 				<li><a class='dropdown-button' href='#!' data-activates='dropdown2'>Bienvenido <b>$_SESSION[usuario_d]</b><i class='material-icons right'>arrow_drop_down</i></a></li>
 			</ul>
 
