@@ -77,7 +77,7 @@ class Solicitudes_procesadas extends Validator
 	//FUNCIONES PARA LAS TAREAS PROGRAMADAS
 	public function getEmpleadosDisponibles($dia)
 	{
-		$sql = 'SELECT e.PK_id_empleado, e.FK_id_usuario, e.FK_id_cargo_gerencia, e.activo_reparticion, es.estado, csd.PK_id_cantidad_solicitud_dias, csd.'.$dia.', csd.cant_'.$dia.', csd.cant_castigo_'.$dia.', csd.fecha_castigo_'.$dia.'
+		$sql = 'SELECT e.PK_id_empleado, e.FK_id_usuario, e.FK_id_cargo_gerencia, e.activo_reparticion, es.estado, u.correo ,csd.PK_id_cantidad_solicitud_dias, csd.'.$dia.', csd.cant_'.$dia.', csd.cant_castigo_'.$dia.', csd.fecha_castigo_'.$dia.'
 		FROM empleados e
         INNER JOIN usuarios u ON e.FK_id_usuario = u.PK_id_usuario
         INNER JOIN estados es ON u.FK_id_estado = es.PK_id_estado

@@ -225,7 +225,11 @@ class Solicitudes extends Validator
 		$sql = 'INSERT INTO solicitudes(FK_id_cliente_prospecto, FK_id_empleado, fecha_reparticion, hora_reparticion, FK_id_estado_solicitud, FK_id_estado_correo, fecha_envio, hora_envio, observasiones, comentario, interpretacion_recomendacion) 
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$params = array($this->FK_id_cliente_prospecto, $this->FK_id_empleado, $this->fecha_reparticion, $this->hora_reparticion, $this->FK_id_estado_solicitud, $this->FK_id_estado_correo, $this->fecha_envio, $this->hora_envio, $this->observaciones, $this->comentario, $this->interpretacion_recomendacion);
-		return Database::executeRow($sql, $params);
+		$solicitud = Database::executeRow($sql, $params);
+		if($solicitud)
+		{
+			$this->PK_id_solicitud = Database::getLastRowId();
+		}
 	}
 
 	public function updateEstado($fecha, $hora, $id){

@@ -9,6 +9,13 @@ require_once('../../models/solicitudes_atencion_cliente.class.php');
 require_once('../../models/cliente_prospectos.class.php');
 require_once('../../models/tipos_seguro.class.php');
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../../helpers/PHPMailer/Exception.php';
+require '../../helpers/PHPMailer/PHPMailer.php';
+require '../../helpers/PHPMailer/SMTP.php';
+
 date_default_timezone_set('America/El_Salvador');
 $dias_semana = ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
 $dia = date('N');//Se obtiene el dia pero en numero entero (0 es para domingo y 6 es sabado)
@@ -25,6 +32,7 @@ $tipo_seguro = new Tipos_seguro;
 $tipos_seguros = $tipo_seguro->getTiposSeguros();//Se obtienen todos los tipos de seguro
 for($k = 0; $k<count($tipos_seguros); $k++)
 {
+    echo '<br>';
     echo $k.' tipo seguro';
     echo '<br>';
     $solicitud_procesada->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
@@ -43,11 +51,7 @@ for($k = 0; $k<count($tipos_seguros); $k++)
         {
             for($i = 0; $i<count($empleados); $i++)
             {
-                echo '<br>';
-                echo $i.'--empleado';
-                echo '<br>';
                 $empleados_disponibles = $solicitud_procesada->getEmpleadosDisponibles($dias_semana[$dia]);//Obtiene los empleados con disponiblidad 
-                echo count($empleados_disponibles);
 
                 $cliente_prospecto->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
                 $clientes_prospectos = $cliente_prospecto->getClientesProspectos();//Obtiene los clientes ó prospectos que aun no se han asignado a un empleado para generar el cuadro comparativo de los seguros
@@ -56,10 +60,7 @@ for($k = 0; $k<count($tipos_seguros); $k++)
                 if(count($empleados_disponibles) > 0)//Se comprueba que aun existan empleados disponibles
                 {
                     for($n = 0; $n < count($empleados_disponibles); $n++)
-                    {
-                        echo $n.'---empleado disponible';
-                        echo '<br>';
-                        
+                    {                        
                         $cliente_prospecto->setIdTipoSeguro($tipos_seguros[$k]['PK_id_tipo_seguro']);
                         $clientes_prospectos = $cliente_prospecto->getClientesProspectos();//Obtiene los clientes ó prospectos que aun no se han asignado a un empleado para generar el cuadro comparativo de los seguros
                         $contador_cliente_prospecto = count($clientes_prospectos);
@@ -88,8 +89,13 @@ for($k = 0; $k<count($tipos_seguros); $k++)
                                         $solicitud->setHoraReparticion($hora);
                                         $solicitud->setIdEstadoSolicitud(1);
                                         $solicitud->setIdEstadoCorreo(1);
-                                        if($solicitud->createSolicitud())
+                                        if(!$solicitud->createSolicitud())
                                         {
+                                            $email = $empleados_disponibles[$n]['correo'];
+                                            echo $email;
+                                            $id_solicitud = $solicitud->getIdSolicitud();
+                                            echo $id_solicitud;
+                                            enviarCorreo($email, $id_solicitud);
                                             //Se cargar los metodos SET para hacer el update a la tabla
                                             $cliente_prospecto->setAsignacion(1);
                                             $cliente_prospecto->setIdClienteProspecto($clientes_prospectos[0]['PK_id_cliente_prospecto']);
@@ -277,5 +283,66 @@ for($k = 0; $k<count($tipos_seguros); $k++)
             }
         }
     }   
-}                
+}
+
+function enviarCorreo($correo, $id)
+{
+    $fecha_corta = date('aammdd');
+    $mail = new PHPMailer();                              // Passing `true` enables exceptions
+    //Server settings
+    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = '	mail.familiasseguras.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                        // Enable SMTP authentication
+    $mail->Username = 'support@familiasseguras.com';                 // SMTP username
+    $mail->Password = 'peka2101';    
+    $mail->SetFrom('support@familiasseguras.comm', 'Familias Seguras');
+    $mail->AddReplyTo('support@familiasseguras.com', 'Familias Seguras');                       // SMTP password
+    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 465;      
+    $mail->Subject = 'Nueva solicitud de oferta';
+    $mail->AddAddress($correo);
+    $mail->MsgHTML("
+        <body style='font-family: Arial, Helvetica, sans-serif; margin: 0; padding:0;' >
+        <div class='row' style='margin-top: 25px'>
+
+            <center>
+                <img  src='http://familiasseguras.com/web/img/logo/logo_only_b.png' style='text-align:center;'>
+            </center>
+
+            <div class='row' style='margin-bottom:120px; height: 160px;border-top: 1px solid rgba(128, 128, 128, 0.377);'>
+                <div style='float:left; width: 80%; '>
+                    <h3 style='	color:rgb(78, 78, 78);
+                    font-weight: 50;
+                    text-align:center; margin-top: 40px; padding-left: 5%; padding-right: 5%;'>
+                    Acabas de recibir la solicitud de oferta No. $fecha_corta - $id de parte de: NOMBRE CLIENTE <br> 
+                    por medio del sitio de familiasseguras.com, para poder procesar debes de ingresar a nuestro portal,<br>
+                     haciendo click <a href='http://familiasseguras.com/dashboard/empleado/login.php'>AQUI</a> y al entrar al sitio no olvides ingresar tú correo y contraseña.
+                    </h3>
+                </div>
+                <div style='opacity:0.8; filter: brightness(0.6); float:left; background-color:mediumvioletred; width: 20%; height: 100%; background-image: url(http://familiasseguras.com/web/img/logo/maili.jpg);background-size: cover;background-position-x: -80px' >
+
+                </div>
+                
+            </div>
+
+        </div>
+        <div class='row' style='text-align:center'>
+
+        </div>
+
+        </section>
+
+        </body>
+
+        ");
+    if($mail->Send())
+    {
+        echo 'si';
+    }
+    else
+    {
+        'no';
+    }
+}
 ?>
