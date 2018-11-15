@@ -508,6 +508,35 @@ class Usuarios extends Validator
 	}
 	
 
+	//Funciones para el inicio de sesion
+	public function checkUsuarios($usuario){
+		$sql = "SELECT PK_id_usuario, correo FROM usuarios WHERE correo = ?";
+		$params = array($usuario);
+		$data = Database::getRow($sql, $params);
+		if($data){
+			$this->PK_id_usuario = $data['PK_id_usuario'];
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function checkContrasena($clave){
+		$sql = "SELECT clave, FK_id_tipo_team FROM usuarios WHERE PK_id_usuario = ?";
+		$params = array($this->PK_id_usuario);
+		$data = Database::getRow($sql, $params);
+		if($clave == $data['clave']){
+			$this->FK_id_tipo_team = $data['FK_id_tipo_team'];
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function logOut(){
+		return session_destroy();
+	}
+
 	//Funciones para SCRUD
 	public function createUsuario()
 	{
@@ -520,6 +549,12 @@ class Usuarios extends Validator
 			$this->PK_id_usuario = Database::getLastRowId();
 		}
 	}
+	public function updateTeam($id){
+		$sql = "UPDATE usuarios SET FK_id_tipo_team = ? WHERE PK_id_usuario = ?";
+		$params = array(8, $id);
+		return Database::executeRow($sql, $params);
+	}
+	
 }
 
 ?>

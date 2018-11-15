@@ -198,6 +198,14 @@ class Contrataciones extends Validator
 	public function getIngresos()
 	{
 		return $this->ingresos;
-    }
+	}
+	
+	//Funciones para el SCRUD
+	public function createContratacion(){
+		$sql = "INSERT INTO `contrataciones`(`FK_id_usuario`, `estado_civil`, `profesion`, `lugar_trabajo`, `cargo`, `direccion`, `departamento`, `municipio`, `telefono`, `ingresos`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$params = array($this->FK_id_usuario, $this->estado_civil, $this->profesion, $this->lugar_trabajo, $this->cargo, $this->direccion, $this->departamento, $this->municipio, $this->telefono, $this->ingresos);
+		return Database::executeRow($sql, $params);
+	}
+	
 }
 ?>
