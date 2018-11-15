@@ -92,6 +92,7 @@ $(document).ready(function(){
     });
 
 
+    var vehiculos = [];
     $('#agregar').click(function(){
         marca_vehiculo = $('#marca_vehiculo').val();
         modelo_vehiculo = $('#modelo_vehiculo').val();
@@ -102,7 +103,7 @@ $(document).ready(function(){
 
         nombre_marca = $('#marca input.select-dropdown').val();
         nombre_modelo = $('#modelo input.select-dropdown').val();
-        console.log(nombre_marca);
+        //console.log(nombre_marca);
         if(marca_vehiculo != null)
         {
             if(modelo_vehiculo != null)
@@ -115,7 +116,26 @@ $(document).ready(function(){
                         {
                             if(valor_vehiculo != '')
                             {
+                                var fila_vehiculo = [];
+                                fila_vehiculo.push(nombre_marca, nombre_modelo, marca_vehiculo, modelo_vehiculo, anio, placa, origen_vehiculo, valor_vehiculo);
+                                vehiculos.push(fila_vehiculo);
+
+                                $('#vehiculos').empty();
+                                for(i = 0; i<vehiculos.length; i++)
+                                { 
+                                    var fila = '';
+                                    fila = fila.concat(
+                                        '<tr id="'+i+'">',
+                                            '<td>'+vehiculos[i][0]+'</td>',
+                                            '<td>'+vehiculos[i][1]+'</td>',
+                                            '<td>'+vehiculos[i][5]+'</td>',
+                                            '<td><a class="btn purple eliminar">Eliminar</a></td>',
+                                        '</tr>'
+                                    );
+                                    $('#vehiculos').append(fila);
+                                }
                                 
+
                             }
                             else
                             {
@@ -145,6 +165,27 @@ $(document).ready(function(){
         else
         {
             AlertaSweet(3, 'Seleccione la marca del vehiculo');
+        }
+    });
+
+    $('#table_vehiculo').on('click', '#vehiculos .eliminar', function(e){
+        e.preventDefault();
+        id = $(this).parent().parent().attr('id');
+        console.log(id);
+        vehiculos.splice(id, 1);
+        $('#vehiculos').empty();
+        for(i = 0; i<vehiculos.length; i++)
+        { 
+            var fila = '';
+            fila = fila.concat(
+                '<tr id="'+i+'">',
+                    '<td>'+vehiculos[i][0]+'</td>',
+                    '<td>'+vehiculos[i][1]+'</td>',
+                    '<td>'+vehiculos[i][5]+'</td>',
+                    '<td><a class="btn purple eliminar">Eliminar</a></td>',
+                '</tr>'
+            );
+            $('#vehiculos').append(fila);
         }
     });
 });

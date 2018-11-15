@@ -71,8 +71,8 @@
               </div>
               <div class="row">
                 <div class="col s12 m12 l12">
-                  <a class="waves-effect waves-light btn modal-trigger" href="#modalautos">Ver carros</a>
-                  <a id="agregar" class="waves-effect waves-light btn">Agregar</a>
+                  <a class="waves-effect waves-light btn modal-trigger purple" href="#modalautos">Ver carros</a>
+                  <a id="agregar" class="waves-effect waves-light btn purple">Agregar</a>
                 </div>
               </div>
               &nbsp
@@ -81,7 +81,7 @@
                   <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
                 </div>
                 <div class="col push-l4 push-m3">              
-                  <a id="siguiente2" class="waves-effect waves-light btn light-blue">Siguiente</a>
+                  <a id="siguiente2" class="btn waves-effect waves-light purple">Siguiente</a>
                 </div>
               </div>
           </div>  
@@ -90,7 +90,7 @@
 <div id="modalautos" class="modal modal-fixed-footer">
   <div class="modal-content">
   <h3>Vehiculos</h3>
-    <table class="bordered highlight">
+    <table id="table_vehiculo" class="bordered highlight centered">
       <thead>
         <tr>
             <th>Marca</th>
@@ -100,12 +100,11 @@
         </tr>
       </thead>
       <tbody id = "vehiculos">
-
       </tbody>
     </table>
   </div>
   <div class="modal-footer">
-    <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
   </div>
 </div>
 
@@ -148,8 +147,8 @@
               <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
             </div>
             <div class="col s12 m8 l7 push-l2 push-m2">
-              <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>              
-              <a id="siguiente3" class="waves-effect waves-light btn light-blue">Siguiente</a>
+              <a id="anterior1" class="waves-effect waves-light btn purple">Anterior</a>              
+              <a id="siguiente3" class="waves-effect waves-light btn purple">Siguiente</a>
             </div>
           </div>
         </div>
@@ -234,8 +233,8 @@
             <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
           </div>
           <div class="col s12 m8 l7 push-l2 push-m2">
-            <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
-            <a id="cotizar" class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+            <a id="anterior2" class="waves-effect waves-light btn purple">Anterior</a>              
+            <a id="cotizar" class="waves-effect waves-light btn purple">Cotizar | Finalizar</a>
           </div>
         </div>
         

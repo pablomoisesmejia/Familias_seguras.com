@@ -345,9 +345,28 @@ $(document).ready(function(){
   $('#paso2').css({"display":"none"});
   $('#paso3').css({"display":"none"});
 
-  $('#siguiente2').click(function(){
-    Paso1();
-  });
+  if(tipo_seguro != 4)
+  {
+    $('#siguiente2').click(function(){
+      Paso1();
+    });
+  }
+  else
+  {
+    $('#siguiente2').click(function(){
+      tabla_vehiculo = $('#vehiculos tr').length;
+      console.log(tabla_vehiculo);
+      if(tabla_vehiculo != 0)
+      {
+        siguiente2();
+      }
+      else
+      {
+        AlertaSweet(3, 'Ingrese al menos un vehiculo para seguir con la cotización');
+      }
+    });
+  }
+  
 
   $('#siguiente3').click(function(){
     paso2();    
