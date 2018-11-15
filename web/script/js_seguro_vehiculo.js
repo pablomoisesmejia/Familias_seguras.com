@@ -64,8 +64,7 @@ $(document).ready(function(){
             dataType: 'json',
             success:function(modelos)
             {
-                $('#modelo_vehiculo').empty(); 
-                console.log(modelos);
+                $('#modelo_vehiculo').empty();
 
                 if(modelos != '')
                 {
@@ -92,7 +91,6 @@ $(document).ready(function(){
     });
 
 
-    var vehiculos = [];
     $('#agregar').click(function(){
         marca_vehiculo = $('#marca_vehiculo').val();
         modelo_vehiculo = $('#modelo_vehiculo').val();
@@ -104,74 +102,87 @@ $(document).ready(function(){
         nombre_marca = $('#marca input.select-dropdown').val();
         nombre_modelo = $('#modelo input.select-dropdown').val();
         //console.log(nombre_marca);
-        if(marca_vehiculo != null)
+        if(vehiculos.length < 5)
         {
-            if(modelo_vehiculo != null)
+            if(marca_vehiculo != null)
             {
-                if(anio != '')
+                if(modelo_vehiculo != null)
                 {
-                    if(placa != '')
+                    if(anio != '')
                     {
-                        if(origen_vehiculo != null)
+                        if(placa != '')
                         {
-                            if(valor_vehiculo != '')
+                            if(origen_vehiculo != null)
                             {
-                                var fila_vehiculo = [];
-                                fila_vehiculo.push(nombre_marca, nombre_modelo, marca_vehiculo, modelo_vehiculo, anio, placa, origen_vehiculo, valor_vehiculo);
-                                vehiculos.push(fila_vehiculo);
+                                if(valor_vehiculo != '')
+                                {
+                                    var fila_vehiculo = [];
+                                    fila_vehiculo.push(nombre_marca, nombre_modelo, marca_vehiculo, modelo_vehiculo, anio, placa, origen_vehiculo, valor_vehiculo);
+                                    vehiculos.push(fila_vehiculo);
 
-                                $('#vehiculos').empty();
-                                for(i = 0; i<vehiculos.length; i++)
-                                { 
-                                    var fila = '';
-                                    fila = fila.concat(
-                                        '<tr id="'+i+'">',
-                                            '<td>'+vehiculos[i][0]+'</td>',
-                                            '<td>'+vehiculos[i][1]+'</td>',
-                                            '<td>'+vehiculos[i][5]+'</td>',
-                                            '<td><a class="btn purple eliminar">Eliminar</a></td>',
-                                        '</tr>'
-                                    );
-                                    $('#vehiculos').append(fila);
+                                    $('#vehiculos').empty();
+                                    for(i = 0; i<vehiculos.length; i++)
+                                    { 
+                                        var fila = '';
+                                        fila = fila.concat(
+                                            '<tr id="'+i+'">',
+                                                '<td>'+vehiculos[i][0]+'</td>',
+                                                '<td>'+vehiculos[i][1]+'</td>',
+                                                '<td>'+vehiculos[i][5]+'</td>',
+                                                '<td><a class="btn purple eliminar">Eliminar</a></td>',
+                                            '</tr>'
+                                        );
+                                        $('#vehiculos').append(fila);
+                                    }
+                                    $('#anio').val('');
+                                    $('#placa').val('');
+                                    $('#valor_vehiculo').val('');
+                                    cargarMarcas();
+                                    $('#modelo_vehiculo').empty();
+                                    $('#modelo_vehiculo').append('<option value="" disabled selected>Seleccione una marca para mostrar los modelos</option>');
+                                    $('select').material_select();
+                                    cargarOrigenVehiculo();
+
                                 }
-                                
-
+                                else
+                                {
+                                    AlertaSweet(3, 'Ingrese el valor del vehiculo');
+                                }
                             }
                             else
                             {
-                                AlertaSweet(3, 'Ingrese el valor del vehiculo');
+                                AlertaSweet(3, 'Seleccione el origen del vehiculo');
                             }
                         }
                         else
                         {
-                            AlertaSweet(3, 'Seleccione el origen del vehiculo');
+                            AlertaSweet(3, 'Ingrese la placa del vehiculo');
                         }
                     }
                     else
                     {
-                        AlertaSweet(3, 'Ingrese la placa del vehiculo');
+                        AlertaSweet(3, 'Ingrese el año del vehiculo');
                     }
                 }
                 else
                 {
-                    AlertaSweet(3, 'Ingrese el año del vehiculo');
+                    AlertaSweet(3, 'Seleccione el modelo del vehiculo');
                 }
             }
             else
             {
-                AlertaSweet(3, 'Seleccione el modelo del vehiculo');
+                AlertaSweet(3, 'Seleccione la marca del vehiculo');
             }
         }
         else
         {
-            AlertaSweet(3, 'Seleccione la marca del vehiculo');
+            AlertaSweet(3, 'Solo puedes agregar hasta 5 vehiculos');
         }
     });
 
     $('#table_vehiculo').on('click', '#vehiculos .eliminar', function(e){
         e.preventDefault();
         id = $(this).parent().parent().attr('id');
-        console.log(id);
         vehiculos.splice(id, 1);
         $('#vehiculos').empty();
         for(i = 0; i<vehiculos.length; i++)
@@ -196,59 +207,23 @@ var anio = '';
 var placa = '';
 var origen_vehiculo = '';
 var valor_vehiculo = '';
+var vehiculos = [];
 
 var tipo_seguro = 4;
 
-function Paso1()
+function createCotizacion()
 {
-    marca_vehiculo = $('#marca_vehiculo').val();
-    modelo_vehiculo = $('#modelo_vehiculo').val();
-    anio = $('#anio').val();
-    placa = $('#placa').val();
-    origen_vehiculo = $('#origen_vehiculo').val();
-    valor_vehiculo = $('#valor_vehiculo').val();
-
-    if(marca_vehiculo != null)
-    {
-        if(modelo_vehiculo != null)
+    $.ajax({
+        type: 'POST',
+        url: '../../app/controllers/public/index/create_seguro_vehiculo.php',
+        data: {
+            vehiculos:vehiculos,
+            id_cliente_prospecto:id_cliente_prospecto
+        },
+        dataType: 'json',
+        success: function(datos)
         {
-            if(anio != '')
-            {
-                if(placa != '')
-                {
-                    if(origen_vehiculo != null)
-                    {
-                        if(valor_vehiculo != '')
-                        {
-                            siguiente2();
-                        }
-                        else
-                        {
-                            AlertaSweet(3, 'Ingrese el valor del vehiculo');
-                        }
-                    }
-                    else
-                    {
-                        AlertaSweet(3, 'Seleccione el origen del vehiculo');
-                    }
-                }
-                else
-                {
-                    AlertaSweet(3, 'Ingrese la placa del vehiculo');
-                }
-            }
-            else
-            {
-                AlertaSweet(3, 'Ingrese el año del vehiculo');
-            }
+            console.log(datos)
         }
-        else
-        {
-            AlertaSweet(3, 'Seleccione el modelo del vehiculo');
-        }
-    }
-    else
-    {
-        AlertaSweet(3, 'Seleccione la marca del vehiculo');
-    }
+    });
 }

@@ -91,7 +91,7 @@ function paso2()
 //VALIDACIONES PARA EL PASO 3
 function paso3()
 {
-    if(tipo_seguro == 3)
+    if(tipo_seguro == 3 || tipo_seguro == 4)
     {
       fecha_nacimiento = $('#fecha_nacimiento').val();
     }
@@ -117,7 +117,7 @@ function paso3()
       horario = '4:00 - 7:00pm'
     }
 
-    if(tipo_seguro == 3)
+    if(tipo_seguro == 3 || tipo_seguro == 4)
     {
       if(fecha_nacimiento == '')
       {
@@ -355,7 +355,6 @@ $(document).ready(function(){
   {
     $('#siguiente2').click(function(){
       tabla_vehiculo = $('#vehiculos tr').length;
-      console.log(tabla_vehiculo);
       if(tabla_vehiculo != 0)
       {
         siguiente2();

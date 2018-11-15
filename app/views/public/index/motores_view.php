@@ -90,7 +90,7 @@
 <div id="modalautos" class="modal modal-fixed-footer">
   <div class="modal-content">
   <h3>Vehiculos</h3>
-    <table id="table_vehiculo" class="bordered highlight centered">
+    <table id="table_vehiculo" class="bordered highlight centered responsive-table">
       <thead>
         <tr>
             <th>Marca</th>

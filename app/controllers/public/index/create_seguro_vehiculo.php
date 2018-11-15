@@ -6,21 +6,25 @@ require_once('../../../models/cotizaciones_vehiculo.class.php');
 try
 {
     $vehiculo = new Cotizaciones_vehiculos;
-    $vehiculo->setNumeroLicencia($_POST['numero_licencia']);
-    $vehiculo->setIdCliente($_POST['id_cliente']);
-
-    if($vehiculo->createSeguroVehiculo())
+    $vehiculos = $_POST['vehiculos'];
+    print_r($vehiculos);
+    for($i = 0; $i<count($vehiculos); $i++)
     {
+        $vehiculo->setIdModeloVehiculo($vehiculos[$i][3]);
+        $vehiculo->setAnio($vehiculos[$i][4]);
+        $vehiculo->setPlaca($vehiculos[$i][5]);
+        $vehiculo->setIdOrigenVehiculo($vehiculos[$i][6]);
+        $vehiculo->setValor($vehiculos[$i][7]);
 
-    }
-    else
-    {
-        echo Database::getException();
-    }
+        $vehiculo->setIdClienteProspecto($_POST['id_cliente_prospecto']);
+        if($vehiculo->createSeguroVehiculo())
+        {
 
-    if($vehiculo->getIdCotizacion() != null)
-    {
-        echo 1;
+        }
+        else
+        {
+            echo Database::getException();
+        }
     }
 }
 catch(Exception $error)
