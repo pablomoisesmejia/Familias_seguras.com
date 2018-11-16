@@ -1,5 +1,5 @@
 <?php
-require_once("../../app/models/cliente_prospectos.class.php");
+require_once("../app/models/cliente_prospectos.class.php");
 try{
 	$prospecto = new Cliente_Prospecto;
 	if(isset($_POST['buscar'])){
@@ -17,9 +17,9 @@ try{
 	}    
 
     if($data){
-		require_once("../../app/views/dashboard/empleado/index_view.php");
+		require_once("../app/views/dashboard/empleado/index_view.php");
 	}else{
-		require_once("../../app/views/dashboard/empleado/index_view.php");
+		require_once("../app/views/dashboard/empleado/index_view.php");
     }
 }catch(Exception $error){
 	Page::showMessage(2, $error->getMessage(), "../empleado/");

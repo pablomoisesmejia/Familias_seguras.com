@@ -1,5 +1,6 @@
 <?php
-class Cliente_Prospecto extends Validator{
+class Cliente_Prospecto extends Validator
+{
 	//Declaración de propiedades
 	private $PK_id_cliente_prospecto = null;
 	private $FK_id_usuario = null;
