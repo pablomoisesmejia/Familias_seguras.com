@@ -10,17 +10,15 @@ try{
 				$_SESSION['usuario_d'] = $object->getUsuario();
 				if($object2->checkUsuarios($object->getCorreo())){
 					//if($object->checkPermisos()){
-						if($object2->setClave($_POST['pass'])){
-							if($object2->checkContrasena()){
+						if($object->setClave($_POST['pass'])){
+							if($object2->checkContrasena($_POST['pass'])){
 								$_SESSION['id_empleado_d'] = $object2->getIdEmpleado(); //Obtiene el id_empleado para usarlo luego en la pagina template
 								$_SESSION['tipo_team_d'] = $object2->getTipo();
 								$_SESSION['usuario_d'] = $object2->getUsuario();
 								if($_SESSION['tipo_team_d'] == '1'){
 									Page::showMessage(1, "Autenticación correcta", "index.php");
 								}						
-							}
-							else
-							{
+							}else{
 								throw new Exception("Contraseña incorrecta");
                             }
 						}else{

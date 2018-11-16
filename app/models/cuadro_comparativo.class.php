@@ -173,12 +173,21 @@ class Cuadro_Comparativo extends Validator
 		$params = array($id);
 		return Database::getRow($sql, $params);
     }
+    public function getCorreoCorreo($id){
+		$sql = "SELECT correo FROM solicitudes, clientes_prospectos, usuarios WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario) AND PK_id_solicitud = ?";
+		$params = array($id);
+		return Database::getRow($sql, $params);
+    }
     public function getCompanias($id){
 		$sql = "SELECT compania_interes FROM companias_interes WHERE FK_id_cliente_prospecto = ?";
 		$params = array($id);
 		return Database::getRows($sql, $params);
     }
-    
+    public function getRamo($id){
+		$sql = "SELECT * FROM solicitudes, clientes_prospectos, usuarios, tipos_seguro, estado_solicitud WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario AND clientes_prospectos.FK_id_tipo_seguro = tipos_seguro.PK_id_tipo_seguro AND estado_solicitud.PK_id_estado_solicitud = solicitudes.FK_id_estado_solicitud) AND PK_id_solicitud = ?";
+		$params = array($id);
+		return Database::getRow($sql, $params);
+    }
     public function createCuadro(){
 		$sql = "INSERT INTO cuadro_comparativo(FK_id_aseguradora, plan, oferta, FK_id_cliente_prospecto, valor_recuperacion_50, valor_recuperacion_60, valor_recuperacion_70) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $params = array($this->FK_id_aseguradora, $this->plan, $this->oferta, $this->FK_id_cliente_prospecto, $this->valor_recuperacion_50, $this->valor_recuperacion_60, $this->valor_recuperacion_70);

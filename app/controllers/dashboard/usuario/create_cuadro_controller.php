@@ -2,6 +2,7 @@
 require_once("../../app/models/cuadro_comparativo.class.php");
 require_once("../../app/models/solicitudes.class.php");
 require_once("../../app/models/primas.class.php");
+require_once("../../app/controllers/dashboard/usuario/correo_controller.php");
 try{
 
     date_default_timezone_set('America/El_Salvador');
@@ -35,6 +36,7 @@ try{
                                                         if($prima->setIdCuadro($var)){
                                                             if($prima->setPrima($_POST['prima'.$i])){
                                                                 if($prima->createPrima()){
+                                                                    $correo = new Correo;
                                                                     Page::showMessage(1, "Cuadro creado", "index.php");
                                                                 }else{
                                                                     throw new Exception(Database::getException());
@@ -90,6 +92,7 @@ try{
                                                 if($prima->setIdCuadro($var)){
                                                     if($prima->setPrima($_POST['prima'.$j.$i])){
                                                         if($prima->createPrima()){
+                                                            $correo = new Correo;
                                                             Page::showMessage(1, "Cuadro creado", "index.php");
                                                         }else{
                                                             throw new Exception(Database::getException());
@@ -137,6 +140,7 @@ try{
                                             if($prima->setIdCuadro($var)){
                                                 if($prima->setPrima($_POST['prima'.$i])){
                                                     if($prima->createPrima()){
+                                                        $correo = new Correo;
                                                         Page::showMessage(1, "Cuadro creado", "index.php");
                                                     }else{
                                                         throw new Exception(Database::getException());
