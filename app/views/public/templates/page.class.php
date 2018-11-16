@@ -142,8 +142,20 @@ class Page extends Component{
 			<script src='../../web/script/js_seguro_vehiculo.js'></script>
 			");
 		}
-		print("
+		if($filename != "create_usuario.php")
+		{
+			print("
 			<script src='../../web/script/functions.js'></script>
+			");
+		}
+		else
+		{
+			print("
+			<script src='../../web/script/create_usuario.js'></script>
+			");
+		}
+		print("
+			
 			<script src='../../web/script/materialize.min.js'></script>
 			
 			</body>

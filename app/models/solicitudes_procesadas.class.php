@@ -137,5 +137,13 @@ class Solicitudes_procesadas extends Validator
     }
 	//FIN DE LAS FUNCIONES PARA LAS TAREAS PROGRAMADAS
 
+	//FUNCIONES PARA EL SCRUD
+	public function createSolicitudProcesada()
+	{
+		$sql = 'INSERT INTO solicitudes_procesadas(FK_id_tipo_seguro, FK_id_empleado, FK_id_cantidad_solicitud_dia) 
+		VALUES (?, ?, ?)';
+		$params = array($this->FK_id_tipo_seguro, $this->FK_id_empleado, $this->FK_id_cantidad_solicitud_dia);
+		return Database::executeRow($sql, $params);
+	}
 }
 ?>

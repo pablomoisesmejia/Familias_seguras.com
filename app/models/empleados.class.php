@@ -63,7 +63,7 @@ class Empleados extends Validator
 
 	public function setActivo($value)
 	{
-		if($this->validateId($value))
+		if($this->validateAlphanumeric($value, 1, 2))
 		{
 			$this->activo_reparticion = $value;
 			return true;
@@ -208,6 +208,18 @@ class Empleados extends Validator
 		$sql = "SELECT * FROM empleados";
 		$params = array(null);
 		return Database::getRows($sql, $params);
+	}
+
+	public function createEmpleado()
+	{
+		$sql = 'INSERT INTO empleados(FK_id_usuario, FK_id_cargo_gerencia, activo_reparticion) 
+		VALUES (?, ?, ?)';
+		$params = array($this->FK_id_usuario, $this->FK_id_cargo_gerencia, $this->activo_reparticion);
+		$empleado = Database::executeRow($sql, $params);
+		if($empleado)
+		{
+			$this->PK_id_empleado = Database::getLastRowId();
+		}
 	}
 }
 ?>

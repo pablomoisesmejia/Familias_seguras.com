@@ -51,7 +51,7 @@ class Cantidad_Solicitud_Dias extends Validator
     }
     public function getId()
     {
-        return $this->$PK_id_cantidad_solicitud_dias;
+        return $this->PK_id_cantidad_solicitud_dias;
     }
 
     public function setLunes($value)
@@ -533,5 +533,16 @@ class Cantidad_Solicitud_Dias extends Validator
         return $this->fecha_castigo_domingo;
     }
 
+    public function createCantidadSoliDias()
+    {
+        $sql = 'INSERT INTO cantidad_solicitud_dias(lunes, martes, miercoles, jueves, viernes, sabado, domingo) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->lunes, $this->martes, $this->miercoles, $this->jueves, $this->viernes, $this->sabado, $this->domingo);
+        $cantidad = Database::executeRow($sql, $params);
+        if($cantidad)
+        {
+            $this->PK_id_cantidad_solicitud_dias = Database::getLastRowId();;
+        }
+    }
 }
 ?>

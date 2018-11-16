@@ -21,14 +21,14 @@ function Paso1()
         {
             if(cantidad_hijos != '')
             {
-            if(cantidad_hijos.indexOf("-") != 0)
-            {
-                siguiente2();
-            }
-            else
-            {
-                AlertaSweet(3, 'La cantidad de hijos no puede ser negativa');
-            }
+                if(cantidad_hijos.indexOf("-") != 0)
+                {
+                    siguiente2();
+                }
+                else
+                {
+                    AlertaSweet(3, 'La cantidad de hijos no puede ser negativa');
+                }
             }
             else
             {
