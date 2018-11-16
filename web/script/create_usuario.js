@@ -57,7 +57,7 @@ function AlertaSweet(icono, texto)
 }
 
 var id_usuario = '';
-var id_empleado = 4;
+var id_empleado = '';
 var id_cantidad_soli_dias = '';
 //VALIDACIONES 
 function create()
@@ -218,7 +218,7 @@ function createCantidadSoli()
                                                                                                                     Vida.push(lunes_V, martes_V, miercoles_V, jueves_V, viernes_V, sabado_V, domingo_V)
                                                                                                                     Cantidad.push(Medico, Vida, Incendios, Automotores);
                                                                                                                     console.log(Cantidad);
-                                                                                                                    createCantidadSoliDias()
+                                                                                                                    createUsuario();
                                                                                                                 }
                                                                                                                 else
                                                                                                                 {
@@ -421,9 +421,4 @@ function createCantidadSoliDias()
         {
         }
     });
-}
-
-function createSolicitudProcesada()
-{
-
 }
