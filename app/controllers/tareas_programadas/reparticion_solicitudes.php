@@ -287,7 +287,7 @@ for($k = 0; $k<count($tipos_seguros); $k++)
 
 function enviarCorreo($correo, $id)
 {
-    $fecha_corta = date('aammdd');
+    $fecha_corta = date('ymd');
     $mail = new PHPMailer();                              // Passing `true` enables exceptions
     //Server settings
     $mail->SMTPDebug = 0;                                 // Enable verbose debug output

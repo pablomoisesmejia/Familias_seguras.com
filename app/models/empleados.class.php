@@ -8,6 +8,7 @@ class Empleados extends Validator
 
 	private $tipo = null;
 	private $usuario = null;
+	private $clave = null;
 
     public function setIdEmpleado($value)
 	{
@@ -111,6 +112,24 @@ class Empleados extends Validator
 		return $this->usuario;
 	}
 
+	public function setClave($value)
+	{
+		if($this->validateAlphanumeric($value, 1, 100))
+		{
+			$this->clave = $value;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function getClave()
+	{
+		return $this->clave;
+	}
+	
+
 	//FUNCIONES PARA LAS TAREAS PROGRAMADAS
 	
 	//FIN DE FUNCIONES PARA LAS TAREAS PROGRAMADAS
@@ -118,29 +137,67 @@ class Empleados extends Validator
 
 	//Funciones para inicio de sesion
 	public function checkUsuarios($usuario){
-		$sql = "SELECT PK_id_empleado, correo FROM empleados, usuarios WHERE (usuarios.PK_id_usuario = empleados.FK_id_usuario) AND usuarios.correo = ?";
+		$sql = "SELECT PK_id_empleado, PK_id_usuario, correo FROM empleados, usuarios WHERE (usuarios.PK_id_usuario = empleados.FK_id_usuario) AND usuarios.correo = ?";
 		$params = array($usuario);
 		$data = Database::getRow($sql, $params);
 		if($data){
 			$this->PK_id_empleado = $data['PK_id_empleado'];
+			$this->FK_id_usuario = $data['PK_id_usuario'];
 			return true;
 		}else{
 			return false;
 		}
 	}
 
-	public function checkContrasena($clave){
+	public function checkContrasena(){
 		$sql = "SELECT clave, FK_id_tipo_team, usuario FROM usuarios, empleados WHERE (empleados.FK_id_usuario = usuarios.PK_id_usuario) AND PK_id_empleado = ?";
 		$params = array($this->PK_id_empleado);
 		$data = Database::getRow($sql, $params);
-		if(password_verify($this->clave, $data['clave'])){
-			$this->estado = $data['estado'];
-			$this->fecha2 = $data['fecha_bloqueo'];
-			return true;
-		}else{
+		if($data)
+        {
+            if(strlen($data['clave']) == 60)
+            {
+                if(password_verify($this->clave, $data['clave']))
+                {
+					$this->tipo = $data['FK_id_tipo_team'];
+					$this->usuario = $data['usuario'];
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if($this->clave == $data['clave'])
+                {
+					$this->clave = $data['clave'];
+					$this->tipo = $data['FK_id_tipo_team'];
+					$this->usuario = $data['usuario'];
+					$this->encryptContraseña();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }                
+            }			
+        }
+        else
+        {
 			return false;
 		}
 	}
+
+	public function encryptContraseña()
+    {
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+        $sql = "UPDATE usuarios SET clave = ? WHERE PK_id_usuario = ?";
+        $params = array($hash, $this->FK_id_usuario);
+        return Database::executeRow($sql, $params);
+	}
+	
 
 	public function logOut(){
 		return session_destroy();
