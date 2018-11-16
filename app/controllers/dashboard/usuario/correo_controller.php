@@ -20,13 +20,11 @@ class Correo{
                     $ramos = $cuadro->getRamo($_GET['id']);
                     $ramo = $ramos['tipo_seguro'];
 
-                    foreach($array as $comany){
-                        for($k = 0;$k < count($array);$k ++){
-                            $array2[$k] = array($comany['compania_interes']);
-                        }
+                    $array2 = array();
+                    for($k = 0;$k < count($array);$k ++){
+                        $array2[$k] = $array[$k]['compania_interes'];
                     }
-                    $array3 = array("Opcion 1", "Opcion 2", "Opcion 3");
-                    $resultado = implode(", ", $array3);
+                    $resultado = implode(", ", $array2);
 
                     $mail = new PHPMailer();
 
@@ -70,7 +68,7 @@ class Correo{
                                     <td>
                                         <p> Estimado usuario :</p>
                                         <br>
-                                        <p> Es para nosotros un verdadero honor y compromiso el haber sido tomados en cuenta para presentarte distintas alternativas para tu ".$ramo.", el cual solicitaste se cotizara y analizara entre:".$resultado."</p> 
+                                        <p> Es para nosotros un verdadero honor y compromiso el haber sido tomados en cuenta para presentarte distintas alternativas para tu ".$ramo.", el cual solicitaste se cotizara y analizara entre: ".$resultado.".</p> 
                                         <p> Nuestro equipo se dio a la tarea de buscar las mejores alternativas para satisfacer tus necesidades, hemos resumido todo nuestro an&aacute;lisis en un cuadro comparativo al cual puedes tener acceso, haciendo <strong>CLICK AQUI</strong></p>
                                         <p>Tan pronto como haya sido visualizado el cuadro comparativo, nuestro equipo te contactar&aacute; para asesorarte en los pasos a seguir para la contrataci&oacute;n de tu seguro y aclararte cualquier duda. Que Dios te bendiga</p>
                                         <p>Atentamente, <strong> Familias Seguras.com </strong></p>
