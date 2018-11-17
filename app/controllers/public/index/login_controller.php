@@ -10,8 +10,10 @@ try{
 						if($object->setClave($_POST['pass'])){
 							if($object->checkContrasena($_POST['pass'])){
 								$_SESSION['tipo_team_p'] = $object->getIdTipoTeam();
-                                $_SESSION['id_usuario_p'] = $object->getIdUsuario();
-								Page::showMessage(1, "Autenticación correcta", "contratacion.php");					
+								$_SESSION['id_usuario_p'] = $object->getIdUsuario();
+								//$SESSION['id_prospecto_p'] = $object->getProspecto();
+								$_SESSION['id_prospecto_p'] = 1;
+								Page::showMessage(1, "Autenticación correcta", "cuadros.php");					
 							}else{
 								throw new Exception("Contraseña incorrecta");
                             }

@@ -1,0 +1,12 @@
+.titulo_aseguradora{
+    background-color: rgb(98, 52, 121);
+    color: white;
+    font-weight: bold;
+    font-size: 150%;
+    padding-top: 7%;
+    padding-bottom: 7%
+}
+
+.morado{
+    background-color: rgb(98, 52, 121) !important;
+}

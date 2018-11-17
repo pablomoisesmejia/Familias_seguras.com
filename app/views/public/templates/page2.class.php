@@ -23,6 +23,7 @@ class Page extends Component{
 			<link rel='stylesheet' href='../../web/fonts/roboto/letras.css'>
 			<link rel='stylesheet' href='../../web/css/material_icons.css'>
 			<link rel='stylesheet' href='../../web/css/materialize.css'>
+			<link rel='stylesheet' href='../../web/css/public_style2.css'>
 			<script type='text/javascript' src='../../web/script/sweetalert.min.js'></script>
 			
 			
@@ -62,7 +63,7 @@ class Page extends Component{
 			");
 			$filename = basename($_SERVER['PHP_SELF']);
 			if($filename != "login.php" && $filename != "register.php" && $filename != "correo.php"){
-				self::showMessage(3, "¡Debe iniciar sesión!, $_SESSION[id_usuario_p]", "../index/login.php");
+				self::showMessage(3, "¡Debe iniciar sesión!", "../index/login.php");
 				self::templateFooter();
 				exit;
 			}else{

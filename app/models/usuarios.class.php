@@ -29,7 +29,9 @@ class Usuarios extends Validator
     private $clave = null;
     private $observaciones = null;
     private $fecha_finalizacion = null;
-    private $motivo_finalizacion = null;
+	private $motivo_finalizacion = null;
+	
+	private $prospecto = null;
 
     public function setIdUsuario($value)
 	{
@@ -46,6 +48,10 @@ class Usuarios extends Validator
 	public function getIdUsuario()
 	{
 		return $this->PK_id_usuario;
+	}
+	public function getProspecto()
+	{
+		return $this->prospecto;
     }
     
     public function setFechaInclusion($value)
@@ -522,11 +528,12 @@ class Usuarios extends Validator
 	}
 
 	public function checkContrasena($clave){
-		$sql = "SELECT clave, FK_id_tipo_team FROM usuarios WHERE PK_id_usuario = ?";
+		$sql = "SELECT clave, FK_id_tipo_team, PK_id_cliente_prospecto FROM usuarios, clientes_prospectos WHERE clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario AND PK_id_usuario = ?";
 		$params = array($this->PK_id_usuario);
 		$data = Database::getRow($sql, $params);
 		if($clave == $data['clave']){
 			$this->FK_id_tipo_team = $data['FK_id_tipo_team'];
+			$this->prospecto = $data['PK_id_cliente_prospecto'];
 			return true;
 		}else{
 			return false;
