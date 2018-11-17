@@ -39,7 +39,10 @@ class Page extends Component{
 						<nav>
 						<!--Navbar Color gris azulado-->
 							<div class='nav-wrapper morado'>
-							<img class='brand-logo' src='../../web/img/mipintura.png'>
+								<img class='brand-logo' src='../../web/img/mipintura.png'>
+								<ul class='right'>
+									<li><a href='logout.php'>Cerrar sesión</a></li>
+								</ul>
 							</div>
 						</nav>
 					</div>

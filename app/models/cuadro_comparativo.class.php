@@ -199,6 +199,22 @@ class Cuadro_Comparativo extends Validator
 		$params = array($id);
 		return Database::getRow($sql, $params);
     }
+
+    public function getCuadrosPublic2($id){
+		$sql = "SELECT * FROM cuadro_comparativo, aseguradoras, clientes_prospectos, solicitudes WHERE (cuadro_comparativo.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND aseguradoras.PK_id_aseguradora = cuadro_comparativo.FK_id_aseguradora) AND FK_id_estado_solicitud = 2 AND cuadro_comparativo.FK_id_cliente_prospecto = ?";
+		$params = array($id);
+		return Database::getRows($sql, $params);
+    }
+    public function getCantCuadrosPublic2($id){
+		$sql = "SELECT COUNT(*) AS m2 FROM cuadro_comparativo, aseguradoras, clientes_prospectos, solicitudes WHERE (cuadro_comparativo.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND aseguradoras.PK_id_aseguradora = cuadro_comparativo.FK_id_aseguradora) AND FK_id_estado_solicitud = 2 AND cuadro_comparativo.FK_id_cliente_prospecto = ?";
+		$params = array($id);
+		return Database::getRow($sql, $params);
+    }
+    public function getPrimasVehiculos($id){
+		$sql = "SELECT * FROM primas WHERE FK_id_cuadro_comparativo = ?";
+		$params = array($id);
+		return Database::getRows($sql, $params);
+    }
     
     public function createCuadro(){
 		$sql = "INSERT INTO cuadro_comparativo(FK_id_aseguradora, plan, oferta, FK_id_cliente_prospecto, valor_recuperacion_50, valor_recuperacion_60, valor_recuperacion_70) VALUES (?, ?, ?, ?, ?, ?, ?)";

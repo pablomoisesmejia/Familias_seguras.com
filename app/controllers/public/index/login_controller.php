@@ -11,8 +11,8 @@ try{
 							if($object->checkContrasena($_POST['pass'])){
 								$_SESSION['tipo_team_p'] = $object->getIdTipoTeam();
 								$_SESSION['id_usuario_p'] = $object->getIdUsuario();
-								//$SESSION['id_prospecto_p'] = $object->getProspecto();
-								$_SESSION['id_prospecto_p'] = 1;
+								$SESSION['id_prospecto_p'] = $object->getProspecto();
+								//$_SESSION['id_prospecto_p'] = 2;
 								Page::showMessage(1, "Autenticación correcta", "cuadros.php");					
 							}else{
 								throw new Exception("Contraseña incorrecta");
