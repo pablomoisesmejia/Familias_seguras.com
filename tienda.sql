@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2018 a las 00:38:53
+-- Tiempo de generación: 19-11-2018 a las 04:48:14
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tienda`
 --
+CREATE DATABASE IF NOT EXISTS `tienda` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `tienda`;
 
 -- --------------------------------------------------------
 
@@ -29,13 +31,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `anuncio` (
-  `id_anuncio` int(11) UNSIGNED NOT NULL,
+  `id_anuncio` int(11) NOT NULL,
   `nombre_anuncio` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `direccion` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `imagen_producto` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `estado_anuncio` tinyint(1) NOT NULL DEFAULT '1',
-  `id_categoria` int(11) UNSIGNED NOT NULL,
-  `id_usuario` int(11) UNSIGNED NOT NULL,
+  `estado_anuncio` int(11) NOT NULL DEFAULT '1',
+  `id_categoria` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `municipio` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `departamento` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `tel_fijo` int(12) NOT NULL,
@@ -55,7 +57,7 @@ CREATE TABLE `anuncio` (
 --
 
 CREATE TABLE `categorias` (
-  `id_categoria` int(11) UNSIGNED NOT NULL,
+  `id_categoria` int(11) NOT NULL,
   `nombre_categoria` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -81,7 +83,7 @@ INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`) VALUES
 --
 
 CREATE TABLE `planes` (
-  `id_plan` int(11) UNSIGNED NOT NULL,
+  `id_plan` int(11) NOT NULL,
   `nombre_plan` varchar(60) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -101,14 +103,13 @@ INSERT INTO `planes` (`id_plan`, `nombre_plan`) VALUES
 --
 
 CREATE TABLE `usuarios` (
-  `id_usuario` int(11) UNSIGNED NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `nombres_usuario` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `apellidos_usuario` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `correo_usuario` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `alias_usuario` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `clave_usuario` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `id_plan` int(11) NOT NULL,
-  `id_anuncio` int(11) NOT NULL
+  `id_plan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -120,7 +121,7 @@ CREATE TABLE `usuarios` (
 --
 ALTER TABLE `anuncio`
   ADD PRIMARY KEY (`id_anuncio`),
-  ADD UNIQUE KEY `nombre_producto` (`nombre_anuncio`,`id_categoria`),
+  ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
@@ -142,7 +143,8 @@ ALTER TABLE `planes`
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `alias` (`alias_usuario`),
-  ADD UNIQUE KEY `correo` (`correo_usuario`);
+  ADD UNIQUE KEY `correo` (`correo_usuario`),
+  ADD KEY `id_plan` (`id_plan`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -152,25 +154,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `anuncio`
 --
 ALTER TABLE `anuncio`
-  MODIFY `id_anuncio` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_anuncio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `planes`
 --
 ALTER TABLE `planes`
-  MODIFY `id_plan` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_plan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -180,7 +182,14 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `anuncio`
 --
 ALTER TABLE `anuncio`
-  ADD CONSTRAINT `anuncio_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`);
+  ADD CONSTRAINT `anuncio_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
+  ADD CONSTRAINT `anuncio_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_plan`) REFERENCES `planes` (`id_plan`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
