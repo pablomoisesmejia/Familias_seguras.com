@@ -8,6 +8,7 @@ class Producto extends Validator{
 	private $precio = null;
 	private $imagen = null;
 	private $categoria = null;
+	private $plan = null;
 	private $estado = null;
 
 	//Métodos para sobrecarga de propiedades
@@ -104,6 +105,18 @@ class Producto extends Validator{
 		return $this->categoria;
 	}
 
+	public function setPlan($value){
+		if($this->validateId($value)){
+			$this->plan = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getPlan(){
+		return $this->plan;
+	}
+
 	public function setEstado($value){
 		if($value == "1" || $value == "0"){
 			$this->estado = $value;
@@ -123,7 +136,7 @@ class Producto extends Validator{
 		return Database::getRows($sql, $params);
 	}
 	public function getProductos(){
-		$sql = "SELECT id_anuncio, imagen_producto, nombre_anuncio, FROM anuncio WHERE id_usuario=? ";
+		$sql = "SELECT a.id_anuncio, a.nombre_anuncio, c.nombre_categoria FROM anuncio a INNER JOIN categorias c ON a.id_categoria = c.id_categoria WHERE id_usuario = 1 ";
 		$params= array($_SESSION['id_usuario']);
 		return Database::getRows($sql, $params);
 	}
@@ -137,9 +150,17 @@ class Producto extends Validator{
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
+
+	public function getPlanes()
+	{
+		$sql = "SELECT id_plan, nombre_plan FROM planes";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
 	public function createProducto(){
 		$sql = "INSERT INTO anuncio(nombre_anuncio, direccion,  estado_producto, id_categoria, id_usuario) VALUES(?, ?, ?, ?, ?)";
-		$params = array($this->nombre, $this->direccion, 1, $this->categoria, $this->id_usuario);
+		$params = array($this->nombre, $this->descripcion, 1, $this->categoria, $this->id_usuario);
+		print_r($params);
 		return Database::executeRow($sql, $params);
 	}
 	public function readProducto(){

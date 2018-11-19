@@ -29,14 +29,14 @@
 	foreach($data as $row){
 		print("
 		<tr>
-			<td><img src='../../web/img/productos/$row[imagen_producto]' class='materialboxed' width='100' height='100'></td>
+			
 			<td>$row[nombre_anuncio]/td>
 		
 			<td>$row[nombre_categoria]</td>
 			<td><i class='material-icons'>".($row['estado_producto']?"visibility":"visibility_off")."</i></td>
 			<td>
 				<a href='update.php?id=$row[id_anuncio]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
-				<a href='delete.php?id=$row[id_producto]' class='red-text'><i class='material-icons'>delete</i></a>
+				<a href='delete.php?id=$row[id_anuncio]' class='red-text'><i class='material-icons'>delete</i></a>
 			</td>
 		</tr>
 		");

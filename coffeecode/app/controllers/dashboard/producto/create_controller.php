@@ -4,14 +4,14 @@ try{
     $producto = new Producto;
     if(isset($_POST['crear'])){
         $_POST = $producto->validateForm($_POST);
-        $_SESSION['id_usuario'] = $producto->setId_usuario();
+        $producto->setId_usuario($_SESSION['id_usuario']);
         if($producto->setNombre($_POST['nombre'])){
-                if($producto->setDescripcion($_POST['descripcion'])){
+                if($producto->setDireccion($_POST['descripcion'])){
                     if($producto->setCategoria($_POST['categoria'])){
 
-                                    if($producto->createProducto()){
-                                        Page::showMessage(1, "Producto creado", "index.php");
-                                    }
+                        if($producto->createProducto()){
+                            Page::showMessage(1, "Producto creado", "index.php");
+                        }
                     }else{
                         throw new Exception("Seleccione una categoría");
                     }
