@@ -1,0 +1,85 @@
+body{
+    background-color:rgb(235, 235, 235);
+    display:flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: Calibri Light; 
+}
+main{
+    flex: 1 auto;
+}
+.tema{
+    color: rgb(0, 0, 0);
+    font-family: calibri light;
+
+    
+}
+.texto{
+    color: rgb(0, 0, 0);
+    font-family: calibri light;
+    border-left: rgba(0, 0, 0, 0.494) solid 2px;
+    padding-left: 10px;
+    
+}
+
+.texto_baldosa{
+    color: rgb(255, 255, 255);
+    font-family: calibri light;
+    font-size: 1.25em;
+    
+    padding-left: 6px;
+    text-align: center;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.548);
+    padding-top: 3px;
+}
+
+
+.baldi{
+    transform: scale(1);
+    transition:background-size 2s,background-position-x 1s, box-shadow 0.4s, border 0.2s, padding 0.4s;
+
+    width: 180px;
+    height: 180px;
+    background-color: rgb(46, 59, 117);
+    float: left;
+    
+    margin-right:20px;
+    margin-top: 20px;
+    overflow: hidden;
+    padding-top: 144px;
+   
+    box-shadow: -12px 10px 30px rgba(0, 0, 0, 0);
+border: white solid 0px;
+}
+.baldi:hover{
+box-shadow: -12px 10px 30px rgba(0, 0, 0, 0.582);
+border: white solid 2px;
+padding-top: 78px;
+
+
+
+}
+.main_bloc{
+    padding-left: 7vh;
+    padding-right: 7vh;
+}
+
+#h3p{
+    font-family: Crayon;
+    font-size: 6em;
+    margin-bottom: 0;
+    line-height: 35px;
+    color: rgb(44, 44, 44);
+}
+
+#cuadro_matematicas{
+    
+    background-image: url("../../web/img/baldosa_backs/materias/matematicas.jpg");
+    background-size: 200px;
+}
+#cuadro_matematicas:hover{
+    background-size: 240px;
+    background-position-x: -20px;
+    
+}

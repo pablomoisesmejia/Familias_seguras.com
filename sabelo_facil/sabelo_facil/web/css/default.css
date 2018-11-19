@@ -1,0 +1,385 @@
+/*
+    Document    : default
+    Copyright   : Copyright (c) 2017, Pagadito.com
+    Author      : Pagadito.com
+    Version     : 1.2
+    Link        : https://dev.pagadito.com/index.php?mod=docs&hac=wspg
+    Description :
+        Mi Tienda Pagadito es un ejemplo de plataforma de e-commerce, que
+        realiza venta de productos electrónicos, y efectúa los cobros
+        utilizando Pagadito, a través de la API Pagadito.
+*/
+
+body {
+    text-align: center;
+    font-family: 'Ubuntu',Verdana;
+    margin:0px;
+}
+
+.wrapper {
+    max-width: 1600px;
+    padding-top:25px;
+    margin: 0 auto;
+    align: center;
+}
+
+#nav {
+    background-color:#545454;
+    width:100%;
+    height:50px;
+    position:fixed;
+    top:0px;
+    margin-bottom: 50px;
+}
+
+.title {
+    color:#EDEDED;
+    font-size:25px;
+    width:330px;
+    margin-top:6px;
+    margin-left:1px;
+    font-weight:bold;
+    float: left;
+}
+
+.subtitle {
+    color:#EDEDED;
+    font-size:13px;
+}
+
+.res {
+    float:right;
+}
+
+#navigation {
+    list-style-type:none;
+}
+
+li {
+    display:inline;
+    padding:10px;
+}
+
+#nav a {
+    text-decoration:none;
+    color:#EDEDED;
+}
+
+#nav a:hover {
+    color:#BDBDBD;
+}
+
+.seccion {
+    color:#262626;
+    font-size:25px;
+    margin-top:70px;
+    margin-left:10px;
+    font-weight:bold;
+    float:left;
+}
+
+.descarga {
+    height: 80px;
+    width: 600px;
+    vertical-align:middle;
+    margin-top:20px;
+    padding-left:80px;
+    float:left;
+    text-align:left;
+}
+
+.descarga label {
+    color:#262626;
+    vertical-align:middle;
+    text-align:left;
+    font-size:22px;
+    margin-left:30px;
+    font-weight:bold;
+    padding-bottom:40px;
+
+}
+
+.descarga a {
+    color:#262626;
+    text-decoration: none;
+}
+
+#principal {
+    color:#545454;
+    vertical-align:middle;
+    text-align:left;
+    font-size:36px;
+}
+
+#secundario {
+    color: #713958;
+    vertical-align:middle;
+    text-align:left;
+    font-size:21px;
+}
+
+.imagenDev {
+    width: 420px;
+    vertical-align:middle;
+    padding-left:80px;
+    float:left;
+    text-align:left;
+}
+
+.textoDev{
+    color:#216dd1;
+    vertical-align:middle;
+    text-align:left;
+    font-size:22px;
+    font-weight:bold;
+    padding-top:30px;
+}
+
+.textoDev A:link {text-decoration: none; color:#545454;}
+.textoDev A:visited {text-decoration: none; color:#545454;}
+.textoDev A:active {text-decoration: none; color:#545454;}
+
+.row {
+    width: 1200px;
+    padding-top:25px;
+    margin: 0 auto;
+    align: center;
+}
+
+.producto {
+    width: 280px;
+    height: 400px;
+    margin-left: 8px;
+    border: 1px solid #eee;
+    float: left;
+}
+
+.imagen {
+    height: 180px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.producto img {
+    width: 220px;
+}
+
+.detalle {
+    width: 300px;
+    height: 400px;
+    margin-left: 10px;
+    background-color:#eee;
+    border: 1px solid #eee;
+    float: left;
+    color:#fff;
+}
+
+.pie {
+    width: 100%;
+    height: 60px;
+    background-color:#eee;
+    float: left;
+    text-align:left;
+    font-size: 13px;
+    color: #545454;
+    padding: 20px 0 20px 0 ;
+    margin: 0 0 0 0;
+
+}
+
+.pie label {
+    text-align:left;
+    font-size: 13px;
+    color: #545454;
+    margin: 0 50px 0  10px;
+    padding: 0 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+p {
+    font-size: 15px;
+    margin: 15px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+strong {
+    font-size: 15px;
+    float: right;
+}
+
+input {
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid #eee;
+    width:30px;
+    height:30px;
+}
+
+.updown {
+    border: 0px solid #eee;
+    width:30px;
+    height:30px;
+    font-size:17px;
+    text-align: center;
+    background: #e2e2e2; /* Old browsers */
+    background: -moz-linear-gradient(top, #e2e2e2 0%, #d1d1d1 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e2e2e2), color-stop(100%,#d1d1d1)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #e2e2e2 0%,#d1d1d1 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #e2e2e2 0%,#d1d1d1 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #e2e2e2 0%,#d1d1d1 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #e2e2e2 0%,#d1d1d1 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#d1d1d1',GradientType=0 ); /* IE6-9 */
+    color:#404040;
+}
+
+.updown:hover {
+    background: #bbb; /* Old browsers */
+}
+
+.btnPrincipal {
+    border: 0px;
+    width:160px;
+    height:40px;
+    font-size:22px;
+    text-align: center;
+    background: #216dd1; /* Old browsers */
+    background: -moz-linear-gradient(top, #216dd1 0%, #23538a 99%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#216dd1), color-stop(99%,#23538a)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #216dd1 0%,#23538a 99%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #216dd1 0%,#23538a 99%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #216dd1 0%,#23538a 99%); /* IE10+ */
+    background: linear-gradient(to bottom, #216dd1 0%,#23538a 99%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#216dd1', endColorstr='#23538a',GradientType=0 ); /* IE6-9 */
+    color:#fff;
+}
+
+.cantidad {
+    height: 30px;
+    vertical-align:middle;
+}
+
+.tabla table {
+    width:100%;
+    margin:0px;
+    padding:0px;
+    border-collapse: collapse;
+}
+
+.tabla td {
+    font-size: 18px;
+    vertical-align:middle;
+    background:#eee;
+    text-align:left;
+    padding:8px;
+    color: #4d4d4d;
+}
+
+.tabla tr:first-child td {
+    background: #45484d; /* Old browsers */
+    background: -moz-linear-gradient(top, #45484d 0%, #545454 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#45484d), color-stop(100%,#545454)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #45484d 0%,#545454 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #45484d 0%,#545454 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #45484d 0%,#545454 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #45484d 0%,#545454 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#545454',GradientType=0 ); /* IE6-9 */
+    text-align:center;
+    font-size:20px;
+    color:#ffffff;
+    border:-1px;
+    border-width:-1px;
+}
+
+.precio_tabla {
+    font-size: 18px;
+    text-align: right;
+    border: 1px solid #eee;
+    background: #eee;
+    width:65px;
+    height:30px;
+    color: #4d4d4d;
+}
+
+.total_tabla {
+    font-size: 24px;
+    text-align: right;
+    border: 1px solid #eee;
+    background: #eee;
+    width:150px;
+    height:30px;
+    color: #4d4d4d;
+    float:right;
+    margin-right: 20px;
+}
+
+.info {
+    margin-top: 10px;
+    padding-left: 10px;
+    font-size: 12px;
+    text-align: left;
+    float:left;
+    color: #4d4d4d;
+}
+
+.retorno {
+    border: 0px;
+    width:200px;
+    height:40px;
+    font-size:22px;
+    text-align: center;
+    background: #216dd1; /* Old browsers */
+    background: -moz-linear-gradient(top, #216dd1 0%, #23538a 99%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#216dd1), color-stop(99%,#23538a)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #216dd1 0%,#23538a 99%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #216dd1 0%,#23538a 99%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #216dd1 0%,#23538a 99%); /* IE10+ */
+    background: linear-gradient(to bottom, #216dd1 0%,#23538a 99%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#216dd1', endColorstr='#23538a',GradientType=0 ); /* IE6-9 */
+    color:#fff;
+}
+
+.imagenCompra {
+    width: 420px;
+    vertical-align:middle;
+    padding-left:80px;
+    float:left;
+    text-align:center;
+}
+
+.textoCompra{
+    color:#216dd1;
+    vertical-align:middle;
+    text-align:left;
+    font-size:22px;
+    font-weight:bold;
+    padding-top:30px;
+}
+
+.tpsv {
+    background-color: #552F44;
+    border: 1px solid #4B0082;
+    border-radius: 0 0 10px 10px;
+    left: 50%;
+    opacity: 0.3;
+    padding: 5px 10px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.tpsv span {
+    color: #FFF;
+    font-weight: bold;
+}
+
+.respuesta {
+    color: #545454;
+}

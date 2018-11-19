@@ -1,0 +1,363 @@
+.header_sf{
+    
+    width: 100%;
+    min-height: 150px;
+    max-height: 200px;
+    background-color: rgb(44, 221, 112);
+    
+    background-image: url("../img/back_dash/back2.png");
+    
+    box-shadow: 0px 3px 20px rgba(53, 53, 53, 0.575);
+    background-blend-mode: soft-light;
+    background-size: 400px;
+    
+}
+#butons_bar{
+
+
+    margin: 0;
+    padding: 0;
+    float: left;
+    position: fixed;
+    margin-top: 70px;
+    background-color: rgb(79, 163, 104);
+    width: 100%;
+    height: 1.2cm;
+    display: none;
+    background-image: url(../img//back_dash/back2.png);
+    background-size: 300px;
+    background-blend-mode: soft-light;
+    z-index: -1;
+    overflow: hidden;
+}
+#logoli_b{
+    display: block;
+    width: 110px;
+    text-align: center;
+}
+#logoli_m{
+    display: none;
+    width: 110px;
+    text-align: center;
+}
+.logo_header{
+    width: 110px;
+    filter: brightness(0);
+    opacity: 1;
+
+    margin-right: 5em;
+    
+}
+#margeneado{
+ padding-left: 7vh;
+ 
+ padding-right: 5vh;
+ 
+ 
+}
+
+.btn_header_p
+{
+    font-family: Calibri Light;
+    color: rgb(255, 255, 255);
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    cursor: pointer;
+    margin-right: 2px;
+    
+    
+    
+    background-color: rgb(56, 150, 92);
+    padding-bottom: 18px;
+   
+}
+.btn_header_p:hover{
+    color: rgb(100, 194, 135);  
+    
+}
+
+.btn_header_mini
+{
+    
+transition: background-color 0.3s;
+line-height: 14px;
+    padding: 0;
+    margin: 0;
+    font-family: Calibri Light;
+    color: rgb(255, 255, 255);
+
+    
+    cursor: pointer;
+    
+    width: 33.3%;
+    height: 1.2cm;
+    float: left;
+    padding-top: 0.4cm;
+    text-align: center;
+    font-size: 1.2em;
+    border-right: 1px solid rgba(255, 255, 255, 0.411);
+}
+.btn_header_mini:hover{
+     background-color: rgba(183, 214, 193, 0.904);
+    color: black;
+}
+a{
+    cursor: pointer;
+}
+
+.blocky{
+    width: 100%;
+  display: block;
+    height: 113px;
+}
+
+.btn_menu_action{
+    background-color: rgb(56, 150, 92);
+    color: rgb(255, 255, 255);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 18px;
+    text-overflow: ellipsis;
+    white-space: pre;
+    font-family: Calibri Light; 
+    transition: 0.4s;
+    margin-right: 4px;
+}
+.btn_menu_action:hover{
+    
+    background-color: rgb(73, 174, 110);
+    color: white;
+    
+}
+
+nav {
+    background-color: rgb(238, 238, 238);
+    height: 135px !important;            /* Cambia el valor de lo que quieres */
+    line-height: 20px !important;       /* Cambia el valor de lo que quieres */
+}
+
+
+input[type="radio"] {
+    display: none;
+  }
+  
+  label {
+    color: grey;
+    font-size: 40px;
+  }
+  
+  .clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+  
+  label:hover,
+  label:hover ~ label {
+    color: orange;
+    cursor: pointer;
+  }
+  
+  input[type="radio"]:checked ~ label {
+    color: orange;
+  }
+  
+
+#logo_enterpr
+{
+    
+    opacity: 0.7;
+    height: 50vh;
+    margin-top: 4vh;
+    filter: brightness(0);
+}
+
+.cinta_1{
+    margin-top: 20px;
+    height: 36vh;
+    background-color: rgb(65, 65, 65);
+
+    border-bottom-right-radius: 24vh;
+    border-top-right-radius: 24vh;
+
+    overflow: hidden;
+    margin-right: 5vh;
+
+    padding-right:16% ;
+    overflow-y: auto;
+    padding-top: 14px;
+    transition: 0.4s;
+}
+.cinta_1:hover{
+    margin-right: 0vh;
+    box-shadow: 10px 0px 40px rgb(0, 0, 0);
+}
+.cinta_2:hover{
+    margin-left: 0vh;
+    box-shadow: -10px 0px 40px rgb(0, 0, 0);
+}
+.cinta_2{
+    transition: 0.4s;
+    padding-top: 14px;
+    padding-left: 16%;
+    margin-left: 5vh;
+    margin-top: 20px;
+    margin-top: 20px;
+    height: 36vh;
+    background-color: rgb(67, 67, 67);
+    border-bottom-left-radius: 24vh;
+    border-top-left-radius: 24vh;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.sec_title{
+    color: white;
+    
+}
+.sub_txt2{
+    color: white;
+
+}
+#primer_bloque_index{
+    transition: 0.6s;
+}
+#des{
+    font-size: 2.1em;
+    margin-top: 40px;
+    color: white;
+    line-height: 0;
+}
+
+#anuncio_block{
+    
+    width: 100%;
+    height: 240px;
+    background-color: rgb(120, 174, 155);
+    color: white;
+    font-size: 3.1em;
+    text-align: center;
+    padding-top: 12vh;
+}
+#buton_stand{
+    display: block;
+}
+
+#colored
+{
+    overflow: hidden;
+    transition: 0.3s;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 128, 0, 0);
+    
+}
+#btn_add_prod{
+    background-color: rgb(59, 136, 63);
+    
+    margin: 0;
+    padding: 0;
+    line-height: 14px;
+    padding-left: 10%;
+    padding-right: 10%;
+    color: white;
+    height: 1cm;
+    padding-top: 0.2cm;
+}
+#btn_add_prod:hover{
+    background-color: rgb(35, 182, 96);
+}
+#colored:hover{
+    border: 1px solid green;
+    transform: scale(1.02);
+box-shadow: 4px 4px 10px rgba(42, 102, 42, 0.63);
+
+}
+
+
+
+
+#footer_pub{
+    background-color:rgb(35, 182, 96);
+}
+
+.slider .slides li img{
+    background-size: contain;
+}
+
+@media only screen and (max-width: 751px) {
+    .header_sf{
+    
+        width: 100%;
+        min-height: 40px;
+        max-height: 70px;
+        
+        background-size: 390px;
+        
+        
+    }
+   #buton_stand{
+       display: none;
+   }
+   #logoli_b{
+    display: none;
+}
+#logoli_m{
+    
+    
+    display: block;
+}
+#butons_bar{
+
+    
+    display: block;
+}
+main{
+    margin-top: 40px;
+}
+.btn_menu_action{
+    padding-bottom: 6px;
+
+}
+.blocky{
+    width: 100%;
+  
+    height: 48px;
+}
+  }
+
+  /* width */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #a7a7a7b6; 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(33, 196, 60, 0.692); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(24, 255, 128, 0.658); 
+  }
+  
+  
+
+.tabs{
+    background-color: transparent;
+    
+}
+.tabs .tab a{
+    color :#5D4D4D;
+    font-size: 1.2em;
+}

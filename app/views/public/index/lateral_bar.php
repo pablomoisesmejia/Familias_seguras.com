@@ -15,6 +15,10 @@
     <a onclick="section_selected=4; show_info_section();" class="lateral_btn_style">
         <i class='material-icons prefix'>message</i>   
     </a>
+    <div class="divider_btn_H"> </div>   
+    <a href="../anuncios/anuncios.php" class="lateral_btn_style">
+        <i class='material-icons prefix'>contact_phone</i>   
+    </a>
     <div class="divider_btn_H"> </div>  
 
     <!-- -->
