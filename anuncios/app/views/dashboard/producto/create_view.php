@@ -13,52 +13,52 @@
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='municipio' type='text' name='municipio' class='validate' value='<?php print($producto->getDireccion()) ?>' required/>
+          	<input id='municipio' type='text' name='municipio' class='validate' value='<?php print($producto->getMunicipio()) ?>' required/>
           	<label for='descripcion'>Municipio</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='departamento' type='text' name='departamento' class='validate' value='' required/>
+          	<input id='departamento' type='text' name='departamento' class='validate' value='<?php print($producto->getDepartamento()) ?>' required/>
           	<label for='descripcion'>Departamento</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='tel_fijo' type='number' name='tel_fijo' class='validate' value='<?php print($producto->getDireccion()) ?>' required/>
+          	<input id='tel_fijo' type='number' name='tel_fijo' class='validate' value='<?php print($producto->getTelFijo()) ?>'/>
           	<label for='descripcion'>Telefono fijo</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='celular' type='number' name='celular' class='validate' value='<?php print($producto->getDireccion()) ?>' required/>
+          	<input id='celular' type='number' name='celular' class='validate' value='<?php print($producto->getCelular()) ?>'/>
           	<label for='descripcion'>Telefono Celular</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='wha' type='number' name='wha' class='validate' value='<?php print($producto->getDireccion()) ?>' required/>
+          	<input id='wha' type='number' name='wha' class='validate' value='<?php print($producto->getWhatsapp()) ?>'/>
           	<label for='descripcion'>WhatsApp</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='correo' type='email' name='correo' class='validate' value='<?php print($producto->getDireccion()) ?>' required/>
+          	<input id='correo' type='email' name='correo' class='validate' value='<?php print($producto->getEmail()) ?>' required/>
           	<label for='descripcion'>Correo de contacto</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='identificacion' type='number' name='identificacion' class='validate' value='<?php print($producto->getDireccion()) ?>' required/>
+          	<input id='identificacion' type='number' name='identificacion' class='validate' value='<?php print($producto->getNumeroIdentidad()) ?>' required/>
           	<label for='descripcion'>Numero de identidad</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='facebook' type='text' name='facebook' class='validate' value='<?php print($producto->getDireccion()) ?>' required/>
+          	<input id='facebook' type='text' name='facebook' class='validate' value='<?php print($producto->getFacebook()) ?>'/>
           	<label for='descripcion'>Link de Facebook</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='insta' type='text' name='insta' class='validate' value='<?php print($producto->getDireccion()) ?>' required/>
+          	<input id='insta' type='text' name='insta' class='validate' value='<?php print($producto->getInstagram()) ?>'/>
           	<label for='descripcion'>Link de Instagram</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='pagina_web' type='text' name='pagina_web' class='validate' value='<?php print($producto->getDireccion()) ?>' required/>
+          	<input id='pagina_web' type='text' name='pagina_web' class='validate' value='<?php print($producto->getPaginaWeb()) ?>'/>
           	<label for='descripcion'>Link de Pagina web</label>
         </div>
         <div class='input-field col s12 m6'>

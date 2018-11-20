@@ -93,7 +93,7 @@ class Validator{
 		   $this->imageError = 3;
 		   return false;
 		}
-	   }
+	}
 	   
 	   public function validateArchive($file, $value, $path){
         if($file['size'] <= 20971520){

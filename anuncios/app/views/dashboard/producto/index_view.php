@@ -18,9 +18,7 @@
 		<tr>
 			<th>IMAGEN</th>
 			<th>NOMBRE</th>
-			<th>PRECIO (US$)</th>
 			<th>CATEGORÍA</th>
-			<th>ESTADO</th>
 			<th>ACCIÓN</th>
 		</tr>
 	</thead>
@@ -29,11 +27,9 @@
 	foreach($data as $row){
 		print("
 		<tr>
-			
-			<td>$row[nombre_anuncio]/td>
-		
+		<td><img src='../../web/img/anuncios/$row[imagen_producto]' alt='No se encontro la imagen' width='100' height='100'></td>
+			<td>$row[nombre_anuncio]</td>
 			<td>$row[nombre_categoria]</td>
-			<td><i class='material-icons'>".($row['estado_producto']?"visibility":"visibility_off")."</i></td>
 			<td>
 				<a href='update.php?id=$row[id_anuncio]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
 				<a href='delete.php?id=$row[id_anuncio]' class='red-text'><i class='material-icons'>delete</i></a>

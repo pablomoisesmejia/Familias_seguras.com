@@ -2,14 +2,25 @@
 class Producto extends Validator{
 	//Declaración de propiedades
 	private $id = null;
-	private $id_usuario=null;
-	private $nombre = null;
-	private $descripcion = null;
-	private $precio = null;
-	private $imagen = null;
-	private $categoria = null;
-	private $plan = null;
-	private $estado = null;
+	private $id_usuario = null;
+	private $nombre_anuncio = null;
+	private $direccion = null;
+	private $imagen_producto = null;
+	private $estado_anuncio = null;
+	private $id_categoria = null;
+	private $id_plan = null;
+	private $municipio = null;
+	private $departamento = null;
+	private $tel_fijo = null;
+	private $celular = null;
+	private $whatsapp = null;
+	private $email_anuncio = null;
+	private $numero_identidad= null;
+	private $facebook = null;
+	private $instagram = null;
+	private $pagina_web = null;
+
+	private $ruta = "../../web/img/anuncios/";
 
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
@@ -39,94 +50,205 @@ class Producto extends Validator{
 	
 	public function setNombre($value){
 		if($this->validateAlphanumeric($value, 1, 50)){
-			$this->nombre = $value;
+			$this->nombre_anuncio = $value;
 			return true;
 		}else{
 			return false;
 		}
 	}
 	public function getNombre(){
-		return $this->nombre;
+		return $this->nombre_anuncio;
 	}
 
 	public function setDireccion($value){
 		if($this->validateAlphanumeric($value, 1, 200)){
-			$this->descripcion = $value;
+			$this->direccion = $value;
 			return true;
 		}else{
 			return false;
 		}
 	}
 	public function getDireccion(){
-		return $this->descripcion;
+		return $this->direccion;
 	}
 
-	public function setPrecio($value){
-		if($this->validateMoney($value)){
-			$this->precio = $value;
+	public function setImagen($file)
+	{
+		if($this->validateImage($file, $this->imagen_producto, 5000, 5000))
+		{
+			$this->imagen_producto = $this->getImageName();
 			return true;
-		}else{
+		}
+		else
+		{
 			return false;
 		}
 	}
-	public function getPrecio(){
-		return $this->precio;
+	public function getImagen()
+	{
+		return $this->imagen_producto;
 	}
 
-	public function setImagen($file){
-		if($this->validateImage($file, $this->imagen, "../../web/img/productos/", 500, 500)){
-			$this->imagen = $this->getImageName();
+    public function getRuta()
+    {
+        return $this->ruta;
+    }
+
+	public function setEstadoAnuncio($value){
+		if($this->validateAlphanumeric($value, 1, 11)){
+			$this->estado_anuncio = $value;
 			return true;
 		}else{
 			return false;
 		}
 	}
-	public function getImagen(){
-		return $this->imagen;
-	}
-	public function unsetImagen(){
-		if(unlink("../../web/img/productos/".$this->imagen)){
-			$this->imagen = null;
-			return true;
-		}else{
-			return false;
-		}
+	public function getEstadoAnuncio(){
+		return $this->estado_anuncio;
 	}
 
 	public function setCategoria($value){
 		if($this->validateId($value)){
-			$this->categoria = $value;
+			$this->id_categoria = $value;
 			return true;
 		}else{
 			return false;
 		}
 	}
 	public function getCategoria(){
-		return $this->categoria;
+		return $this->id_categoria;
 	}
 
 	public function setPlan($value){
 		if($this->validateId($value)){
-			$this->plan = $value;
+			$this->id_plan = $value;
 			return true;
 		}else{
 			return false;
 		}
 	}
 	public function getPlan(){
-		return $this->plan;
+		return $this->id_plan;
 	}
 
-	public function setEstado($value){
-		if($value == "1" || $value == "0"){
-			$this->estado = $value;
+	public function setMunicipio($value){
+		if($this->validateAlphanumeric($value, 1, 60)){
+			$this->municipio = $value;
 			return true;
 		}else{
 			return false;
 		}
 	}
-	public function getEstado(){
-		return $this->estado;
+	public function getMunicipio(){
+		return $this->municipio;
+	}
+
+	public function setDepartamento($value){
+		if($this->validateAlphanumeric($value, 1, 60)){
+			$this->departamento = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getDepartamento(){
+		return $this->departamento;
+	}
+
+	public function setTelFijo($value){
+		if($this->validateNumeric($value, 1, 8)){
+			$this->tel_fijo = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getTelFijo(){
+		return $this->tel_fijo;
+	}
+
+	public function setCelular($value){
+		if($this->validateNumeric($value, 1, 8)){
+			$this->celular = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getCelular(){
+		return $this->celular;
+	}
+
+	public function setWhatsapp($value){
+		if($this->validateNumeric($value, 1, 8)){
+			$this->whatsapp = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getWhatsapp(){
+		return $this->whatsapp;
+	}
+
+	public function setEmail($value){
+		if($this->validateAlphanumeric($value, 1, 100)){
+			$this->email_anuncio = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getEmail(){
+		return $this->email_anuncio;
+	}
+
+	public function setNumeroIdentidad($value){
+		if($this->validateAlphanumeric($value, 1, 10)){
+			$this->numero_identidad = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getNumeroIdentidad(){
+		return $this->numero_identidad;
+	}
+
+	public function setFacebook($value){
+		if($this->validateAlphanumeric($value, 1, 300)){
+			$this->facebook = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getFacebook(){
+		return $this->facebook;
+	}
+
+
+	public function setInstagram($value){
+		if($this->validateAlphanumeric($value, 1, 300)){
+			$this->instagram = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getInstagram(){
+		return $this->instagram;
+	}
+
+	public function setPaginaWeb($value){
+		if($this->validateAlphanumeric($value, 1, 300)){
+			$this->pagina_web = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getPaginaWeb(){
+		return $this->pagina_web;
 	}
 
 	//Metodos para el manejo del CRUD
@@ -136,13 +258,8 @@ class Producto extends Validator{
 		return Database::getRows($sql, $params);
 	}
 	public function getProductos(){
-		$sql = "SELECT a.id_anuncio, a.nombre_anuncio, c.nombre_categoria FROM anuncio a INNER JOIN categorias c ON a.id_categoria = c.id_categoria WHERE id_usuario = 1 ";
+		$sql = "SELECT a.id_anuncio, a.nombre_anuncio, a.imagen_producto, c.nombre_categoria FROM anuncio a INNER JOIN categorias c ON a.id_categoria = c.id_categoria WHERE id_usuario = ?";
 		$params= array($_SESSION['id_usuario']);
-		return Database::getRows($sql, $params);
-	}
-	public function searchProducto($value){
-		$sql = "SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, estado_producto FROM productos INNER JOIN categorias USING(id_categoria) WHERE nombre_producto LIKE ? OR descripcion_producto LIKE ? ORDER BY nombre_producto";
-		$params = array("%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}
 	public function getCategorias(){
@@ -158,8 +275,9 @@ class Producto extends Validator{
 		return Database::getRows($sql, $params);
 	}
 	public function createProducto(){
-		$sql = "INSERT INTO anuncio(nombre_anuncio, direccion,  estado_producto, id_categoria, id_usuario) VALUES(?, ?, ?, ?, ?)";
-		$params = array($this->nombre, $this->descripcion, 1, $this->categoria, $this->id_usuario);
+		$sql = "INSERT INTO anuncio(nombre_anuncio, direccion, imagen_producto, estado_anuncio, id_categoria, id_usuario, municipio, departamento, tel_fijo, celular, whatsapp, email_anuncio, numero_identidad, facebook, instagram, pagina_web, id_plan) 
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$params = array($this->nombre_anuncio, $this->direccion, $this->imagen_producto, $this->estado_anuncio, $this->id_categoria, $this->id_usuario, $this->municipio, $this->departamento, $this->tel_fijo, $this->celular, $this->whatsapp, $this->email_anuncio, $this->numero_identidad, $this->facebook, $this->instagram, $this->pagina_web, $this->id_plan);
 		print_r($params);
 		return Database::executeRow($sql, $params);
 	}
