@@ -13,10 +13,6 @@
                         <span class='card-title activator grey-text text-darken-4'>$categoria[nombre_categoria]<i class='material-icons right'></i></span>
                         <p class='center'><a href='productos.php?id=$categoria[id_categoria]' class='tooltipped' data-tooltip='Ver más'><i class='small material-icons'>add_circle_outline</i></a></p>
                     </div>
-                    <div class='card-reveal'>
-                        <span class='card-title grey-text text-darken-4'>$categoria[nombre_categoria]<i class='material-icons right'>close</i></span>
-                       
-                    </div>
                 </div>
             </div>
         ");

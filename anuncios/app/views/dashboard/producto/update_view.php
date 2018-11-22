@@ -6,13 +6,8 @@
           	<label for='nombre'>Nombre</label>
         </div>
         <div class='input-field col s12 m6'>
-          	<i class='material-icons prefix'>shopping_cart</i>
-          	<input id='precio' type='number' name='precio' class='validate' min='0.01' max='999.99' step='any' value='<?php print($producto->getPrecio()) ?>' required/>
-          	<label for='precio'>Precio ($)</label>
-        </div>
-        <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='descripcion' type='text' name='descripcion' class='validate' value='<?php print($producto->getDescripcion()) ?>' required/>
+          	<input id='descripcion' type='text' name='descripcion' class='validate' value='<?php print($producto->getDireccion()) ?>' required/>
           	<label for='descripcion'>Descripción</label>
         </div>
         <div class='input-field col s12 m6'>

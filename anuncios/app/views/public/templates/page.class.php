@@ -70,7 +70,7 @@ class Page extends Component{
 					</div>
 					<div class='footer-copyright'>
 						<div class='container'>
-							<span>© CoffeeCode, todos los derechos reservados.</span>
+							<span>© Familias Seguras, todos los derechos reservados.</span>
 							<span class='grey-text text-lighten-4 right'>Diseñado con <b><a class='red-text text-accent-1' href='http://materializecss.com/' target='_blank'>Materialize</a></b></span>
 						</div>
 					</div>

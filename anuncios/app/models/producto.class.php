@@ -19,7 +19,6 @@ class Producto extends Validator{
 	private $facebook = null;
 	private $instagram = null;
 	private $pagina_web = null;
-
 	private $ruta = "../../web/img/anuncios/";
 
 	//Métodos para sobrecarga de propiedades
@@ -253,8 +252,8 @@ class Producto extends Validator{
 
 	//Metodos para el manejo del CRUD
 	public function getCategoriaProductos(){
-		$sql = "SELECT nombre_categoria, id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto FROM productos INNER JOIN categorias USING(id_categoria) WHERE id_categoria = ? AND estado_producto = 1 ORDER BY nombre_producto";
-		$params = array($this->categoria);
+		$sql = "SELECT nombre_anuncio, id_anuncio, imagen_producto FROM anuncios INNER JOIN categorias USING(id_categoria) WHERE id_categoria = ? AND estado_anuncio = 1 ORDER BY nombre_anuncio";
+		$params = array($this->id_categoria);
 		return Database::getRows($sql, $params);
 	}
 	public function getProductos(){
@@ -282,13 +281,12 @@ class Producto extends Validator{
 		return Database::executeRow($sql, $params);
 	}
 	public function readProducto(){
-		$sql = "SELECT nombre_producto, descripcion_producto, precio_producto, imagen_producto, id_categoria, estado_producto FROM productos WHERE id_producto = ?";
+		$sql = "SELECT nombre_anuncio,  id_categoria, estado_anuncio FROM anuncio WHERE id_anuncio = ?";
 		$params = array($this->id);
 		$producto = Database::getRow($sql, $params);
 		if($producto){
-			$this->nombre = $producto['nombre_producto'];
-			$this->descripcion = $producto['descripcion_producto'];
-			$this->precio = $producto['precio_producto'];
+			$this->nombre = $producto['nombre_anuncio'];
+			$this->descripcion = $producto['direccion_anuncio'];
 			$this->imagen = $producto['imagen_producto'];
 			$this->categoria = $producto['id_categoria'];
 			$this->estado = $producto['estado_producto'];

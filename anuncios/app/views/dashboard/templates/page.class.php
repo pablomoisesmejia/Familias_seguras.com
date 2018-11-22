@@ -29,7 +29,7 @@ class Page extends Component{
 							<a href='#' class='button-collapse' data-activates='mobile'><i class='material-icons'>menu</i></a>
 							<ul class='right hide-on-med-and-down'>
 								<li><a href='../producto'><i class='material-icons left'>shop</i>Anuncios</a></li>
-								<li><a href='../categoria'><i class='material-icons left'>shop_two</i>Categorías</a></li>
+				
 							
 								<li><a href='#' class='dropdown-button' data-activates='dropdown'><i class='material-icons left'>verified_user</i>Cuenta: <b>$_SESSION[alias_usuario]</b></a></li>
 							</ul>
@@ -43,8 +43,6 @@ class Page extends Component{
 				</header>
 				<ul class='side-nav' id='mobile'>
 					<li><a href='../producto'><i class='material-icons'>shop</i>Anuncios</a></li>
-					<li><a href='../categoria'><i class='material-icons'>shop_two</i>Categorías</a></li>
-
 					<li><a class='dropdown-button' href='#' data-activates='dropdown-mobile'><i class='material-icons'>verified_user</i>Cuenta: <b>$_SESSION[alias_usuario]</b></a></li>
 				</ul>
 				<ul id='dropdown-mobile' class='dropdown-content'>
@@ -95,8 +93,7 @@ class Page extends Component{
 					</div>
 					<div class='footer-copyright'>
 						<div class='container'>
-							<span>© CoffeeCode, todos los derechos reservados.</span>
-							<span class='white-text right'>Diseñado con <a class='red-text text-accent-1' href='http://materializecss.com/' target='_blank'><b>Materialize</b></a></span>
+							<span>© Familias Seguras, todos los derechos reservados.</span>
 						</div>
 					</div>
 				</footer>
