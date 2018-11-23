@@ -76,8 +76,8 @@
                             </div>
                             <p class="seguro_presiona">Presiona para solicitar tu cotización</p>
                         </div>
-                        <a href="seguro_de_motores.php">
-                         <div onclick="seguro_frm=4; abrir_form();" id="contenedor_de_seguro"  class="col s12 m6" onmouseover="seg=4; change_etiquete();" onmouseout="seg=4; change_etiquete_back();">
+                        <a href="Seguro_de_motores.php">
+                         <div  id="contenedor_de_seguro"  class="col s12 m6" onmouseover="seg=4; change_etiquete();" onmouseout="seg=4; change_etiquete_back();">
                             <div class="icon_container_4"><img src="../../web/img/icon/seg_auto.png" class="seguro_ico_4"></div>
                             <div class="info_seguro_prev">
                                 <h3 class="seguro_title" style="color:black;">Seguro de Vehículos</h3>
@@ -182,5 +182,7 @@
         </div>
      
    </div>
+
+
 
 </main>

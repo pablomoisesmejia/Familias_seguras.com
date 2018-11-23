@@ -118,25 +118,25 @@ class Page extends Component{
 			<script src='../../web/script/sweetalert.min.js'></script>
 		");
 		$filename = basename($_SERVER['PHP_SELF']);
-		if($filename == "Seguro_de_vida.php")
+		if($filename == "seguro_de_vida.php")
 		{
 			print("
 			<script src='../../web/script/js_seguro_vida.js'></script>
 			");
 		}
-		if($filename == "Seguro_Medico.php")
+		else if($filename == "seguro_medico.php")
 		{
 			print("
 			<script src='../../web/script/js_seguro_medico.js'></script>
 			");
 		}
-		if($filename == "Seguro_de_incendios.php")
+		else if($filename == "Seguro_de_incendios.php")
 		{
 			print("
 			<script src='../../web/script/js_seguro_incendio.js'></script>
 			");
 		}
-		if($filename == "Seguro_de_motores.php")
+		if($filename == "seguro_de_motores.php")
 		{
 			print("
 			<script src='../../web/script/js_seguro_vehiculo.js'></script>

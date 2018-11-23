@@ -325,9 +325,16 @@ $(document).ready(function(){
   
       for(i = 0; i<aseguradoras.length; i++)
       {
-        if(aseguradoras.length < 6)
+        if(aseguradoras.length <= 5)
         {
           aseguradoras_select = aseguradoras
+          if(aseguradoras.length == 5)
+            {
+              $("#asegurador input.select-dropdown").attr('disabled','disabled')
+              $("#reset_btn_segs").css({"display":"block","opacity":"1"});
+              AlertaSweet(3, 'Solo puede seleccionar 5 aseguradoras como maximo');
+             
+            }
         }
         else
         {
@@ -1128,8 +1135,15 @@ function form_contactanos_close(){
 //contador de cuantos seguros se han tomado
 var nseguros_tomados=0;
 function stop_select_segs(){
-alert("hola bebe");
-  if(nseguros_tomados == 0){
-  
+  aseguradoras=null;
+  aseguradoras_select=0;
+    $("#asegurador input.select-dropdown").removeAttr('disabled');
+    $("#reset_btn_segs").css({"display":"none","opacity":"1"});
+
+
+    $('#asegurador input.select-dropdown').val("Seleccione una o varias opciones");
+
+    $('#aseguradoras option[value="ACSA"]').prop('selected', false);
+    $("#aseguradoras option:selected").removeAttr("selected");
 }
-}
+var tipo_seguro=0;

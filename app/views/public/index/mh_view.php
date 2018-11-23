@@ -73,7 +73,7 @@
             <i  style="color:black;"class="material-icons prefix">verified_user</i>
               <select multiple id="aseguradoras">
                 <option value="" disabled selected>Seleccione una o varias opciones</option>
-                <option id="opc1" value="ACSA" data-icon="../../web/img/aseguradoras/acsa.png">ACSA</option>
+                <option value="ACSA" data-icon="../../web/img/aseguradoras/acsa.png">ACSA</option>
                 <option value="ASESUISA" data-icon="../../web/img/aseguradoras/asesuisa.jpg">ASESUISA</option>
                 <option value="MAPRE" data-icon="../../web/img/aseguradoras/mapfre.jpg">MAPFRE</option>
                 <option value="PAN AMERICAN LIFE" data-icon="../../web/img/aseguradoras/panamericanlife.jpg">PAN AMERICAN LIFE</option>
@@ -84,6 +84,7 @@
              
               <label>Selecciona las aseguras, en las cuales desees cotizar</label>
             </div>
+            <a style="display:none" id="reset_btn_segs" onclick="stop_select_segs();" class="waves-effect waves-light btn light-blue">Seleccionar de nuevo</a>
 
             
             <div class="input-field col s12">

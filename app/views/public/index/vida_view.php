@@ -71,49 +71,54 @@
         </div>
         <!-- Formulario del paso 2-->
         <div id="paso2">
-          <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
+        <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
           <div class="container">
-            <div class="input-field col s12" id="asegurador">
-              <i style="color:black;"class="material-icons prefix">verified_user</i>
-              <select multiple id="aseguradoras">
-                <option value="" disabled selected>Seleccione una o varias opciones</option>
-                <option value="ACSA" data-icon="../../web/img/aseguradoras/acsa.png">ACSA</option>
-                <option value="ASESUISA" data-icon="../../web/img/aseguradoras/asesuisa.jpg">ASESUISA</option>
-                <option value="MAPRE" data-icon="../../web/img/aseguradoras/mapfre.jpg">MAPFRE</option>
-                <option value="PAN AMERICAN LIFE" data-icon="../../web/img/aseguradoras/panamericanlife.jpg">PAN AMERICAN LIFE</option>
-                <option value="SCOTIA SEGUROS" data-icon="../../web/img/aseguradoras/scotiaseguros.png">SCOTIA SEGUROS</option>
-                <option value="SISA" data-icon="../../web/img/aseguradoras/sisa.png">SISA</option>
-                <option value="VIVIR" data-icon="../../web/img/aseguradoras/vivir.png">VIVIR</option>
-                <option value="DAVIVIENDA SEGUROS" data-icon="../../web/img/aseguradoras/davivienda.jpg">DAVIVIENDA SEGUROS</option>
-              </select>
-              <label>Selecciona las aseguras, en las cuales desees cotizar</label>
-            </div>
-            <div class="input-field col s12">
-              <i style="color:black;"class="material-icons prefix">attach_money</i>
-              <select id="cantidad_pagos">
-                <option value="" disabled selected>Se te proporcionara tambien, el costo total (en un unico pago)</option>
-                <option value="2">Dos</option>
-                <option value="3">Tres </option>
-                <option value="4">Cuatro</option>
-                <option value="6">Seis</option>
-                <option value="12">Doce</option>
-              </select>
-              <label>Selecciona la cantidad de pagos, en la que deseas pagar tu seguro</label>
-            </div>
-            <div class="row">
-              <div class="col s6 m4 l5">
-                <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
-              </div>
-              <div class="col s12 m8 l7 push-l2 push-m2">
-                <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>              
-                <a id="siguiente3" class="waves-effect waves-light btn light-blue">Siguiente</a>
-              </div>
-            </div>
+
+          <div class="input-field col s12" id="asegurador">
+          <i  style="color:black;"class="material-icons prefix">verified_user</i>
+            <select multiple id="aseguradoras">
+              <option value="" disabled selected>Seleccione una o varias opciones</option>
+              <option value="ACSA" data-icon="../../web/img/aseguradoras/acsa.png">ACSA</option>
+              <option value="ASESUISA" data-icon="../../web/img/aseguradoras/asesuisa.jpg">ASESUISA</option>
+              <option value="MAPRE" data-icon="../../web/img/aseguradoras/mapfre.jpg">MAPFRE</option>
+              <option value="PAN AMERICAN LIFE" data-icon="../../web/img/aseguradoras/panamericanlife.jpg">PAN AMERICAN LIFE</option>
+              <option value="SCOTIA SEGUROS" data-icon="../../web/img/aseguradoras/scotiaseguros.png">SCOTIA SEGUROS</option>
+              <option value="SISA" data-icon="../../web/img/aseguradoras/sisa.png">SISA</option>
+              <option value="VIVIR" data-icon="../../web/img/aseguradoras/vivir.png">VIVIR</option>
+            </select>
+           
+            <label>Selecciona las aseguras, en las cuales desees cotizar</label>
+          </div>
+          <a style="display:none" id="reset_btn_segs" onclick="stop_select_segs();" class="waves-effect waves-light btn light-blue">Seleccionar de nuevo</a>
+
+          
+          <div class="input-field col s12">
+          <i  style="color:black;"class="material-icons prefix">attach_money</i>
+          <select id="cantidad_pagos">
+              <option value="" disabled selected>Se te proporcionara tambien, el costo total (en un unico pago)</option>
+              <option value="2">Dos</option>
+              <option value="3">Tres </option>
+              <option value="4">Cuatro</option>
+              <option value="6">Seis</option>
+              <option value="12">Doce</option>
+            </select>
+          <label>Selecciona la cantidad de pagos, en la que deseas pagar tu seguro</label>
+        </div>
+        <div class="row">
+          <div class="col s6 m4 l5">
+            <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+          </div>
+          <div class="col s12 m8 l7 push-l2 push-m2">
+            <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>              
+            <a id="siguiente3" class="waves-effect waves-light btn light-blue">Siguiente</a>
           </div>
         </div>
-          <!-- Formulario del paso 3-->
+      </div>
+          
+        </div>
+
         <div id="paso3">
-          <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
+        <!-- los datos de la pagina ------------------------------------------------------------------------------------------------>
           <div class="container">
             <div class='row'>
               <div class='input-field col s12 '>
@@ -130,10 +135,12 @@
               </div>
             </div>
 
+
             <div class='row'>
             <div class='input-field col s1 '>   
             <i  style="color:black;"class="material-icons prefix">phone</i>
-            </div>  
+            </div>
+
             <div class='input-field col s6 '>
                   <input id="tel_segv" type="number" class="validate" required/>
                   <label class="" for="valor_de_constr_segm">Telefono</label>      
@@ -141,30 +148,23 @@
 
             <div class='input-field col s5 '>   
             <div>
-              <p >Esta información es opcional.</p>
+            <input id="tel_segv" type="number" class="validate" />
+                  <label class="" for="valor_de_constr_segm">Whatsapp (opcional)</label>   
               </div> 
-              <div class="switch">
-              <label>
-                Whatssap
-                <input type="checkbox">
-                <span class="lever"></span>
-                Movil
-              </label>
-              </div>
+            
             </div> 
           </div>
-
             <div class='row'>
               <div class='input-field col s12 '>
-                <i style="color:black;"class="material-icons prefix">email</i>
+              <i  style="color:black;"class="material-icons prefix">email</i>
                 <input id="email_segv" name="correo" type="email" class="validate" required/>
                 <label class="" for="email_segv">Correo | Email</label>
               </div>
             </div>
             <div class='row'>
               <p class="frm_p_text_gray">¿Hora para Contactarle?</p>
-              <div class='input-field col s12 '>
-                <i style="color:black;"class="material-icons prefix">phone_in_talk</i>
+                <div class='input-field col s12 '>
+                <i  style="color:black;"class="material-icons prefix">phone_in_talk</i>
                 <select id="hora_contacto"> 
                   <option value="" selected disabled>Seleccione una opción</option>
                   <optgroup label="Mañana">
@@ -176,15 +176,16 @@
                           <option value="tarde_2">4:00 - 7:00pm</option>
                   </optgroup>      
                 </select>
-              </div>
             </div>
-            <div class="row">
-              <div class="col s6 m4 l5">
-                <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
-              </div>
-              <div class="col s12 m8 l7 push-l2 push-m2">
-                <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
-                <a id="cotizar" class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+            
+      </div>
+      <div class="row">
+        <div class="col s6 m4 l5">
+          <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+        </div>
+        <div class="col s12 m8 l7 push-l2 push-m2">
+          <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
+          <a id="cotizar" class="waves-effect waves-light btn  light-blue">Cotizar</a>
               </div>
             </div>
           </div>

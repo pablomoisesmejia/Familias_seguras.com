@@ -1,3 +1,15 @@
+
+
+var marca_vehiculo = '';
+var modelo_vehiculo = '';
+var anio = '';
+var placa = '';
+var origen_vehiculo = '';
+var valor_vehiculo = '';
+var vehiculos = [];
+
+var tipo_seguro = 4;
+
 $(document).ready(function(){
 
     $('.modal').modal();
@@ -201,15 +213,6 @@ $(document).ready(function(){
     });
 });
 
-var marca_vehiculo = '';
-var modelo_vehiculo = '';
-var anio = '';
-var placa = '';
-var origen_vehiculo = '';
-var valor_vehiculo = '';
-var vehiculos = [];
-
-var tipo_seguro = 4;
 
 function createCotizacion()
 {
