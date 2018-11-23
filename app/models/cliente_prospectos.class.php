@@ -229,14 +229,16 @@ class Cliente_Prospecto extends Validator
 	{
 		$sql = 'SELECT ci.compania_interes, ci.numero_seleccion 
 		FROM clientes_prospectos cp INNER JOIN companias_interes ci ON cp.PK_id_cliente_prospecto = ci.FK_id_cliente_prospecto 
-		WHERE cp.PK_id_cliente_prospecto =';
+		WHERE cp.PK_id_cliente_prospecto = ?';
 		$params = array($this->PK_id_cliente_prospecto);
-		return Database::getRow($sql, $params);
+		return Database::getRows($sql, $params);
 	}
 
-	public function getSeguroCliente()
+	public function getSeguroVidaCliente()
 	{
-		$sql = '';
+		$sql = 'SELECT c.* 
+		FROM clientes_prospectos cp INNER JOIN cotizaciones_vida c ON cp.PK_id_cliente_prospecto = c.FK_id_cliente_prospecto
+		WHERE cp.PK_id_cliente_prospecto = ?';
 		$params = array($this->PK_id_cliente_prospecto);
 		return Database::getRow($sql, $params);
 	}
