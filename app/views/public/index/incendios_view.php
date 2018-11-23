@@ -70,7 +70,7 @@
                 <label class="" for="valor_construccion">Valor de Construcciones</label>      
           </div>  
           <div class='input-field col s5 '>    
-            <p class="frm_p_text_alert">No incluir terreno.</p>
+            <p class="frm_p_text_alert" style="color:white;">No incluir terreno.</p>
           </div>   
         </div>
 

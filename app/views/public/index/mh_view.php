@@ -73,7 +73,7 @@
             <i  style="color:black;"class="material-icons prefix">verified_user</i>
               <select multiple id="aseguradoras">
                 <option value="" disabled selected>Seleccione una o varias opciones</option>
-                <option value="ACSA" data-icon="../../web/img/aseguradoras/acsa.png">ACSA</option>
+                <option id="opc1" value="ACSA" data-icon="../../web/img/aseguradoras/acsa.png">ACSA</option>
                 <option value="ASESUISA" data-icon="../../web/img/aseguradoras/asesuisa.jpg">ASESUISA</option>
                 <option value="MAPRE" data-icon="../../web/img/aseguradoras/mapfre.jpg">MAPFRE</option>
                 <option value="PAN AMERICAN LIFE" data-icon="../../web/img/aseguradoras/panamericanlife.jpg">PAN AMERICAN LIFE</option>
@@ -142,16 +142,10 @@
   
               <div class='input-field col s5 '>   
               <div>
-                <p >Esta información es opcional.</p>
+              <input id="tel_segv" type="number" class="validate" />
+                    <label class="" for="valor_de_constr_segm">Whatsapp (opcional)</label>   
                 </div> 
-                <div class="switch">
-                <label>
-                  Whatssap
-                  <input type="checkbox">
-                  <span class="lever"></span>
-                  Movil
-                </label>
-                </div>
+              
               </div> 
             </div>
               <div class='row'>
@@ -185,7 +179,7 @@
           </div>
           <div class="col s12 m8 l7 push-l2 push-m2">
             <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
-            <a id="cotizar" class="waves-effect waves-light btn  light-blue">Cotizar | Finalizar</a>
+            <a id="cotizar" class="waves-effect waves-light btn  light-blue">Cotizar</a>
           </div>
         </div>
       

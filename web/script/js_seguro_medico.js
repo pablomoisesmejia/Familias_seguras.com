@@ -15,12 +15,12 @@ function Paso1()
 
     if(fecha_nacimiento != '')
     {
-    if(nombre_conyugue != '')
-    {
-        if(fecha_nacimiento_conyugue != '')
-        {
-            if(cantidad_hijos != '')
-            {
+   // if(nombre_conyugue != '')
+   // {
+       // if(fecha_nacimiento_conyugue != '')
+       // {
+           // if(cantidad_hijos != '')
+           // {
                 if(cantidad_hijos.indexOf("-") != 0)
                 {
                     siguiente2();
@@ -29,21 +29,21 @@ function Paso1()
                 {
                     AlertaSweet(3, 'La cantidad de hijos no puede ser negativa');
                 }
-            }
-            else
-            {
-            AlertaSweet(3, 'ingrese la cantidad de hijos');
-            }
-        }
-        else
-        {
-            AlertaSweet(3, 'Seleccione la fecha de nacimiento del conyugue');
-        }
-    }
-    else
-    {
-        AlertaSweet(3, 'Escriba el nombre del conyugue');
-    }
+           // }
+           // else
+           // {
+           // AlertaSweet(3, 'ingrese la cantidad de hijos');
+           // }
+       // }
+       // else
+       // {
+       //     AlertaSweet(3, 'Seleccione la fecha de nacimiento del conyugue');
+       // }
+   // }
+   // else
+   // {
+    //    AlertaSweet(3, 'Escriba el nombre del conyugue');
+   // }
     }
     else
     {

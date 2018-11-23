@@ -141,7 +141,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <a name="cotizar" id="return_btn" class="solicitar">Contactarme</a>
+                                <a id="" type="submit" class="waves-effect waves-light btn light-blue">Contactarme</a>
     
                          
                         </div>

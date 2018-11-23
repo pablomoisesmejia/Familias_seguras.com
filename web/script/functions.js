@@ -331,7 +331,7 @@ $(document).ready(function(){
         {
           AlertaSweet(3, 'Solo puede seleccionar 5 aseguradoras como maximo');
           $('#asegurador input.select-dropdown').val(aseguradoras_select.toString());
-          
+      
           //nombre de la ultima aseguradora
           aseguradoras[aseguradoras.length-1]
         }
@@ -1122,4 +1122,12 @@ function form_contactanos_close(){
   $("#info_block_forminputs").css({"display":"none","opacity":"1"});
   $("#info_block_noinputs").css({"display":"block","opacity":"1"});
   
+}
+//contador de cuantos seguros se han tomado
+var nseguros_tomados=0;
+function stop_select_segs(){
+alert("hola bebe");
+  if(nseguros_tomados == 0){
+  
+}
 }
