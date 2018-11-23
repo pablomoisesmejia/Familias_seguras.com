@@ -9,7 +9,7 @@ try{
 				require_once("../app/views/public/producto/productos_view.php");
 			}else{
 				throw new Exception("No hay anuncios de esta categoria disponibles");
-				echo(getCategoriaProductos);
+			
 			}
 		}else{
 			throw new Exception("Categoría incorrecta");

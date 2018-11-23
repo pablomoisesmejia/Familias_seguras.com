@@ -70,7 +70,7 @@ class Categoria extends Validator{
 
 	//Metodos para el manejo del CRUD
 	public function getCategorias(){
-		$sql = "SELECT id_categoria, nombre_categoria FROM categorias ORDER BY nombre_categoria";
+		$sql = "SELECT id_categoria, nombre_categoria, imagen FROM categorias ORDER BY nombre_categoria";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
