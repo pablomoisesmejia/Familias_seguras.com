@@ -43,7 +43,7 @@
                 <div  class="info_block_2">
                     <h5>COTIZÁ TÚ SEGURO   <i class='material-icons prefix'>info</i> </h5>
                     <div class="row" >
-                    <a href="Seguro_Medico.php">
+                    <a href="seguro_medico.php">
                         <div   id="contenedor_de_seguro"  class="col s12 m6" onmouseover="seg=1; change_etiquete();" onmouseout="seg=1; change_etiquete_back();">
                             <div class="icon_container_1"><img src="../../web/img/icon/seg_medico.png" class="seguro_ico_1"></div>
                             <div class="info_seguro_prev">
@@ -53,7 +53,7 @@
                             <p class="seguro_presiona">Presiona para solicitar tu cotización</p>
                             </a>
                         </div>
-                        <a href="Seguro_de_vida.php">
+                        <a href="seguro_de_vida.php">
                         <div  id="contenedor_de_seguro"  class="col s12 m6" onmouseover="seg=2; change_etiquete();" onmouseout="seg=2; change_etiquete_back();">
                             <div class="icon_container_2"><img src="../../web/img/icon/seg_vida.png" class="seguro_ico_2"></div>
                             <div class="info_seguro_prev">
@@ -76,7 +76,7 @@
                             </div>
                             <p class="seguro_presiona">Presiona para solicitar tu cotización</p>
                         </div>
-                        <a href="Seguro_de_motores.php">
+                        <a href="seguro_de_motores.php">
                          <div onclick="seguro_frm=4; abrir_form();" id="contenedor_de_seguro"  class="col s12 m6" onmouseover="seg=4; change_etiquete();" onmouseout="seg=4; change_etiquete_back();">
                             <div class="icon_container_4"><img src="../../web/img/icon/seg_auto.png" class="seguro_ico_4"></div>
                             <div class="info_seguro_prev">

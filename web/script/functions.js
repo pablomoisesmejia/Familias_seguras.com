@@ -260,7 +260,9 @@ function enviarCorreo()
   $.ajax({
     type: 'POST',
     url:'../../app/helpers/correo_cliente.php',
-    data:{correo:correo},
+    data:{correo:correo,
+    id_cliente_prospecto:id_cliente_prospecto,
+    tipo_seguro:tipo_seguro},
     success:function(dato)
     {
       console.log(dato);
