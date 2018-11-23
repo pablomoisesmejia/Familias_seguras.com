@@ -215,6 +215,32 @@ class Cliente_Prospecto extends Validator
 		}
 	}
 
+	public function getClientes()
+	{
+		$sql = 'SELECT cp.hora_contactarle, cp.cantidad_pagos, ts.tipo_seguro, u.nombres, u.apellidos, u.correo, u.fecha_nacimiento, u.telefono, u.whatsapp, u.celular 
+		FROM clientes_prospectos cp INNER JOIN usuarios u ON cp.FK_id_usuario = u.PK_id_usuario 
+		INNER JOIN tipos_seguro ts ON cp.FK_id_tipo_seguro = ts.PK_id_tipo_seguro 
+		WHERE cp.PK_id_cliente_prospecto = ?';
+		$params = array($this->PK_id_cliente_prospecto);
+		return Database::getRow($sql, $params);
+	}
+
+	public function getCompaniasInteres()
+	{
+		$sql = 'SELECT ci.compania_interes, ci.numero_seleccion 
+		FROM clientes_prospectos cp INNER JOIN companias_interes ci ON cp.PK_id_cliente_prospecto = ci.FK_id_cliente_prospecto 
+		WHERE cp.PK_id_cliente_prospecto =';
+		$params = array($this->PK_id_cliente_prospecto);
+		return Database::getRow($sql, $params);
+	}
+
+	public function getSeguroCliente()
+	{
+		$sql = '';
+		$params = array($this->PK_id_cliente_prospecto);
+		return Database::getRow($sql, $params);
+	}
+
 	public function getClientesProspectos2()
 	{
 		$sql = 'SELECT * FROM solicitudes, clientes_prospectos, usuarios, tipos_seguro, estado_solicitud WHERE (solicitudes.FK_id_cliente_prospecto = clientes_prospectos.PK_id_cliente_prospecto AND clientes_prospectos.FK_id_usuario = usuarios.PK_id_usuario AND clientes_prospectos.FK_id_tipo_seguro = tipos_seguro.PK_id_tipo_seguro AND estado_solicitud.PK_id_estado_solicitud = solicitudes.FK_id_estado_solicitud) AND FK_id_estado_solicitud = 1';
