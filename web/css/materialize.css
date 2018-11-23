@@ -756,7 +756,7 @@
 }
 
 .light-blue {
-  background-color: #03a9f4 !important;
+  background-color: #7A39A2 !important;
 }
 
 .light-blue-text {
@@ -4383,7 +4383,7 @@ nav .input-field input:focus, nav .input-field input[type=text]:valid, nav .inpu
   border: none;
   -webkit-box-shadow: none;
           box-shadow: none;
-          color: #004d40;
+          color: #4D004A;
 }
 
 nav .input-field label {
@@ -5065,7 +5065,7 @@ small {
 
 .tabs .tab a:hover, .tabs .tab a.active {
   background-color: transparent;
-  color: rgb(35, 109, 158);;
+  color: rgb(136, 32, 158);;
 }
 
 .tabs .tab.disabled a,
@@ -5078,7 +5078,7 @@ small {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: rgb(35, 109, 158);
+  background-color: rgba(151, 32, 158, 0.56);
   will-change: left, right;
 }
 
@@ -6087,8 +6087,8 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #26a69a;
-  -webkit-box-shadow: 0 1px 0 0 #26a69a;
+  border-bottom: 1px solid #8526A6;
+  -webkit-box-shadow: 0 1px 0 0 #6D26A6;
           box-shadow: 0 1px 0 0 #26a69a;
 }
 
@@ -6105,7 +6105,7 @@ input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
 input[type=number]:not(.browser-default):focus:not([readonly]) + label,
 input[type=search]:not(.browser-default):focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: #26a69a;
+  color: #888888;
 }
 
 input:not([type]).validate + label,
@@ -6208,9 +6208,9 @@ input[type=search].valid:not(.browser-default),
 input[type=search].valid:not(.browser-default):focus,
 textarea.materialize-textarea.valid,
 textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
-  border-bottom: 1px solid #4CAF50;
-  -webkit-box-shadow: 0 1px 0 0 #4CAF50;
-          box-shadow: 0 1px 0 0 #4CAF50;
+  border-bottom: 1px solid #854CAF;
+  -webkit-box-shadow: 0 1px 0 0 #854CAF;
+          box-shadow: 0 1px 0 0 #854CAF;
 }
 
 input.invalid:not([type]), input.invalid:not([type]):focus,
@@ -6270,7 +6270,7 @@ input[type=search]:not(.browser-default):focus.valid + label:after,
 textarea.materialize-textarea.valid + label:after,
 textarea.materialize-textarea:focus.valid + label:after, .select-wrapper.valid + label:after {
   content: attr(data-success);
-  color: #4CAF50;
+  color: #9847C1;
   opacity: 1;
   -webkit-transform: translateY(9px);
           transform: translateY(9px);
@@ -6393,7 +6393,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 }
 
 .input-field .prefix.active {
-  color: #26a69a;
+  color: #A62672;
 }
 
 .input-field .prefix ~ input,
@@ -8854,7 +8854,7 @@ input[type=range]:focus::-ms-fill-upper {
   border-radius: 50%;
   -webkit-transform: scale(0.75);
           transform: scale(0.75);
-  background: #0089ec;
+  background: #B900EC;
   color: #ffffff;
 }
 
@@ -8966,7 +8966,7 @@ input[type=range]:focus::-ms-fill-upper {
 }*/
 .picker__date-display {
   text-align: left;
-    background-color: #244e9c;
+    background-color: #66376F;
   color: #fff;
   padding: 18px;
   font-weight: 300;
@@ -9052,7 +9052,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .picker__day.picker__day--today {
-  color: #26a69a;
+  color: #9A26A6;
 }
 
 .picker__day.picker__day--today.picker__day--selected {
@@ -9069,14 +9069,14 @@ input[type=range]:focus::-ms-fill-upper {
   border-radius: 50%;
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
-  background-color: #26a69a;
+  background-color: #A6269C;
   color: #ffffff;
 }
 
 .picker__day--selected.picker__day--outfocus,
 .picker__day--selected:hover.picker__day--outfocus,
 .picker--focused .picker__day--selected.picker__day--outfocus {
-  background-color: #a1ded8;
+  background-color: #CEA1DE;
 }
 
 .picker__footer {
@@ -9113,7 +9113,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 button.picker__today:focus, button.picker__clear:focus, button.picker__close:focus {
-  background-color: #a1ded8;
+  background-color: #D8A1DE;
 }
 
 /* ==========================================================================

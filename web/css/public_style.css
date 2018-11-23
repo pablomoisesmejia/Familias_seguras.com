@@ -65,7 +65,7 @@
  }
  .info_block_left_logo{
     padding-top: 9vh;
-    opacity: .5;
+    opacity: .7;
     padding-left: 4%;
 }
 .signo_de_campo{
@@ -90,8 +90,13 @@ background-color: rgba(21, 21, 21, 0.8);
 
 }
 #confirmations_icon{
-    margin-top: 20vh;
+    margin-top: 16vh;
     width: 170px;
+}
+#confirmations_icon_l{
+    margin-top: 2vh;
+    width: 170px;
+    filter: brightness(5);
 }
 #view_email_send{
     color: white;
@@ -101,7 +106,7 @@ background-color: rgba(21, 21, 21, 0.8);
     z-index: 1000;
     top: 0;
     left: 0;
-    background-color: rgb(24, 89, 174);
+    background-color: rgb(96, 52, 139);
     text-align: center;
     padding-left: 5%;
     padding-right: 5%;
@@ -132,6 +137,7 @@ background-color: rgba(21, 21, 21, 0.8);
 .icon_container_1, .icon_container_2, .icon_container_3, .icon_container_4{
     text-align: center;
     background-color: rgba(255, 255, 255, 0.411);
+    
     height: 150px;
     width: 30%;
     float: left;
@@ -146,7 +152,7 @@ background-color: rgba(21, 21, 21, 0.8);
 }
 .seguro_presiona{
     font-size: 0.8em;
-    background-color: rgba(255, 255, 255, 0.219);
+    background-color: rgba(220, 144, 220, 0.22);
     color: rgb(255, 255, 255);
    float: left;
    padding: 0;
@@ -196,7 +202,7 @@ a{
     margin: 0;
     padding: 0;
     border: none;
-    background-color:rgba(0, 0, 0, 0);
+    background-color:rgba(58, 31, 60, 0.00);
     color: white;
     height: 50px;
     width: var(--height_or_width_bar);
@@ -232,7 +238,7 @@ a{
     text-align: center;
     font-size: 18px;
     overflow: hidden;
-    
+  
     transition: 0.4s;   
 }
 .lateral_btn_style_bigs:hover{
@@ -320,7 +326,7 @@ i{
     margin-left: 10px;
 text-align: center;
     height: auto;
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
     
     
@@ -386,7 +392,7 @@ text-align: center;
 #lateral_bar_style{
     
     color:white;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(32, 11, 27, 0.58);
     
     float: left;
     width: var(--height_or_width_bar);
@@ -448,9 +454,11 @@ padding-top: 20px;
 
 }
 
+
 #large_logo_slider{
-    width: 100%;
-    padding-top: 10vh;
+    width: 70%;
+    margin-left: 12%;
+    padding-top: 3vh;
 
 }
 #large_logo_slider_frm{
@@ -666,7 +674,7 @@ li.prog{
              -o-animation: fadein 2s; /* Opera < 12.1 */
                 animation: fadein 2s;
     }
-    
+  
     @keyframes fadein {
         from { opacity: 0; }
         to   { opacity: 1; }

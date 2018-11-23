@@ -5,10 +5,10 @@
              <!-- -->
              <!-- BLOQUE DE LOGO -->
              <div  class="info_block_left_logo">
-                    <img id="large_logo_slider" src="../../web/img/logo/logo_large.png" alt="Seguros Familiares">
+                    <img id="large_logo_slider" src="../../web/img/logo/logo_only.png" alt="Seguros Familiares">
                 </div>
                 
-            <div style="margin-top:24vh;" class="hide-on-med-and-down" id="contactanos_superior">
+            <div style="margin-top:14vh;" class="hide-on-med-and-down" id="contactanos_superior">
                 <a id="tel_btn" href="tel:+50322607851" class="lateral_btn_style_bigs show-on-small">
                     <i class='material-icons prefix'>phone</i>   
                 </a>
@@ -100,18 +100,51 @@
 
                   <!-- BLOQUE DE INFO -->
                   <div class="info_block_4">
-                    <h5 >CONTÁCTANOS  <i class='material-icons prefix'>mail</i> </h5>
-                    <a  class="lateral_btn_style_bigs_wi">
-                    <i class='material-icons prefix'>mail</i>
-                    </a>
-                    <h6 id="text_under_title_c">EMAIL</h6>
-                    <p id="p_on_section_c">info@FamiliasSeguras.com</p>
+                    
+                    <h5  >CONTÁCTANOS  <i class='material-icons prefix'>mail</i> </h5>
+                    <div id="info_block_noinputs">
+                        <a onclick="form_contactanos_open();" class="lateral_btn_style_bigs_wi">
+                        <i class='material-icons prefix'>mail</i>
+                        </a>
+                        <h6 id="text_under_title_c">EMAIL</h6>
+                        <p id="p_on_section_c">info@FamiliasSeguras.com</p>
 
-                    <h6 id="text_under_title_c">DIRECCIÓN</h6>
-                    <p id="p_on_section_c">Edificio WTC T1, Local 201A San Salvador, El Salvador</p>
+                        <h6 id="text_under_title_c">DIRECCIÓN</h6>
+                        <p id="p_on_section_c">Edificio WTC T1, Local 201A San Salvador, El Salvador</p>
 
-                    <h6 id="text_under_title_c">TELÉFONO</h6>
-                    <p id="p_on_section_c">+(503) 2260.7851</p>
+                        <h6 id="text_under_title_c">TELÉFONO</h6>
+                        <p id="p_on_section_c">+(503) 2260.7851</p>
+                    </div>
+                    <div style="display: none;" id="info_block_forminputs">
+                    <div class="row">
+                            <a onclick="form_contactanos_close();" class="lateral_btn_style_bigs_wi">
+                                    <i class='material-icons prefix'>arrow_back</i>
+                            </a>
+                            
+                            <p id="p_on_section_c">Llena los campos siguientes para<br> poder comunicarnos contigo.</p>
+                            
+                        </div>
+
+                                <form id="home_form">
+                                    <div class='row'>
+                                        <div class='input-field col s12 '>
+                                            <input id="nombre_segv" type="text" class="validate" required/>
+                                            <label class="" for="nombre_segv">Tu Nombre</label>
+                                        </div>
+                                    </div>
+                                    
+                                 
+                                    <div class='row'>
+                                        <div class='input-field col s12 '>
+                                            <input id="email_segv" name="correo" type="email" class="validate" required/>
+                                            <label class="" for="email_segv">Correo | Email</label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <a name="cotizar" id="return_btn" class="solicitar">Contactarme</a>
+    
+                         
+                        </div>
                 </div>
 
             <!-- FIN -->

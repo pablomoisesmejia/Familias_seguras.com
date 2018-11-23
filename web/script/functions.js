@@ -290,7 +290,7 @@ $(document).ready(function(){
   $('.datepicker').pickadate({
     selectMonths:true,
     selectYears:100,
-    today:'Actual',
+    today:'',
     clear:'Limpiar',
     close:'Aceptar',
     formatSubmit: 'yyyy-mm-dd',
@@ -400,7 +400,7 @@ function change_etiquete(){
     $(".seguro_ico_3").css({"filter":"brightness(1)"}); */
 
 
-    $(".icon_container_"+seg).css({"background-color":"rgba(35, 99, 219,0.6)"});
+    $(".icon_container_"+seg).css({"background-color":"rgba(173, 50, 191, 0.60)"});
     $(".seguro_ico_"+seg).css({"filter":"brightness(10)"});
    
 
@@ -1112,3 +1112,14 @@ function AlertaSweet(icono, texto)
     });
   }
 });*/
+
+//NUEVAS FUNCIONES NZ
+function form_contactanos_open(){
+  $("#info_block_noinputs").css({"display":"none","opacity":"1"});
+  $("#info_block_forminputs").css({"display":"block","opacity":"1"});
+}
+function form_contactanos_close(){
+  $("#info_block_forminputs").css({"display":"none","opacity":"1"});
+  $("#info_block_noinputs").css({"display":"block","opacity":"1"});
+  
+}

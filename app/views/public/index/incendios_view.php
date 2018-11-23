@@ -28,12 +28,13 @@
                 <select name="" id="tipo_inmueble">
                     <option value="" selected disabled>Seleccione una opción</option>
                     <option value="Casa de Habitación">Casa de Habitación</option>
-                    <option value="Oficina">Oficina</option>
-                    <option value="Local Comercial">Local Comercial</option>
+                   <!-- <option value="Oficina">Oficina</option>-->
+                    <!--  <option value="Local Comercial">Local Comercial</option>-->
                     <option value="Apartamento">Apartamento</option>
-                    <option value="Casa de playa">Casa de playa</option>
-                    <option value="Casa de campo">Casa de campo</option>
-                    <option value="Casa de de lago">Casa de de lago</option>
+                    <!--  <option value="Casa de playa">Casa de playa</option>-->
+                    <option value="Casa de Receso">Casa de Receso</option>
+                    <!--  <option value="Casa de campo">Casa de campo</option>-->
+                    <!--  <option value="Casa de de lago">Casa de de lago</option>-->
                 </select>
                 <label class="" for="tipo_inmueble_segv">Tipo de Inmueble</label>
             </div>           
@@ -53,8 +54,8 @@
                 <select name="" id="asegurado_calidad">
                     <option value="" selected disabled>Seleccione una opción</option>
                     <option value="Propietario">Propietario</option>
-                    <option value="Inquilino">Inquilino</option>
-                    <option value="Arrendante">Arrendante</option>
+                     <option value="Inquilino">Inquilino</option>
+                    <!--<option value="Arrendante">Arrendante</option>-->
                 </select>
                 <label class="" for="tipo_inmueble_segv">Asegurar Inmueble en calidad de:</label>
             </div>           
@@ -159,13 +160,7 @@
                     <label class="" for="apellido_segv">Tus Apellidos</label>
                 </div>
               </div>
-              <div class='row'>
-                <div class='input-field col s12 '>
-                  <i style="color:black;"class="material-icons prefix">event</i>
-                  <input  type="text" class="datepicker" id="fecha_nacimiento" required/>
-                  <label class="" for="fecha_nacimiento">Fecha de Nacimiento</label>
-                </div>
-              </div>
+              
 
               <div class='row'>
               <div class='input-field col s1 '>   
@@ -234,10 +229,13 @@
 </div>
 </div>
 <div id="view_email_send">
-  <img id="confirmations_icon" src="../../web/img/icon/email_send.png" >
-  <h3 style="font-size:1.8em;">¡La cotización ha sido exitosa!</h3> 
-  <p>Revisa tu correo electrónico en las proximas 24 Horas para ver la cotización.</p>
-
-  <a href="index.php" id="return_btn">Regresar</a> 
+<img id="confirmations_icon" src="../../web/img/icon/email_send.png" >
+<h3 style="font-size:1.8em;">¡Su solicitud ha sido exitosa!</h3> 
+<p>En un máximo de 48 Horas nuestro equipo te hará llegar las cotizaciones solicitadas, resumidad en un cuadro comparativo de costos y beneficios con cada una.<br>Att. el equipo de familiasseguras.com</p>
+<img id="confirmations_icon_l" src="../../web/img/logo/logo_only.png" >
+<div class="row">
+ 
+ </div>
+<a onclick=" " href="" id="return_btn">Regresar</a> 
 </div>
 </body>
