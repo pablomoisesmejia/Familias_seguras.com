@@ -1,8 +1,10 @@
 <div class='container'>
     <h5 class='center'>Directorio</h5>
     <div class='row'>
+
     <?php
     foreach($categorias as $categoria){
+
         print("
             <div class='col s12 m12 l4'>
                 <div class='card hoverable'>

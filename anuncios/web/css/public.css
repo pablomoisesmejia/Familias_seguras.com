@@ -11,3 +11,107 @@ main {
 .parallax-container {
     height: 300px;
 }
+
+.btn_hdd{
+color: #FFFFFF;
+margin-top: 20px;
+padding: 0;
+padding-left: 10px;
+padding-right: 10px;
+margin-top: 20px;
+height: 20px;
+}
+
+.btn_hdd_red{
+    color: #FFFFFF;
+    
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    height: 70px;
+    }
+.btn_hdd:hover{
+background-color: rgba(102, 51, 153, 0.00);
+color: #A2A2A2;
+}
+#banner_top{
+    width: 100%;
+    margin-top: 20px;
+    max-width: 1250px;
+    height: 200px;
+    background-color: #282828;
+    color: white;
+    text-align: center;
+    padding-top: 90px;
+}
+
+.botom_img{
+    cursor: pointer;
+    margin: 0;
+    margin-top: 3px;
+    width: 300px;
+    height: 36px;
+    padding-left: 20px;
+    padding-top: 6px;
+    background-color: #1C1C1C;
+    color: white;
+}
+#img_cont{
+    margin-top: 20px;
+    background-color: black;
+    width: 300px;
+    height: 300px;
+}
+.titles{
+    color: black;
+    font-weight: bold;
+    font-size: 1em;
+    
+    padding: 0;
+    margin: 0;
+    margin-top: 3px;
+    margin-right: 20px;
+}
+.title{
+    color: black;
+    font-weight: bold;
+    font-size: 1em;
+    float: left;
+    padding: 0;
+    margin: 0;
+    margin-top: 3px;
+    margin-right: 20px;
+}
+.title_2{
+    padding: 0;
+    margin: 0;
+    color: #3F3F3F;
+    width: 100%;
+    font-size: 1em;
+    padding-left: 60px;
+    
+    
+}
+#banner_side{
+    width: 250px;
+    margin-top: 20px;
+    
+    height: 250px;
+    background-color: #282828;
+    color: white;
+    text-align: center;
+    padding-top: 90px;
+}
+.btn_hdd2{
+    color: #FFFFFF;
+    
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+   
+    }
+.btn_hdd2:hover{
+background-color: rgba(102, 51, 153, 0.00);
+color: #A2A2A2;
+}
