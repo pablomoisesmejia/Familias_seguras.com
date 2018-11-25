@@ -11,13 +11,13 @@ require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
 
 
-//$correo = $_POST['correo'];
-//$id_cliente = $_POST['id_cliente_prospecto'];
-//$tipo_seguro = $_POST['tipo_seguro'];
+$correo = $_POST['correo'];
+$id_cliente = $_POST['id_cliente_prospecto'];
+$tipo_seguro = $_POST['tipo_seguro'];
 
 //$correo = 'fernanxavi58@gmail.com';
-$id_cliente = 21;
-$tipo_seguro = 4;
+//$id_cliente = 21;
+//$tipo_seguro = 4;
 
 $cliente_prospecto = new Cliente_Prospecto;
 
@@ -45,7 +45,7 @@ for($i = 0; $i<count($companias); $i++)
 
 //Declaracion de variables para cada tipo de cotización
 $info_seguro = '';
-$informacion = '';
+$mensaje = '';
 
 //Variables de Seguro Medico
 $nombre_conyugue = '';
@@ -73,6 +73,8 @@ if($tipo_seguro == 1)
     $nombre_conyugue = $info_seguro[1];
     $fecha_nacimiento_conyugue = $info_seguro[2];
     $cantidad_hijos = $info_seguro[3];
+
+    $mensaje = 'El nombre del conyugue es '.$nombre_conyugue.' <br> la fecha de nacimiento del conyugue es '.$fecha_nacimiento_conyugue.'<br> y la cantidad de hijos es de '.$cantidad_hijos.'.';
 }
 if($tipo_seguro == 2)
 {
@@ -80,6 +82,8 @@ if($tipo_seguro == 2)
     $fumador = $info_seguro[1];
     $suma_asegurada = $info_seguro[2];
     $cesion_bancaria = $info_seguro[3];
+
+    $mensaje = 'El cliente '.$fumador.' se considera fumador <br> la suma asegurada es de '.$suma_asegurada.'<br> y '.$cesion_bancaria.' la necesita para un banco.';
 }
 if($tipo_seguro == 3)
 {
@@ -89,47 +93,55 @@ if($tipo_seguro == 3)
     $asegurado_calidad = $info_seguro[3];
     $valor_construccion = $info_seguro[4];
     $valor_contenido = $info_seguro[5];
+
+    $mensaje = 'El tipo de inmueble es '.$tipo_inmueble.'<br> la dirección es '.$direccion.' <br> la calidad de asegurar el inmueble es '.$asegurado_calidad.'<br> 
+    el valor de las construcciones sin el terreno es '.$valor_construccion.'<br> y el valor del contenido es de'.$valor_contenido.'.';
 }
 if($tipo_seguro == 4)
 {
     $info_seguro = $cliente_prospecto->getSeguroVehiculosCliente();
-    $tabla_vehiculos .= print("
-    <table>
+    $tabla_vehiculos .= "
+    <table style='text-align: center; border-collapse: collapse; font-size: 1em;
+    font-family: Calibri; 
+    font-weight: 0;'>
         <thead>
-            <tr>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>año</th>
-                <th>Origen</th>
-                <th>Valor</th>
-                <th>Placa</th> 
+            <tr style='border-bottom: 1px solid #d0d0d0;'>
+                <th style='padding: 10px 8px; border-radius: 2px;'>Marca</th>
+                <th style='padding: 10px 8px; border-radius: 2px;'>Modelo</th>
+                <th style='padding: 10px 8px; border-radius: 2px;'>Año</th>
+                <th style='padding: 10px 8px; border-radius: 2px;'>Origen</th>
+                <th style='padding: 10px 8px; border-radius: 2px;'>Valor</th>
+                <th style='padding: 10px 8px; border-radius: 2px;'>Placa</th> 
             </tr>
         </thead>
-        <tbody>");
+        <tbody>";
         for($i = 0; $i<count($info_seguro); $i++)
         {
-            print("
-            <tr>
-                <td>".$info_seguro[$i][0]."</td>
-                <td>".$info_seguro[$i][1]."</td>
-                <td>".$info_seguro[$i][2]."</td>
-                <td>".$info_seguro[$i][3]."</td>
-                <td>".$info_seguro[$i][4]."</td>
-                <td>".$info_seguro[$i][5]."</td>
-            </tr>
-            ");
-        }
-        print("
+            $tabla_vehiculos .=
+            "<tr style='border-bottom: 1px solid #d0d0d0;'>
+                <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][0]."</td>
+                <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][1]."</td>
+                <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][2]."</td>
+                <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][3]."</td>
+                <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][4]."</td>
+                <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][5]."</td>
+            </tr>";
+        };
+        $tabla_vehiculos .=
+        "
         </tbody>
     </table>
-    ");
+    ";
+
+    $mensaje = $tabla_vehiculos;
+    echo $tabla_vehiculos;
 }
 
 //print_r($companias);
 //print_r($info_seguro);
 
-/*
-$correo_osmin = 'fernanxavi58@gmail.com';
+
+$correo_osmin = 'Osmin@familiasseguras.com';
 $mail = new PHPMailer();                              // Passing `true` enables exceptions
 //Server settings
 $mail->SMTPDebug = 0;                                 // Enable verbose debug output
@@ -142,7 +154,7 @@ $mail->SetFrom('support@familiasseguras.comm', 'Familias Seguras');
 $mail->AddReplyTo('support@familiasseguras.com', 'Familias Seguras');                       // SMTP password
 $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 465;
-/*if($correo)
+if($correo)
 {
     $mail->Subject = 'Gracias por cotizar con nosotros';
     $mail->AddAddress($correo);
@@ -243,7 +255,7 @@ if($correo_osmin)
                     Información sobre la cotización
                     <br>
                     <br>
-
+                    $mensaje
                 </h3>
             </div>
             <div style='opacity:0.8; filter: brightness(0.6); float:left; background-color:mediumvioletred; width: 20%; height: 100%; background-image: url(http://familiasseguras.com/web/img/logo/maili.jpg);background-size: cover;background-position-x: -80px' >
@@ -270,6 +282,6 @@ if($correo_osmin)
     {
         echo 0;
     }
-}*/
+}
 
 ?>
