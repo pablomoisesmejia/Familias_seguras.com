@@ -3,15 +3,15 @@
         <div class='col s12'>
         <?php
         print("
-            <h3 class='header'>".$producto->getNombre()."</h3>
+          
             <div class='card horizontal'>
                 <div class='card-image'>
-                    <img src='../web/img/productos/".$producto->getImagen()."'>
+             
                 </div>
                 <div class='card-stacked'>
                     <div class='card-content'>
-                        <p>".$producto->getDescripcion()."</p>
-                        <p><b>Precio (US$) ".$producto->getPrecio()."</b></p>
+                     <input value='.$producto->getNombre'></input>
+                        
                     </div>
                     <div class='card-action'>
                         <form method='post'>

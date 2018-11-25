@@ -224,6 +224,17 @@ class Producto extends Validator{
 	public function getFacebook(){
 		return $this->facebook;
 	}
+	public function setNombre_categoria($value){
+		if($this->validateAlphanumeric($value, 1, 300)){
+			$this->nombre_categoria = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getNombre_categoria(){
+		return $this->nombre_categoria;
+	}
 
 
 	public function setInstagram($value){
@@ -281,15 +292,23 @@ class Producto extends Validator{
 		return Database::executeRow($sql, $params);
 	}
 	public function readProducto(){
-		$sql = "SELECT nombre_anuncio,  id_categoria, estado_anuncio FROM anuncio WHERE id_anuncio = ?";
+		$sql = "SELECT a.nombre_anuncio, a.direccion, a.imagen_producto, c.nombre_categoria, a.municipio, a.departamento, a.tel_fijo, a.celular, a.whatsapp, a.email_anuncio, a.numero_identidad, a.facebook, a.instagram FROM anuncio a INNER JOIN categorias c ON a.id_categoria = c.id_categoria WHERE id_anuncio = ?";
 		$params = array($this->id);
 		$producto = Database::getRow($sql, $params);
 		if($producto){
 			$this->nombre = $producto['nombre_anuncio'];
-			$this->descripcion = $producto['direccion_anuncio'];
+			$this->descripcion = $producto['direccion'];
 			$this->imagen = $producto['imagen_producto'];
-			$this->categoria = $producto['id_categoria'];
-			$this->estado = $producto['estado_producto'];
+			$this->nombre_categoria = $producto['nombre_categoria'];
+			$this->municipio = $producto['municipio'];
+			$this->departamento = $producto['departamento'];
+			$this->tel_fijo = $producto['tel_fijo'];
+			$this->celular = $producto['celular'];
+			$this->whatsapp = $producto['whatsapp'];
+			$this->email = $producto['email_anuncio'];
+			$this->numero_identidad = $producto['numero_identidad'];
+			$this->instagram = $producto['instagram'];
+			$this->facebook = $producto['facebook'];
 			return true;
 		}else{
 			return null;

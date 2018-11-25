@@ -7,13 +7,13 @@ try{
 			if($producto->readProducto()){
 				require_once("../app/views/public/producto/detalle_view.php");
 			}else{
-				throw new Exception("Producto inexistente");
+				throw new Exception("Directorio inexistente");
 			}
 		}else{
-			throw new Exception("Producto incorrecto");
+			throw new Exception("Directorio incorrecto");
 		}
 	}else{
-		throw new Exception("Seleccione producto");
+		throw new Exception("Seleccione un directorio antes");
 	}
 }catch(Exception $error){
 	Page::showMessage(3, $error->getMessage(), "index.php");
