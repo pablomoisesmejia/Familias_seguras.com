@@ -242,6 +242,36 @@ class Cliente_Prospecto extends Validator
 		$params = array($this->PK_id_cliente_prospecto);
 		return Database::getRow($sql, $params);
 	}
+	
+	public function getSeguroMedicoCliente()
+	{
+		$sql = 'SELECT c.* 
+		FROM clientes_prospectos cp INNER JOIN cotizaciones_medico_hosp c ON cp.PK_id_cliente_prospecto = c.FK_id_cliente_prospecto 
+		WHERE cp.PK_id_cliente_prospecto = ?';
+		$params = array($this->PK_id_cliente_prospecto);
+		return Database::getRow($sql, $params);
+	}
+
+	public function getSeguroIncendioCliente()
+	{
+		$sql = 'SELECT c.* 
+		FROM clientes_prospectos cp INNER JOIN cotizaciones_incendios c ON cp.PK_id_cliente_prospecto = c.FK_id_cliente_prospecto
+		WHERE cp.PK_id_cliente_prospecto = ?';
+		$params = array($this->PK_id_cliente_prospecto);
+		return Database::getRow($sql, $params);
+	}
+
+	public function getSeguroVehiculosCliente()
+	{
+		$sql = 'SELECT mar.marca_vehiculo, mv.modelos_vehiculo, c.anio, ov.origen_vehiculo, c.valor, c.placa
+		FROM clientes_prospectos cp INNER JOIN cotizaciones_vehiculos c ON cp.PK_id_cliente_prospecto = c.FK_id_cliente_prospecto 
+		INNER JOIN modelos_vehiculos mv ON c.FK_id_modelo_vehiculo = mv.PK_id_modelo_vehiculo 
+		INNER JOIN marcas_vehiculos mar ON mv.FK_id_marca_vehiculo = mar.PK_id_marca_vehiculo 
+		INNER JOIN origenes_vehiculo ov ON c.FK_id_origen_vehiculo = ov.PK_id_origen_vehiculo
+		WHERE cp.PK_id_cliente_prospecto = ?';
+		$params = array($this->PK_id_cliente_prospecto);
+		return Database::getRows($sql, $params);
+	}
 
 	public function getClientesProspectos2()
 	{

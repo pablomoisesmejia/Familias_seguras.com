@@ -11,17 +11,18 @@ require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
 
 
-$correo = $_POST['correo'];
-$id_cliente = $_POST['id_cliente_prospecto'];
-$tipo_seguro = $_POST['tipo_seguro'];
-/*$correo = 'fernanxavi58@gmail.com';
-$id_cliente = 10;
-$tipo_seguro = 2;*/
+//$correo = $_POST['correo'];
+//$id_cliente = $_POST['id_cliente_prospecto'];
+//$tipo_seguro = $_POST['tipo_seguro'];
+
+//$correo = 'fernanxavi58@gmail.com';
+$id_cliente = 21;
+$tipo_seguro = 4;
 
 $cliente_prospecto = new Cliente_Prospecto;
 
+//Datos personales del cliente
 $cliente_prospecto->setIdClienteProspecto($id_cliente);
-
 $info_cliente = $cliente_prospecto->getClientes();
 $nombres = $info_cliente['nombres'];
 $apellidos = $info_cliente['apellidos'];
@@ -32,17 +33,103 @@ $fecha_nacimiento  = $info_cliente['fecha_nacimiento'];
 $telefono = $info_cliente['telefono'];
 $whatsapp = $info_cliente['whatsapp'];
 
+//Obtiene las compañias seleccionadas por el cliente
 $companias = $cliente_prospecto->getCompaniasInteres();
+$compañias = '';
+for($i = 0; $i<count($companias); $i++)
+{
+    $companias_selec = $companias[$i][1].'-'.$companias[$i][0].'<br>';
+    $compañias .= $companias_selec;
+    
+}
 
-$info_seguro = $cliente_prospecto->getSeguroVidaCliente();
+//Declaracion de variables para cada tipo de cotización
+$info_seguro = '';
+$informacion = '';
 
+//Variables de Seguro Medico
+$nombre_conyugue = '';
+$fecha_nacimiento_conyugue = '';
+$cantidad_hijos = '';
 
-print_r($companias);
-print_r($info_seguro);
+//Variables de Seguro de vida
+$fumador = '';
+$suma_asegurada = '';
+$cesion_bancaria = '';
 
+//Variables de seguro de incendios
+$tipo_inmueble = '';
+$direccion = '';
+$asegurado_calidad = '';
+$valor_construccion = '';
+$valor_contenido = '';
 
+//Variables de seguro de vehiculos
+$tabla_vehiculos = '';
 
-$correo_osmin = 'Osmin@familiasseguras.com';
+if($tipo_seguro == 1)
+{
+    $info_seguro = $cliente_prospecto->getSeguroMedicoCliente();
+    $nombre_conyugue = $info_seguro[1];
+    $fecha_nacimiento_conyugue = $info_seguro[2];
+    $cantidad_hijos = $info_seguro[3];
+}
+if($tipo_seguro == 2)
+{
+    $info_seguro = $cliente_prospecto->getSeguroVidaCliente();
+    $fumador = $info_seguro[1];
+    $suma_asegurada = $info_seguro[2];
+    $cesion_bancaria = $info_seguro[3];
+}
+if($tipo_seguro == 3)
+{
+    $info_seguro = $cliente_prospecto->getSeguroIncendioCliente();
+    $tipo_inmueble = $info_seguro[1];
+    $direccion = $info_seguro[2];
+    $asegurado_calidad = $info_seguro[3];
+    $valor_construccion = $info_seguro[4];
+    $valor_contenido = $info_seguro[5];
+}
+if($tipo_seguro == 4)
+{
+    $info_seguro = $cliente_prospecto->getSeguroVehiculosCliente();
+    $tabla_vehiculos .= print("
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>año</th>
+                <th>Origen</th>
+                <th>Valor</th>
+                <th>Placa</th> 
+            </tr>
+        </thead>
+        <tbody>");
+        for($i = 0; $i<count($info_seguro); $i++)
+        {
+            print("
+            <tr>
+                <td>".$info_seguro[$i][0]."</td>
+                <td>".$info_seguro[$i][1]."</td>
+                <td>".$info_seguro[$i][2]."</td>
+                <td>".$info_seguro[$i][3]."</td>
+                <td>".$info_seguro[$i][4]."</td>
+                <td>".$info_seguro[$i][5]."</td>
+            </tr>
+            ");
+        }
+        print("
+        </tbody>
+    </table>
+    ");
+}
+
+//print_r($companias);
+//print_r($info_seguro);
+
+/*
+$correo_osmin = 'fernanxavi58@gmail.com';
 $mail = new PHPMailer();                              // Passing `true` enables exceptions
 //Server settings
 $mail->SMTPDebug = 0;                                 // Enable verbose debug output
@@ -55,7 +142,7 @@ $mail->SetFrom('support@familiasseguras.comm', 'Familias Seguras');
 $mail->AddReplyTo('support@familiasseguras.com', 'Familias Seguras');                       // SMTP password
 $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 465;
-if($correo)
+/*if($correo)
 {
     $mail->Subject = 'Gracias por cotizar con nosotros';
     $mail->AddAddress($correo);
@@ -143,13 +230,18 @@ if($correo_osmin)
             <div style='float:left; width: 80%; '>
                 <h3 style='	color:rgb(78, 78, 78);
                 font-weight: 50;
-                text-align:center; margin-top: 40px; padding-left: 5%; padding-right: 5%;'>
+                margin-top: 40px; padding-left: 5%; padding-right: 4%;'>
                     El cliente con nombre $nombres $apellidos hizo una cotización de $seguro y la cantidad de pagos es de $cantidad_pagos, 
                     su fecha de nacimiento es $fecha_nacimiento, su correo electrónico es $correo, su número de telefono es $telefono
                     y lo puedes contactar en el siguiente horario $hora_contacto.
                     <br>
-                    Las companias seleccionadas fueron las siguientes: <br>
-                    $companias.
+                    <br>
+                    Las compañias seleccionadas fueron las siguientes: <br>
+                    $compañias
+                    <br>
+                    <br>
+                    Información sobre la cotización
+                    <br>
                     <br>
 
                 </h3>
@@ -178,6 +270,6 @@ if($correo_osmin)
     {
         echo 0;
     }
-}
+}*/
 
 ?>
