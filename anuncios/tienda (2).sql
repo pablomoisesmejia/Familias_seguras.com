@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2018 a las 21:03:07
--- Versión del servidor: 10.1.30-MariaDB
--- Versión de PHP: 7.2.1
+-- Servidor: localhost:3306
+-- Tiempo de generación: 25-11-2018 a las 09:19:43
+-- Versión del servidor: 5.6.41-84.1
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tienda`
+-- Base de datos: `fs_tienda`
 --
+CREATE DATABASE IF NOT EXISTS `fs_tienda` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `fs_tienda`;
 
 -- --------------------------------------------------------
 
@@ -54,7 +56,8 @@ CREATE TABLE `anuncio` (
 --
 
 INSERT INTO `anuncio` (`id_anuncio`, `nombre_anuncio`, `direccion`, `imagen_producto`, `estado_anuncio`, `id_categoria`, `id_usuario`, `municipio`, `departamento`, `tel_fijo`, `celular`, `whatsapp`, `email_anuncio`, `numero_identidad`, `facebook`, `instagram`, `pagina_web`, `id_plan`) VALUES
-(1, 'Buenos seguros', 'POR AHI', '', 1, 7, 1, 'SIVAR', 'SIVAR', 78633433, 78633433, 78633433, 'PABLO@gmail.com', '123456789', 'hey.com', 'hey.com', 'hey.com', 1);
+(1, 'Buenos seguros', 'POR AHI', '', 1, 7, 1, 'SIVAR', 'SIVAR', 78633433, 78633433, 78633433, 'PABLO@gmail.com', '123456789', 'hey.com', 'hey.com', 'hey.com', 1),
+(2, 'Familias Sefuras', 'edificios metro 200', '5bf5ff2fe9359.jpg', 1, 7, 1, 'Sivar', 'Sivar', 22222222, 77777777, 12345678, 'ositohot@gmail.com', '87654321', 'face.com', 'insta.com', 'hola.com', 2);
 
 -- --------------------------------------------------------
 
@@ -64,24 +67,24 @@ INSERT INTO `anuncio` (`id_anuncio`, `nombre_anuncio`, `direccion`, `imagen_prod
 
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
-  `nombre_categoria` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `nombre_categoria` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `imagen` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`) VALUES
-(1, 'Abogados'),
-(11, 'Agente de inmobiliarios'),
-(7, 'Agente de seguros'),
-(8, 'Correduria de seguros'),
-(16, 'Informatico'),
-(15, 'Kinder & Guatrderias'),
-(12, 'Medicos'),
-(9, 'Odontologia'),
-(10, 'Ortodonsista'),
-(14, 'Psicologos');
+INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`, `imagen`) VALUES
+(1, 'Asesoría Legal', 'legal'),
+(7, 'Asesoría de seguros', 'seguros'),
+(8, 'Odontología y Ortodoncistas', 'odontologia'),
+(9, 'Educación y Cuido ', 'educacion'),
+(10, 'Entretenimiento y Diversión ', 'entretenimiento'),
+(11, 'Asesoría inmobiliaria', 'inmobiliaria'),
+(12, 'Medicos', 'medico'),
+(14, 'Psicologos', 'psicologo'),
+(15, 'Academias Especializadas', 'academias');
 
 -- --------------------------------------------------------
 
@@ -167,13 +170,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `anuncio`
 --
 ALTER TABLE `anuncio`
-  MODIFY `id_anuncio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_anuncio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `planes`
