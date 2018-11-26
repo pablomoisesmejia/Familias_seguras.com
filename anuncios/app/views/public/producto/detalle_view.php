@@ -48,7 +48,7 @@
                                     </div>
                                     <p class='seguro_presiona'>Presiona para solicitar tu cotización</p>
                                 </div>
-                                <a href='Seguro_de_motores.php'>
+                                <a href='seguro_de_motores.php'>
                                  <div  id='contenedor_de_seguro'  class='col s6 m6' onmouseover='seg=4; change_etiquete();' onmouseout='seg=4;'>
                                     <div class='icon_container_4'><img src='../web/img/ico/seg_auto.png' class='seguro_ico_4'></div>
                                     <div class='info_seguro_prev'>
