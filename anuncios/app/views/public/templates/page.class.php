@@ -28,8 +28,8 @@ class Page extends Component{
 								<a href='#' data-activates='mobile' class='button-collapse'><i class='material-icons'>menu</i></a>
 								<ul class='right hide-on-med-and-down'>
 								
-									<a class='btn_hdd_red' style='position:fixed; right:13%;' href='facebook.com'><img width='28px' src='../web/img/ico/fb_icon.png'></a>
-									<a class='btn_hdd_red' style='position:fixed; right:10%;' href='facebook.com'><img width='28px' src='../web/img/ico/insta_icon.png'></a>
+									<a class='btn_hdd_red' style='position:fixed; right:13%;' target='_blank' href='https://www.facebook.com/FamiliasSegurascom-322957035155872/'><img width='28px' src='../web/img/ico/fb_icon.png'></a>
+									<a class='btn_hdd_red' style='position:fixed; right:10%;' target='_blank' href='https://www.instagram.com/familiasseguras/'><img width='28px' src='../web/img/ico/insta_icon.png'></a>
 
 									<li><a class='btn_hdd' href='../dashboard/account/login.php'>Cotiza tu Seguro</a></li>
 									<li><a class='btn_hdd' href='../dashboard/account/register.php'>Directorio</a></li>
