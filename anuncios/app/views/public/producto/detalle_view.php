@@ -70,13 +70,13 @@
                     <div class='col s12 m5 l4'>
                         <div style='margin-top:22px;' class='row'>
                             
-                            <h5 class='titles'>Titular > Titular de Seguros > Juan Perez</h5>
+                            <h5 class='titles'>Directorio > ".$producto->getNombre_categoria()." > ".$producto->getNombre()."</h5>
         
                             <div id='img_cont'>
-                                <img  src='../../../../web/img/'>
+                                <img  src='../web/img/productos/".$producto->getImagen().".jp'>
                             </div>
                             
-                                <p class='botom_img' >Juan Perez</p>
+                                <p class='botom_img' >".$producto->getNombre()."</p>
                                 <p class='botom_img' >Agendar una cita</p>
                                 <p onclick='opentipscot();' class='botom_img' >Solicitar una Cotización</p>
                                 
@@ -87,33 +87,49 @@
         
                     <div class='col s12 m7 l5'>
                         <div style='margin-top:42px;' class='row'>
-                            <h5 class='title'>Nombre</h5>
-                            <p class='title_2'>Juanito Perez Aldaña</p>
+                            <h5 class='title'>Nombre: </h5>
+                            <p class='title_2'>".$producto->getNombre()."</p>
                         </div>
         
                         <div style='margin-top:12px;' class='row'>
-                                <h5 class='title'>titulo</h5>
-                                <p class='title_2'>Juanito Perez Aldaña texto texto texto texto texto texto texto o texto texto texto texto texto o texto texto texto texto texto</p>
+                                <h5 class='title'>Categoria: </h5>
+                                <p class='title_2'>".$producto->getNombre_categoria()."</p>
                             </div>
         
                             <div style='margin-top:22px;' class='row'>
-                                <h5 class='title'>titulo</h5>
-                                <p class='title_2'>texto texto</p>
+                                <h5 class='title'>Credencial: </h5>
+                                <p class='title_2'>".$producto->getNumeroidentidad()."</p>
                             </div>
         
                                 <div style='margin-top:22px;' class='row'>
-                                <h5 class='title'>titulo</h5>
-                                <p class='title_2'>describe describe describe</p>
+                                <h5 class='title'>Especialidad: </h5>
+                                <p class='title_2'>".$producto->getEspecialidad()."</p>
                             </div>
         
                             <div style='margin-top:22px;' class='row'>
-                                    <h5 class='title'>titulo</h5>
-                                    <p class='title_2'>describe, texto texto texto texto</p>
+                                    <h5 class='title'>Experincia: </h5>
+                                    <p class='title_2'>".$producto->getExperiencia()."</p>
                             </div>
         
                             <div style='margin-top:22px;' class='row'>
-                                    <h5 class='title'>titulo</h5>
-                                    <p class='title_2'>Juanito Perez Aldaña</p>
+                                    <h5 class='title'>Dirección: </h5>
+                                    <p class='title_2'>".$producto->getDireccion().", ".$producto->getMunicipio().", ".$producto->getDepartamento()."</p>
+                            </div>
+                            <div style='margin-top:22px;' class='row'>
+                                    <h5 class='title'>Email: </h5>
+                                    <p class='title_2'>".$producto->getEmail()."</p>
+                            </div>
+                            <div style='margin-top:22px;' class='row'>
+                                    <h5 class='title'>Telefonos: </h5>
+                                    <p class='title_2'>".$producto->getCelular()." | ".$producto->getTelFijo()."</p>
+                            </div>
+                            <div style='margin-top:22px;' class='row'>
+                                    <h5 class='title'>Celular: </h5>
+                                    <p class='title_2'>".$producto->getCelular()."</p>
+                            </div>
+                            <div style='margin-top:22px;' class='row'>
+                                    <h5 class='title'>Website: </h5>
+                                    <p class='title_2'>".$producto->getPaginaWeb()."</p>
                             </div>
         
                            

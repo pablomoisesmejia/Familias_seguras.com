@@ -260,6 +260,28 @@ class Producto extends Validator{
 	public function getPaginaWeb(){
 		return $this->pagina_web;
 	}
+	public function setEspecialidad($value){
+		if($this->validateAlphanumeric($value, 1, 300)){
+			$this->especialidad = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getEspecialidad(){
+		return $this->especialidad;
+	}
+	public function setExperienciad($value){
+		if($this->validateAlphanumeric($value, 1, 300)){
+			$this->experiencia = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getExperiencia(){
+		return $this->experiencia;
+	}
 
 	//Metodos para el manejo del CRUD
 	public function getCategoriaProductos(){
@@ -292,11 +314,13 @@ class Producto extends Validator{
 		return Database::executeRow($sql, $params);
 	}
 	public function readProducto(){
-		$sql = "SELECT a.nombre_anuncio, a.direccion, a.imagen_producto, c.nombre_categoria, a.municipio, a.departamento, a.tel_fijo, a.celular, a.whatsapp, a.email_anuncio, a.numero_identidad, a.facebook, a.instagram FROM anuncio a INNER JOIN categorias c ON a.id_categoria = c.id_categoria WHERE id_anuncio = ?";
+		$sql = "SELECT a.nombre_anuncio, a.especialidad, a.experiencia, a.direccion, a.imagen_producto, c.nombre_categoria, a.municipio, a.departamento, a.tel_fijo, a.celular, a.whatsapp, a.email_anuncio, a.numero_identidad, a.facebook, a.instagram, a.pagina_web FROM anuncio a INNER JOIN categorias c ON a.id_categoria = c.id_categoria WHERE id_anuncio = ?";
 		$params = array($this->id);
 		$producto = Database::getRow($sql, $params);
 		if($producto){
 			$this->nombre_anuncio = $producto['nombre_anuncio'];
+			$this->especialidad = $producto['especialidad'];
+			$this->experiencia = $producto['experiencia'];
 			$this->direccion = $producto['direccion'];
 			$this->imagen_producto = $producto['imagen_producto'];
 			$this->nombre_categoria = $producto['nombre_categoria'];
@@ -309,6 +333,7 @@ class Producto extends Validator{
 			$this->numero_identidad = $producto['numero_identidad'];
 			$this->instagram = $producto['instagram'];
 			$this->facebook = $producto['facebook'];
+			$this->pagina_web = $producto['pagina_web'];
 			return true;
 		}else{
 			return null;
