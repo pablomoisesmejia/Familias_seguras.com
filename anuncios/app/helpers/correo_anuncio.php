@@ -1,8 +1,4 @@
 <?php
-require_once('../models/database.class.php');
-require_once('validator.class.php');
-require_once('../models/cliente_prospectos.class.php');
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -10,38 +6,21 @@ require 'PHPMailer/Exception.php';
 require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
 
-
-$correo = $_POST['correo'];
-$id_cliente = $_POST['id_cliente_prospecto'];
 $tipo_seguro = $_POST['tipo_seguro'];
+$seguro = '';
 
 //$correo = 'fernanxavi58@gmail.com';
 //$id_cliente = 21;
 //$tipo_seguro = 4;
 
-$cliente_prospecto = new Cliente_Prospecto;
-
-//Datos personales del cliente
-$cliente_prospecto->setIdClienteProspecto($id_cliente);
-$info_cliente = $cliente_prospecto->getClientes();
-$nombres = $info_cliente['nombres'];
-$apellidos = $info_cliente['apellidos'];
-$seguro = $info_cliente['tipo_seguro'];
-$cantidad_pagos = $info_cliente['cantidad_pagos'];
-$hora_contacto = $info_cliente['hora_contactarle'];
-$fecha_nacimiento  = $info_cliente['fecha_nacimiento'];
-$telefono = $info_cliente['telefono'];
-$whatsapp = $info_cliente['whatsapp'];
-
-//Obtiene las compañias seleccionadas por el cliente
-$companias = $cliente_prospecto->getCompaniasInteres();
-$compañias = '';
-for($i = 0; $i<count($companias); $i++)
-{
-    $companias_selec = $companias[$i][1].'-'.$companias[$i][0].'<br>';
-    $compañias .= $companias_selec;
-    
-}
+$nombres = $_POST['nombres'];
+$apellidos = $_POST['apellidos'];
+$seguro = $_POST['tipo_seguro'];
+$hora_contacto = $_POST['horario'];
+$fecha_nacimiento = $_POST['fecha_nacimiento'];
+$telefono = $_POST['telefono'];
+//$whatsapp = $_POST['whatsapp'];
+$correo = $_POST['correo'];
 
 //Declaracion de variables para cada tipo de cotización
 $info_seguro = '';
@@ -69,37 +48,40 @@ $tabla_vehiculos = '';
 
 if($tipo_seguro == 1)
 {
-    $info_seguro = $cliente_prospecto->getSeguroMedicoCliente();
-    $nombre_conyugue = $info_seguro[1];
-    $fecha_nacimiento_conyugue = $info_seguro[2];
-    $cantidad_hijos = $info_seguro[3];
+    
+    $nombre_conyugue = $_POST['nombre_conyugue'];
+    $fecha_nacimiento_conyugue = $_POST['fecha_nacimiento_conyugue'];
+    $cantidad_hijos = $_POST['cantidad_hijos'];
+    $seguro = 'Seguro Medico';
 
     $mensaje = 'El nombre del conyugue es '.$nombre_conyugue.' <br> la fecha de nacimiento del conyugue es '.$fecha_nacimiento_conyugue.'<br> y la cantidad de hijos es de '.$cantidad_hijos.'.';
 }
 if($tipo_seguro == 2)
 {
-    $info_seguro = $cliente_prospecto->getSeguroVidaCliente();
-    $fumador = $info_seguro[1];
-    $suma_asegurada = $info_seguro[2];
-    $cesion_bancaria = $info_seguro[3];
+    
+    $fumador = $_POST['fumador'];
+    $suma_asegurada = $_POST['suma_asegurada'];
+    $cesion_bancaria = $_POST['cesion_bancaria'];
+    $seguro = 'Seguro de Vida';
 
     $mensaje = 'El cliente '.$fumador.' se considera fumador <br> la suma asegurada es de '.$suma_asegurada.'<br> y '.$cesion_bancaria.' la necesita para un banco.';
 }
 if($tipo_seguro == 3)
 {
-    $info_seguro = $cliente_prospecto->getSeguroIncendioCliente();
-    $tipo_inmueble = $info_seguro[1];
-    $direccion = $info_seguro[2];
-    $asegurado_calidad = $info_seguro[3];
-    $valor_construccion = $info_seguro[4];
-    $valor_contenido = $info_seguro[5];
+    
+    $tipo_inmueble = $_POST['tipo_inmueble'];
+    $direccion = $_POST['direccion_inmueble'];
+    $asegurado_calidad = $_POST['asegurado_calidad'];
+    $valor_construccion = $_POST['valor_construccion'];
+    $valor_contenido = $_POST['valor_contenido'];
+    $seguro = 'Seguro de Incendios';
 
     $mensaje = 'El tipo de inmueble es '.$tipo_inmueble.'<br> la dirección es '.$direccion.' <br> la calidad de asegurar el inmueble es '.$asegurado_calidad.'<br> 
     el valor de las construcciones sin el terreno es '.$valor_construccion.'<br> y el valor del contenido es de'.$valor_contenido.'.';
 }
 if($tipo_seguro == 4)
 {
-    $info_seguro = $cliente_prospecto->getSeguroVehiculosCliente();
+    $info_seguro = $_POST['vehiculos'];
     $tabla_vehiculos .= "
     <table style='text-align: center; border-collapse: collapse; font-size: 1em;
     font-family: Calibri; 
@@ -121,9 +103,9 @@ if($tipo_seguro == 4)
             "<tr style='border-bottom: 1px solid #d0d0d0;'>
                 <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][0]."</td>
                 <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][1]."</td>
-                <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][2]."</td>
-                <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][3]."</td>
                 <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][4]."</td>
+                <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][6]."</td>
+                <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][7]."</td>
                 <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][5]."</td>
             </tr>";
         };
@@ -134,14 +116,14 @@ if($tipo_seguro == 4)
     ";
 
     $mensaje = $tabla_vehiculos;
-    echo $tabla_vehiculos;
+    $seguro = 'Seguro de Vehiculo';
 }
 
 //print_r($companias);
 //print_r($info_seguro);
 
 
-$correo_osmin = 'Osmin@familiasseguras.com';
+$correo_asegurador = 'fernanxavi58@gmail.com';
 $mail = new PHPMailer();                              // Passing `true` enables exceptions
 //Server settings
 $mail->SMTPDebug = 0;                                 // Enable verbose debug output
@@ -206,10 +188,10 @@ if($correo)
     ");
     $mail->Send();
 }
-if($correo_osmin)
+if($correo_asegurador)
 {
     $mail->Subject = 'Nueva contización';
-    $mail->AddAddress($correo_osmin);
+    $mail->AddAddress($correo_asegurador);
     $mail->MsgHTML("
     <body style='font-family: Arial, Helvetica, sans-serif; margin: 0; padding:0;' >
     <div class='row' style='margin-top: 25px'>
@@ -236,14 +218,9 @@ if($correo_osmin)
                 <h3 style='	color:rgb(78, 78, 78);
                 font-weight: 50;
                 margin-top: 40px; padding-left: 5%; padding-right: 4%;'>
-                    El cliente con nombre $nombres $apellidos hizo una cotización de $seguro y la cantidad de pagos es de $cantidad_pagos, 
+                    El cliente con nombre $nombres $apellidos hizo una cotización de $seguro,
                     su fecha de nacimiento es $fecha_nacimiento, su correo electrónico es $correo, su número de telefono es $telefono
                     y lo puedes contactar en el siguiente horario $hora_contacto.
-                    <br>
-                    <br>
-                    Las compañias seleccionadas fueron las siguientes: <br>
-                    $compañias
-                    <br>
                     <br>
                     Información sobre la cotización
                     <br>
