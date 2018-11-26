@@ -18,7 +18,6 @@ function getUrlVars()
 
 getUrlVars();
 correo_anunciante = decodeURI(getUrlVars()['correo']);
-console.log(correo_anunciante);
 id = decodeURI(getUrlVars()['id']);
 if(id != '')
 {

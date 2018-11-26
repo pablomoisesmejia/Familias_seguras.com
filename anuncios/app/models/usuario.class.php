@@ -97,9 +97,35 @@ class Usuario extends Validator{
 		$sql = "SELECT clave_usuario FROM usuarios WHERE id_usuario = ?";
 		$params = array($this->id);
 		$data = Database::getRow($sql, $params);
-		if(password_verify($this->clave, $data['clave_usuario'])){
-			return true;
-		}else{
+		if($data)
+        {
+            if(strlen($data['clave_usuario']) == 60)
+            {
+                if(password_verify($this->clave, $data['clave_usuario']))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if($this->clave == $data['clave_usuario'])
+                {
+					$this->clave = $data['clave_usuario'];
+					$this->changePassword();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }                
+            }			
+        }
+        else
+        {
 			return false;
 		}
 	}
