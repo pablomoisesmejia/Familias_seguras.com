@@ -17,7 +17,6 @@ $nombres = $_POST['nombres'];
 $apellidos = $_POST['apellidos'];
 $seguro = $_POST['tipo_seguro'];
 $hora_contacto = $_POST['horario'];
-$fecha_nacimiento = $_POST['fecha_nacimiento'];
 $telefono = $_POST['telefono'];
 //$whatsapp = $_POST['whatsapp'];
 $correo = $_POST['correo'];
@@ -52,19 +51,34 @@ if($tipo_seguro == 1)
     $nombre_conyugue = $_POST['nombre_conyugue'];
     $fecha_nacimiento_conyugue = $_POST['fecha_nacimiento_conyugue'];
     $cantidad_hijos = $_POST['cantidad_hijos'];
+    $fecha_nacimiento = $_POST['fecha_nacimiento'];
     $seguro = 'Seguro Medico';
 
-    $mensaje = 'El nombre del conyugue es '.$nombre_conyugue.' <br> la fecha de nacimiento del conyugue es '.$fecha_nacimiento_conyugue.'<br> y la cantidad de hijos es de '.$cantidad_hijos.'.';
+    $mensaje = 'El cliente con nombre '.$nombres.' '.$apellidos.' hizo una cotización de '.$seguro.',
+    su fecha de nacimiento es '.$fecha_nacimiento.', su correo electrónico es '.$correo.', su número de telefono es '.$telefono.'
+    y lo puedes contactar en el siguiente horario '.$hora_contacto.'.
+    <br>
+    Información sobre la cotización
+    <br>
+    <br>
+    El nombre del conyugue es '.$nombre_conyugue.' <br> la fecha de nacimiento del conyugue es '.$fecha_nacimiento_conyugue.'<br> y la cantidad de hijos es de '.$cantidad_hijos.'.';
 }
 if($tipo_seguro == 2)
 {
-    
+    $fecha_nacimiento = $_POST['fecha_nacimiento'];
     $fumador = $_POST['fumador'];
     $suma_asegurada = $_POST['suma_asegurada'];
     $cesion_bancaria = $_POST['cesion_bancaria'];
     $seguro = 'Seguro de Vida';
 
-    $mensaje = 'El cliente '.$fumador.' se considera fumador <br> la suma asegurada es de '.$suma_asegurada.'<br> y '.$cesion_bancaria.' la necesita para un banco.';
+    $mensaje = 'El cliente con nombre '.$nombres.' '.$apellidos.' hizo una cotización de '.$seguro.',
+    su fecha de nacimiento es '.$fecha_nacimiento.', su correo electrónico es '.$correo.', su número de telefono es '.$telefono.'
+    y lo puedes contactar en el siguiente horario '.$hora_contacto.'.
+    <br>
+    Información sobre la cotización
+    <br>
+    <br>
+    El cliente '.$fumador.' se considera fumador <br> la suma asegurada es de '.$suma_asegurada.'<br> y '.$cesion_bancaria.' la necesita para un banco.';
 }
 if($tipo_seguro == 3)
 {
@@ -76,11 +90,19 @@ if($tipo_seguro == 3)
     $valor_contenido = $_POST['valor_contenido'];
     $seguro = 'Seguro de Incendios';
 
-    $mensaje = 'El tipo de inmueble es '.$tipo_inmueble.'<br> la dirección es '.$direccion.' <br> la calidad de asegurar el inmueble es '.$asegurado_calidad.'<br> 
+    $mensaje = '
+    El cliente con nombre '.$nombres.' '.$apellidos.' hizo una cotización de '.$seguro.',
+    su correo electrónico es '.$correo.', su número de telefono es '.$telefono.'
+    y lo puedes contactar en el siguiente horario '.$hora_contacto.'.
+    <br>
+    Información sobre la cotización
+    <br>
+    <br>El tipo de inmueble es '.$tipo_inmueble.'<br> la dirección es '.$direccion.' <br> la calidad de asegurar el inmueble es '.$asegurado_calidad.'<br> 
     el valor de las construcciones sin el terreno es '.$valor_construccion.'<br> y el valor del contenido es de'.$valor_contenido.'.';
 }
 if($tipo_seguro == 4)
 {
+    $seguro = 'Seguro de Vehiculo';
     $info_seguro = $_POST['vehiculos'];
     $tabla_vehiculos .= "
     <table style='text-align: center; border-collapse: collapse; font-size: 1em;
@@ -115,8 +137,14 @@ if($tipo_seguro == 4)
     </table>
     ";
 
-    $mensaje = $tabla_vehiculos;
-    $seguro = 'Seguro de Vehiculo';
+    $mensaje = 'El cliente con nombre '.$nombres.' '.$apellidos.' hizo una cotización de '.$seguro.',
+    su correo electrónico es '.$correo.', su número de telefono es '.$telefono.'
+    y lo puedes contactar en el siguiente horario '.$hora_contacto.'.gi
+    <br>
+    Información sobre la cotización
+    <br>
+    <br>'.
+    $tabla_vehiculos;
 }
 
 //print_r($companias);
@@ -218,13 +246,6 @@ if($correo_asegurador)
                 <h3 style='	color:rgb(78, 78, 78);
                 font-weight: 50;
                 margin-top: 40px; padding-left: 5%; padding-right: 4%;'>
-                    El cliente con nombre $nombres $apellidos hizo una cotización de $seguro,
-                    su fecha de nacimiento es $fecha_nacimiento, su correo electrónico es $correo, su número de telefono es $telefono
-                    y lo puedes contactar en el siguiente horario $hora_contacto.
-                    <br>
-                    Información sobre la cotización
-                    <br>
-                    <br>
                     $mensaje
                 </h3>
             </div>
