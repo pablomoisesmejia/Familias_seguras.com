@@ -65,7 +65,7 @@
                              <p class="seguro_presiona">Presiona para solicitar tu cotización.</p>
                         </div>
 
-                        <a href="Seguro_de_incendios.php">
+                        <a href="seguro_de_incendios.php">
                         <div   id="contenedor_de_seguro"  class="col s12 m6" onmouseover="seg=3; change_etiquete();" onmouseout="seg=3; change_etiquete_back();">
                             <div class="icon_container_3"><img src="../../web/img/icon/seg_incendio.png" class="seguro_ico_3"></div>
                             <div class="info_seguro_prev">
@@ -76,7 +76,7 @@
                             </div>
                             <p class="seguro_presiona">Presiona para solicitar tu cotización</p>
                         </div>
-                        <a href="Seguro_de_motores.php">
+                        <a href="seguro_de_motores.php">
                          <div  id="contenedor_de_seguro"  class="col s12 m6" onmouseover="seg=4; change_etiquete();" onmouseout="seg=4; change_etiquete_back();">
                             <div class="icon_container_4"><img src="../../web/img/icon/seg_auto.png" class="seguro_ico_4"></div>
                             <div class="info_seguro_prev">

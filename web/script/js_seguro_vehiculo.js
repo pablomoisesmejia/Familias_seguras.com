@@ -10,6 +10,19 @@ var vehiculos = [];
 
 var tipo_seguro = 4;
 
+function Paso1()
+{
+    tabla_vehiculo = $('#vehiculos tr').length;
+      if(tabla_vehiculo != 0)
+      {
+        siguiente2();
+      }
+      else
+      {
+        AlertaSweet(3, 'Ingrese al menos un vehiculo para seguir con la cotización');
+      }
+}
+
 $(document).ready(function(){
 
     $('.modal').modal();

@@ -56,6 +56,30 @@ class Page extends Component{
 		require_once("../app/views/public/sections/modals_view.php");
 	}
 
+	public static function templateHeaderbasic($title){
+	    //session_start();
+		ini_set("date.timezone","America/El_Salvador");
+		print("
+		<!DOCTYPE html>
+		<html lang='es'>
+		<head>
+			<meta charset='UTF-8'>
+			<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+			<meta http-equiv='X-UA-Compatible' content='ie=edge'>
+			<title>Familias Seguras</title>
+		
+			
+			<link rel='stylesheet' href='../../web/fonts/roboto/letras.css'>
+			<link rel='stylesheet' href='../../web/css/material_icons.css'>
+			<link rel='stylesheet' href='../../web/css/materialize.css'>
+			<link rel='stylesheet' href='../../web/css/public_style.css'>
+			
+		
+		</head>
+		
+		");
+	}
+
 	public static function templateFooter(){
 		print("
 				</main>
@@ -82,6 +106,61 @@ class Page extends Component{
 				<script type='text/javascript' src='../web/js/public.js'></script>
 			</body>
 			</html>
+		");
+	}
+
+	public static function templateFooterBasic(){
+		print("
+			<footer>
+			
+			</footer>
+			
+			<script src='../web/script/jquery-3.2.1.min.js'></script>
+			<script src='../web/script/sweetalert.min.js'></script>
+		");
+		$filename = basename($_SERVER['PHP_SELF']);
+		if($filename == "seguro_de_vida.php")
+		{
+			print("
+			<script src='../../web/script/js_seguro_vida.js'></script>
+			");
+		}
+		else if($filename == "seguro_medico.php")
+		{
+			print("
+			<script src='../../web/script/js_seguro_medico.js'></script>
+			");
+		}
+		else if($filename == "seguro_de_incendios.php")
+		{
+			print("
+			<script src='../../web/script/js_seguro_incendio.js'></script>
+			");
+		}
+		if($filename == "seguro_de_motores.php")
+		{
+			print("
+			<script src='../../web/script/js_seguro_vehiculo.js'></script>
+			");
+		}
+		if($filename != "create_usuario.php")
+		{
+			print("
+			<script src='../../web/script/functions.js'></script>
+			");
+		}
+		else
+		{
+			print("
+			<script src='../../web/script/create_usuario.js'></script>
+			");
+		}
+		print("
+			
+			<script src='../../web/script/materialize.min.js'></script>
+			
+			</body>
+			</html> <!-- Aqui Cerramos la vita de la pagina -->
 		");
 	}
 }
