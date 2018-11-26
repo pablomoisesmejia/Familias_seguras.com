@@ -23,21 +23,21 @@ class Page extends Component{
 					<div class='navbar-fixed'>
 						<nav class='purple'>
 							<div class='nav-wrapper'>
-							
-								<a href='index.php' class='brand-logo'><img src='../web/img/logo.png' style='margin-top:16px;' height='70'></a>
+							<div class='container'>
+								<a href='index.php' class='brand-logo'><img src='../web/img/logo.png' style='margin:0; padding:0; margin-top:19px;' height='60'></a>
 								<a href='#' data-activates='mobile' class='button-collapse'><i class='material-icons'>menu</i></a>
 								<ul class='right hide-on-med-and-down'>
 								
-									<a class='btn_hdd_red' style='position:fixed; right:36px;' href='facebook.com'><img width='36px' src='../web/img/ico/fb_icon.png'></a>
-									<a class='btn_hdd_red' style='position:fixed; right:80px;' href='facebook.com'><img width='36px' src='../web/img/ico/insta_icon.png'></a>
+									<a class='btn_hdd_red' style='position:fixed; right:13%;' href='facebook.com'><img width='28px' src='../web/img/ico/fb_icon.png'></a>
+									<a class='btn_hdd_red' style='position:fixed; right:10%;' href='facebook.com'><img width='28px' src='../web/img/ico/insta_icon.png'></a>
 
 									<li><a class='btn_hdd' href='../dashboard/account/login.php'>Cotiza tu Seguro</a></li>
 									<li><a class='btn_hdd' href='../dashboard/account/register.php'>Directorio</a></li>
 									<li><a class='btn_hdd' href='../dashboard/account/register.php'>Vehiculos en venta</a></li>
 									<li><a class='btn_hdd' href='../dashboard/account/register.php'>Propiedades en Venta</a></li>
-									<li><a class='btn_hdd' style='margin-right:40px;' href='../dashboard/account/register.php'>Propiedades en Alquiler</a></li>
+									<li><a class='btn_hdd' style='margin-right:10px;' href='../dashboard/account/register.php'>Propiedades en Alquiler</a></li>
 								</ul>
-
+							</div>
 							</div>
 						</nav>
 					</div>
@@ -49,9 +49,10 @@ class Page extends Component{
 					</ul>
 					
 				</header>
-				<center><div id='banner_top'>Banner 1250 x 200</div></center>
+		
 				<main>
-				
+				<div class='container'>
+				<div id='banner_top'>Banner 1250 x 200</div></div>
 		");
 		require_once("../app/views/public/sections/modals_view.php");
 	}

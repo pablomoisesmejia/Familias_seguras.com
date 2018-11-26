@@ -1,6 +1,6 @@
 <div class='container'>
     <div class='row'>
-        <div class='col s12'>
+        <div class='col s12' style='overflow:hidden'>
         <?php
         print("
           
@@ -66,17 +66,17 @@
                 </div>
         
         
-                <div style='padding-left:5%; padding-right:5%; width:100%' class='row'>
+                <div style=' width:100%' class='row'>
                     <div class='col s12 m5 l4'>
                         <div style='margin-top:22px;' class='row'>
                             
-                            <h5 class='titles'>Directorio > ".$producto->getNombre_categoria()." > ".$producto->getNombre()."</h5>
+                            <h5 class='titles'><a href='index.php' id='btn_lines'>Directorio ></a> <a href='productos.php?id=7' id='btn_lines'>".$producto->getNombre_categoria()." ></a> ".$producto->getNombre()."</h5>
         
                             <div id='img_cont'>
-                                <img width='300' height='300' src='../web/img/productos/".$producto->getImagen().".jpg'>
+                                <img width='100%' height='300' src='../web/img/productos/".$producto->getImagen().".jpg'>
                             </div>
                             
-                                <p class='botom_img' >".$producto->getNombre()."</p>
+                                <p class='botom_img_static' >".$producto->getNombre()."</p>
                                 <p class='botom_img' >Agendar una cita</p>
                                 <p onclick='opentipscot();' class='botom_img' >Solicitar una Cotización</p>
                                 
@@ -86,57 +86,60 @@
         
         
                     <div class='col s12 m7 l5'>
-                        <div style='margin-top:42px;' class='row'>
-                            <h5 class='title'>Nombre: </h5>
-                            <p class='title_2'>".$producto->getNombre()."</p>
+                    
+                        <div style='margin-top:48px;' class='row'>
+                     
+                        <div class='col s4 maxed'> <h5 class='title'>Nombre: </h5>  </div>
+                        <div class='col s8'>   <p class='title_2'>".$producto->getNombre()."</p></div>
+                          
                         </div>
         
                         <div style='margin-top:12px;' class='row'>
-                                <h5 class='title'>Categoria: </h5>
-                                <p class='title_2'>".$producto->getNombre_categoria()."</p>
+                        <div class='col s4 maxed'> <h5 class='title'>Categoria: </h5></div>
+                        <div class='col s8'>   <p class='title_2'>".$producto->getNombre_categoria()."</p></div>
                             </div>
         
                             <div style='margin-top:22px;' class='row'>
-                                <h5 class='title'>Credencial: </h5>
-                                <p class='title_2'>".$producto->getNumeroidentidad()."</p>
+                            <div class='col s4 maxed'>   <h5 class='title'>Credencial: </h5></div>
+                            <div class='col s8'>   <p class='title_2'>".$producto->getNumeroidentidad()."</p></div>
                             </div>
         
                                 <div style='margin-top:22px;' class='row'>
-                                <h5 class='title'>Especialidad: </h5>
-                                <p class='title_2'>".$producto->getEspecialidad()."</p>
+                                <div class='col s4 maxed'>  <h5 class='title'>Especialidad: </h5></div>
+                                <div class='col s8'> <p class='title_2'>".$producto->getEspecialidad()."</p></div>
                             </div>
         
                             <div style='margin-top:22px;' class='row'>
-                                    <h5 class='title'>Experincia: </h5>
-                                    <p class='title_2'>".$producto->getExperiencia()."</p>
+                            <div class='col s4 maxed'>  <h5 class='title'>Experiencia: </h5></div>
+                            <div class='col s8'>  <p class='title_2'>".$producto->getExperiencia()."</p></div>
                             </div>
         
                             <div style='margin-top:22px;' class='row'>
-                                    <h5 class='title'>Dirección: </h5>
-                                    <p class='title_2'>".$producto->getDireccion().", ".$producto->getMunicipio().", ".$producto->getDepartamento()."</p>
+                            <div class='col s4 maxed'>  <h5 class='title'>Dirección: </h5></div>
+                            <div class='col s8'> <p class='title_2'>".$producto->getDireccion().", ".$producto->getMunicipio().", ".$producto->getDepartamento()."</p></div>
                             </div>
                             <div style='margin-top:22px;' class='row'>
-                                    <h5 class='title'>Email: </h5>
-                                    <p class='title_2'>".$producto->getEmail()."</p>
+                            <div class='col s4 maxed'>  <h5 class='title'>Email: </h5></div>
+                            <div class='col s8'><p class='title_2'>".$producto->getEmail()."</p></div>
                             </div>
                             <div style='margin-top:22px;' class='row'>
-                                    <h5 class='title'>Telefonos: </h5>
-                                    <p class='title_2'>".$producto->getCelular()." | ".$producto->getTelFijo()."</p>
+                            <div class='col s4 maxed'>  <h5 class='title'>Teléfono: </h5></div>
+                            <div class='col s8'> <p class='title_2'>".$producto->getCelular()." | ".$producto->getTelFijo()."</p></div>
                             </div>
                             <div style='margin-top:22px;' class='row'>
-                                    <h5 class='title'>Celular: </h5>
-                                    <p class='title_2'>".$producto->getCelular()."</p>
+                            <div class='col s4 maxed'>  <h5 class='title'>Celular: </h5></div>
+                            <div class='col s8'> <p class='title_2'>".$producto->getCelular()."</p></div>
                             </div>
                             <div style='margin-top:22px;' class='row'>
-                                    <h5 class='title'>Website: </h5>
-                                    <p class='title_2'>".$producto->getPaginaWeb()."</p>
+                            <div class='col s4 maxed'>  <h5 class='title'>WebSite: </h5></div>
+                            <div class='col s8'> <p class='title_2'>".$producto->getPaginaWeb()."</p></div>
                             </div>
         
-                           
+                       
                     </div>
         
         
-                    <div class='col s12 m12 l2'>
+                    <div class='col s12 m12 l3'>
                            <center> <div id='banner_side'>Banner 250 x 250</div></center>
                            <center> <div id='banner_side'>Banner 250 x 250</div></center>
                     </div>

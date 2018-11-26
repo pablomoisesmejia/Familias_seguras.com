@@ -17,7 +17,7 @@ color: #FFFFFF;
 margin-top: 20px;
 padding: 0;
 padding-left: 10px;
-padding-right: 10px;
+padding-right: 0px;
 margin-top: 20px;
 height: 20px;
 }
@@ -29,7 +29,7 @@ height: 20px;
     padding-left: 10px;
     padding-right: 10px;
     
-    height: 70px;
+    height: 64px;
     }
 .btn_hdd:hover{
 background-color: rgba(102, 51, 153, 0.00);
@@ -143,21 +143,70 @@ color: #A2A2A2;
     cursor: pointer;
     margin: 0;
     margin-top: 3px;
-    width: 300px;
+    width: 100%;
     height: 36px;
     padding-left: 20px;
     padding-top: 6px;
-    background-color: #1C1C1C;
+    background-color: #60195D;
+    color: white;
+    transition: 0.3s;
+}
+.botom_img_static{
+    
+    margin: 0;
+    
+    width: 100%;
+    height: 36px;
+    padding-left: 20px;
+    padding-top: 6px;
+    background-color: rgba(67, 40, 65, 0.85);
+    color: white;
+    transition: 0.3s;
+}
+.botom_img:hover{
+ transform: scale(1.05);
+    background-color: rgba(108, 43, 106, 0.84);
     color: white;
 }
 #img_cont{
     margin-top: 20px;
     background-color: black;
-    width: 300px;
+    width: 100%;
     height: 300px;
 }
+#btn_lines{
+    color: #663F67;
+    cursor: pointer;
+    transition: 0.3s;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 10px;
+}
+#btn_lines:hover{
+    color: #FFFFFF;
+   background-color: #832D6A;
+   padding-left: 10px;
+}
+
+
 .titles{
-    color: black;
+    color: rgba(0, 0, 0, 0.63);
+    font-weight: bold;
+    font-size: 0.9em;
+    
+    padding: 0;
+    margin: 0;
+    margin-top: 3px;
+    margin-right: 20px;
+    white-space: nowrap;
+    margin-bottom: 12px;
+}
+.maxed{
+    color: #2A2A2A;
+    
+}
+.title{
+    color: #3D2B39;
     font-weight: bold;
     font-size: 1em;
     
@@ -165,16 +214,7 @@ color: #A2A2A2;
     margin: 0;
     margin-top: 3px;
     margin-right: 20px;
-}
-.title{
-    color: black;
-    font-weight: bold;
-    font-size: 1em;
-    float: left;
-    padding: 0;
-    margin: 0;
-    margin-top: 3px;
-    margin-right: 20px;
+    text-align: right;
 }
 .title_2{
     padding: 0;
@@ -182,7 +222,8 @@ color: #A2A2A2;
     color: #3F3F3F;
     width: 100%;
     font-size: 1em;
-    padding-left: 60px;
+    text-align: left;
+    
     
     
 }
