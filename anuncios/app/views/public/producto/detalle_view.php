@@ -37,7 +37,7 @@
                                      <p class='seguro_presiona'>Presiona para solicitar tu cotización.</p>
                                 </div>
         
-                                <a href='Seguro_de_incendios.php'>
+                                <a href='seguro_de_incendios.php'>
                                 <div   id='contenedor_de_seguro'  class='col s6 m6' onmouseover='seg=3; change_etiquete();' onmouseout='seg=3;'>
                                     <div class='icon_container_3'><img src='../web/img/ico/seg_incendio.png' class='seguro_ico_3'></div>
                                     <div class='info_seguro_prev'>

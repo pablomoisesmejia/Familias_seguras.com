@@ -296,16 +296,16 @@ class Producto extends Validator{
 		$params = array($this->id);
 		$producto = Database::getRow($sql, $params);
 		if($producto){
-			$this->nombre = $producto['nombre_anuncio'];
-			$this->descripcion = $producto['direccion'];
-			$this->imagen = $producto['imagen_producto'];
+			$this->nombre_anuncio = $producto['nombre_anuncio'];
+			$this->direccion = $producto['direccion'];
+			$this->imagen_producto = $producto['imagen_producto'];
 			$this->nombre_categoria = $producto['nombre_categoria'];
 			$this->municipio = $producto['municipio'];
 			$this->departamento = $producto['departamento'];
 			$this->tel_fijo = $producto['tel_fijo'];
 			$this->celular = $producto['celular'];
 			$this->whatsapp = $producto['whatsapp'];
-			$this->email = $producto['email_anuncio'];
+			$this->email_anuncio = $producto['email_anuncio'];
 			$this->numero_identidad = $producto['numero_identidad'];
 			$this->instagram = $producto['instagram'];
 			$this->facebook = $producto['facebook'];
