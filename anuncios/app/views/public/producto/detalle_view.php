@@ -73,14 +73,18 @@
                             <h5 class='titles'><a href='index.php' id='btn_lines'>Directorio ></a> <a href='productos.php?id=7' id='btn_lines'>".$producto->getNombre_categoria()." ></a> ".$producto->getNombre()."</h5>
         
                             <div id='img_cont'>
-                                <img width='100%' height='300' src='../web/img/productos/".$producto->getImagen().".jpg'>
+                                <img width='100%' height='300' src='../web/img/productos/".$producto->getImagen()."'>
                             </div>
                             
-                                <p class='botom_img_static' >".$producto->getNombre()."</p>
-                                <p class='botom_img' >Agendar una cita</p>
-                                <p onclick='opentipscot();' class='botom_img' >Solicitar una Cotización</p>
+                                <p class='botom_img_static' >".$producto->getNombre()."</p>");
+                                if($producto->getPlan() == 3)
+                                {
+                                    print("<p class='botom_img' >Agendar una cita</p>
+                                    <p onclick='opentipscot();' class='botom_img' >Solicitar una Cotización</p>");
+                                }
                                 
-                                
+                        
+                        print("
                         </div>
                 </div>
         
@@ -122,19 +126,43 @@
                             <div class='col s4 maxed'>  <h5 class='title'>Email: </h5></div>
                             <div class='col s8'><p class='title_2'>".$producto->getEmail()."</p></div>
                             </div>
-                            <div style='margin-top:22px;' class='row'>
+                            ");
+                            if($producto->getPlan() == 1)
+                            {
+                                print("
+                                <div style='margin-top:22px;' class='row'>
+                                <div class='col s4 maxed'>  <h5 class='title'>Teléfono: </h5></div>
+                                <div class='col s8'> <p class='title_2'>".$producto->getTelFijo()."</p></div>
+                                </div>
+                                ");
+                            }
+                            if($producto->getPlan() == 2 || $producto->getPlan() == 3)
+                            {
+                                print("
+                                <div style='margin-top:22px;' class='row'>
+                                <div class='col s4 maxed'>  <h5 class='title'>Teléfono: </h5></div>
+                                <div class='col s8'> <p class='title_2'>".$producto->getTelFijo()."</p></div>
+                                </div>
+                                <div style='margin-top:22px;' class='row'>
+                                <div class='col s4 maxed'>  <h5 class='title'>Celular: </h5></div>
+                                <div class='col s8'> <p class='title_2'>".$producto->getCelular()."</p></div>
+                                </div>");
+                            }
+                            /*<div style='margin-top:22px;' class='row'>
                             <div class='col s4 maxed'>  <h5 class='title'>Teléfono: </h5></div>
                             <div class='col s8'> <p class='title_2'>".$producto->getCelular()." | ".$producto->getTelFijo()."</p></div>
-                            </div>
-                            <div style='margin-top:22px;' class='row'>
-                            <div class='col s4 maxed'>  <h5 class='title'>Celular: </h5></div>
-                            <div class='col s8'> <p class='title_2'>".$producto->getCelular()."</p></div>
-                            </div>
-                            <div style='margin-top:22px;' class='row'>
-                            <div class='col s4 maxed'>  <h5 class='title'>WebSite: </h5></div>
-                            <div class='col s8'> <p class='title_2'>".$producto->getPaginaWeb()."</p></div>
-                            </div>
-        
+                            </div>*/
+                            
+                            if($producto->getPlan() == 3)
+                            {
+                                print("
+                                <div style='margin-top:22px;' class='row'>
+                                <div class='col s4 maxed'>  <h5 class='title'>WebSite: </h5></div>
+                                <div class='col s8'> <p class='title_2'>".$producto->getPaginaWeb()."</p></div>
+                                </div>");
+                            }
+
+                    print("
                        
                     </div>
         

@@ -314,7 +314,10 @@ class Producto extends Validator{
 		return Database::executeRow($sql, $params);
 	}
 	public function readProducto(){
-		$sql = "SELECT a.nombre_anuncio, a.especialidad, a.experiencia, a.direccion, a.imagen_producto, c.nombre_categoria, a.municipio, a.departamento, a.tel_fijo, a.celular, a.whatsapp, a.email_anuncio, a.numero_identidad, a.facebook, a.instagram, a.pagina_web FROM anuncio a INNER JOIN categorias c ON a.id_categoria = c.id_categoria WHERE id_anuncio = ?";
+		$sql = "SELECT a.nombre_anuncio, a.especialidad, a.experiencia, a.direccion, a.imagen_producto, c.nombre_categoria, a.municipio, a.departamento, a.tel_fijo, a.celular, a.whatsapp, a.email_anuncio, a.numero_identidad, a.facebook, a.instagram, a.pagina_web, p.nombre_plan, p.id_plan 
+		FROM anuncio a INNER JOIN categorias c ON a.id_categoria = c.id_categoria 
+		INNER JOIN planes p ON a.id_plan = p.id_plan 
+		WHERE id_anuncio = ?";
 		$params = array($this->id);
 		$producto = Database::getRow($sql, $params);
 		if($producto){
@@ -334,6 +337,7 @@ class Producto extends Validator{
 			$this->instagram = $producto['instagram'];
 			$this->facebook = $producto['facebook'];
 			$this->pagina_web = $producto['pagina_web'];
+			$this->id_plan = $producto['id_plan'];
 			return true;
 		}else{
 			return null;
