@@ -153,6 +153,6 @@
 <div class="row">
  
  </div>
-<a onclick=" " href="" id="return_btn">Regresar</a> 
+<a onclick=" " href="index.php" id="return_btn">Regresar</a>
 </div>
 </body>

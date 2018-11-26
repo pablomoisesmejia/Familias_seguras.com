@@ -15,7 +15,7 @@
                             <h5 onclick='closetipscot();' class='backk'><i class='material-icons prefix'>arrow_back</i> Volver </h5>
                             <h5 class='men'>Solicitar Cotización </h5>
                             <div class='row' >
-                            <a href='seguro_medico.php'>
+                            <a href='seguro_medico.php?correo=".$producto->getEmail()."&id=".$_GET['id']."'>
                                 <div   id='contenedor_de_seguro'  class='col s6 m6' onmouseover='seg=1; change_etiquete();' onmouseout='seg=1;'>
                                     <div class='icon_container_1'><img src='../web/img/ico/seg_medico.png' class='seguro_ico_1'></div>
                                     <div class='info_seguro_prev'>
@@ -25,7 +25,7 @@
                                     <p class='seguro_presiona'>Presiona para solicitar tu cotización</p>
                                     </a>
                                 </div>
-                                <a href='seguro_de_vida.php'>
+                                <a href='seguro_de_vida.php?correo=".$producto->getEmail()."&id=".$_GET['id']."'>
                                 <div  id='contenedor_de_seguro'  class='col s6 m6' onmouseover='seg=2; change_etiquete();' onmouseout='seg=2;'>
                                     <div class='icon_container_2'><img src='../web/img/ico/seg_vida.png' class='seguro_ico_2'></div>
                                     <div class='info_seguro_prev'>
@@ -37,7 +37,7 @@
                                      <p class='seguro_presiona'>Presiona para solicitar tu cotización.</p>
                                 </div>
         
-                                <a href='seguro_de_incendios.php'>
+                                <a href='seguro_de_incendios.php?correo=".$producto->getEmail()."&id=".$_GET['id']."'>
                                 <div   id='contenedor_de_seguro'  class='col s6 m6' onmouseover='seg=3; change_etiquete();' onmouseout='seg=3;'>
                                     <div class='icon_container_3'><img src='../web/img/ico/seg_incendio.png' class='seguro_ico_3'></div>
                                     <div class='info_seguro_prev'>
@@ -48,7 +48,7 @@
                                     </div>
                                     <p class='seguro_presiona'>Presiona para solicitar tu cotización</p>
                                 </div>
-                                <a href='seguro_de_motores.php'>
+                                <a href='seguro_de_motores.php?correo=".$producto->getEmail()."&id=".$_GET['id']."'>
                                  <div  id='contenedor_de_seguro'  class='col s6 m6' onmouseover='seg=4; change_etiquete();' onmouseout='seg=4;'>
                                     <div class='icon_container_4'><img src='../web/img/ico/seg_auto.png' class='seguro_ico_4'></div>
                                     <div class='info_seguro_prev'>

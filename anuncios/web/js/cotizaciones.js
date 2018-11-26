@@ -2,6 +2,52 @@ var date = new Date();
 var min = date.getFullYear()-100+','+(date.getMonth()+1)+','+(date.getDate());//Validacion de fecha minima del datepicker
 var max = date.getFullYear()-18+','+(date.getMonth()+1)+','+(date.getDate());//Validacion de fecha maxima del datepicker
 
+//FUNCION PARA OBTENER LAS VARIABLES GET
+function getUrlVars() 
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) 
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+getUrlVars();
+correo_anunciante = decodeURI(getUrlVars()['correo']);
+console.log(correo_anunciante);
+id = decodeURI(getUrlVars()['id']);
+if(id != '')
+{
+  if(correo_anunciante == '')
+  {
+    swal({
+      title: 'Aviso',
+      text: 'Seleccione un anunciante para realizar una cotizacion',
+      icon: 'warning',
+      button: 'aceptar'
+    }).then(value =>
+      {
+        location.href = 'detalle_producto.php?id='+id+'';
+      });
+  }
+}
+else
+{
+  swal({
+    title: 'Aviso',
+    text: 'No ha seleccionado ningun anunciante',
+    icon: 'warning',
+    button: 'aceptar'
+  }).then(value =>
+    {
+      location.href = 'index.php';
+    });
+}
+
 //FUNCIONES PARA CAMBIAR AL SIGUIENTE PASO
 function siguiente2()
 {
@@ -127,7 +173,8 @@ function enviarCorreo()
             correo:correo,
             fecha_nacimiento:fecha_nacimiento,
             horario:horario,
-            tipo_seguro:tipo_seguro
+            tipo_seguro:tipo_seguro,
+            correo_anunciante:correo_anunciante
         }
     }
     if(tipo_seguro == 2)
@@ -142,7 +189,8 @@ function enviarCorreo()
             correo:correo,
             fecha_nacimiento:fecha_nacimiento,
             horario:horario,
-            tipo_seguro:tipo_seguro
+            tipo_seguro:tipo_seguro,
+            correo_anunciante:correo_anunciante
         }
     }
     if(tipo_seguro == 3)
@@ -159,7 +207,8 @@ function enviarCorreo()
             correo:correo,
             fecha_nacimiento:fecha_nacimiento,
             horario:horario,
-            tipo_seguro:tipo_seguro
+            tipo_seguro:tipo_seguro,
+            correo_anunciante:correo_anunciante
         }
     }
     if(tipo_seguro == 4)
@@ -172,7 +221,8 @@ function enviarCorreo()
             correo:correo,
             fecha_nacimiento:fecha_nacimiento,
             horario:horario,
-            tipo_seguro:tipo_seguro
+            tipo_seguro:tipo_seguro,
+            correo_anunciante:correo_anunciante
         }
     }
   $.ajax({

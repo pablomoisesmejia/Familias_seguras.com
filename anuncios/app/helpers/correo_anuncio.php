@@ -151,7 +151,7 @@ if($tipo_seguro == 4)
 //print_r($info_seguro);
 
 
-$correo_asegurador = 'fernanxavi58@gmail.com';
+$correo_asegurador = $_POST['correo_anunciante'];
 $mail = new PHPMailer();                              // Passing `true` enables exceptions
 //Server settings
 $mail->SMTPDebug = 0;                                 // Enable verbose debug output
