@@ -73,7 +73,7 @@
                             <h5 class='titles'>Directorio > ".$producto->getNombre_categoria()." > ".$producto->getNombre()."</h5>
         
                             <div id='img_cont'>
-                                <img  src='../web/img/productos/".$producto->getImagen().".jp'>
+                                <img width='300' height='300' src='../web/img/productos/".$producto->getImagen().".jpg'>
                             </div>
                             
                                 <p class='botom_img' >".$producto->getNombre()."</p>
