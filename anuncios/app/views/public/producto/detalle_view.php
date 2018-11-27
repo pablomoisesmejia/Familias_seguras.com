@@ -68,7 +68,7 @@
         
                 <div style=' width:100%' class='row'>
                     <div class='col s12 m5 l4'>
-                        <div style='margin-top:22px;' >
+                        <div style='margin-top:22px;' class='row'>
                             
                             <h5 class='titles'><a href='index.php' id='btn_lines'>Directorio ></a> <a href='productos.php?id=7' id='btn_lines'>".$producto->getNombre_categoria()." ></a> ".$producto->getNombre()."</h5>
         
@@ -76,12 +76,26 @@
                                 <img width='100%' height='300' src='../web/img/productos/".$producto->getImagen()."'>
                             </div>
                             
-                                <p class='botom_img_static' >".$producto->getNombre()."<a id='wha_btn_s'><img class='icoreds' src='../web/img/ico/wha_icon.png'></a> <a target='_blank' href='".$producto->getFacebook()."' id='face_btn_s'><img class='icoreds' src='../web/img/ico/fb_icon.png'></a> <a target='_blank' href='".$producto->getInstagram()."' id='insta_btn_s'><img class='icoreds' src='../web/img/ico/insta_icon.png'></a></p>");
+                            <p class='botom_img_static' >".$producto->getNombre()."");
+                            if($producto->getPlan() != 1)
+                            {
                                 if($producto->getPlan() == 3)
                                 {
-                                    print("<p class='botom_img' >Agendar una cita</p>
-                                    <p onclick='opentipscot();' class='botom_img' >Solicitar una Cotización</p>");
+                                    print("
+                                    <a href='whatsapp://send/?phone=503".$producto->getWhatsapp()."' id='wha_btn_s'><img class='icoreds' src='../web/img/ico/wha_icon.png'></a>
+                                    ");
                                 }
+                                print("
+                                <a id='tel_btn' href='tel:+503".$producto->getCelular()."' class='icoreds'><i class='material-icons prefix'>phone</i></a>
+                                <a target='_blank' href='".$producto->getFacebook()."' id='face_btn_s'><img class='icoreds' src='../web/img/ico/fb_icon.png'></a>
+                                <a target='_blank' href='".$producto->getInstagram()."' id='insta_btn_s'><img class='icoreds' src='../web/img/ico/insta_icon.png'></a></p>
+                            ");
+                            }
+                            if($producto->getPlan() == 3)
+                            {
+                                print("<p class='botom_img' >Agendar una cita</p>
+                                <p onclick='opentipscot();' class='botom_img' >Solicitar una Cotización</p>");
+                            }
                                 
                         
                         print("
@@ -158,7 +172,7 @@
                                 print("
                                 <div style='margin-top:22px;' class='row'>
                                 <div class='col s4 maxed'>  <h5 class='title'>WebSite: </h5></div>
-                                <div class='col s8'> <p class='title_2'>".$producto->getPaginaWeb()."</p></div>
+                                <div class='col s8'> <p class='title_2'><a href='".$producto->getPaginaWeb()."'>".$producto->getPaginaWeb()."</a></p></div>
                                 </div>");
                             }
 

@@ -37,6 +37,7 @@ function closetipscot(){
       else{
       
         $("#wha_btn_s").css({"display":"none"});
+        $("#tel_btn").css({"display":"none"});
         
       }
     }
