@@ -286,15 +286,53 @@ color: #A2A2A2;
 .proper_ico{
     margin:0;
     padding: 0;
-    width: 20px;
+    width: 22px;
     
+    z-index: 10;
+    margin-left: 10px;
+    margin-right: 6px;
+    padding-top: 6px;
+    float: left;
+    
+}
+.proper_ico_txt{
+    
+    
+ float: left;
+ padding-top: 7px;   
+}
+
+#name_dir_style{
+    color: rgba(255, 255, 255, 0.67);
+    width: 100%;
+overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .block_proper{
-    overflow: hidden;
+    cursor:default;
+    z-index: 10;
     
-    max-width: 170px;
-    text-align: center;
+    position: absolute;
+    bottom: 54px;
+    right: 0;
 }
 .block_name{
+    float: left;
+}
+.icon_prop{
+    color: white;
+    font-weight: bold;
+    float: left;
+    width: 60px;
+    height: 36px;
+    background-color: rgba(65, 31, 58, 0.68);
+}
+.hoverable{
+    transition: 0.3s;
+
+}
+.hoverable:hover{
+    transform: scale(1.02);
     
 }
