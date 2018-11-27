@@ -76,7 +76,7 @@
                                 <img width='100%' height='300' src='../web/img/productos/".$producto->getImagen()."'>
                             </div>
                             
-                                <p class='botom_img_static' >".$producto->getNombre()."</p>");
+                                <p class='botom_img_static' >".$producto->getNombre()."<a id='wha_btn_s'><img class='icoreds' src='../web/img/ico/wha_icon.png'></a> <span id='face_btn_s'><img class='icoreds' src='../web/img/ico/fb_icon.png'></span> <span id='insta_btn_s'><img class='icoreds' src='../web/img/ico/insta_icon.png'></span></p>");
                                 if($producto->getPlan() == 3)
                                 {
                                     print("<p class='botom_img' >Agendar una cita</p>

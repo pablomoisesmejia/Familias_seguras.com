@@ -18,7 +18,7 @@ class Page extends Component{
 				<script type='text/javascript' src='../web/js/sweetalert.min.js'></script>
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 			</head>
-			<body>
+			<body onload='verificar_telefono_o_pc();'>
 				<header>
 					<div class='navbar-fixed'>
 						<nav class='purple'>

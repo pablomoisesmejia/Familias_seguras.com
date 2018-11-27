@@ -11,7 +11,11 @@ main {
 .parallax-container {
     height: 300px;
 }
-
+#face_btn_s{
+    width: 24px;
+    
+    background-color: red;
+}
 .btn_hdd{
 color: #FFFFFF;
 margin-top: 20px;
@@ -21,7 +25,22 @@ padding-right: 0px;
 margin-top: 20px;
 height: 20px;
 }
-
+.icoreds
+{
+    
+    cursor: pointer;
+    float: right;
+ width: 32px;
+ padding-left: 5px;
+ padding-right: 5px;
+ margin-right: 5px;
+ transition: 0.3s;
+ background-color: rgb(87, 75, 87);
+ padding-bottom: 20px;
+}
+.icoreds:hover{
+    width: 36px;
+}
 .btn_hdd_red{
     color: #FFFFFF;
     
@@ -162,6 +181,7 @@ color: #A2A2A2;
     background-color: rgba(67, 40, 65, 0.85);
     color: white;
     transition: 0.3s;
+    overflow: hidden;
 }
 .botom_img:hover{
  transform: scale(1.05);
