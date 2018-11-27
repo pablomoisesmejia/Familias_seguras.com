@@ -135,12 +135,25 @@
                             <div style='margin-top:22px;' class='row'>
                             <div class='col s4 maxed'>  <h5 class='title'>Dirección: </h5></div>
                             <div class='col s8'> <p class='title_2'>".$producto->getDireccion().", ".$producto->getMunicipio().", ".$producto->getDepartamento()."</p></div>
-                            </div>
-                            <div style='margin-top:22px;' class='row'>
-                            <div class='col s4 maxed'>  <h5 class='title'>Email: </h5></div>
-                            <div class='col s8'><p class='title_2'>".$producto->getEmail()."</p></div>
-                            </div>
-                            ");
+                            </div>");
+
+                            
+                            if($producto->getPlan() == 3)
+                            {
+                                print("
+                                <div style='margin-top:22px;' class='row'>
+                                <div class='col s4 maxed'>  <h5 class='title'>Email: </h5></div>
+                                <div class='col s8'><p class='title_2'> <a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=".$producto->getEmail()."'>".$producto->getEmail()."</a></p></div>
+                                </div>");
+                            }
+                            else
+                            {
+                                print("
+                                <div style='margin-top:22px;' class='row'>
+                                <div class='col s4 maxed'>  <h5 class='title'>Email: </h5></div>
+                                <div class='col s8'><p class='title_2'>".$producto->getEmail()."</p></div>
+                                </div>");
+                            }
                             if($producto->getPlan() == 1)
                             {
                                 print("
