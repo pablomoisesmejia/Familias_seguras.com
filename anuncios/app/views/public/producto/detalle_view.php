@@ -68,7 +68,7 @@
         
                 <div style=' width:100%' class='row'>
                     <div class='col s12 m5 l4'>
-                        <div style='margin-top:22px;' class='row'>
+                        <div style='margin-top:22px;' >
                             
                             <h5 class='titles'><a href='index.php' id='btn_lines'>Directorio ></a> <a href='productos.php?id=7' id='btn_lines'>".$producto->getNombre_categoria()." ></a> ".$producto->getNombre()."</h5>
         

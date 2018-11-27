@@ -31,8 +31,8 @@ class Page extends Component{
 									<a class='btn_hdd_red' style='position:fixed; right:13%;' target='_blank' href='https://www.facebook.com/FamiliasSegurascom-322957035155872/'><img width='28px' src='../web/img/ico/fb_icon.png'></a>
 									<a class='btn_hdd_red' style='position:fixed; right:10%;' target='_blank' href='https://www.instagram.com/familiasseguras/'><img width='28px' src='../web/img/ico/insta_icon.png'></a>
 
-									<li><a class='btn_hdd' href='../dashboard/account/login.php'>Cotiza tu Seguro</a></li>
-									<li><a class='btn_hdd' href='../dashboard/account/register.php'>Directorio</a></li>
+									<li><a class='btn_hdd' href='../public/cotiza_seguro.php'>Cotiza tu Seguro</a></li>
+									<li><a class='btn_hdd' href='../public/index.php'>Directorio</a></li>
 									<li><a class='btn_hdd' href='../dashboard/account/register.php'>Vehiculos en venta</a></li>
 									<li><a class='btn_hdd' href='../dashboard/account/register.php'>Propiedades en Venta</a></li>
 									<li><a class='btn_hdd' style='margin-right:10px;' href='../dashboard/account/register.php'>Propiedades en Alquiler</a></li>

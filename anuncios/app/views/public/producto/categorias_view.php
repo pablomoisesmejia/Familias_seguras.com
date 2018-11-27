@@ -1,5 +1,5 @@
 <div class='container'>
-    <h5 class='left-align'>Directorio</h5>
+    <h5 style='font-size:1.4em;' class='left-align'>Directorio</h5>
     <div class='row'>
 
     <?php

@@ -1,8 +1,9 @@
 <div class='container'>
 
 <?php
-$categoria = $productos[0]['nombre_anuncio'];
-print("<h4 class='center brown-text'>Directorio> $categoria</h4>");
+$categoria = 'Categoria';
+print(" <div style='margin-top:22px;' ><h5 class='titles'><a href='index.php' id='btn_lines'>Directorio ></a>$categoria</h5></div>");
+
 print("<div class='row'>");
 foreach($productos as $producto){
     print("
