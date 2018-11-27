@@ -274,3 +274,27 @@ color: #A2A2A2;
 background-color: rgba(102, 51, 153, 0.00);
 color: #A2A2A2;
 }
+
+#previnfo_vehi{
+    background-color: #754689;
+    margin: 0;
+    padding: 0;
+    padding-left: 18px;
+    padding-top: 4px;
+    padding-bottom: 10px;
+}
+.proper_ico{
+    margin:0;
+    padding: 0;
+    width: 20px;
+    
+}
+.block_proper{
+    overflow: hidden;
+    
+    max-width: 170px;
+    text-align: center;
+}
+.block_name{
+    
+}

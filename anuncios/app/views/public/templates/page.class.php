@@ -33,8 +33,8 @@ class Page extends Component{
 
 									<li><a class='btn_hdd' href='../public/cotiza_seguro.php'>Cotiza tu Seguro</a></li>
 									<li><a class='btn_hdd' href='../public/index.php'>Directorio</a></li>
-									<li><a class='btn_hdd' href='../dashboard/account/register.php'>Vehiculos en venta</a></li>
-									<li><a class='btn_hdd' href='../dashboard/account/register.php'>Propiedades en Venta</a></li>
+									<li><a class='btn_hdd' href='../public/vehiculos_v.php'>Vehiculos en venta</a></li>
+									<li><a class='btn_hdd' href='../public/propiedades_v.php'>Propiedades en Venta</a></li>
 									<li><a class='btn_hdd' style='margin-right:10px;' href='../dashboard/account/register.php'>Propiedades en Alquiler</a></li>
 								</ul>
 							</div>

@@ -66,7 +66,7 @@
                 </div>
         
         
-                <div style=' width:100%' class='row'>
+                <div style=' width:100%' class=''>
                     <div class='col s12 m5 l4'>
                         <div style='margin-top:22px;' class='row'>
                             
