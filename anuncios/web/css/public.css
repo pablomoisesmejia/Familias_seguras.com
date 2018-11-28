@@ -170,6 +170,21 @@ color: #A2A2A2;
     color: white;
     transition: 0.3s;
 }
+.botom_img_c_p{
+    cursor: pointer;
+    margin: 0;
+    margin-top: 3px;
+    width: 100%;
+    font-size: 0.9em;
+    float: right;
+    height: 36px;
+    padding-left: 20px;
+    padding-top: 6px;
+    background-color: #60195D;
+    color: white;
+    transition: 0.3s;
+    
+}
 .botom_img_static{
     
     margin: 0;
@@ -183,7 +198,43 @@ color: #A2A2A2;
     transition: 0.3s;
     overflow: hidden;
 }
-.botom_img:hover{
+.botom_img_static_c_p{
+    
+    margin: 0;
+    
+    width: 300px;;
+    height: 52px;
+    padding-left: 20px;
+    padding-top: 6px;
+    background-color: rgba(67, 40, 65, 0.85);
+    color: white;
+    transition: 0.3s;
+    
+    position: relative;
+    bottom: 70px;
+    float: right;
+    
+    z-index: 10;
+    
+    
+}
+.ribbon_streched{
+    
+    margin: 0;
+    width: 211px;
+    height: 70px;
+    background-image: url("../img/ico/asegurable_m3.png");
+    background-repeat: no-repeat;
+    color: white;
+    transition: 0.3s;
+    position: relative;
+    bottom: 190px;
+    float: right;
+    z-index: 10;
+    opacity: 0;
+    transition: 0.3s;
+}
+.botom_img:hover , .botom_img_c_p:hover{
  transform: scale(1.05);
     background-color: rgba(108, 43, 106, 0.84);
     color: white;
@@ -193,6 +244,27 @@ color: #A2A2A2;
     background-color: black;
     width: 100%;
     height: 300px;
+    
+}
+#ribbon{
+    position: relative;
+    width: 180px;
+    top: -140px;
+    left: -100px;
+    
+    
+}
+#img_cont_detail{
+    border: 1px solid rgba(128, 128, 128, 0.72);
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 340px;
+    
+    
 }
 #btn_lines{
     color: #663F67;
@@ -223,6 +295,7 @@ color: #A2A2A2;
 }
 .maxed{
     color: #2A2A2A;
+  
     
 }
 #fontyce{
@@ -335,4 +408,46 @@ overflow: hidden;
 .hoverable:hover{
     transform: scale(1.02);
     
+}
+
+.lighty_txt , .boldy_txt{
+    line-height: 18px;
+    padding: 0;
+    margin: 0;
+}
+.boldy_txt{
+    margin-top: 18px;
+    margin-bottom: 8px;
+font-weight: bold;
+font-size: 1.2em;
+}
+@media only screen and (max-width: 1250px) {
+    #ribbon{
+        opacity: 0;
+    }
+    .ribbon_streched{
+        opacity: 1;
+    }
+    #img_cont_detail{
+        
+    }
+    .botom_img_c_p{
+        width: 100%;
+           
+       }
+}
+
+@media only screen and (max-width: 1000px) {
+   .botom_img_static_c_p{
+       width: 100%;
+   }
+   .botom_img_c_p{
+    width: 100%;
+    max-width: 999px;   
+   }
+   .lighty_txt , .boldy_txt{
+    
+    text-align: center;
+}
+  
 }

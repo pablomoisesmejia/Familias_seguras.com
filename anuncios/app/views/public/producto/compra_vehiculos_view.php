@@ -10,7 +10,7 @@
                     <img class='activator' src='../web/img/vehiculos/sedan_bmw.jpg'>
                     </div>
                     <div class='purple darken-3'>
-                        <a style='color:white; height:80px;' href='pagina.php'>
+                        <a style='color:white; height:80px;' href='vehiculos_detalle_v.php'>
                             <div class='col s7' id='previnfo_vehi'>
                                 <div class='row' style='padding:0; margin:0;  font-size:1em'>AV-2018110_02</div>
                                 <div class='row' style='padding:0; margin:0; font-size:0.8em'>BMW Sedan x3-2017</div>
