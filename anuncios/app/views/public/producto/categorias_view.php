@@ -7,6 +7,7 @@
 
         print("
             <div class='col s12 m12 l4'>
+            <a href='productos.php?id=$categoria[id_categoria]'>
                 <div class='card hoverable'>
                     <div class='card-image waves-effect waves-block waves-light'>
                     <img class='activator' src='../web/img/categorias/$categoria[imagen].jpg'>
@@ -16,6 +17,7 @@
                         <p style='padding-left:8%;'><a href='productos.php?id=$categoria[id_categoria]' class='tooltipped' style='color:white;' data-tooltip='Ver más'>$categoria[nombre_categoria]</a></p>
                     </div>
                 </div>
+                </a>
             </div>
         ");
     }

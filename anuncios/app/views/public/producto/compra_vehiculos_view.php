@@ -4,11 +4,17 @@
 
     
             <!-- codigo de card -->
+            
             <div class='col s12 m12 l4'>
+            <a href='vehiculos_detalle_v.php'>
                 <div class='card hoverable'>
                     <div class='card-image waves-effect waves-block waves-light'>
                     <img class='activator' src='../web/img/vehiculos/sedan_bmw.jpg'>
+                    <a class='ribbon_streched_prev' >
+                     
+                        </a>
                     </div>
+
                     <div class='purple darken-3'>
                         <a style='color:white; height:80px;' href='vehiculos_detalle_v.php'>
                             <div class='col s7' id='previnfo_vehi'>
@@ -21,6 +27,7 @@
                         </a>
                     </div>
                 </div>
+                </a>
             </div>
             <!-- fin code -->
 

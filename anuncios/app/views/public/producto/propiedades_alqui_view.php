@@ -6,6 +6,7 @@
     
             <!-- codigo de card -->
             <div class='col s12 m12 l4'>
+            <a href='pagina.php'>
                 <div class='card hoverable'>
                     <div class='card-image waves-effect waves-block waves-light'>
                     <img class='activator' src='../web/img/propiedades/alqui1.jpg'> 
@@ -28,6 +29,7 @@
                                 <div class='icon_prop'><img class='proper_ico' src='../web/img/ico/bed.png'><span class='proper_ico_txt'>4</span></div>
                     </div> 
                 </div>
+            </a>
             </div>
             <!-- fin code -->
 

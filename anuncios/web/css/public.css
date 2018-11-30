@@ -218,6 +218,54 @@ color: #A2A2A2;
     
     
 }
+.botom_img_static_c_p_props{
+    
+    margin: 0;
+    
+    width: 100%;
+    height: 42px;
+    padding-left: 10px;
+    padding-top: 6px;
+    background-color: rgba(125, 61, 132, 0.87);
+    color: white;
+    transition: 0.3s;
+    
+    
+    
+    float: right;
+    
+    z-index: 10;
+    bottom: 96px;
+    overflow: ;
+}
+.txt_primas{
+    position: relative;
+    bottom: 20px;
+    font-size: 0.9em;
+    right: 0px;
+    float: right;
+}
+.botom_img_static_c_p_initial{
+    
+    margin: 0;
+    
+    width: 100%;
+    height: 48px;
+    padding-left: 10px;
+    padding-top: 6px;
+    
+    background-color: rgba(125, 61, 132, 0.87);
+    color: white;
+    transition: 0.3s;
+    
+    
+    
+    float: right;
+    
+    z-index: 10;
+    
+    
+}
 .ribbon_streched{
     
     margin: 0;
@@ -233,6 +281,24 @@ color: #A2A2A2;
     z-index: 10;
     opacity: 0;
     transition: 0.3s;
+}
+.ribbon_streched_prev{
+    
+    margin: 0;
+    width: 211px;
+    height: 70px;
+    background-image: url("../img/ico/asegurable_m3.png");
+    background-repeat: no-repeat;
+    color: white;
+    transition: 0.3s;
+    position: absolute;
+    bottom: 0;  
+    right: 0;
+    
+    z-index: 10;
+    opacity: 1;
+    
+    
 }
 .botom_img:hover , .botom_img_c_p:hover{
  transform: scale(1.05);
@@ -263,6 +329,18 @@ color: #A2A2A2;
     background-color: #FFFFFF;
     width: 100%;
     height: 340px;
+    
+    
+}
+#img_cont_detail_prop{
+    border: 1px solid rgba(128, 128, 128, 0.72);
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    
+    background-color: #FFFFFF;
+    width: 100%;
+    height: auto;
     
     
 }
@@ -314,6 +392,17 @@ color: #A2A2A2;
     margin-right: 20px;
     text-align: right;
 }
+.title-le{
+    color: #3D2B39;
+    font-weight: bold;
+    font-size: 1em;
+    
+    padding: 0;
+    margin: 0;
+    
+    
+    text-align: left;
+}
 .title_2{
     padding: 0;
     margin: 0;
@@ -349,7 +438,7 @@ color: #A2A2A2;
 }
 
 #previnfo_vehi{
-    background-color: #754689;
+    background-color: #9c27b0;
     margin: 0;
     padding: 0;
     padding-left: 18px;
@@ -390,6 +479,14 @@ overflow: hidden;
     bottom: 54px;
     right: 0;
 }
+.block_proper_props{
+    cursor:default;
+    z-index: 10;
+    left: 0;
+    
+    bottom: 0px;
+    
+}
 .block_name{
     float: left;
 }
@@ -400,6 +497,14 @@ overflow: hidden;
     width: 60px;
     height: 36px;
     background-color: rgba(65, 31, 58, 0.68);
+}
+.icon_prop_props{
+    color: white;
+    font-weight: bold;
+    float: left;
+    width: 60px;
+    height: 38px;
+    
 }
 .hoverable{
     transition: 0.3s;
