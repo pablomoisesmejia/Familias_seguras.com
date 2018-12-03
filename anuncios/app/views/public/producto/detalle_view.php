@@ -15,7 +15,7 @@
                             <h5 onclick='closetipscot();' class='backk'><i class='material-icons prefix'>arrow_back</i> Volver </h5>
                             <h5 class='men'>Solicitar Cotización </h5>
                             <div class='row' >
-                            <a href='seguro_medico.php?correo=".$producto->getEmail()."&id=".$_GET['id']."'>
+                            <a href='Seguro_Medico.php?correo=".$producto->getEmail()."&id=".$_GET['id']."'>
                                 <div   id='contenedor_de_seguro'  class='col s6 m6' onmouseover='seg=1; change_etiquete();' onmouseout='seg=1;'>
                                     <div class='icon_container_1'><img src='../web/img/ico/seg_medico.png' class='seguro_ico_1'></div>
                                     <div class='info_seguro_prev'>
