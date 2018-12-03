@@ -42,9 +42,11 @@ class Page extends Component{
 						</nav>
 					</div>
 					<ul class='side-nav' id='mobile'>
-						<li><a href='index.php'><i class='material-icons left'>view_module</i>Catalogo</a></li>
-						<li><a href='../dashboard/account/login.php'><i class='material-icons left'>view_module</i>Inicia sesión</a></li>
-						<li><a href='../dashboard/account/register.php'><i class='material-icons left'>view_module</i>Registrarse</a></li>
+						<li><a href='../public/cotiza_seguro.php'><i class='material-icons left'>view_module</i>Cotiza tu Seguro</a></li>
+						<li><a href='../public/index.php'><i class='material-icons left'>view_module</i>Directorio</a></li>
+						<li><a href='../public/vehiculos_v.php'><i class='material-icons left'>view_module</i>Vehiculos en Venta</a></li>
+						<li><a href='../public/propiedades_v.php'><i class='material-icons left'>view_module</i>Propiedades en Venta</a></li>
+						<li><a href='../public/propiedades_alqui.php'><i class='material-icons left'>view_module</i>Propiedades en Alquiler</a></li>
 
 					</ul>
 					

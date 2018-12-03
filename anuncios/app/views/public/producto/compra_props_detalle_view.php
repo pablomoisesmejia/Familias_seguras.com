@@ -11,7 +11,7 @@
                 <div class='col s12 m8 l8' style=''>
                     <div style='margin-top:8px;' class='row'>
                         
-                        <h5 class='titles'> <a href='vehiculos_v.php' id='btn_lines'>Vehiculos Asegurables en Venta   ></a> Vehiculo Seleccionado</h5>
+                        <h5 class='titles'> <a href='vehiculos_v.php' id='btn_lines'>Propiedades Asegurables en Venta   ></a> Vehiculo Seleccionado</h5>
                 
                         <div id='img_cont_detail_prop'>
                             <img width='100%' height='auto' src='../web/img/propiedades/prop_detail1.jpg'>
@@ -29,17 +29,20 @@
                         
                         </a>
                         <a class='botom_img_static_c_p_props' >
-                    <div class='block_proper_props'>
+                            <div class='block_proper_props'>
                                 <div class='icon_prop_props'><img class='proper_ico' src='../web/img/ico/garage.png'><span class='proper_ico_txt'>1</span></div>
                                 <div class='icon_prop_props'><img class='proper_ico' src='../web/img/ico/banera.png'><span class='proper_ico_txt'>2</span></div>
                                 <div class='icon_prop_props'><img class='proper_ico' src='../web/img/ico/bed.png'><span class='proper_ico_txt'>4</span></div>
                                 
                                 
-                    </div> 
+                            </div> 
 
-                    <p class='txt_primas'>Prima Seguro de Incendios $225.000 / Mes</p>
-                                
-                        
+                            <p id='txt_primas_1' class='txt_primas'>Prima Seguro de Incendios $225.000 / Mes</p>
+                        </a>
+                        <a class='botom_img_static_c_p_asegs' >
+                           
+
+                            <p class='txt_primas'>Prima Seguro de Incendios $225.000 / Mes</p>
                         </a>
                    
                 </div>

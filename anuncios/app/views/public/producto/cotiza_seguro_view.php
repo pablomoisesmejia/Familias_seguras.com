@@ -11,7 +11,7 @@
                     </div>
                     <div class='card-content purple darken-3'>
 
-                        <p style='padding-left:8%;'><a href='  pagina.php ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Automotores</a></p>
+                        <p style='padding-left:8%;'><a href='   ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Automotores</a></p>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     </div>
                     <div class='card-content purple darken-3'>
 
-                        <p style='padding-left:8%;'><a href='  pagina.php ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Incendio</a></p>
+                        <p style='padding-left:8%;'><a href='   ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Incendio</a></p>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     </div>
                     <div class='card-content purple darken-3'>
 
-                        <p style='padding-left:8%;'><a href='  pagina.php ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Viaje</a></p>
+                        <p style='padding-left:8%;'><a href='   ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Viaje</a></p>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     </div>
                     <div class='card-content purple darken-3'>
 
-                        <p style='padding-left:8%;'><a href='  pagina.php ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Gastos Medicos</a></p>
+                        <p style='padding-left:8%;'><a href='   ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Gastos Medicos</a></p>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                     </div>
                     <div class='card-content purple darken-3'>
 
-                        <p style='padding-left:8%;'><a href='  pagina.php ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Vida Individual</a></p>
+                        <p style='padding-left:8%;'><a href='   ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Vida Individual</a></p>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     </div>
                     <div class='card-content purple darken-3'>
 
-                        <p style='padding-left:8%;'><a href='  pagina.php ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Accidentes Personales</a></p>
+                        <p style='padding-left:8%;'><a href='   ' class='tooltipped' style='color:white;' data-tooltip='Ver más'>Seguro de Accidentes Personales</a></p>
                     </div>
                 </div>
             </div>

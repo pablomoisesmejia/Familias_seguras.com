@@ -15,8 +15,8 @@
                         
                         <h5 class='titles'> <a href='vehiculos_v.php' id='btn_lines'>Vehiculos Asegurables en Venta   ></a> Vehiculo Seleccionado</h5>
                 
-                        <div id='img_cont_detail'>
-                            <img width='100%' height='320px' src='../web/img/vehiculos/sedan_bmw_hd.jpg'>
+                        <div id='img_cont_detai'>
+                            <img width='100%' height='auto' src='../web/img/vehiculos/sedan_bmw_hd.jpg'>
                             
 
                       
