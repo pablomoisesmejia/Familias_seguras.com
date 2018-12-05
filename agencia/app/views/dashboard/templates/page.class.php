@@ -52,11 +52,13 @@ class Page extends Component{
 							<ul>
 
 							<li onmouseover='bal_over=1; show_info_baldosa();'><a class='baldosa' href='../directorio'>		<p class='plac_let'>D</p>Directorio</a></li>
-							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../categoria'>		<p class='plac_let'>A</p>Autos en venta</a></li>
+							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../modelo'>		<p class='plac_let'>A</p>Modelos de autos</a></li>
+							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>A</p>Marcas de autos</a></li>
+							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../autos'>		<p class='plac_let'>A</p>Autos en venta</a></li>
 							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>	<p class='plac_let'>PA</p>Propiedades en alquiler</a></li>
 							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>	<p class='plac_let'>PV</p>Propiedades en venta</a></li>
 							</ul>
-
+z
 							<div id='sepline'> </div>
 							<p id='info_baldosita'>Al pasar el puntero del mouse sobre una baldosa se mostrara una pequeña descripcion de lo se encuentra en este apartado</p>
 								

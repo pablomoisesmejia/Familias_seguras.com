@@ -19,8 +19,7 @@
 			
 			
 			<th>NOMBRE</th>
-			<th>CORREO</th>
-			<th>TELEFONO</th>
+			
 			
 			<th>MODIFICAR</th>
 		</tr>
@@ -30,11 +29,10 @@
 	foreach($data as $row){
 		print("
 		<tr>
-			<td>$row[nombre_marca]</td>
-			<td>$row[correo]</td>
-			<td>$row[telefono]</td>
+			<td>$row[marca_vehiculo]</td>
+
 			<td>
-				<a href='update.php?id=$row[ID_marca]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
+				<a href='update.php?id=$row[PK_id_marca_vehiculo]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
 			</td>
 		</tr>
 		");

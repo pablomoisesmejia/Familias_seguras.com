@@ -8,20 +8,13 @@ try{
                 if(isset($_POST['actualizar'])){
                     $_POST = $Marca->validateForm($_POST);
                     if($Marca->setNombre($_POST['nombre'])){
-                        if($Marca->setCorreo($_POST['correo'])){
-                            if($Marca->setTelefono($_POST['telefono'])){
+
                                 if($Marca->updateMarcas()){
-                                    Page::showMessage(1, "Categoría modificada", "index.php");
+                                    Page::showMessage(1, "Marca modificada", "index.php");
                                 }else{
                                     throw new Exception(Database::getException());
                                 }
                     
-                            }else{
-                                throw new Exception("Telefono incorrecto");
-                            }
-                        }else{
-                            throw new Exception("Correo incorrecto");
-                        }
                     }else{
                         throw new Exception("Nombre incorrecto");
                     }                    

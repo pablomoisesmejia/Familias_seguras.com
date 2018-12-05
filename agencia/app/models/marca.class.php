@@ -3,11 +3,7 @@ class Marca extends Validator{
 	//Declaración de propiedades
 	private $id = null;
 	private $nombre = null;
-	private $correo = null;
-	private $telefono = null;
-	private $direccion = null;
-	private $imagen = null;
-	private $estado = null;
+	
 
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
@@ -34,108 +30,37 @@ class Marca extends Validator{
 		return $this->nombre;
 	}
 
-	public function setCorreo($value){
-		if($this->validateEmail($value)){
-			$this->correo = $value;
-			return true;
-		}else{
-			return false;
-		}
-	}
-	public function getCorreo(){
-		return $this->correo;
-	}
-	
-	public function setTelefono($value){
-		if($this->validateId($value)){
-			$this->telefono = $value;
-			return true;
-		}else{
-			return false;
-		}
-	}
-	public function getTelefono(){
-		return $this->telefono;
-	}
-
-	public function setDireccion($value){
-		if($this->validateAlphabetic($value, 1, 50)){
-			$this->direccion = $value;
-			return true;
-		}else{
-			return false;
-		}
-	}
-	public function getDireccion(){
-		return $this->direccion;
-    }
-
-	public function setImagen($file){
-		if($this->validateImage($file, $this->imagen, "../../web/img/marcas/", 2000, 2000)){
-			$this->imagen = $this->getImageName();
-			return true;
-		}else{
-			return false;
-		}
-	}
-	public function getImagen(){
-		return $this->imagen;
-	}
-	public function unsetImagen(){
-		if(unlink("../../web/img/marcas/".$this->imagen)){
-			$this->imagen = null;
-			return true;
-		}else{
-			return false;
-		}
-	}
-
-	public function setEstado($value){
-		if($value == "1" || $value == "0"){
-			$this->estado = $value;
-			return true;
-		}else{
-			return false;
-		}
-	}
-	public function getEstado(){
-		return $this->estado;
-	}
-
 	//Metodos para el manejo del CRUD
 	public function getMarcas(){
-		$sql = "SELECT ID_marca, nombre_marca, correo, telefono FROM marca ORDER BY nombre_marca";
+		$sql = "SELECT PK_id_marca_vehiculo, marca_vehiculo FROM marcas_vehiculos ORDER BY marca_vehiculo";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
 	public function searchMarcas($value){
-		$sql = "SELECT ID_marca, nombre_marca
-				FROM marca WHERE nombre_marca LIKE ? ORDER BY nombre_marca";
+		$sql = "SELECT PK_id_marca_vehiculo, marca_vehiculo
+				FROM marcas_vehiculos WHERE marca_vehiculo LIKE ? ORDER BY marca_vehiculo";
 		$params = array("%$value%");
 		return Database::getRows($sql, $params);
 	}
 	public function createMarcas(){
-		$sql = "INSERT INTO marca( nombre_marca, correo, telefono) VALUES(?,?,?)";
-		$params = array($this->nombre,$this->correo,$this->telefono);	
+		$sql = "INSERT INTO marcas_vehiculos ( marca_vehiculo) VALUES(?)";
+		$params = array($this->nombre);	
 		return Database::executeRow($sql, $params);
 	}
 	public function readMarcas(){
-		$sql = "SELECT nombre_marca, correo, telefono FROM marca WHERE ID_marca = ?";
+		$sql = "SELECT marca_vehiculo FROM marcas_vehiculos WHERE PK_ID_marca_vehiculo = ?";
 		$params = array($this->id);
 		$Marca = Database::getRow($sql, $params);
 		if($Marca){
-			$this->nombre = $Marca['nombre_marca'];
-			$this->correo = $Marca['correo'];
-			$this->telefono = $Marca['telefono'];
-
+			$this->nombre = $Marca['marca_vehiculo'];
 			return true;
 		}else{
 			return null;
 		}
 	}
 	public function updateMarcas(){
-		$sql = "UPDATE marca SET nombre_marca = ?, correo = ?, telefono = ? WHERE ID_marca = ?";
-		$params = array($this->nombre, $this->correo, $this->telefono, $this->id);
+		$sql = "UPDATE marcas_vehiculos SET marca_vehiculo = ? WHERE PK_ID_marca_vehiculo = ?";
+		$params = array($this->nombre, $this->id);
 		return Database::executeRow($sql, $params);
 	}
 	public function deleteMarcas(){
