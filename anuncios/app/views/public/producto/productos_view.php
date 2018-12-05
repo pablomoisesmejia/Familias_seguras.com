@@ -11,7 +11,7 @@ foreach($productos as $producto){
         <a href='detalle_producto.php?id=$producto[id_anuncio]'>
             <div class='card hoverable'>
             <div class='card-image'>
-                <img href='detalle_producto.php?id=$producto[id_anuncio]' src='../web/img/productos/$producto[imagen_producto].jpg' class=''>
+                <img href='detalle_producto.php?id=$producto[id_anuncio]' src='../web/img/productos/$producto[imagen_producto]' class=''>
                 <a href='detalle_producto.php?id=$producto[id_anuncio]' class='btn-floating halfway-fab waves-effect waves-light purple tooltipped' data-tooltip='Ver detalle'><i class='material-icons'>add</i></a>
             </div>
             <div style='color:white;' class='card-content purple darken-3' href='detalle_producto.php?id=$producto[id_anuncio]'>

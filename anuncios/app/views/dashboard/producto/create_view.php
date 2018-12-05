@@ -1,5 +1,19 @@
 <form method='post' enctype='multipart/form-data'>
     <div class='row'>
+
+
+        <div class='input-field col s12 m6'>
+            <?php
+            Page::showSelect("Categoría", "categoria", $producto->getCategoria(), $producto->getCategorias());
+            ?>
+        </div>
+
+        <div class='input-field col s12 m6'>
+            <?php
+            Page::showSelect("Planes", "plan", $producto->getPlan(), $producto->getPlanes());
+            ?>
+        </div>
+
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>note_add</i>
           	<input id='nombre' type='text' name='nombre' class='validate' value='<?php print($producto->getNombre()) ?>' required/>
@@ -61,17 +75,19 @@
           	<input id='pagina_web' type='text' name='pagina_web' class='validate' value='<?php print($producto->getPaginaWeb()) ?>'/>
           	<label for='descripcion'>Link de Pagina web</label>
         </div>
-        <div class='input-field col s12 m6'>
-            <?php
-            Page::showSelect("Categoría", "categoria", $producto->getCategoria(), $producto->getCategorias());
-            ?>
+
+        <div class="input-field col s6">
+            <i class="material-icons prefix">description</i>
+            <textarea id="especialidad" name='especialidad' class="materialize-textarea"></textarea>
+            <label for="especialidad">Especialidad</label>
         </div>
 
-        <div class='input-field col s12 m6'>
-            <?php
-            Page::showSelect("Planes", "plan", $producto->getPlan(), $producto->getPlanes());
-            ?>
+        <div class="input-field col s6">
+            <i class="material-icons prefix">description</i>
+            <textarea id="experiencia" name='experiencia' class="materialize-textarea"></textarea>
+            <label for="experiencia">Experiencia</label>
         </div>
+
         <div class='file-field input-field col s12 m6'>
             <div class='btn waves-effect'>
                 <span><i class='material-icons'>image</i></span>

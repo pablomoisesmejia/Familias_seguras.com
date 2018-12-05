@@ -36,35 +36,50 @@ try
                                         {
                                             if($producto->setPlan($_POST['plan']))
                                             {
-                                                if(is_uploaded_file($_FILES['archivo']['tmp_name']))
+                                                if($producto->setEspecialidad($_POST['especialidad']))
                                                 {
-                                                    if($producto->setImagen($_FILES['archivo']))
+                                                    if($producto->setExperiencia($_POST['experiencia']))
                                                     {
-                                                        if($producto->createProducto())
+                                                        if(is_uploaded_file($_FILES['archivo']['tmp_name']))
                                                         {
-                                                            if(Utility::saveFile($_FILES['archivo'], $producto->getRuta(), $producto->getImagen()))
+                                                            if($producto->setImagen($_FILES['archivo']))
                                                             {
-                                                                Page::showMessage(1, "Producto creado correctamente", "index.php");
+                                                                if($producto->createProducto())
+                                                                {
+                                                                    if(Utility::saveFile($_FILES['archivo'], $producto->getRuta(), $producto->getImagen()))
+                                                                    {
+                                                                        Page::showMessage(1, "En estos momentos su anuncio esta desactivado, espere al administrador para que lo active", "index.php");
+                                                                        require_once('../../app/helpers/correo_crear_anuncio.php');
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        Page::showMessage(3, "Producto creado pero no se guardó el archivo", "index.php");
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    echo Database::getException();
+                                                                    throw new Exception(Database::getException());
+                                                                }
                                                             }
                                                             else
                                                             {
-                                                                Page::showMessage(3, "Producto creado pero no se guardó el archivo", "index.php");
+                                                                throw new Exception($producto->getImageError());
                                                             }
                                                         }
                                                         else
                                                         {
-                                                            echo Database::getException();
-                                                            throw new Exception(Database::getException());
+                                                            throw new Exception("Seleccione una imagen");
                                                         }
                                                     }
                                                     else
                                                     {
-                                                        throw new Exception($producto->getImageError());
+                                                        throw new Exception("Ingrese su experiencia");
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    throw new Exception("Seleccione una imagen");
+                                                    throw new Exception("Ingrese sus especialidades");
                                                 }
                                             }
                                             else
