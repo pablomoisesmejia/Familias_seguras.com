@@ -4,7 +4,7 @@ try{
     if(isset($_POST['cambiar'])){
         $usuario = new Usuario;
         $_POST = $usuario->validateForm($_POST);
-        if($usuario->setId($_SESSION['ID_admin'])){
+        if($usuario->setId($_SESSION['id_usuario'])){
             if($_POST['clave_actual_1'] == $_POST['clave_actual_2']){
                 if($usuario->setClave($_POST['clave_actual_1'])){
                     if($usuario->checkPassword()){

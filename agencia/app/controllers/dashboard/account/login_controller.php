@@ -9,12 +9,12 @@ try{
 				if($object->checkCorreo()){
 					if($object->setClave($_POST['clave'])){
 						if($object->checkPassword()){
-							$_SESSION['PK_id_usuario'] = $object->getId();
-							$_SESSION['nombres'] = $object->getAlias();
-							$_SESSION['nombres'] = $object->getNombres();
-							$_SESSION['apellidos'] = $object->getApellidos();
-							$_SESSION['correo'] = $object->getCorreo();
-							$_SESSION['direccion'] = $object->getDireccion();
+							$_SESSION['id_usuario'] = $object->getId();
+							$_SESSION['nombres_usuario'] = $object->getAlias();
+							$_SESSION['nombres_usuario'] = $object->getNombres();
+							$_SESSION['apellidos_usuario'] = $object->getApellidos();
+							$_SESSION['correo_usuario'] = $object->getCorreo();
+							
 							
 							Page::showMessage(1, "Autenticación correcta", "index.php");
 						}else{

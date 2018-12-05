@@ -209,25 +209,25 @@ class Usuario extends Validator{
 
 	//Métodos para manejar la sesión del usuario
 	public function checkCorreo(){
-		$sql = "SELECT PK_id_usuario FROM usuarios WHERE correo = ?";
+		$sql = "SELECT id_usuario FROM usuarios_anuncios WHERE correo_usuario = ? AND id_usuario = 1";
 		$params = array($this->correo);
 		$data = Database::getRow($sql, $params);
 		if($data){
-			$this->id = $data['PK_id_usuario'];
+			$this->id = $data['id_usuario'];
 			return true;
 		}else{
 			return false;
 		}
 	}
 	public function checkPassword(){
-		$sql = "SELECT clave, nombres, apellidos, correo, direccion FROM Usuarios WHERE PK_id_usuario = ?";
+		$sql = "SELECT clave_usuario, nombres_usuario, apellidos_usuario, correo_usuario FROM usuarios_anuncios WHERE id_usuario = ?";
 		$params = array($this->id);
 		$data = Database::getRow($sql, $params);
-		if(password_verify($this->clave, $data['clave'])){
-			$this->nombres = $data['nombres'];	
-			$this->apellidos = $data['apellidos'];
-			$this->correo = $data['correo'];
-			$this->direccion = $data['direccion'];
+		if(password_verify($this->clave, $data['clave_usuario'])){
+			$this->nombres = $data['nombres_usuario'];	
+			$this->apellidos = $data['apellidos_usuario'];
+			$this->correo = $data['correo_usuario'];
+
 			return true;
 		}else{
 			return false;
@@ -235,7 +235,7 @@ class Usuario extends Validator{
 	}
 	public function changePassword(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "UPDATE administrador SET contrasena = ? WHERE ID_admin = ?";
+		$sql = "UPDATE usuarios_anuncios SET clave_usuario = ? WHERE id_usuario = ?";
 		$params = array($hash, $this->id);
 		return Database::executeRow($sql, $params);
 	}

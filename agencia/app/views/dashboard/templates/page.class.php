@@ -41,7 +41,7 @@ class Page extends Component{
 		$_SESSION['tiempo']=time(); //Si hay actividad seteamos el valor al tiempo actual
 
 		
-		if(isset($_SESSION['PK_id_usuario'])){
+		if(isset($_SESSION['id_usuario'])){
 			print("
 				<div id='menu_overlay' style='display:none;'>overlay</div>
 
@@ -51,9 +51,10 @@ class Page extends Component{
 						
 							<ul>
 
-							<li onmouseover='bal_over=1; show_info_baldosa();'><a class='baldosa' href='../team'>		<p class='plac_let'>T</p>TEAMS</a></li>
-							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../categoria'>	<p class='plac_let'>S</p>SOLICITUDES</a></li>
-							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>		<p class='plac_let'>E</p>Estadistica</a></li>
+							<li onmouseover='bal_over=1; show_info_baldosa();'><a class='baldosa' href='../directorio'>		<p class='plac_let'>D</p>Directorio</a></li>
+							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../categoria'>		<p class='plac_let'>A</p>Autos en venta</a></li>
+							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>	<p class='plac_let'>PA</p>Propiedades en alquiler</a></li>
+							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>	<p class='plac_let'>PV</p>Propiedades en venta</a></li>
 							</ul>
 
 							<div id='sepline'> </div>
@@ -87,7 +88,7 @@ class Page extends Component{
 						<div class='row' id='SIDE_contenedor_user'>
 							<div id='head_sides' ><a style='color:black'>Volver</a></div>
 							<div id='SIDE_cu_1' class='col s7 m7 l7'>
-								<p class='negrita' id='nombre_user_ingresed'>$_SESSION[nombres]</p>
+								<p class='negrita' id='nombre_user_ingresed'>$_SESSION[nombres_usuario]</p>
 								<p class='negrita' id='tipo_user_ingresed'>Administrador</p>
 								
 								
@@ -125,21 +126,18 @@ class Page extends Component{
 							<div class='row'>
 								<div class='col s6'>
 									<a style='color:black'>Nombres</a>
-									<p id='datos'>$_SESSION[nombres]</p>
+									<p id='datos'>$_SESSION[nombres_usuario]</p>
 									
 								</div>
 								<div class='col s6'>
 									<a style='color:black'>Apellidos</a>
-									<p  id='datos'>$_SESSION[apellidos]</p>
+									<p  id='datos'>$_SESSION[apellidos_usuario]</p>
 								</div>
 								<div class='col s12'>
 									<a style='color:black'>Correo</a>
-									<p  id='datos'>$_SESSION[correo]</p>
+									<p  id='datos'>$_SESSION[correo_usuario]</p>
 								</div>
-								<div class='col s12'>
-									<a style='color:black'>Direccion</a>
-									<p  id='datos'>$_SESSION[direccion]</p>
-								</div>
+								
 							</div>													
 							
 						
