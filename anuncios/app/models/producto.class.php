@@ -287,7 +287,7 @@ class Producto extends Validator{
 
 	//Metodos para el manejo del CRUD
 	public function getCategoriaProductos(){
-		$sql = "SELECT nombre_anuncio, id_anuncio, imagen_producto FROM anuncio WHERE id_categoria = ? AND estado_anuncio = 1 ";
+		$sql = "SELECT nombre_anuncio, id_anuncio, imagen_producto FROM anuncio WHERE id_categoria = ? AND estado_anuncio = 1 ORDER BY id_plan DESC";
 		$params = array($this->id_categoria);
 		return Database::getRows($sql, $params);
 	}

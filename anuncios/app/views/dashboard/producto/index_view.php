@@ -27,7 +27,7 @@
 	foreach($data as $row){
 		print("
 		<tr>
-		<td><img src='../../web/img/anuncios/$row[imagen_producto]' alt='No se encontro la imagen' width='100' height='100'></td>
+		<td><img src='../../web/img/productos/$row[imagen_producto]' alt='No se encontro la imagen' width='100' height='100'></td>
 			<td>$row[nombre_anuncio]</td>
 			<td>$row[nombre_categoria]</td>
 			<td>
