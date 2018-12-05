@@ -8,7 +8,7 @@ try
     {
         $_POST = $producto->validateForm($_POST);
         $producto->setId_usuario($_SESSION['id_usuario']);
-        $producto->setEstadoAnuncio(1);
+        $producto->setEstadoAnuncio(0);
         if($producto->setNombre($_POST['nombre']))
         {
             if($producto->setDireccion($_POST['descripcion']))
