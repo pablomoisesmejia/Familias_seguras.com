@@ -45,5 +45,124 @@ class Dias_predeterminados extends Validator
     {
 		return $this->lunes;
     }
+
+    public function setMartes($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 11))
+        {
+			$this->martes = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getMartes()
+    {
+		return $this->martes;
+    }
+
+    public function setMiercoles($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 11))
+        {
+			$this->miercoles = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getMiercoles()
+    {
+		return $this->miercoles;
+    }
+
+    public function setJueves($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 11))
+        {
+			$this->jueves = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getJueves()
+    {
+		return $this->jueves;
+    }
+
+    public function setViernes($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 11))
+        {
+			$this->viernes = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getViernes()
+    {
+		return $this->viernes;
+    }
+
+    public function setSabado($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 11))
+        {
+			$this->sabado = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getSabado()
+    {
+		return $this->sabado;
+    }
+
+    public function setDomingo($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 11))
+        {
+			$this->domingo = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getDomingo()
+    {
+		return $this->domingo;
+    }
+
+    public function setIdBanner($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 11))
+        {
+			$this->FK_id_banner = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getIdBanner()
+    {
+		return $this->FK_id_banner;
+    }
 }
 ?>
