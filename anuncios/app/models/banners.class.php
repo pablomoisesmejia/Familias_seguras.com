@@ -152,6 +152,12 @@ class Banners extends Validator
         return $this->dia_especifico;
     }
 
+    public function getIntervalosFecha()
+    {
+        $sql = 'SELECT i.PK_id_intervalo_fecha, i.intervalos_fecha FROM intervalos_fecha i';
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
     public function getBanners()
     {
         $sql = 'SELECT b.PK_id_banner, b.imagen, i.intervalos_fecha, b.cant_intervalo_fecha, b.fecha_inicio, b.hora_inicio, b.estado_banner, b.dia_especifico 

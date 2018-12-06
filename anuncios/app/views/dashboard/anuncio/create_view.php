@@ -11,22 +11,27 @@
             </div>
         </div>
         <div class='input-field col s12 m6'>
-            <i class='material-icons prefix'>note_add</i>
-            <input id='nombre' type='text' name='nombre' class='validate' value='' required/>
-            <label for='nombre'>Intervalo de Anuncio</label>
+            <?php
+            Page::showSelect("Entervalo de fecha", "intervalo", $banner->getIdIntervaloFecha(), $banner->getIntervalosFecha());
+            ?>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>note_add</i>
-            <input id='nombre' type='number' name='nombre' class='validate' value='1' required/>
-            <label for='nombre'>Cantidas intervalo fecha</label>
+            <input id='cant_intervalo' type='number' name='cant_intervalo' class='validate' value='1' required/>
+            <label for='cant_intervalo'>Cantidas intervalo fecha</label>
         </div>
         <div class=''>
+          <div class='input-field col s6 '>
+            <i style="color:black;"class="material-icons prefix">event</i>
+            <input  type="text" class="datepicker" id="fecha_inicio" name="fecha_inicio" required/>
+            <label class="" for="fecha_inicio">Fecha de inicio</label>
+          </div>
+        </div>
         <div class='input-field col s6 '>
           <i style="color:black;"class="material-icons prefix">event</i>
-          <input  type="text" class="datepicker" id="fecha_naci_vida" required/>
-          <label class="" for="fecha_naci_vida">Fecha de inicio</label>
+          <input  type="text" class="timepicker" id="hora_inicio" name="hora_inicio" required/>
+          <label class="" for="hora_inicio">Hora de inicio</label>
         </div>
-      </div>
     </div>
     <div class='row center-align'>
         <a href='index.php' class='btn waves-effect grey tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>
