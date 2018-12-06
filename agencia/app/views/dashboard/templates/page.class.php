@@ -52,11 +52,11 @@ class Page extends Component{
 							<ul>
 
 							<li onmouseover='bal_over=1; show_info_baldosa();'><a class='baldosa' href='../directorio'>		<p class='plac_let'>D</p>Directorio</a></li>
-							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../modelo'>		<p class='plac_let'>A</p>Modelos de autos</a></li>
-							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>A</p>Marcas de autos</a></li>
-							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../autos'>		<p class='plac_let'>A</p>Autos en venta</a></li>
-							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>	<p class='plac_let'>PA</p>Propiedades en alquiler</a></li>
-							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>	<p class='plac_let'>PV</p>Propiedades en venta</a></li>
+							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../modelo'>		<p class='plac_let'>MA</p>Modelos de autos</a></li>
+							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>MA</p>Marcas de autos</a></li>
+							<li onmouseover='bal_over=4; show_info_baldosa();'><a class='baldosa' href='../autos'>		<p class='plac_let'>AV</p>Autos en venta</a></li>
+							<li onmouseover='bal_over=5; show_info_baldosa();'><a class='baldosa' href='../alquiler'>	<p class='plac_let'>PA</p>Propiedades en alquiler</a></li>
+							<li onmouseover='bal_over=6; show_info_baldosa();'><a class='baldosa' href='../venta'>	<p class='plac_let'>PV</p>Propiedades en venta</a></li>
 							</ul>
 z
 							<div id='sepline'> </div>
