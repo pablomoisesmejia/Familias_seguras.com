@@ -1,13 +1,7 @@
 <div class='row'>   
     <form method='post'enctype='multipart/form-data' autocomplete='off'>
-        <div class='input-field col s6 m4'>
-            <i class='material-icons prefix'>search</i>
-            <input id='buscar' type='text' name='busqueda'/>
-            <label for='buscar'>Escribe para buscar</label>
-        </div>
-        <div class='input-field col s6 m4'>
-            <button type='submit' name='buscar' class='btn waves-effect green tooltipped' data-tooltip='Buscar por nombre o apellido'><i class='material-icons'>check_circle</i></button>
-        </div>
+
+
     </form>
     <div class='input-field center-align col s12 m4'>
 
@@ -16,8 +10,9 @@
 <table class='highlight'>
 	<thead>
 		<tr>
-			<th>ID</th>	
-			<th>ID Modelo</th>
+			<th>Placas</th>	
+			<th>Modelo</th>
+			<th>Dueño</th>
 			<th>Estado</th>
 			
 			<th>Ediciones</th>
@@ -29,13 +24,14 @@
 		print("
 		<tr>
 		
-			<td class='balck-text'>$row[PK_id_vehiculo]</td>
-			<td class='balck-text'>$row[FK_id_modelo]</td>
+			<td class='balck-text'>$row[placa]</td>
+			<td class='balck-text'>$row[modelos_vehiculo]</td>
+			<td class='balck-text'>$row[nombres_usuario]</td>
 			<td><i class='material-icons'>".($row['estado']?"visibility":"visibility_off")."</i></td>
 		
 			<td>
 				<a href='update.php?id=$row[PK_id_vehiculo]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
-				<a href='delete.php?id=$row[PK_id_vehiculo]' class='red-text'><i class='material-icons'>delete</i></a>
+				
 			</td>
 		</tr>
 		");
