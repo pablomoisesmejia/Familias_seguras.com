@@ -3,6 +3,8 @@ class Producto extends Validator{
 	//Declaración de propiedades
 	private $id = null;
 	private $nombre = null;
+	private $usuario = null;
+	private $placa = null;
 	private $imagen = null;
 	private $categoria = null;
 	private $plan = null;
@@ -31,6 +33,29 @@ class Producto extends Validator{
 	}
 	public function getNombre(){
 		return $this->nombre;
+	}
+	public function setUsuario($value){
+		if($this->validateAlphanumeric($value, 1, 50)){
+			$this->usuario = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getUsuario(){
+		return $this->usuario;
+	}
+
+	public function setPlaca($value){
+		if($this->validateAlphanumeric($value, 1, 10)){
+			$this->placa = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getPlaca(){
+		return $this->placa;
 	}
 
 	public function setPrecio($value){
@@ -120,12 +145,16 @@ class Producto extends Validator{
 	}
 
 	public function getAutos(){
-		$sql = "SELECT 	PK_id_vehiculo, anio, estado, FK_id_modelo from vehiculos ORDER BY anio";
+		$sql = "SELECT v.PK_id_vehiculo, v.anio, v.estado, v.FK_id_modelo, v.placa, u.nombres_usuario, m.modelos_vehiculo from vehiculos v, usuarios_anuncios u, modelos_vehiculos m WHERE v.FK_id_usuario = u.id_usuario AND v.FK_id_modelo = m.PK_id_modelo_vehiculo ORDER BY anio";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
-	public function searchProducto($value){
-		$sql = "SELECT id_producto, imagen_producto, nombre_producto, precio_producto,  estado_producto FROM productos WHERE nombre_producto LIKE ?  ORDER BY nombre_producto";
+	public function searchauto($value){
+		$sql = "SELECT v.PK_id_vehiculo, v.anio, v.estado, v.FK_id_modelo, v.placa, u.nombres_usuario, m.modelos_vehiculo 
+		from vehiculos v, usuarios_anuncios u, modelos_vehiculos m 
+		WHERE 
+		v.placa LIKE ? 
+		ORDER BY anio";
 		$params = array("%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}
@@ -147,25 +176,40 @@ class Producto extends Validator{
 		$params = array($this->nombre,  $this->precio, $this->imagen, $this->estado, $this->categoria, $this->marca);
 		return Database::executeRow($sql, $params);
 	}
-	public function readdirectorio(){
-		$sql = "SELECT nombre_anuncio, imagen_producto, id_Categoria, id_plan, estado_anuncio 
-		FROM anuncio WHERE id_anuncio = ?";
+	public function setModelo($value){
+		if($this->validateId($value)){
+			$this->modelo = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getModelo(){
+		return $this->modelo;
+	}
+	public function getModelos(){
+		$sql = "SELECT PK_id_modelo_vehiculo, modelos_vehiculo FROM modelos_vehiculos";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+	public function readauto(){
+		$sql = "SELECT v.PK_id_vehiculo, v.anio, v.estado, v.FK_id_modelo, v.placa, u.nombres_usuario, m.modelos_vehiculo from vehiculos v, usuarios_anuncios u, modelos_vehiculos m WHERE v.FK_id_usuario = u.id_usuario AND v.FK_id_modelo = m.PK_id_modelo_vehiculo
+		and PK_id_vehiculo = ?";
 		$params = array($this->id);
 		$producto = Database::getRow($sql, $params);
 		if($producto){
-			$this->nombre = $producto['nombre_anuncio'];
-			$this->imagen = $producto['imagen_producto'];
-			$this->categoria = $producto['id_Categoria'];
-			$this->plan = $producto['id_plan'];
-			$this->estado = $producto['estado_anuncio'];
+			$this->nombre = $producto['placa'];
+			$this->usuario = $producto['nombres_usuario'];
+			$this->modelo = $producto['FK_id_modelo'];
+			$this->estado = $producto['estado'];
 			return true;
 		}else{
 			return null;
 		}
 	}
-	public function updatedirectorio(){
-		$sql = "UPDATE anuncio SET nombre_anuncio = ?,  estado_anuncio = ?, id_categoria = ?, id_plan = ?  WHERE id_anuncio = ?";
-		$params = array($this->nombre, $this->estado, $this->categoria, $this->plan, $this->id);
+	public function updateauto(){
+		$sql = "UPDATE vehiculos SET FK_id_modelo = ?,  estado = ?, placa = ? WHERE PK_id_vehiculo = ?";
+		$params = array($this->modelo, $this->estado, $this->placa, $this->id);
 		return Database::executeRow($sql, $params);
 	}
 	public function deleteProducto(){

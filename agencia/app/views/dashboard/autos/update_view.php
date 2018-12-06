@@ -5,19 +5,20 @@
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>person</i>
-          	<input id='nombres' type='text' name='nombres' class='validate' value='<?php print($producto->getNombre()) ?>' required/>
-          	<label for='nombres'>Nombre del direcorio</label>
+          	<input  disabled id='nombres' type='text' name='nombres' class='validate' value='<?php print($producto->getUsuario()) ?>' required/>
+          	<label for='nombres'>Responsable del automovil</label>
+        </div>
+        <div class='input-field col s12 m6'>
+          	<i class='material-icons prefix'>person</i>
+          	<input id='placa' type='text' name='placa' class='validate' value='<?php print($producto->getNombre()) ?>' required/>
+          	<label for='nombres'>Placa del automovil</label>
         </div>
         <div class='input-field col s12 m6'>
             <?php
-            Page::showSelect("Categoría", "categoria", $producto->getCategoria(), $producto->getCategorias());
+            Page::showSelect("Modelo", "modelo", $producto->getModelo(), $producto->getModelos());
             ?>
         </div>
-        <div class='input-field col s12 m6'>
-            <?php
-            Page::showSelect("Plan", "plan", $producto->getPlan(), $producto->getPlanes());
-            ?>
-        </div>
+
         <div class='col s12 m6'>
             <p>
                 <div class='switch'>

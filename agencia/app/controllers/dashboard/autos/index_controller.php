@@ -3,15 +3,15 @@ require_once("../../app/models/autos.class.php");
 try{
 	$producto = new Producto;
 	if(isset($_POST['buscar'])){
-		$_POST = $prodcuto->validateForm($_POST);
-		$data = $producto->searchproducto($_POST['busqueda']);
+		$_POST = $producto->validateForm($_POST);
+		$data = $producto->searchauto($_POST['busqueda']);
 		if($data){
 			$rows = count($data);
 			Page::showMessage(4, "Se encontraron $rows resuldatos", null);
 		}else{
 			Page::showMessage(4, "No se encontraron resultados", null);
 			$producto->setId($_SESSION['id_usuario']);
-			$data = $producto->getDirectorio();
+			$data = $producto->getAutos();
 		}
 	}else{
 		$producto->setId($_SESSION['id_usuario']);

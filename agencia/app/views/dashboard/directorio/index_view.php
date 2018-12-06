@@ -34,7 +34,6 @@
 			<td>$row[email_anuncio]</td>
 			<td>
 				<a href='update.php?id=$row[id_anuncio]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
-				<a href='delete.php?id=$row[id_anuncio]' class='red-text'><i class='material-icons'>delete</i></a>
 			</td>
 		</tr>
 		");
