@@ -17,7 +17,7 @@
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>note_add</i>
-            <input id='nombre' type='number' name='nombre' class='validate' value='' required/>
+            <input id='nombre' type='number' name='nombre' class='validate' value='1' required/>
             <label for='nombre'>Cantidas intervalo fecha</label>
         </div>
         <div class=''>
@@ -25,27 +25,6 @@
           <i style="color:black;"class="material-icons prefix">event</i>
           <input  type="text" class="datepicker" id="fecha_naci_vida" required/>
           <label class="" for="fecha_naci_vida">Fecha de inicio</label>
-        </div>
-      </div>
-      <div class=''>
-        <div class='input-field col s6 '>
-          <i style="color:black;"class="material-icons prefix">event</i>
-          <input  type="text" class="datepicker" id="fecha_naci_vida" required/>
-          <label class="" for="fecha_naci_vida">Fecha de Finalización</label>
-        </div>
-      </div>
-      <div class=''>
-        <div class='input-field col s6 '>
-          <i style="color:black;"class="material-icons prefix"></i>
-          <input  type="text" class="" id="fecha_naci_vida" required/>
-          <label class="" for="fecha_naci_vida">Estado</label>
-        </div>
-      </div>
-      <div class=''>
-        <div class='input-field col s6 '>
-          <i style="color:black;"class="material-icons prefix">mail</i>
-          <input  type="text" class="datepicker" id="fecha_naci_vida" required/>
-          <label class="" for="fecha_naci_vida">Día Especifico</label>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2018 a las 20:02:21
+-- Tiempo de generación: 06-12-2018 a las 03:19:24
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -40,6 +40,13 @@ CREATE TABLE `banners` (
   `estado_banner` int(11) NOT NULL,
   `dia_especifico` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `banners`
+--
+
+INSERT INTO `banners` (`PK_id_banner`, `imagen`, `FK_id_intervalo_fecha`, `cant_intervalo_fecha`, `fecha_inicio`, `hora_inicio`, `estado_banner`, `dia_especifico`) VALUES
+(1, 'la de don larry.jpg', 1, 1, '2018-12-05', '03:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -112,7 +119,7 @@ ALTER TABLE `intervalos_fecha`
 -- AUTO_INCREMENT de la tabla `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `PK_id_banner` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `dias_predeterminados`

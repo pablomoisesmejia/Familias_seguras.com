@@ -151,5 +151,14 @@ class Banners extends Validator
     {
         return $this->dia_especifico;
     }
+
+    public function getBanners()
+    {
+        $sql = 'SELECT b.PK_id_banner, b.imagen, i.intervalos_fecha, b.cant_intervalo_fecha, b.fecha_inicio, b.hora_inicio, b.estado_banner, b.dia_especifico 
+        FROM banners b INNER JOIN intervalos_fecha i ON b.FK_id_intervalo_fecha = i.PK_id_intervalo_fecha 
+        WHERE estado_banner = 0';
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
 }
 ?>

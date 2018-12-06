@@ -16,11 +16,10 @@
 <table class='highlight'>
 	<thead>
 		<tr>
-			<th>IMAGEN</th>
-			<th>NOMBRE</th>
+			<th>Imagen</th>
+			<th>Dias disponibles</th>
 			<th>Fecha de Inicio</th>
-			<th>Fecha de Finalización</th>
-			<th>Estado</th>
+			<th>Acciones</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,14 +27,13 @@
 	foreach($data as $row){
 		print("
 		<tr>
-			<td><img src='../../web/img/categorias/$row[imagen_categoria]' class='materialboxed' width='100' height='100'></td>
-			<td>$row[nombre_categoria]</td>
-			<td>$row[descripcion_categoria]</td>
+			<td><img src='../../web/img/banners/$row[imagen]' class='materialboxed' width='100' height='100'></td>
+			<td>$row[cant_intervalo_fecha] $row[intervalos_fecha]</td>
+			<td>$row[fecha_inicio] $row[hora_inicio]</td>
 			<td>
-				<a href='update.php?id=$row[id_categoria]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
-				<a href='delete.php?id=$row[id_categoria]' class='red-text'><i class='material-icons'>delete</i></a>
+				<a href='update.php?id=$row[PK_id_banner]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
+				<a href='delete.php?id=$row[PK_id_banner]' class='red-text'><i class='material-icons'>delete</i></a>
 			</td>
-			<td>visible</td>
 		</tr>
 		");
 	}
