@@ -11,7 +11,7 @@ class Banners extends Validator
     private $estado_banner = null;
     private $dia_especifico = null;
 
-    private $ruta = "../../web/img/productos/";
+    private $ruta = "../../web/img/banners/";
 
     public function setIdBanner($value)
     {
@@ -162,9 +162,17 @@ class Banners extends Validator
     {
         $sql = 'SELECT b.PK_id_banner, b.imagen, i.intervalos_fecha, b.cant_intervalo_fecha, b.fecha_inicio, b.hora_inicio, b.estado_banner, b.dia_especifico 
         FROM banners b INNER JOIN intervalos_fecha i ON b.FK_id_intervalo_fecha = i.PK_id_intervalo_fecha 
-        WHERE estado_banner = 0';
+        WHERE estado_banner = 1';
         $params = array(null);
         return Database::getRows($sql, $params);
+    }
+
+    public function createBanner()
+    {
+        $sql = 'INSERT INTO banners(imagen, FK_id_intervalo_fecha, cant_intervalo_fecha, fecha_inicio, hora_inicio, estado_banner, dia_especifico)
+        VALUES (?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->imagen, $this->FK_id_intervalo_fecha, $this->cant_intervalo_fecha, $this->fecha_inicio, $this->hora_inicio, 1, $this->dia_especifico);
+        return Database::executeRow($sql, $params);
     }
 }
 ?>
