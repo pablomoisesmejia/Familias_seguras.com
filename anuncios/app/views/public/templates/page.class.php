@@ -2,9 +2,15 @@
 require_once("../app/models/database.class.php");
 require_once("../app/helpers/validator.class.php");
 require_once("../app/helpers/component.class.php");
+require_once("../app/models/banners.class.php");
 class Page extends Component{
 	public static function templateHeader($title){
 		session_start();
+		$banner = new Banners;
+		$banners = $banner->getBanners();
+		$banner_aleatorio = array_rand($banners, 1);
+
+		$imagen = $banners[$banner_aleatorio]['imagen'];
 		ini_set("date.timezone","America/El_Salvador");
 		print("
 			<!DOCTYPE html>
@@ -54,7 +60,7 @@ class Page extends Component{
 		
 				<main>
 				<div class='container'>
-				<div id='banner_top'><img width='100%' height='auto' src='../web/img/banners/ban1.jpg'></div></div>
+				<div id='banner_top'><img width='100%' height='auto' src='../web/img/banners/$imagen'></div></div>
 		");
 		require_once("../app/views/public/sections/modals_view.php");
 	}
