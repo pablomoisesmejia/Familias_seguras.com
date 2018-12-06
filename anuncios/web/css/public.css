@@ -57,12 +57,13 @@ color: #A2A2A2;
 #banner_top{
     width: 100%;
     margin-top: 20px;
+    overflow: hidden;
     max-width: 1250px;
-    height: 200px;
-    background-color: #282828;
+    height: auto;
+    background-color: rgba(40, 40, 40, 0.00);
     color: white;
     text-align: center;
-    padding-top: 90px;
+    
 }
 #panel_cotis{
     z-index: 999;

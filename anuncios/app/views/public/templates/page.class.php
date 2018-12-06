@@ -54,7 +54,7 @@ class Page extends Component{
 		
 				<main>
 				<div class='container'>
-				<div id='banner_top'>Banner 1250 x 200</div></div>
+				<div id='banner_top'><img width='100%' height='auto' src='../web/img/banners/ban1.jpg'></div></div>
 		");
 		require_once("../app/views/public/sections/modals_view.php");
 	}
