@@ -1,5 +1,5 @@
 <?php
-require_once("../../app/models/database.class.php");
+require_once("../app/models/database.class.php");
 require_once("../app/helpers/validator.class.php");
 require_once("../app/helpers/component.class.php");
 class Page extends Component{

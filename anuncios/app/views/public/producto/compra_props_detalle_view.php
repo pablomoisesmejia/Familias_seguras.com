@@ -9,7 +9,7 @@
             <div class='row'>
             <div style=' width:100%' class=''>
                 <div class='col s12 m8 l8' style=''>
-                    <div style='margin-top:8px;' class='row'>
+                    <div style='margin-top:10px;' class='row'>
                         
                         <h5 class='titles'> <a href='vehiculos_v.php' id='btn_lines'>Propiedades Asegurables en Venta   ></a> Vehiculo Seleccionado</h5>
                 
