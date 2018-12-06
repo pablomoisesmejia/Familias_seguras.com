@@ -7,7 +7,7 @@ class Database{
 
     private function connect(){
         $server = "localhost";
-        $database = "fs_tienda";
+        $database = "fs_db";
         $username = "root";
         $password = "";
         try{

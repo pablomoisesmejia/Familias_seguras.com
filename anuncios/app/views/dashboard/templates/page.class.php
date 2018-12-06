@@ -1,5 +1,5 @@
 <?php
-require_once("../../../app/models/database.class.php");
+require_once("../../app/models/database.class.php");
 require_once("../../app/helpers/validator.class.php");
 require_once("../../app/helpers/component.class.php");
 class Page extends Component{
@@ -29,7 +29,7 @@ class Page extends Component{
 							<a href='#' class='button-collapse' data-activates='mobile'><i class='material-icons'>menu</i></a>
 							<ul class='right hide-on-med-and-down'>
 								<li><a href='../producto'><i class='material-icons left'>shop</i>Anuncios</a></li>
-				
+								<li><a href='../anuncio'><i class='material-icons left'>shop</i>Banners</a></li>
 							
 								<li><a href='#' class='dropdown-button' data-activates='dropdown'><i class='material-icons left'>verified_user</i>Cuenta: <b>$_SESSION[alias_usuario]</b></a></li>
 							</ul>
