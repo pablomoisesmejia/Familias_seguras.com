@@ -8,6 +8,7 @@ class Page extends Component{
 		session_start();
 		$banner = new Banners;
 		$banners = $banner->getBanners();
+		$imagen = '';
 		if($banners)
 		{
 		    $banner_aleatorio = array_rand($banners, 1);
