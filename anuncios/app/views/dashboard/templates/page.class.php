@@ -12,7 +12,7 @@ class Page extends Component{
 			<head>
 				<meta charset='utf-8'>
 				<title>Dashboard - $title</title>
-				<link type='text/css' rel='stylesheet' href='../../web/css/materialize.min.css'/>
+				<link type='text/css' rel='stylesheet' href='../../web/css/materialized.min.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/material_icons.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/dashboard.css'/>
 				<script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
@@ -23,9 +23,9 @@ class Page extends Component{
 		if(isset($_SESSION['id_usuario'])){
 			print("
 				<header class='navbar-fixed'>
-					<nav class='brown'>
+					<nav class='purple darken-3'>
 						<div class='nav-wrapper'>
-							<a href='../account/' class='brand-logo'><img src='../../web/img/logo.png' height='60'></a>
+							<a href='../account/' class='brand-logo'><img src='../../web/img/logo.png' height='48'></a>
 							<a href='#' class='button-collapse' data-activates='mobile'><i class='material-icons'>menu</i></a>
 							<ul class='right hide-on-med-and-down'>
 								<li><a href='../producto'><i class='material-icons left'>shop</i>Directorios</a></li>
@@ -80,7 +80,7 @@ class Page extends Component{
 	public static function templateFooter(){
 		print("
 				</main>
-				<footer class='page-footer brown'>
+				<footer class='page-footer purple darken-3'>
 					<div class='container'>
 						<div class='row'>
 							<div class='col s12 m6'>
