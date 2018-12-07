@@ -241,6 +241,91 @@ class Propiedad extends Validator
     public function getCochera()
     {
 		return $this->cochera;
+    }
+    
+    public function setDescripcion($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 1000))
+        {
+			$this->descripcion = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getDescripcion()
+    {
+		return $this->descripcion;
+    }
+    
+    public function setAmenidades($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 1000))
+        {
+			$this->amenidades = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getAmenidades()
+    {
+		return $this->amenidades;
+    }
+    
+    public function setValor($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 25))
+        {
+			$this->valor = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getValor()
+    {
+		return $this->valor;
+    }
+    
+    public function setTelefono($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 15))
+        {
+			$this->telefono = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getTelefono()
+    {
+		return $this->telefono;
+    }
+    
+    public function setDireccion($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 50))
+        {
+			$this->direccion = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getDireccion()
+    {
+		return $this->direccion;
 	}
 }
 
