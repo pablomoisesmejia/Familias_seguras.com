@@ -25,7 +25,7 @@ class Imagen_vehiculo extends Validator
 
     public function setNombreImagen($value)
     {
-        if($this->validateAlphanumeric($value))
+        if($this->validateAlphanumeric($value, 1, 100))
         {
 			$this->nombre_imagen = $value;
 			return true;

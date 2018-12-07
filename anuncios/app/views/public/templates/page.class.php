@@ -8,9 +8,12 @@ class Page extends Component{
 		session_start();
 		$banner = new Banners;
 		$banners = $banner->getBanners();
-		$banner_aleatorio = array_rand($banners, 1);
+		if($banners)
+		{
+		    $banner_aleatorio = array_rand($banners, 1);
 
-		$imagen = $banners[$banner_aleatorio]['imagen'];
+		    $imagen = $banners[$banner_aleatorio]['imagen'];
+		}
 		ini_set("date.timezone","America/El_Salvador");
 		print("
 			<!DOCTYPE html>
