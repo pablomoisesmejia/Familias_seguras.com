@@ -28,7 +28,9 @@ class Page extends Component{
 							<a href='../account/' class='brand-logo'><img src='../../web/img/logo.png' height='60'></a>
 							<a href='#' class='button-collapse' data-activates='mobile'><i class='material-icons'>menu</i></a>
 							<ul class='right hide-on-med-and-down'>
-								<li><a href='../producto'><i class='material-icons left'>shop</i>Anuncios</a></li>
+								<li><a href='../producto'><i class='material-icons left'>shop</i>Directorios</a></li>
+								<li><a href='../producto'><i class='material-icons left'>shop</i>Vehiculos</a></li>
+								<li><a href='../producto'><i class='material-icons left'>shop</i>Propiedades</a></li>
 								<li><a href='../anuncio'><i class='material-icons left'>shop</i>Banners</a></li>
 							
 								<li><a href='#' class='dropdown-button' data-activates='dropdown'><i class='material-icons left'>verified_user</i>Cuenta: <b>$_SESSION[alias_usuario]</b></a></li>
