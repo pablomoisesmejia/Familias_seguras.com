@@ -10,15 +10,17 @@
         </div>
     </form>
     <div class='input-field center-align col s12 m4'>
-        <a href='create.php' class='btn waves-effect indigo tooltipped' data-tooltip='Crear producto'><i class='material-icons'>add_circle</i></a>
+        <a href='create_vehiculo.php' class='btn waves-effect indigo tooltipped' data-tooltip='Crear producto'><i class='material-icons'>add_circle</i></a>
     </div>
 </div>
 <table class='highlight'>
 	<thead>
 		<tr>
-			<th>IMAGEN</th>
-			<th>NOMBRE</th>
-			<th>CATEGORÍA</th>
+			<th>Marca</th>
+			<th>Modelo</th>
+			<th>Año</th>
+			<th>Color</th>
+			<th>Valor</th>
 			<th>ACCIÓN</th>
 		</tr>
 	</thead>
@@ -27,12 +29,14 @@
 	foreach($data as $row){
 		print("
 		<tr>
-		<td><img src='../../web/img/productos/$row[imagen_producto]' alt='No se encontro la imagen' width='100' height='100'></td>
-			<td>$row[nombre_anuncio]</td>
-			<td>$row[nombre_categoria]</td>
+			<td>$row[marca_vehiculo]</td>
+			<td>$row[modelos_vehiculo]</td>
+			<td>$row[anio]</td>
+			<td>$row[color]</td>
+			<td>$row[valor]</td>
 			<td>
-				<a href='update.php?id=$row[id_anuncio]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
-				<a href='delete.php?id=$row[id_anuncio]' class='red-text'><i class='material-icons'>delete</i></a>
+				<a href='update.php?id=$row[PK_id_vehiculo]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
+				<a href='delete.php?id=$row[PK_id_vehiculo]' class='red-text'><i class='material-icons'>delete</i></a>
 			</td>
 		</tr>
 		");

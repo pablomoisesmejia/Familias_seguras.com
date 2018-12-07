@@ -29,7 +29,7 @@ class Page extends Component{
 							<a href='#' class='button-collapse' data-activates='mobile'><i class='material-icons'>menu</i></a>
 							<ul class='right hide-on-med-and-down'>
 								<li><a href='../producto'><i class='material-icons left'>shop</i>Directorios</a></li>
-								<li><a href='../producto'><i class='material-icons left'>shop</i>Vehiculos</a></li>
+								<li><a href='../vehiculos'><i class='material-icons left'>shop</i>Vehiculos</a></li>
 								<li><a href='../producto'><i class='material-icons left'>shop</i>Propiedades</a></li>
 								<li><a href='../anuncio'><i class='material-icons left'>shop</i>Banners</a></li>
 							
@@ -102,6 +102,15 @@ class Page extends Component{
 				<script type='text/javascript' src='../../web/js/jquery-3.2.1.min.js'></script>
 				<script type='text/javascript' src='../../web/js/materialize.min.js'></script>
 				<script type='text/javascript' src='../../web/js/dashboard.js'></script>
+				");
+				$filename = basename($_SERVER['PHP_SELF']);
+				if($filename == 'create_vehiculo.php')
+				{
+					print("
+					<script type='text/javascript' src='../../web/js/js_anuncio_vehiculo.js'></script>
+					");
+				}
+			print("
 			</body>
 			</html>
 		");

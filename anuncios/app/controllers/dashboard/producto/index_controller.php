@@ -3,6 +3,7 @@ require_once("../../app/models/producto.class.php");
 try{
 	$producto = new Producto;
 
+	
 	$data = $producto->getProductos();
 	if($data){
 		require_once("../../app/views/dashboard/producto/index_view.php");

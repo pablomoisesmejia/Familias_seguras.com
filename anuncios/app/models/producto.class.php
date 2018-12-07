@@ -296,7 +296,8 @@ class Producto extends Validator{
 		$params= array($_SESSION['id_usuario']);
 		return Database::getRows($sql, $params);
 	}
-	public function getCategorias(){
+	public function getCategorias()
+	{
 		$sql = "SELECT id_categoria, nombre_categoria FROM categorias";
 		$params = array(null);
 		return Database::getRows($sql, $params);

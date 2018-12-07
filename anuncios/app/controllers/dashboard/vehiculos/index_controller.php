@@ -5,6 +5,7 @@ try
 {
     $vehiculo = new Vehiculos;
 
+    $vehiculo->setIdUsuario($_SESSION['id_usuario']);
     $data = $vehiculo->getVehiculos();
     if($data)
     {
