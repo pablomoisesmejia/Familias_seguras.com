@@ -16,6 +16,24 @@ main {
     
     background-color: red;
 }
+#menu_movv{
+    width: 76vw;
+    font-size: 1.2em;
+    padding-left: 20px;
+    height: 56px;
+    padding-top: 15px;
+    color: white;
+    
+    border-bottom: 1px solid white;
+}
+#blockbds{
+    display:block;
+}
+#blockbdmall{
+    display:none;
+    color:white;
+}
+
 .btn_hdd{
 color: #FFFFFF;
 margin-top: 20px;
@@ -24,6 +42,15 @@ padding-left: 10px;
 padding-right: 0px;
 margin-top: 20px;
 height: 20px;
+}
+#grays{
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    transition: 0.3s;
+}
+#grays:hover{
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
 }
 .icoreds
 {
@@ -64,15 +91,6 @@ color: #A2A2A2;
     color: white;
     text-align: center;
     
-}
-#grays{
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
-    transition: 0.3s;
-}
-#grays:hover{
-    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
 }
 #panel_cotis{
     z-index: 999;
@@ -608,6 +626,14 @@ font-size: 1.2em;
     #img_cont_detai{
         height: 350px;
         }
+        
+        #blockbds{
+    display:none;
+    }
+      #blockbdmall{
+    display:block;
+    
+    }
  }
 
 

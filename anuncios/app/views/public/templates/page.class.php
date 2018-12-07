@@ -82,7 +82,7 @@ class Page extends Component{
 							<font style='float-left' face='arial' size='2'>Todos los derechos reservados ©Familias Seguras</font>
 								
 							</div>
-							<div style='float:right' class='right-align'>
+							<div class='center'>
 								<img width='270px;' class='responsive-img' src='../web/img/logo_gaos.png'>
 							</div>
 						</div>

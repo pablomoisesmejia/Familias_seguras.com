@@ -44,7 +44,8 @@
 
                             <p class='txt_primas'>Prima Seguro de Incendios $225.000 / Mes</p>
                         </a>
-                   
+                        <p onclick='' class='botom_img_c_p' >Enviar Mensaje al Vendedor</p>
+                        <p onclick='' class='botom_img_c_p' >Programar Cita para Verlo</p>
                 </div>
                 
             </div>
