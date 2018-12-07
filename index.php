@@ -10,7 +10,7 @@
     <script src="web/script/jquery-3.2.1.min.js"></script>
     <script>
     $(document).ready(function(){
-        location.href = 'anuncios/public/index.php';
+        location.href = 'anuncios/public/cotiza_seguro.php';
     });
     </script>
 </body>
