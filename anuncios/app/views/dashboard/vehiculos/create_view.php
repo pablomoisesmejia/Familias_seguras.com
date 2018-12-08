@@ -1,5 +1,15 @@
 <form method='post' enctype='multipart/form-data'>
     <div class='row'>
+        <div class='file-field input-field col s12 m6'>
+            <div class='btn'>
+                <span><i class='material-icons'>image</i></span>
+                <input type='file' name='archivo' id='vehiculos' multiple required/>
+            </div>
+            <div class='file-path-wrapper'>
+                <input type='text' class='file-path validate' placeholder='Seleccione una imagen'/>
+            </div>
+        </div>
+    
         <div class="input-field col s12 l6" id="marca">
             <i style="color:black;"class="material-icons prefix">directions_car</i>
             <select id="marca_vehiculo">
@@ -59,17 +69,24 @@
         </div>
 
         <div class='input-field col s12 l6'>
+            <i style="color:black;"class="material-icons prefix">directions_car</i>
+            <input id="placa" type="text" class="validate" required/>
+            <label class="" for="placa">Número de placa(Esto no se mostrará)</label>
+        </div>
+
+        <div class='input-field col s12 l6'>
             <i style="color:black;"class="material-icons prefix">account_circle</i>
-            <input id="direccion" type="text" class="validate" required/>
-            <label class="" for="direccion">Dirección</label>
+            <input id="whatsapp" type="text" class="validate" required/>
+            <label class="" for="whatsapp">whatsapp</label>
         </div>
 
         <div class='input-field col s12 l6'>
             <i  style="color:black;"class="material-icons prefix">phone</i>
             <input id="telefono" type="number" class="validate" required/>
-            <label class="" for="telefono">Teléfono</label>      
+            <label class="" for="telefono">Teléfono ó celular</label>      
         </div>
-
+    </div>
+    <div class='row'>
         <div class='center'>
             <h5>Seleccione las caracteristicas de su vehículo</h5>
         </div>
@@ -152,4 +169,8 @@
             <label for="dvd_trasero">DVD trasero</label>
         </div>
     </div><!--div del row-->
+    <div class='row center-align'>
+        <a href='index.php' class='btn waves-effect grey tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>
+        <a id='crear' class='btn waves-effect blue tooltipped' data-tooltip='Crear'><i class='material-icons'>save</i></a>
+    </div>
 </form>

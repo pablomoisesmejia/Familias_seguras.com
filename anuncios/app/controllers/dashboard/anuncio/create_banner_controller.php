@@ -35,7 +35,6 @@ try
                                 }
                                 else
                                 {
-                                    echo Database::getException();
                                     throw new Exception(Database::getException());
                                 }
                             }
