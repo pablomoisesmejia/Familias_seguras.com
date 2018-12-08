@@ -86,7 +86,7 @@
                         <h5 class='titles'><a href='index.php' id='btn_lines'>Directorio ></a> <a href='productos.php?id=7' id='btn_lines'>".$producto->getNombre_categoria()." ></a> ".$producto->getNombre()."</h5>
     
                         <div id='img_cont'>
-                            <img width='100%' height='300' src='../web/img/productos/".$producto->getImagen().".jpg'>
+                        <img width='100%' height='300' src='../web/img/productos/".$producto->getImagen()."'>
                         </div>
                         
                         <p class='botom_img_static' >".$producto->getNombre()."");
@@ -207,9 +207,11 @@
                 </div>
     
     
-                <div class='col s12 m12 l3'>
-                       <center> <div id='banner_side'>Banner 250 x 250</div></center>
-                       <center> <div id='banner_side'>Banner 250 x 250</div></center>
+                <div class='col s12 m12 l3' style='padding-top:20px;'>
+                    
+                <div class='col s6 l12'><center><img id='banerlat' width='90%' height='auto' src='../web/img/banners/sq_banner.jpg'></center></div>
+                <div class='col s6 l12'><center><img id='banerlat' width='90%' height='auto' src='../web/img/banners/sq_banner.jpg'></center></div>
+
                 </div>
             </div>
     

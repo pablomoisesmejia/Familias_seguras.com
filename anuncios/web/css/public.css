@@ -466,11 +466,15 @@ height: auto;
     
     
 }
+
+#banerlat{
+max-width: 250px;
+}
 #banner_side{
-    width: 250px;
+    width: 100%;
     margin-top: 20px;
     
-    height: 250px;
+    height: auto;
     background-color: #282828;
     color: white;
     text-align: center;
@@ -490,7 +494,7 @@ color: #A2A2A2;
 }
 
 #previnfo_vehi{
-    background-color: #9c27b0;
+    background-color: #752678;
     margin: 0;
     padding: 0;
     padding-left: 18px;

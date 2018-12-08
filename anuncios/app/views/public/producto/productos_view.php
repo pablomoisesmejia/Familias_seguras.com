@@ -21,6 +21,8 @@ foreach($productos as $producto){
             </div>
             </a>
         </div>
+
+        
     ");
 }
 ?>

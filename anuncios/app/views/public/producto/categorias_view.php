@@ -9,7 +9,7 @@
             <div class='col s12 m12 l4'>
             <a href='productos.php?id=$categoria[id_categoria]'>
                 <div class='card hoverable'>
-                    <div class='card-image waves-effect waves-block waves-light'>
+                    <div id='grays' class='card-image waves-effect waves-block waves-light'>
                     <img class='activator' src='../web/img/categorias/$categoria[imagen].jpg'>
                     </div>
                     <div class='card-content purple darken-3'>
