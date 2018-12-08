@@ -440,6 +440,7 @@ $(document).ready(function(){
         
         imagenes = $('#vehiculos')[0].files;
         i = 0;
+        j = 0;
         for(i; i<imagenes.length; i++)
         {
             nombre = imagenes[i].name;
@@ -447,7 +448,8 @@ $(document).ready(function(){
 
             if(tipo == 'image/jpeg' || tipo == 'image/jpg')
             {
-                imgVehiculo.append('archivo['+i+']', imagenes[i]);
+                imgVehiculo.append('archivo['+j+']', imagenes[i]);
+                j++;
             }
         }
         imgVehiculo.append('id_vehiculo', id_vehiculo);
