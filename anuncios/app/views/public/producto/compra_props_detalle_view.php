@@ -134,13 +134,9 @@
         <!-- DIV DERECHO -->
         <div class='col s12 m12 l3'>
         <div class='col s12 m12 l12' style='overflow:hidden'>
-                       <center> <div id='banner_side'>Banner 250 x 250</div></center>
-                       <center> <div id='banner_side'>Banner 250 x 250</div></center>
+        <div class='col s6 l12'><center><img id='banerlat' width='90%' height='auto' src='../web/img/banners/sq_banner.jpg'></center></div>
+        <div class='col s6 l12'><center><img id='banerlat' width='90%' height='auto' src='../web/img/banners/sq_banner.jpg'></center></div>
 
-                       <p class='boldy_txt'>Contacta al Anunciante</p>
-                       <p class='lighty_txt'>Zeus Real State</p>
-                       <p class='lighty_txt'>Calle El Mirador y 89 Av. Nte</p>
-                       <p class='lighty_txt'>Tel +(503) 2222-2222</p>
                 </div>
         </div>
   

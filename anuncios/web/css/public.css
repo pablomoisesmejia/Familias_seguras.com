@@ -399,12 +399,14 @@ color: #A2A2A2;
     
 }
 #btn_lines{
-    color: #663F67;
+    color: #595959;
     cursor: pointer;
     transition: 0.3s;
     padding-top: 4px;
     padding-bottom: 4px;
     padding-right: 10px;
+    font-family: calibrily;
+    font-weight: 400;
 }
 #btn_lines:hover{
     color: #FFFFFF;
@@ -416,7 +418,7 @@ height: auto;
 }
 
 .titles{
-    color: rgba(0, 0, 0, 0.63);
+    color: rgba(142, 41, 122, 0.76);
     font-weight: bold;
     font-size: 0.9em;
     

@@ -10,9 +10,7 @@
                 <div class='card hoverable'>
                     <div class='card-image waves-effect waves-block waves-light'>
                     <img class='activator' src='../web/img/vehiculos/sedan_bmw.jpg'>
-                    <a class='ribbon_streched_prev' >
-                     
-                        </a>
+                 
                     </div>
 
                     <div class='purple darken-3'>
