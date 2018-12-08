@@ -58,7 +58,7 @@ class Page extends Component{
 		}else{
 			print("
 				<header class='navbar-fixed'>
-					<nav class='brown'>
+					<nav class='purple'>
 						<div class='nav-wrapper'>
 							<a href='login.php' class='brand-logo'><i class='material-icons'>dashboard</i></a>
 						</div>

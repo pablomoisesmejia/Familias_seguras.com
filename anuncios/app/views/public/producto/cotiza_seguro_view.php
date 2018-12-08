@@ -1,5 +1,5 @@
 <div class='container'>
-    <h5 id='fontyce' style='font-size:1.1em;' class='center'>Cotiza tu seguro con hasta 5 compañias y recibe un cuadro comparativo en menos de <span style='font-weight:bold; font-size:1.2em; padding-left:6px;'>48 horas<span></h5>
+    <h5 id='fontyce' style='font-size:1em;' class='center'>Cotiza tu seguro con hasta 5 compañias y recibe un cuadro comparativo en menos de <span style='font-weight:bold; font-size:1.2em; padding-left:6px;'>48 horas<span></h5>
     <div class='row'>
 
     
