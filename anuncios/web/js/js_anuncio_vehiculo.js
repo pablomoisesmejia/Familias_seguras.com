@@ -7,6 +7,8 @@ var max = date.getFullYear()//Validacion de fecha maxima del datepicker
 
 $(document).ready(function(){
 
+    $('#motor').mask('0.0');
+    $('#valor_vehiculo').mask('#,#00.00', {reverse: true});
     var marca_vehiculo = '';
     var modelo_vehiculo = '';
     var anio_vehiculo = '';
