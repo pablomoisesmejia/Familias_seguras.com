@@ -326,7 +326,9 @@ class Propiedad extends Validator
     public function getDireccion()
     {
 		return $this->direccion;
-	}
+    }
+    
+    
 }
 
 ?>
