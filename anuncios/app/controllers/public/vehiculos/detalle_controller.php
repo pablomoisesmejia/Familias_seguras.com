@@ -4,16 +4,23 @@ require_once("../app/models/vehiculos.class.php");
 try
 {
     $vehiculo = new Vehiculos;
-    $vehiculo->setIdVehiculo($_GET['id']);
-    $data = $vehiculo->getVehiculoDetalle();
-    if($data)
+    if(isset($_GET['id']))
     {
-        require_once("../app/views/public/producto/compra_vehiculos_detalle_view.php");
+        $vehiculo->setIdVehiculo($_GET['id']);
+        $data = $vehiculo->getVehiculoDetalle();
+        if($data)
+        {
+            require_once("../app/views/public/producto/compra_vehiculos_detalle_view.php");
+        }
+        else
+        {
+            Page::showMessage(4, "No se encontró información del vehículo", 'vehiculos_v.php');
+        }
     }
     else
     {
-		Page::showMessage(4, "No tienes vehiculos disponibles", null);
-	}
+        Page::showMessage(4, "Seleccione un vehículo", 'vehiculos_v.php');
+    }
 }
 catch(Exception $error)
 {

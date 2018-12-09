@@ -338,6 +338,32 @@ class Propiedad extends Validator
         return Database::getRows($sql, $params);
     }
 
+    public function getImgPropiedad()
+    {
+        $sql = 'SELECT nombre_imagen_prop FROM imagenes_propiedad WHERE FK_id_propiedad = ?';
+        $params = array($this->PK_id_propiedad);
+        return Database::getRow($sql, $params);
+    }
+
+    public function getPropiedadDetalle()
+    {
+        $sql = 'SELECT p.PK_id_propiedad, p.FK_id_usuario, tp.tipo_propiedad, t.transaccion, p.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.amenidades, p.valor, p.telefono, p.whatsapp 
+        FROM propiedades p INNER JOIN tipo_propiedad tp ON p.FK_id_tipo_propiedad = tp.PK_id_tipo_propiedad 
+        INNER JOIN transaccion t ON p.FK_id_transaccion = t.PK_id_transaccion 
+        WHERE p.PK_id_propiedad = ? ';
+        $params = array($this->PK_id_propiedad);
+        return Database::getRow($sql, $params);
+    }
+
+    public function getPropiedadesTransaccion()
+    {
+        $sql = 'SELECT PK_id_propiedad, colonia, municipio, departamento, niveles, habitaciones, baños, cochera, valor, telefono, whatsapp 
+        FROM propiedades 
+        WHERE FK_id_transaccion = ?';
+        $params = array($this->FK_id_transaccion);
+        return Database::getRows($sql, $params);
+    }
+
     public function getTipoPropiedad()
     {
         $sql = 'SELECT PK_id_tipo_propiedad, tipo_propiedad FROM tipo_propiedad';
