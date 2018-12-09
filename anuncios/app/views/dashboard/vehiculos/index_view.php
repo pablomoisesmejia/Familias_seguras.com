@@ -13,7 +13,7 @@
         <a href='create_vehiculo.php' class='btn waves-effect indigo tooltipped' data-tooltip='Crear producto'><i class='material-icons'>add_circle</i></a>
     </div>
 </div>
-<table class='highlight'>
+<table class='highlight responsive-table'>
 	<thead>
 		<tr>
 			<th>Marca</th>

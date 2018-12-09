@@ -6,6 +6,8 @@ class Imagen_propiedad extends Validator
     private $nombre_imagen_prop = null;
     private $FK_id_propiedad = null;
 
+    private $ruta = '../../../../web/img/propiedades/';
+
     public function setIdImagenPropiedad($value)
     {
         if($this->validateId($value))
@@ -34,7 +36,13 @@ class Imagen_propiedad extends Validator
         {
 			return false;
 		}
-	}
+    }
+
+    public function getRuta()
+    {
+        return $this->ruta;
+    }
+    
     public function getNombreImagenProp()
     {
 		return $this->nombre_imagen_prop;
@@ -55,6 +63,13 @@ class Imagen_propiedad extends Validator
     public function getIPropiedad()
     {
 		return $this->FK_id_propiedad;
+    }
+
+    public function createImgPropiedad()
+    {
+        $sql = 'INSERT INTO imagenes_propiedad(nombre_imagen_prop, FK_id_propiedad) VALUES (?, ?)';
+        $params = array($this->nombre_imagen_prop, $this->FK_id_propiedad);
+        return Database::executeRow($sql, $params);
     }
 }
 

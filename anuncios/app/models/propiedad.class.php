@@ -19,7 +19,7 @@ class Propiedad extends Validator
     private $amenidades = null;
     private $valor = null;
     private $telefono = null;
-    private $direccion = null;
+    private $whatsapp = null;
 
 
     public function setIdPropiedad($value)
@@ -311,11 +311,11 @@ class Propiedad extends Validator
 		return $this->telefono;
     }
     
-    public function setDireccion($value)
+    public function setWhatsapp($value)
     {
-        if($this->validateAlphanumeric($value, 1, 50))
+        if($this->validateAlphanumeric($value, 1, 15))
         {
-			$this->direccion = $value;
+			$this->whatsapp = $value;
 			return true;
         }
         else
@@ -323,12 +323,46 @@ class Propiedad extends Validator
 			return false;
 		}
 	}
-    public function getDireccion()
+    public function getWhatsapp()
     {
-		return $this->direccion;
+		return $this->whatsapp;
     }
     
-    
+    public function getPropiedades()
+    {
+        $sql = 'SELECT p.PK_id_propiedad, tp.tipo_propiedad, p.FK_id_usuario, t.transaccion, p.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.amenidades, p.valor, p.telefono
+        FROM propiedades p INNER JOIN tipo_propiedad tp ON p.FK_id_tipo_propiedad = tp.PK_id_tipo_propiedad 
+        INNER JOIN transaccion t ON p.FK_id_transaccion = t.PK_id_transaccion 
+        WHERE FK_id_usuario = ?';
+        $params = array($this->FK_id_usuario);
+        return Database::getRows($sql, $params);
+    }
+
+    public function getTipoPropiedad()
+    {
+        $sql = 'SELECT PK_id_tipo_propiedad, tipo_propiedad FROM tipo_propiedad';
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
+
+    public function getTransaccion()
+    {
+        $sql = 'SELECT PK_id_transaccion, transaccion FROM transaccion';
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
+
+    public function createPropiedad()
+    {
+        $sql = 'INSERT INTO propiedades(FK_id_tipo_propiedad, FK_id_usuario, FK_id_transaccion, colonia, municipio, departamento, terreno, construccion, niveles, habitaciones, baños, cochera, descripcion, amenidades, valor, telefono, whatsapp) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->FK_id_tipo_propiedad, $this->FK_id_usuario, $this->FK_id_transaccion, $this->colonia, $this->municipio, $this->departamento, $this->terreno, $this->construccion, $this->niveles, $this->habitaciones, $this->baños, $this->cochera, $this->descripcion, $this->amenidades, $this->valor, $this->telefono, $this->whatsapp);
+        $propiedad = Database::executeRow($sql, $params);
+        if($propiedad)
+        {
+            $this->PK_id_propiedad = Database::getLastRowId();
+        }
+    }
 }
 
 ?>

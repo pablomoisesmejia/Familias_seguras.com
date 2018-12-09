@@ -294,7 +294,7 @@ $(document).ready(function(){
 
         if($('#vehiculos').val() != 0)
         {
-            /*if(marca_vehiculo != null)
+            if(marca_vehiculo != null)
             {
                 if(modelo_vehiculo != null)
                 {
@@ -315,9 +315,9 @@ $(document).ready(function(){
                                                 if(whatsapp != '')
                                                 {
                                                     if(telefono != '')
-                                                    {*/
+                                                    {
                                                         createVehiculo();
-                                                    /*}
+                                                    }
                                                     else
                                                     {
                                                         AlertaSweet(3, 'Ingrese su número de telefono o celular');
@@ -371,7 +371,7 @@ $(document).ready(function(){
             else
             {
                 AlertaSweet(3, 'Seleccione la marca de su vehículo');
-            }*/
+            }
         }
         else
         {

@@ -110,6 +110,12 @@ class Page extends Component{
 					<script type='text/javascript' src='../../web/js/js_anuncio_vehiculo.js'></script>
 					");
 				}
+				if($filename == 'create_propiedad.php')
+				{
+					print("
+					<script type='text/javascript' src='../../web/js/js_anuncio_propiedad.js'></script>
+					");
+				}
 			print("
 			</body>
 			</html>

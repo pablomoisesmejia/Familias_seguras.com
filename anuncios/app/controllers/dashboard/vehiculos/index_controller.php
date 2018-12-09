@@ -13,7 +13,7 @@ try
     }
     else
     {
-		Page::showMessage(4, "No tienes vehiculos disponibles", "create.php");
+		Page::showMessage(4, "No tienes vehiculos disponibles", "create_vehiculo.php");
 	}
 }
 catch(Exception $error)
