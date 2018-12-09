@@ -369,8 +369,8 @@ color: #A2A2A2;
 #ribbon{
     position: relative;
     width: 180px;
-    top: -140px;
-    left: -100px;
+    top: -160px;
+    left: -45px;
     
     
 }
@@ -415,6 +415,26 @@ color: #A2A2A2;
 }
 #img_cont_detai{
 height: auto;
+}
+#log_fot{
+    text-align: right;
+    
+}
+#foottt{
+    text-align: right;
+}
+#allrights{
+    
+    margin: 0;
+    padding: 0;
+    line-height: 0px;
+    color: rgba(255, 255, 255, 0.65);
+    
+    font-size: 0.8em;
+    width: 100%;
+    
+    text-align: center;
+    padding-bottom: 20px;
 }
 
 .titles{
@@ -651,6 +671,9 @@ font-size: 1.2em;
       #blockbdmall{
     display:block;
     
+    }
+    #foottt{
+        text-align: center;
     }
  }
 

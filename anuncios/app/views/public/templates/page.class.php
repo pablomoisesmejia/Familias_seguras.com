@@ -76,19 +76,21 @@ class Page extends Component{
 				</main>
 				<footer class='page-footer purple'>
 					
-						<div style='padding-left:5%; padding-right:5%;'>
+						<div class='container'>
 							<div style='float:left; margin-top:30px;' class='left-align'>
 							
 							<a style='float:left' class='btn_hdd2' href='../dashboard/account/login.php'>Nosotros</a>
 							<a style='float:left' class='btn_hdd2' href='../dashboard/account/register.php'>Servicios</a>
 							<a style='float:left' class='btn_hdd2' href='../dashboard/account/register.php'>Anunciate</a>
 							<a style='float:left' class='btn_hdd2' href='../dashboard/account/register.php'>Contactanos</a>
-							<font style='float-left' face='arial' size='2'>Todos los derechos reservados ©Familias Seguras</font>
+							
 								
 							</div>
-							<div class='center'>
-								<img width='270px;' class='responsive-img' src='../web/img/logo_gaos.png'>
-							</div>
+							<div id='foottt' class='col s12 m6'>
+								<img id='log_fot' width='270px;' class='responsive-img' src='../web/img/logo_gaos.png'>
+								
+								</div>
+							<div class='row'>	<p id='allrights' >Todos los derechos reservados ©Familias Seguras</p></div>
 						</div>
 					
 				</footer>
