@@ -316,6 +316,7 @@ $(document).ready(function(){
                                                 {
                                                     if(telefono != '')
                                                     {
+                                                        $('#crear').attr("disabled", "disabled");
                                                         createVehiculo();
                                                     }
                                                     else
@@ -428,6 +429,7 @@ $(document).ready(function(){
                 }
                 else
                 {
+                    $('#crear').removeAttr("disabled");
                     AlertaSweet(3, 'Ocurrio un problema al guardar el vehiculo')
                 }
             }

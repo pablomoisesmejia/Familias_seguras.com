@@ -149,6 +149,7 @@ $(document).ready(function(){
                                                                     {
                                                                         if(amenidades != '')
                                                                         {
+                                                                            $('#crear').attr("disabled", "disabled");
                                                                             creeatePropiedad();
                                                                         }
                                                                         else
@@ -269,6 +270,11 @@ $(document).ready(function(){
                 {
                     id_propiedad = propiedad[0][1];
                     createImgPropiedad()
+                }
+                else
+                {
+                    $('#crear').removeAttr("disabled");
+                    AlertaSweet(3, 'Ocurrio un problema al guardar su propiedad');
                 }
             }
         });
