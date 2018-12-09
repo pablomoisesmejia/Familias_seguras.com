@@ -6,30 +6,60 @@
             <!-- codigo de card -->
             
             <div class='col s12 m12 l4'>
-            <a href='vehiculos_detalle_v.php'>
-                <div class='card hoverable'>
-                    <div class='card-image waves-effect waves-block waves-light'>
-                    <img class='activator' src='../web/img/vehiculos/sedan_bmw.jpg'>
-                 
-                    </div>
+                <a href='vehiculos_detalle_v.php'>
+                    <div class='card hoverable'>
+                        <div class='card-image waves-effect waves-block waves-light'>
+                        <img class='activator' src='../web/img/vehiculos/sedan_bmw.jpg'>
+                    
+                        </div>
 
-                    <div class='purple darken-3'>
-                        <a style='color:white; height:80px;' href='vehiculos_detalle_v.php'>
-                            <div class='col s7' id='previnfo_vehi'>
-                                <div class='row' style='padding:0; margin:0;  font-size:1em'>AV-2018110_02</div>
-                                <div class='row' style='padding:0; margin:0; font-size:0.8em'>BMW Sedan x3-2017</div>
-                            </div>
-                            <div class=''>
-                                <div class='row' style='text-align:center; font-size:1.2em; padding-top:12px;'>$13,000.00</div>
-                            </div>
-                        </a>
+                        <div class='purple darken-3'>
+                            <a style='color:white; height:80px;' href='vehiculos_detalle_v.php'>
+                                <div class='col s7' id='previnfo_vehi'>
+                                    <div class='row' style='padding:0; margin:0;  font-size:1em'>AV-2018110_02</div>
+                                    <div class='row' style='padding:0; margin:0; font-size:0.8em'>BMW Sedan x3-2017</div>
+                                </div>
+                                <div class=''>
+                                    <div class='row' style='text-align:center; font-size:1.2em; padding-top:12px;'>$13,000.00</div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
                 </a>
             </div>
             <!-- fin code -->
 
-   
+        <?php
+        foreach($data as $row)
+        {
+            $vehiculo->setIdVehiculo($row['PK_id_vehiculo']);
+            $imgVehiculo = $vehiculo->getImgVehiculos();
+            print("
+            <div class='col s12 m12 l4'>
+                <a href='vehiculos_detalle_v.php?id=$row[PK_id_vehiculo]'>
+                    <div class='card hoverable'>
+                        <div class='card-image waves-effect waves-block waves-light'>
+                        <img class='activator' src='../web/img/vehiculos/$imgVehiculo[0]'>
+                    
+                        </div>
+
+                        <div class='purple darken-3'>
+                            <a style='color:white; height:80px;' href='vehiculos_detalle_v.php?id=$row[PK_id_vehiculo]'>
+                                <div class='col s7' id='previnfo_vehi'>
+                                    <div class='row' style='padding:0; margin:0;  font-size:1em'>$row[modelos_vehiculo]</div>
+                                    <div class='row' style='padding:0; margin:0; font-size:0.8em'>$row[marca_vehiculo]-$row[anio]</div>
+                                </div>
+                                <div class=''>
+                                    <div class='row' style='text-align:center; font-size:1.2em; padding-top:12px;'>$$row[valor]</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            ");
+        }
+        ?>
    
 
 
