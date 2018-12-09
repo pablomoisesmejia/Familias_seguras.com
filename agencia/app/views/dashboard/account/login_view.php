@@ -1,7 +1,9 @@
+
+<img id='logo_init' src="../../web/img/logo_only.png">
 <div id='container2'>
 <div class='centerlo' style='margin-bottom:26px;'>
 	<p id='login_pritxt'>Iniciar Sesión</p>
-	<p id='login_subtxt'>Bienvenido a Familias Seguras</p>
+	<p id='login_subtxt'>Bienvenid@ a Familias Seguras</p>
 </div>
 <form method='post' autocomplete='off'>
 	<div class='row' style='margin:0; padding:0;'>

@@ -18,6 +18,7 @@ class Page extends Component{
 				<link type='text/css' rel='stylesheet' href='../../web/css/material_icons.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/dashboard.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/sabeloflat.css'/>
+				<link type='text/css' rel='stylesheet' href='../../web/css/public.css'/>
 				<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
 				<script type='text/javascript' src='../../web/js/Chart.bundle.js'></script>
 				<script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
@@ -51,12 +52,12 @@ class Page extends Component{
 						
 							<ul>
 
-							<li onmouseover='bal_over=1; show_info_baldosa();'><a class='baldosa' href='../directorio'>		<p class='plac_let'>D</p>Directorio</a></li>
+							
 							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../modelo'>		<p class='plac_let'>MA</p>Modelos de autos</a></li>
 							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>MA</p>Marcas de autos</a></li>
-							<li onmouseover='bal_over=4; show_info_baldosa();'><a class='baldosa' href='../autos'>		<p class='plac_let'>AV</p>Autos en venta</a></li>
-							<li onmouseover='bal_over=5; show_info_baldosa();'><a class='baldosa' href='../alquiler'>	<p class='plac_let'>PA</p>Propiedades en alquiler</a></li>
-							<li onmouseover='bal_over=6; show_info_baldosa();'><a class='baldosa' href='../venta'>	<p class='plac_let'>PV</p>Propiedades en venta</a></li>
+							
+							
+							
 							</ul>
 z
 							<div id='sepline'> </div>
@@ -88,7 +89,8 @@ z
 						<ul style='color:black' id='slide-out' class='side-nav'>
 							
 						<div class='row' id='SIDE_contenedor_user'>
-							<div id='head_sides' ><a style='color:black'>Volver</a></div>
+							<div id='head_sides' >
+							<img id='header_logs'  src='../../web/img/logo.png'></div>
 							<div id='SIDE_cu_1' class='col s7 m7 l7'>
 								<p class='negrita' id='nombre_user_ingresed'>$_SESSION[nombres_usuario]</p>
 								<p class='negrita' id='tipo_user_ingresed'>Administrador</p>
@@ -141,7 +143,13 @@ z
 								</div>
 								
 							</div>													
-							
+							<div class='row'>
+							<p class='negrita' id='nombre_user_ingresed'>Menú</p>
+							<a href='../directorio'><p style='border-top: 1px solid rgba(128, 128, 128, 0.23);' class='btn_menu_lat'>Directorio</p></a>
+							<a href='../autos'><p class='btn_menu_lat'>Vehiculos</p></a>
+							<a href='../venta'><p class='btn_menu_lat'>Propiedades en Venta</p></a>
+							<a href='../alquiler'><p class='btn_menu_lat'>Propiedades en Alquiler</p></a>
+							<div>
 						
 						</div>
 						</ul>

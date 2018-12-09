@@ -11,6 +11,12 @@ main {
 .parallax-container {
     height: 300px;
 }
+#header_logs{
+    filter: brightness(0.3);
+    position: absolute;
+    width: 140px;
+    left: 114px;
+      }
 
 
 *{
@@ -71,3 +77,4 @@ input[type="radio"] {
     color: orange;
   }
   
+
