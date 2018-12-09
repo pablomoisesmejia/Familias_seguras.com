@@ -1,11 +1,12 @@
 <?php
+session_start();
 require_once("../../app/models/database.class.php");
 require_once("../../app/helpers/validator.class.php");
 require_once("../../app/helpers/component.class.php");
 
 class Page extends Component{
 	public static function templateHeader($title){
-		session_start();
+		//
 		ini_set("date.timezone","America/El_Salvador");
 		print("
 			<!DOCTYPE html>
@@ -40,7 +41,6 @@ class Page extends Component{
 		}
 		$_SESSION['tiempo']=time(); //Si hay actividad seteamos el valor al tiempo actual
 
-		
 		if(isset($_SESSION['id_usuario'])){
 			print("
 				<div id='menu_overlay' style='display:none;'>overlay</div>

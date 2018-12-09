@@ -10,6 +10,7 @@ try{
 					if($object->setClave($_POST['clave'])){
 						if($object->checkPassword()){
 							$_SESSION['id_usuario'] = $object->getId();
+							echo $object->getId();
 							$_SESSION['nombres_usuario'] = $object->getAlias();
 							$_SESSION['nombres_usuario'] = $object->getNombres();
 							$_SESSION['apellidos_usuario'] = $object->getApellidos();

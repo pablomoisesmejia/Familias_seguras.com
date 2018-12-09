@@ -5,7 +5,7 @@ class Database{
     private static $id = null;
     private static $error = null;
 
-    private function connect(){
+    private static function connect(){
         $server = "localhost";
         $database = "fs_db";
         $username = "fs_db";
@@ -17,7 +17,7 @@ class Database{
         }
     }
 
-    private function desconnect(){
+    private static function desconnect(){
         self::$error = self::$statement->errorInfo();
         self::$connection = null;
     }
