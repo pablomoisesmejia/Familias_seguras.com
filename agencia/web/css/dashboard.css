@@ -9,7 +9,7 @@ body {
     font-size: 3.2em;
     margin-top: 20px;
     padding-top: 20px;
-    line-height: 22px;
+    line-height: 32px;
     
 }
 main {
@@ -138,6 +138,22 @@ td{
   -webkit-border-radius: 47px 47px 47px 47px;
   border: 6px solid rgb(216, 216, 216);
 }
+main{
+  min-height: 600px;
+  height: 100vh;
+  padding-right: 360px;
+  overflow-y: scroll;
+}
+.side-dashav{
+  height: 106vh;
+  width: 360px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-height: 600px;
+  overflow: hidden;
+  background-color: white;
+}
 #clock_verg{
   
   border-bottom: 1px solid rgb(99, 99, 99);
@@ -196,7 +212,7 @@ td{
 
 
   .navpers{
-      background-color: rgba(135, 199, 82, 0);
+      background-color: rgb(216, 216, 216);
       border: none;
       box-shadow: 0px 0px transparent;
   }
@@ -229,6 +245,26 @@ td{
     
     transition: opacity 0.5s;
   }
+
+  /* width */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
   
   #SIDE_cu_1{
   
@@ -287,7 +323,7 @@ td{
     font-size: 0.95em;
     text-align: right;
     margin-right: 12px;
-    color: rgb(44, 84, 160);
+    color: rgb(180, 20, 114);
     line-height: 8px;
     margin-bottom: 20px;
   }
@@ -298,7 +334,7 @@ td{
   padding: 0;
   font-size: 0.95em;
   text-align: left;
-  color: rgb(44, 84, 160);
+  color: rgb(180, 20, 114);
   line-height: 12px;
   margin-bottom: 20px;
   
@@ -484,7 +520,15 @@ td{
     border: 1px solid rgba(247, 247, 247, 0.932);
     text-shadow: -5px 5px 10px rgba(0, 0, 0, 0.863);
   }
-
+  .button-navs{
+    float: right;
+  }
+  #nicebtn{
+    color: black;
+    font-size: 1.2em;
+    font-weight: 600;
+    display: none;
+  }
 .plac_let{
   
   line-height: 1em;
@@ -498,12 +542,17 @@ td{
     font-size: 2.12em;
     padding-left: 10px; 
   }
-
+.navpers{
+  display: none;
+}
 .prefix_log{
   color: #1F1F1F;
   margin: 0;
   padding: 0;
 line-height: 10px;
+}
+.navbar-fixed{
+  background-color: rgb(216, 216, 216)
 }
 
 @media only screen and (min-width: 601px) {
@@ -518,6 +567,9 @@ line-height: 10px;
   .navbar-fixed {
     height: 40px;
   }
+
+  
+
   
    
 }
@@ -532,10 +584,34 @@ line-height: 10px;
    
 }
 @media only screen and (max-width: 901px) {
-  
+  .container{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    
+  }
     #logo_init{
     opacity: 0;
   
     }
-     
+
+    .side-dashav{
+      display: none;
+  
+    }
+    main{
+      padding-right: 5%;
+      padding-left: 5%;
+    }
+    .navpers{
+      display: block;
+    }
+    #nicebtn{
+      color: black;
+      font-size: 1.2em;
+      font-weight: 600;
+      display: block;
+    } 
   }

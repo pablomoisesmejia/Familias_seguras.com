@@ -1,3 +1,4 @@
+
 <h3 style="display:none;" id='name'><?php print($_SESSION['nombres_usuario']) ?> </h3> 
 <div style="">
 	<div class="row" id="clock_verg">

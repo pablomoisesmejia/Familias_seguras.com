@@ -44,21 +44,13 @@ class Page extends Component{
 
 		if(isset($_SESSION['id_usuario'])){
 			print("
-				<div id='menu_overlay' style='display:none;'>overlay</div>
+				
 
 				<div id='container_block' style='display:none;'>
 					<div id='menu_plegable'style='display:none;'>
 						<a id='return_btn' onclick='ocultar_panel_superior();'>Regresar</a>	
 						
-							<ul>
-
 							
-							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../modelo'>		<p class='plac_let'>MA</p>Modelos de autos</a></li>
-							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>MA</p>Marcas de autos</a></li>
-							
-							
-							
-							</ul>
 z
 							<div id='sepline'> </div>
 							<p id='info_baldosita'>Al pasar el puntero del mouse sobre una baldosa se mostrara una pequeña descripcion de lo se encuentra en este apartado</p>
@@ -67,16 +59,16 @@ z
 					</div>				
 				</div>
 
-				<header class='navbar-fixed'>
+				<header  class='navbar-fixed'>
 					<nav class='navpers'>
 						<div class='nav-wrapper'>
 							
-						<a href='../account/' class='left'><img src='../../web/img/logo.png' height='20'></a>
+						<a style='filter:brightness(0.3); padding-left:20px;' href='../account/' class='left'><img src='../../web/img/logo.png' height='20'></a>
 							<ul class='right '>
 							
 							
-								<p id='a_nav' href='#' data-activates='slide-out' class='button-collapse headersd'> Mi perfil </p>
-								<p id='a_nav_2' onclick='mostrar_panel_superior();'  class=' headersd lok'> Menú de opciones </p>
+								<a onclick='show_nav();' id='nicebtn'>Menú Principal</a>
+								
 							</ul>
 						
 						</div>
@@ -86,10 +78,11 @@ z
 
 
 
-						<ul style='color:black' id='slide-out' class='side-nav'>
+						<div style='color:black' id='sliout' class='side-dashav'>
 							
 						<div class='row' id='SIDE_contenedor_user'>
 							<div id='head_sides' >
+							<a  onclick='hide_nav();' id='nicebtn' >Volver</a>
 							<img id='header_logs'  src='../../web/img/logo.png'></div>
 							<div id='SIDE_cu_1' class='col s7 m7 l7'>
 								<p class='negrita' id='nombre_user_ingresed'>$_SESSION[nombres_usuario]</p>
@@ -149,10 +142,12 @@ z
 							<a href='../autos'><p class='btn_menu_lat'>Vehiculos</p></a>
 							<a href='../venta'><p class='btn_menu_lat'>Propiedades en Venta</p></a>
 							<a href='../alquiler'><p class='btn_menu_lat'>Propiedades en Alquiler</p></a>
+							<a href='../marca'><p class='btn_menu_lat'>Marcas Autos</p></a>
+							<a href='../modelo'><p class='btn_menu_lat'>Modelos Autos</p></a>
 							<div>
 						
 						</div>
-						</ul>
+						</div>
 				</header>
 				
 			
@@ -185,7 +180,7 @@ z
     </div>
     
     <div class='sf_bottom_bar' id='foot_col'>
-		<a href='#!' id='sf_bottom_bar_text' >Familias Seguras V1.0  |    Dashboard 2018</a>
+		<a href='#!' id='sf_bottom_bar_text' >Familias Seguras   |    Dashboard 2018</a>
     </div>
 
 </footer>

@@ -173,3 +173,26 @@ var bal_over =0;
       document.getElementById('welcom_text').innerHTML='Buenas noches '+user+', trabajo de noche? ten una linda jornada.';
     }
   }
+
+  function show_nav(){
+    $('.side-dashav').css({
+      'display':'block'
+    })
+  }
+  function hide_nav(){
+    $('.side-dashav').css({
+      'display':'none'
+    })
+  }
+
+  function myFunction(x) {
+    if (x.matches) { // If media query matches
+      hide_nav();
+    } else {
+      show_nav();
+    }
+  }
+  
+  var x = window.matchMedia("(max-width: 901px)")
+  myFunction(x) // Call listener function at run time
+  x.addListener(myFunction) // Attach listener function on state changes
