@@ -374,6 +374,21 @@ color: #A2A2A2;
     
     
 }
+#btn_anunciate{
+    color: white;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(114, 31, 100, 0.85);
+    text-align: right;
+    float: right;
+    cursor: pointer;
+
+}
+#btn_anunciate:hover{
+    background-color: rgba(137, 26, 118, 0.85);
+}
 #img_cont_detail{
     border: 1px solid rgba(128, 128, 128, 0.72);
     padding-top: 8px;
@@ -674,6 +689,16 @@ font-size: 1.2em;
     }
     #foottt{
         text-align: center;
+    }
+
+    .botom_img_static_c_p_props{
+        
+       
+        padding-left: 20vw;
+    }
+    .txt_primas{
+       float: left;
+       padding-left: 15vw
     }
  }
 
