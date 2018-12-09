@@ -58,7 +58,7 @@
         
         <div class='input-field col s12 l6'>
             <i style="color:black;"class="material-icons prefix">directions_car</i>
-            <input id="motor" type="number" min='.1' step='.1' class="validate" required/>
+            <input id="motor" type="text" class="validate" required/>
             <label class="" for="motor">Motor</label>
         </div>
 
@@ -82,7 +82,7 @@
 
         <div class='input-field col s12 l6'>
             <i  style="color:black;"class="material-icons prefix">phone</i>
-            <input id="telefono" type="number" class="validate" required/>
+            <input id="telefono" type="text" class="validate" required/>
             <label class="" for="telefono">Teléfono ó celular</label>      
         </div>
     </div>
