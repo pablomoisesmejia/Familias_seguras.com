@@ -12,10 +12,8 @@ try
         {
             if($banner->setCantIntervaloFecha($_POST['cant_intervalo']))
             {
-                echo $_POST['fecha_inicio'];
                 if($banner->setFechaInicio($_POST['fecha_inicio']))
                 {
-                    echo $_POST['hora_inicio'];
                     if($banner->setHoraInicio($_POST['hora_inicio']))
                     {
                         if(is_uploaded_file($_FILES['archivo']['tmp_name']))

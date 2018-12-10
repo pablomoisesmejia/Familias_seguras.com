@@ -553,6 +553,13 @@ class Vehiculos extends Validator
         return Database::getRows($sql, $params);
     }
 
+    public function getCorreoUsuario()
+    {
+        $sql = 'SELECT ua.id_usuario, ua.correo_usuario FROM usuarios_anuncios ua INNER JOIN vehiculos v ON ua.id_usuario = v.FK_id_usuario WHERE v.PK_id_vehiculo = ?';
+        $params = array($this->PK_id_vehiculo);
+        return Database::getRow($sql, $params);
+    }
+
     public function getVehiculoDetalle()
     {
         $sql = 'SELECT v.PK_id_vehiculo, v.FK_id_usuario, mv.modelos_vehiculo, mar.marca_vehiculo, v.anio, v.color, v.kilometraje, v.transmision, v.motor, v.vidrios_electricos, v.espejos_electricos, aire_acondicionado, bolsas_aire, v.sistema_eco, v.mandos_timon, v.rines_especiales, v.camara_trasera, v.sensores_parqueo, v.bluetooth, v.combustible, v.sunroof, v.luces_xenon, v.cruise_control, v.mando_distancia, v.gps, v.tapiceria_cuero, v.dvd_trasero, v.valor, v.whatsapp, v.telefono, v.placa 
