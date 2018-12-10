@@ -17,7 +17,7 @@
                     </div>
                     <div class='card-content purple darken-3'>
 
-                        <p style='padding-left:8%;'><a href='productos.php?id=$categoria[id_categoria]' class='tooltipped' style='color:white;' data-tooltip='Ver más'>$categoria[nombre_categoria]</a></p>
+                        <p style='padding-left:8%;'><a href='productos.php?id=$categoria[id_categoria]' class='tooltipped' style='color:white;'>$categoria[nombre_categoria]</a></p>
                     </div>
                 </div>
                 </a>
