@@ -19,7 +19,8 @@
                         <h5 class='titles'> <a href='vehiculos_v.php' id='btn_lines'>Vehiculos Asegurables en Venta  ></a> Vehiculo Seleccionado</h5>
                 
                         <div id='img_cont_detai'>
-                            <img width='100%' height='auto' height='auto' src='../web/img/vehiculos/$imgVehiculo[0]'>
+                            <img width='100%' height='auto' height='auto' src='../web/img/vehiculos/sedan_bmw.jpg'>
+                            
 
                         <a class='botom_img_static_c_p' >
                             <div class='col s7' >
@@ -29,10 +30,13 @@
                             <div class=''>
                                 <div class='row' style='text-align:center; font-size:1.2em; padding-top:6px;'>$$data[valor]</div>
                             </div>
-                        <p onclick='' style='margin-top:30px;;' class='botom_img_c_p' >Primo de Seguro con ASSA</p>
-                        <p onclick='' id='enviar_mensaje' class='botom_img_c_p' >Enviar Mensaje al Vendedor</p>
-                        <p onclick='' class='botom_img_c_p' >Programar Cita para Verlo</p>
+                            <p onclick='' style='margin-top:53px;' class='botom_img_c_p' >Primo de Seguro con ASSA</p>
+                            <p onclick='' id='enviar_mensaje' class='botom_img_c_p' >Enviar Mensaje al Vendedor</p>
+                            <p onclick='' class='botom_img_c_p' >Programar Cita para Verlo</p>
+                    
                         </a>
+                        <a id='wha_vehiprop_btn' href='whatsapp://send/?phone=503' class='botom_img_static_c_p_wha' ><img class='icoredss' src='../web/img/ico/wha_icon.png'></a>
+                        <a id='tel_btn' href='tel:+503' class='botom_img_static_c_p_wha' ><i style='color:white; font-size:22px;' class='material-icons prefix '>phone</i></a>
 
                             <img id='ribbon' src='../web/img/ico/asegurable.png' >
                     

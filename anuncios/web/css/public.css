@@ -69,6 +69,20 @@ font-family: calibrily;
  background-color: rgb(87, 75, 87);
  padding-bottom: 20px;
 }
+.icoredss
+{
+    
+    cursor: pointer;
+    float: right;
+ width: 28px;
+ padding-left: 5px;
+ padding-right: 5px;
+ margin-right: 10px;
+ transition: 0.3s;
+ background-color: rgba(87, 75, 87, 0.00);
+ padding-bottom: 20px;
+}
+
 .icoreds:hover{
     width: 36px;
 }
@@ -217,6 +231,24 @@ color: #A2A2A2;
     transition: 0.3s;
     
 }
+.botom_img_c_p_r{
+    cursor: pointer;
+    margin: 0;
+    position: absolute;
+    margin-top: 53px;
+    z-index: 10;
+    width: 50px;
+
+    font-size: 0.9em;
+    float: right;
+    height: 36px;
+    padding-left: 20px;
+    padding-top: 6px;
+    background-color: #60195D;
+    color: white;
+    transition: 0.3s;
+    
+}
 .botom_img_static{
     
     margin: 0;
@@ -243,10 +275,31 @@ color: #A2A2A2;
     transition: 0.3s;
     
     position: relative;
-    bottom: 70px;
+    bottom: 58px;
     float: right;
     
     z-index: 10;
+    
+    
+}
+.botom_img_static_c_p_wha{
+    
+    margin: 0;
+    
+    width: 50px;
+    height: 52px;
+    padding-left: 20px;
+    padding-top: 14px;
+    background-color: rgb(93, 49, 90);
+    color: white;
+    transition: 0.3s;
+    
+    position: relative;
+    bottom: 58px;
+    float: right;
+    
+    z-index: 10;
+    
     
     
 }
