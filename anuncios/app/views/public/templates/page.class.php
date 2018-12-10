@@ -47,13 +47,14 @@ class Page extends Component{
 								<a href='#' data-activates='mobile' class='button-collapse'><i class='material-icons'>menu</i></a>
 								<ul class='right hide-on-med-and-down'>
 								
-									<a class='btn_hdd_red' style='position:fixed; right:13%;' target='_blank' href='https://www.facebook.com/FamiliasSegurascom-322957035155872/'><img width='28px' src='../web/img/ico/fb_icon.png'></a>
-									<a class='btn_hdd_red' style='position:fixed; right:10%;' target='_blank' href='https://www.instagram.com/familiasseguras/'><img width='28px' src='../web/img/ico/insta_icon.png'></a>
+								<a class='btn_hdd_red' style='position:fixed; right:16%;' target='_blank' href='https://www.facebook.com/FamiliasSegurascom-322957035155872/'><img width='24px' src='../web/img/ico/fb_icon.png'></a>
+								<a class='btn_hdd_red' style='position:fixed; right:13%;' target='_blank' href='https://www.instagram.com/familiasseguras/'><img width='24px' src='../web/img/ico/insta_icon.png'></a>
+								<a class='btn_hdd_red' style=' filter:brightness(10); position:fixed; right:10%;'  href='../dashboard/account/login.php'><img width='24px' src='../web/img/ico/key.png'></a>
 
-									<li><a class='btn_hdd' href='../public/cotiza_seguro.php'>Cotiza tu Seguro</a></li>
-									<li><a class='btn_hdd' href='../public/index.php'>Directorio</a></li>
-									<li><a class='btn_hdd' href='../public/vehiculos_v.php'>Vehiculos en venta</a></li>
-									<li><a class='btn_hdd' href='../public/propiedades_v.php'>Propiedades en Venta</a></li>
+									<li><a class='btn_hdd' href='../public/cotiza_seguro.php'>Cotiza tu Seguro |</a></li>
+									<li><a class='btn_hdd' href='../public/index.php'>Directorio |</a></li>
+									<li><a class='btn_hdd' href='../public/vehiculos_v.php'>Vehiculos en venta |</a></li>
+									<li><a class='btn_hdd' href='../public/propiedades_v.php'>Propiedades en Venta |</a></li>
 									<li><a class='btn_hdd' style='margin-right:10px;' href='../public/propiedades_alqui.php'>Propiedades en Alquiler</a></li>
 								</ul>
 							</div>
@@ -61,12 +62,12 @@ class Page extends Component{
 						</nav>
 					</div>
 					<ul class='side-nav' id='mobile'>
-						<p id='menu_txt_side'>Menú</p>
-						<li><a href='../public/cotiza_seguro.php'><i class='material-icons left'>attach_money</i>Cotiza tu Seguro</a></li>
-						<li><a href='../public/index.php'><i class='material-icons left'>library_books</i>Directorio</a></li>
-						<li><a href='../public/vehiculos_v.php'><i class='material-icons left'>directions_car</i>Vehiculos en Venta</a></li>
-						<li><a href='../public/propiedades_v.php'><i class='material-icons left'>home</i>Propiedades en Venta</a></li>
-						<li><a href='../public/propiedades_alqui.php'><i class='material-icons left'>home</i>Propiedades en Alquiler</a></li>
+							<p id='menu_txt_side'>Menú</p>
+							<li><a href='../public/cotiza_seguro.php'><i class='material-icons left'>attach_money</i>Cotiza tu Seguro</a></li>
+							<li><a href='../public/index.php'><i class='material-icons left'>library_books</i>Directorio</a></li>
+							<li><a href='../public/vehiculos_v.php'><i class='material-icons left'>directions_car</i>Vehiculos en Venta</a></li>
+							<li><a href='../public/propiedades_v.php'><i class='material-icons left'>home</i>Propiedades en Venta</a></li>
+							<li><a href='../public/propiedades_alqui.php'><i class='material-icons left'>home</i>Propiedades en Alquiler</a></li>
 
 					</ul>
 					
