@@ -16,11 +16,7 @@
                     <div class='col s12 m8 l8' style=''>
                         <div style='margin-top:10px;' class='row'>
                         
-                        <h5 class='titles'> <a href='vehiculos_v.php' id='btn_lines'>Propiedades Asegurables en Venta   ></a> Propiedad Seleccionada</h5>
-                
-                        <div id='img_cont_detail_prop'>
-                            <img width='100%' height='auto' src='../web/img/propiedades/prop_detail1.jpg'>
-                                  
+                            <h5 class='titles'> <a href='vehiculos_v.php' id='btn_lines'>Propiedades Asegurables en Venta   ></a> Propiedad Seleccionada</h5>
                     
                             <div id='img_cont_detail_prop'>
                             <img width='100%' height='auto' src='../web/img/propiedades/$imgPropiedad[0]'>

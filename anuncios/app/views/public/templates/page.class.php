@@ -61,6 +61,7 @@ class Page extends Component{
 						</nav>
 					</div>
 					<ul class='side-nav' id='mobile'>
+						<p id='menu_txt_side'>Menú</p>
 						<li><a href='../public/cotiza_seguro.php'><i class='material-icons left'>attach_money</i>Cotiza tu Seguro</a></li>
 						<li><a href='../public/index.php'><i class='material-icons left'>library_books</i>Directorio</a></li>
 						<li><a href='../public/vehiculos_v.php'><i class='material-icons left'>directions_car</i>Vehiculos en Venta</a></li>
@@ -91,8 +92,10 @@ class Page extends Component{
 		print("
 				</main>
 				<footer class='page-footer purple'>
+
 					
 						<div class='container'>
+						
 							<div style='float:left; margin-top:30px;' class='left-align'>
 							
 							<a style='float:left' class='btn_hdd2' href='../dashboard/account/login.php'>Nosotros</a>

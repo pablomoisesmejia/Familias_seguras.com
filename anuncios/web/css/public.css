@@ -374,6 +374,10 @@ color: #A2A2A2;
     
     
 }
+#menu_txt_side{
+font-size: 1.3em;
+margin-left: 38px;
+}
 #btn_anunciate{
     color: white;
     padding-top: 7px;
