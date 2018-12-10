@@ -9,9 +9,6 @@
             <button type='submit' name='buscar' class='btn waves-effect green tooltipped' data-tooltip='Buscar por nombre o apellido'><i class='material-icons'>check_circle</i></button>
         </div>
     </form>
-    <div class='input-field center-align col s12 m4'>
-        <a href='create.php' class='btn waves-effect indigo tooltipped' data-tooltip='Crear cliente'><i class='material-icons'>add_circle</i></a>
-    </div>
 </div>
 <table class="responsive-table" >
 	<thead>
@@ -28,7 +25,7 @@
 	foreach($data as $row){
 		print("
 		<tr>
-			<td><img src='../../web/img/usuarios/$row[imagen]' class='materialboxed' width='100' height='100'></td>
+			<td><img src='../../../web/img/usuarios/$row[imagen]' class='materialboxed' width='100' height='100'></td>
 			<td>$row[apellidos_usuario]</td>
 			<td>$row[nombres_usuario]</td>
 			<td>$row[correo_usuario]</td>

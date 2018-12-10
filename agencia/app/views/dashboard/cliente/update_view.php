@@ -31,12 +31,12 @@
         </div>
            <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>import_contacts</i>
-          	<input id='documento_cliente' type='text' name='documento_cliente' class='validate' value='<?php print($cliente->getTel()) ?>' required/>
+          	<input id='documento_cliente' type='text' name='tel' class='validate' value='<?php print($cliente->getTel()) ?>' required/>
           	<label for='documento_cliente'>Telefono</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>import_contacts</i>
-          	<input id='documento_cliente' type='text' name='documento_cliente' class='validate' value='<?php print($cliente->getTel()) ?>' required/>
+          	<input id='documento_cliente' type='text' name='wha' class='validate' value='<?php print($cliente->getWha()) ?>' required/>
           	<label for='documento_cliente'>WhatsApp</label>
         </div>
         <div class='file-field input-field col s12 m6'>
@@ -51,7 +51,13 @@
 
    
     <div class='row center-align'>
-        <a href='index.php' class='btn waves-effect grey tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>
-        <button type='submit' name='actualizar' class='btn waves-effect blue tooltipped' data-tooltip='Actualizar'><i class='material-icons'>save</i></button>
+        <a href='index.php' class='btn waves-effect red tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>
+        <button type='submit' name='actualizar' class='btn waves-effect purple tooltipped' data-tooltip='Actualizar'><i class='material-icons'>save</i> Guardar </button>
+        <?php
+             print("
+           <a title='' href='https://api.whatsapp.com/api/send?phone=53".$cliente->getWha()."'  class='btn waves-effect purple tooltipped' data-tooltip='Chatear'>WhatsAppear</a>
+           <a id='tel_btn' href='tel:+503".$cliente->getTel()."' class='btn waves-effect purple tooltipped' >Llamale</a>
+           ")
+        ?>
     </div>
 </form>

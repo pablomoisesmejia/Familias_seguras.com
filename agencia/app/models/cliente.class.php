@@ -156,7 +156,7 @@ class Cliente extends Validator{
 	}
 
 	public function setImagen($file){
-		if($this->validateImage($file, $this->imagen, "../../web/img/Clientes/", 3000, 3000)){
+		if($this->validateImage($file, $this->imagen, "../../../web/img/usuarios/", 4000, 4000)){
 			$this->imagen = $this->getImageName();
 			return true;
 		}else{
@@ -167,7 +167,7 @@ class Cliente extends Validator{
 		return $this->imagen;
 	}
 	public function unsetImagen(){
-		if(unlink("../../web/img/Clientes/".$this->imagen)){
+		if(unlink("../../../web/img/usuarios/".$this->imagen)){
 			$this->imagen = null;
 			return true;
 		}else{
@@ -252,8 +252,9 @@ class Cliente extends Validator{
 		}
 	}
 	public function searchCliente($value){
-		$sql = "SELECT ID_cliente, nombre, apellido, correo, username, imagen_url FROM cliente WHERE apellido LIKE ? OR nombre LIKE ? ORDER BY apellido";
-		$params = array("%$value%", "%$value%");
+		$sql = "SELECT ID_usuario, nombres_usuario, apellidos_usuario, correo_usuario, imagen FROM usuarios_anuncios
+		 WHERE apellidos_usuario LIKE ? OR nombres_usuario LIKE ? OR correo_usuario LIKE ?  ORDER BY apellidos_usuario";
+		$params = array("%$value%", "%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}
 	public function createCliente(){
@@ -280,8 +281,8 @@ class Cliente extends Validator{
 		}
 	}
 	public function updateCliente(){
-		$sql = "UPDATE cliente SET nombre = ?, apellido = ?, correo = ?, username = ?, fecha_nacimiento =? , direccion=?, documento=?, imagen_url=?, estado=? WHERE ID_cliente = ? ";
-		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->fecha_nacimiento,$this->direccion,$this->documento, $this->imagen, $this->estado, $this->id);
+		$sql = "UPDATE usuarios_anuncios SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?, alias_usuario = ?, imagen = ?, telefono=?, whatssapp = ? WHERE id_usuario = ? ";
+		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->imagen, $this->tel, $this->wha, $this->id);
 		return Database::executeRow($sql, $params);
 	}
 	public function deleteCliente(){

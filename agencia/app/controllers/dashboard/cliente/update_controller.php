@@ -20,7 +20,7 @@ try{
                                                     print($cliente->getImagen());
                                                 }
                                                 if($cliente->updatecliente()){
-                                                    $_SESSION['alias_cliente'] = $cliente->getAlias();
+                                                    $_SESSION['alias_usuario'] = $cliente->getAlias();
                                                     Page::showMessage(1, "cliente modificado", "index.php");
                                                 }else{
                                                     throw new Exception(Database::getException());

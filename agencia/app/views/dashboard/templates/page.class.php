@@ -100,7 +100,7 @@ z
 							</div>
 
 							<div id='SIDE_cu_2' class='col s5 m5 l5'>
-							<img src='../../web/img/usuarios/$_SESSION[imagen]' id='imagen_side_user'>
+							<img src='../../../web/img/usuarios/$_SESSION[imagen]' id='imagen_side_user'>
 							</div>
 						</div>
 
