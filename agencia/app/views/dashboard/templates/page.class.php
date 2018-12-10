@@ -86,7 +86,7 @@ z
 							<img id='header_logs'  src='../../web/img/logo.png'></div>
 							<div id='SIDE_cu_1' class='col s7 m7 l7'>
 								<p class='negrita' id='nombre_user_ingresed'>$_SESSION[nombres_usuario]</p>
-								<p class='negrita' id='tipo_user_ingresed'>Administrador</p>
+								<p class='negrita' id='tipo_user_ingresed'>Gerencia</p>
 								
 								
 								
@@ -100,7 +100,7 @@ z
 							</div>
 
 							<div id='SIDE_cu_2' class='col s5 m5 l5'>
-							<img src='../../web/img/usuarios/person.png' id='imagen_side_user'>
+							<img src='../../web/img/usuarios/$_SESSION[imagen]' id='imagen_side_user'>
 							</div>
 						</div>
 
@@ -144,6 +144,7 @@ z
 							<a href='../alquiler'><p class='btn_menu_lat'>Propiedades en Alquiler</p></a>
 							<a href='../marca'><p class='btn_menu_lat'>Marcas Autos</p></a>
 							<a href='../modelo'><p class='btn_menu_lat'>Modelos Autos</p></a>
+							<a href='../cliente'><p class='btn_menu_lat'>Usuarios</p></a>
 							<div>
 						
 						</div>

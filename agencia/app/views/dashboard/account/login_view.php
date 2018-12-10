@@ -9,7 +9,7 @@
 	<div class='row' style='margin:0; padding:0;'>
 		<div class='input-field col s12 m12 'style='margin:0; padding:0;'>
 			<p class='prefix_log'>Nombre de usuario</p>
-			<input id='alias'  type='text' name='correo' class='validate' />
+			<input id='alias'  type='text' name='alias' class='validate' />
 			
 		</div>
 	

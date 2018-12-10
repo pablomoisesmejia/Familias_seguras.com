@@ -13,6 +13,8 @@ class Cliente extends Validator{
 	private $estado =  null;
 	private $imagen =  null;
 	private $fecha_nacimiento = null;
+	private $whats = null;
+	private $tel = null;
 	//Métodos para sobrecarga de propiedades
 	
 	public function setId($value){
@@ -78,6 +80,31 @@ class Cliente extends Validator{
 	}
 	public function getDocumento(){
 		return $this->documento;
+	}
+
+	
+	public function setWha($value){
+		if($this->validateId($value)){
+			$this->wha = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getWha(){
+		return $this->wha;
+	}
+
+	public function setTel($value){
+		if($this->validateId($value)){
+			$this->tel = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getTel(){
+		return $this->tel;
 	}
 
 	public function setApellidos($value){
@@ -214,9 +241,15 @@ class Cliente extends Validator{
 	}
 
 	public function getClientes(){
-		$sql = "SELECT ID_cliente, nombre, apellido, correo, username, imagen_url, estado FROM cliente ORDER BY estado DESC";
+		$sql = "SELECT ID_usuario, nombres_usuario, apellidos_usuario, correo_usuario, imagen, whatssapp FROM usuarios_anuncios  ORDER BY apellidos_usuario DESC";
 		$params = array(null);
 		return Database::getRows($sql, $params);
+		if($user){
+			$this->wha = $user['whatssapp'];
+			return true;
+		}else{
+			return null;
+		}
 	}
 	public function searchCliente($value){
 		$sql = "SELECT ID_cliente, nombre, apellido, correo, username, imagen_url FROM cliente WHERE apellido LIKE ? OR nombre LIKE ? ORDER BY apellido";
@@ -230,19 +263,17 @@ class Cliente extends Validator{
 		return Database::executeRow($sql, $params);
 	}
 	public function readCliente(){
-		$sql = "SELECT nombre, apellido, correo, username, fecha_nacimiento, direccion, documento, imagen_url, estado FROM cliente WHERE ID_cliente = ?";
+		$sql = "SELECT nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario,  imagen,  whatssapp, telefono FROM  usuarios_anuncios WHERE id_usuario= ?";
 		$params = array($this->id);
 		$user = Database::getRow($sql, $params);
 		if($user){
-			$this->nombres = $user['nombre'];
-			$this->apellidos = $user['apellido'];
-			$this->correo = $user['correo'];
-			$this->alias = $user['username'];
-			$this->fecha_nacimiento = $user['fecha_nacimiento'];
-			$this->direccion = $user['direccion'];
-			$this->documento = $user['documento'];
-			$this->imagen = $user['imagen_url'];
-			$this->estado = $user['estado'];
+			$this->nombres = $user['nombres_usuario'];
+			$this->apellidos = $user['apellidos_usuario'];
+			$this->correo = $user['correo_usuario'];
+			$this->alias = $user['alias_usuario'];
+			$this->imagen = $user['imagen'];
+			$this->tel = $user['telefono'];
+			$this->wha = $user['whatssapp'];
 			return true;
 		}else{
 			return null;

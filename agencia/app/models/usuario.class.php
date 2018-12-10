@@ -209,8 +209,8 @@ class Usuario extends Validator{
 
 	//Métodos para manejar la sesión del usuario
 	public function checkCorreo(){
-		$sql = "SELECT id_usuario FROM usuarios_anuncios WHERE correo_usuario = ? AND id_usuario = 1";
-		$params = array($this->correo);
+		$sql = "SELECT id_usuario FROM usuarios_anuncios WHERE alias_usuario = ? AND id_usuario = 1";
+		$params = array($this->alias);
 		$data = Database::getRow($sql, $params);
 		if($data){
 			$this->id = $data['id_usuario'];
@@ -220,14 +220,14 @@ class Usuario extends Validator{
 		}
 	}
 	public function checkPassword(){
-		$sql = "SELECT clave_usuario, nombres_usuario, apellidos_usuario, correo_usuario FROM usuarios_anuncios WHERE id_usuario = ?";
+		$sql = "SELECT clave_usuario, nombres_usuario, apellidos_usuario, correo_usuario, imagen FROM usuarios_anuncios WHERE id_usuario = ?";
 		$params = array($this->id);
 		$data = Database::getRow($sql, $params);
 		if(password_verify($this->clave, $data['clave_usuario'])){
 			$this->nombres = $data['nombres_usuario'];	
 			$this->apellidos = $data['apellidos_usuario'];
 			$this->correo = $data['correo_usuario'];
-
+			$this->imagen = $data['imagen'];
 			return true;
 		}else{
 			return false;

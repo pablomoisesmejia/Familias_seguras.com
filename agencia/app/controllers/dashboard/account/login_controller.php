@@ -5,7 +5,7 @@ try{
 	if($object->getUsuarios()){
 		if(isset($_POST['iniciar'])){
 			$_POST = $object->validateForm($_POST);
-			if($object->setCorreo($_POST['correo'])){
+			if($object->setAlias($_POST['alias'])){
 				if($object->checkCorreo()){
 					if($object->setClave($_POST['clave'])){
 						if($object->checkPassword()){
@@ -15,8 +15,7 @@ try{
 							$_SESSION['nombres_usuario'] = $object->getNombres();
 							$_SESSION['apellidos_usuario'] = $object->getApellidos();
 							$_SESSION['correo_usuario'] = $object->getCorreo();
-							
-							
+							$_SESSION['imagen'] = $object->getImagen();
 							Page::showMessage(1, "Autenticación correcta", "index.php");
 						}else{
 							throw new Exception("Clave inexistente");
