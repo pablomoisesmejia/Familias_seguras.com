@@ -7,6 +7,27 @@ $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50, position: 'bottom'});
 });
 
+//FUNCION PARA OBTENER LAS VARIABLES GET
+function getUrlVars() 
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) 
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+getUrlVars();
+
+
+$('#enviar_mensaje').click(function(){
+  id = decodeURI(getUrlVars()['id']);
+  location.href =  'enviar_mensaje.php?id='+id+'';
+});
 
 
 function opentipscot(){

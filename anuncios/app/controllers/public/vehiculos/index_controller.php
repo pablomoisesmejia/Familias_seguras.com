@@ -11,7 +11,7 @@ try
     }
     else
     {
-		Page::showMessage(4, "No tienes vehiculos disponibles", "create.php");
+		Page::showMessage(4, "No hay vehiculos en venta disponibles", null);
 	}
 }
 catch(Exception $error)

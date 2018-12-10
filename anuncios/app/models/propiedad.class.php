@@ -327,6 +327,13 @@ class Propiedad extends Validator
     {
 		return $this->whatsapp;
     }
+
+    public function getCorreoUsuario()
+    {
+        $sql = 'SELECT ua.id_usuario, ua.correo_usuario FROM usuarios_anuncios ua INNER JOIN propiedades p ON ua.id_usuario = p.FK_id_usuario WHERE p.PK_id_propiedad = ?';
+        $params = array($this->PK_id_propiedad);
+        return Database::getRow($sql, $params);
+    }
     
     public function getPropiedades()
     {
@@ -335,6 +342,32 @@ class Propiedad extends Validator
         INNER JOIN transaccion t ON p.FK_id_transaccion = t.PK_id_transaccion 
         WHERE FK_id_usuario = ?';
         $params = array($this->FK_id_usuario);
+        return Database::getRows($sql, $params);
+    }
+
+    public function getImgPropiedad()
+    {
+        $sql = 'SELECT nombre_imagen_prop FROM imagenes_propiedad WHERE FK_id_propiedad = ?';
+        $params = array($this->PK_id_propiedad);
+        return Database::getRow($sql, $params);
+    }
+
+    public function getPropiedadDetalle()
+    {
+        $sql = 'SELECT p.PK_id_propiedad, p.FK_id_usuario, tp.tipo_propiedad, t.transaccion, p.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.amenidades, p.valor, p.telefono, p.whatsapp 
+        FROM propiedades p INNER JOIN tipo_propiedad tp ON p.FK_id_tipo_propiedad = tp.PK_id_tipo_propiedad 
+        INNER JOIN transaccion t ON p.FK_id_transaccion = t.PK_id_transaccion 
+        WHERE p.PK_id_propiedad = ? ';
+        $params = array($this->PK_id_propiedad);
+        return Database::getRow($sql, $params);
+    }
+
+    public function getPropiedadesTransaccion()
+    {
+        $sql = 'SELECT PK_id_propiedad, colonia, municipio, departamento, niveles, habitaciones, baños, cochera, valor, telefono, whatsapp 
+        FROM propiedades 
+        WHERE FK_id_transaccion = ?';
+        $params = array($this->FK_id_transaccion);
         return Database::getRows($sql, $params);
     }
 

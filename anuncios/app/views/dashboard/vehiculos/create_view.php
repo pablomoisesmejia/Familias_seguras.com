@@ -58,7 +58,7 @@
         
         <div class='input-field col s12 l6'>
             <i style="color:black;"class="material-icons prefix">directions_car</i>
-            <input id="motor" type="number" min='.1' step='.1' class="validate" required/>
+            <input id="motor" type="text" class="validate" required/>
             <label class="" for="motor">Motor</label>
         </div>
 
@@ -82,7 +82,7 @@
 
         <div class='input-field col s12 l6'>
             <i  style="color:black;"class="material-icons prefix">phone</i>
-            <input id="telefono" type="number" class="validate" required/>
+            <input id="telefono" type="text" class="validate" required/>
             <label class="" for="telefono">Teléfono ó celular</label>      
         </div>
     </div>
@@ -170,7 +170,7 @@
         </div>
     </div><!--div del row-->
     <div class='row center-align'>
-        <a href='index.php' class='btn waves-effect grey tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>
+        <a href='../account/index.php' class='btn waves-effect grey tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>
         <a id='crear' class='btn waves-effect blue tooltipped' data-tooltip='Crear'><i class='material-icons'>save</i></a>
     </div>
 </form>

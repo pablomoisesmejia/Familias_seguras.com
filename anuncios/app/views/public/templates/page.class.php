@@ -16,6 +16,15 @@ class Page extends Component{
 		    $imagen = $banners[$banner_aleatorio]['imagen'];
 		}
 		ini_set("date.timezone","America/El_Salvador");
+		$filename = basename($_SERVER['PHP_SELF']);
+		if($filename == 'propiedades_v.php')
+		{
+			$_SESSION['tipo_transaccion'] = 1;
+		}
+		if($filename == 'propiedades_alqui.php')
+		{
+			$_SESSION['tipo_transaccion'] = 2;
+		}
 		print("
 			<!DOCTYPE html>
 			<html lang='es'>
@@ -64,7 +73,14 @@ class Page extends Component{
 		
 				<main>
 				<div class='container'>
-				<div id='banner_top'><img id='banner_set' width='100%' height='auto' src=''></div></div>
+				");
+				$filename = basename($_SERVER['PHP_SELF']);
+				if($filename != 'enviar_mensaje.php')
+				{
+					print("<div id='banner_top'><img id='banner_set' width='100%' height='auto' src=''></div></div>");
+				}
+				print("
+				
 		");
 		require_once("../app/views/public/sections/modals_view.php");
 	}

@@ -1,5 +1,15 @@
 $(document).ready(function(){
 
+    $('#terreno').mask('##,#00', {reverse: true});
+    $('#construccion').mask('##,#00', {reverse: true});
+    $('#niveles').mask('00');
+    $('#habitaciones').mask('000');
+    $('#baños').mask('00');
+    $('#cochera').mask('00');
+    $('#whatsapp').mask('00000000');
+    $('#telefono').mask('00000000');
+    $('#valor_propiedad').mask('#,#00.00', {reverse: true});
+
     getTiposPropiedad();
     function getTiposPropiedad()
     {

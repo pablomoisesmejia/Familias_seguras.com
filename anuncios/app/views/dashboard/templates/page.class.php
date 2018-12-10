@@ -100,6 +100,7 @@ class Page extends Component{
 					</div>
 				</footer>
 				<script type='text/javascript' src='../../web/js/jquery-3.2.1.min.js'></script>
+				<script type='text/javascript' src='../../web/js/jquery.mask.min.js'></script>
 				<script type='text/javascript' src='../../web/js/materialize.min.js'></script>
 				<script type='text/javascript' src='../../web/js/dashboard.js'></script>
 				");

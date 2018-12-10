@@ -9,6 +9,8 @@
           <?php
           $vehiculo->setIdVehiculo($data['PK_id_vehiculo']);
           $imgVehiculo = $vehiculo->getImgVehiculos();
+          $filename = basename($_SERVER['PHP_SELF']);
+          $_SESSION['url'] = $filename;
           print("
             <div style=' width:100%' class=''>
                 <div class='col s12 m6 l5'>
@@ -28,11 +30,11 @@
                                 <div class='row' style='text-align:center; font-size:1.2em; padding-top:6px;'>$$data[valor]</div>
                             </div>
                         <p onclick='' style='margin-top:30px;;' class='botom_img_c_p' >Primo de Seguro con ASSA</p>
-                        <p onclick='' class='botom_img_c_p' >Enviar Mensaje al Vendedor</p>
+                        <p onclick='' id='enviar_mensaje' class='botom_img_c_p' >Enviar Mensaje al Vendedor</p>
                         <p onclick='' class='botom_img_c_p' >Programar Cita para Verlo</p>
                         </a>
 
-                               <img id='ribbon' src='../web/img/ico/asegurable.png' >
+                            <img id='ribbon' src='../web/img/ico/asegurable.png' >
                     
                     </div>
                 </div>

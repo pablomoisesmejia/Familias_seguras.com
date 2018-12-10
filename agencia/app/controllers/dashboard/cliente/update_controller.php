@@ -11,10 +11,8 @@ try{
                         if($cliente->setApellidos($_POST['apellidos'])){
                             if($cliente->setCorreo($_POST['correo'])){
                                 if($cliente->setAlias($_POST['alias'])){
-                                    if($cliente->setFechaNac($_POST['fecha_nac'])){
-                                        if($cliente->setEstado(isset($_POST['estado'])?1:0)){
-                                        if($cliente->setDireccion($_POST['direccion_cliente'])){
-                                            if($cliente->setDocumento($_POST['documento_cliente'])){
+                                    if($cliente->setTel($_POST['tel'])){
+                                        if($cliente->setWha($_POST['wha'])){
                                                 if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
                                                     if(!$cliente->setImagen($_FILES['archivo'])){
                                                         throw new Exception($cliente->getImageError());
@@ -22,24 +20,17 @@ try{
                                                     print($cliente->getImagen());
                                                 }
                                                 if($cliente->updatecliente()){
-                                                    $_SESSION['alias_cliente'] = $cliente->getAlias();
+                                                    $_SESSION['alias_usuario'] = $cliente->getAlias();
                                                     Page::showMessage(1, "cliente modificado", "index.php");
                                                 }else{
                                                     throw new Exception(Database::getException());
                                                 }
+                                            }else{
+                                                throw new Exception("WhatsApp incorrecto");
                                             }
-                                            else{
-                                                throw new Exception("Documento Incorrecto");
-                                            }   
                                         }else{
-                                            throw new Exception("Direccion Incorrecta");
+                                            throw new Exception("Telefono incorrecto");
                                         }
-                                    }else{
-                                        throw new Exception("Estado no valido");
-                                    }     
-                                    }else{
-                                        throw new Exception("Fecha de nacimiento incorrecta");
-                                    }
                                 }else{
                                     throw new Exception("Alias incorrecto");
                                 }
