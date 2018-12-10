@@ -12,6 +12,6 @@
 		</div>
 	</div>
 	<div class='row center-align'>
-		<button type='submit' name='iniciar' class='btn waves-effect'><i class='material-icons'>send</i></button>
+		<button type='submit' name='iniciar' class='btn waves-effect green'><i class='material-icons'>send</i></button>
 	</div>
 </form>
