@@ -10,7 +10,7 @@
         </div>
     </form>
 </div>
-<table class="responsive-table" >
+<table class="striped" >
 	<thead>
 		<tr>
 			<th>Imagen</th>

@@ -13,11 +13,12 @@
 
     </div>
 </div>
-<table class='highlight'>
+<table class='striped'>
 	<thead>
 		<tr>
 			<th>Imagen</th>	
 			<th>Directorio</th>
+			<th>Plan</th>
 			<th>Estado</th>
 			<th>Correo</th>
 			<th>Ediciones</th>
@@ -30,6 +31,7 @@
 		<tr>
 			<td><img src='../../../anuncios/web/img/anuncios/$row[imagen_producto]' class='materialboxed' width='100' height='100'></td>
 			<td class='balck-text'>$row[nombre_anuncio]</td>
+			<td class='balck-text'>$row[nombre_plan]</td>
 			<td><i class='material-icons'>".($row['estado_anuncio']?"visibility":"visibility_off")."</i></td>
 			<td>$row[email_anuncio]</td>
 			<td>

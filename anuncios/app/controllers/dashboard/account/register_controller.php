@@ -8,18 +8,26 @@ try{
                 if($usuario->setApellidos($_POST['apellidos'])){
                     if($usuario->setCorreo($_POST['correo'])){
                         if($usuario->setAlias($_POST['alias'])){
-                            if($_POST['clave1'] == $_POST['clave2']){
-                                if($usuario->setClave($_POST['clave1'])){
-                                    if($usuario->createUsuario()){
-                                        Page::showMessage(1, "Usuario registrado", "login.php");
+                            if($usuario->setTel($_POST['tel'])){
+                                if($usuario->setWha($_POST['wha'])){
+                                    if($_POST['clave1'] == $_POST['clave2']){
+                                        if($usuario->setClave($_POST['clave1'])){
+                                            if($usuario->createUsuario()){
+                                                Page::showMessage(1, "Usuario registrado", "login.php");
+                                            }else{
+                                                throw new Exception(Database::getException());
+                                            }
+                                        }else{
+                                            throw new Exception("Clave menor a 6 caracteres");
+                                        }
                                     }else{
-                                        throw new Exception(Database::getException());
+                                        throw new Exception("Claves diferentes");
                                     }
                                 }else{
-                                    throw new Exception("Clave menor a 6 caracteres");
+                                    throw new Exception("WhatssApp incorrecto");
                                 }
                             }else{
-                                throw new Exception("Claves diferentes");
+                                throw new Exception("Telefono incorrecto");
                             }
                         }else{
                             throw new Exception("Alias incorrecto");

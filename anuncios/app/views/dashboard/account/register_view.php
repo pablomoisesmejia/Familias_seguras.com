@@ -30,6 +30,16 @@
             <input id='clave2' type='password' name='clave2' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
             <label for='clave2'>Confirmar clave</label>
         </div>
+        <div class='input-field col s12 m6'>
+            <i class='material-icons prefix'>phone</i>
+            <input id='clave2' type='number' name='tel' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
+            <label for='clave2'>Telefono</label>
+        </div>
+        <div class='input-field col s12 m6'>
+            <i class='material-icons prefix'>pone</i>
+            <input id='clave2' type='number'  name='wha' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
+            <label for='clave2'>WhatsApp</label>
+        </div>
     </div>
     <div class='row center-align'>
  	    <button type='submit' name='registrar' class='btn waves-effect purple'>Registrar</button>

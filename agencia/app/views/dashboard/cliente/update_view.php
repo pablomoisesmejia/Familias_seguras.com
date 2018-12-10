@@ -55,7 +55,7 @@
         <button type='submit' name='actualizar' class='btn waves-effect purple tooltipped' data-tooltip='Actualizar'><i class='material-icons'>save</i> Guardar </button>
         <?php
              print("
-           <a title='' href='https://api.whatsapp.com/api/send?phone=53".$cliente->getWha()."'  class='btn waves-effect purple tooltipped' data-tooltip='Chatear'>WhatsAppear</a>
+           <a title='' href='whatsapp://send/?phone=503".$cliente->getWha()."'  class='btn waves-effect purple tooltipped' data-tooltip='Chatear'>WhatsAppear</a>
            <a id='tel_btn' href='tel:+503".$cliente->getTel()."' class='btn waves-effect purple tooltipped' >Llamale</a>
            ")
         ?>

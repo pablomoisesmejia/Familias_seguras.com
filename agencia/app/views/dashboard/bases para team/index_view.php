@@ -13,7 +13,7 @@
         <a href='create.php' class='btn waves-effect indigo tooltipped' data-tooltip='Crear usuario'><i class='material-icons'>add_circle</i></a>
     </div>
 </div>
-<table class='highlight'>
+<table class='striped'>
 	<thead>
 		<tr>
 			

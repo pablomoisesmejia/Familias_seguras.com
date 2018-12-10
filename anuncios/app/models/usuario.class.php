@@ -7,6 +7,8 @@ class Usuario extends Validator{
 	private $correo = null;
 	private $alias = null;
 	private $clave = null;
+	private $tel = null;
+	private $wha = null;
 
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
@@ -19,6 +21,28 @@ class Usuario extends Validator{
 	}
 	public function getId(){
 		return $this->id;
+	}
+	public function setWha($value){
+		if($this->validateId($value, 1,8)){
+			$this->wha = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getWha(){
+		return $this->wha;
+	}
+	public function setTel($value){
+		if($this->validateId($value, 1,8)){
+			$this->tel = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getTel(){
+		return $this->tel;
 	}
 	
 	public function setNombres($value){
@@ -152,8 +176,8 @@ class Usuario extends Validator{
 	}
 	public function createUsuario(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO usuarios_anuncios(nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, clave_usuario) VALUES(?, ?, ?, ?, ?)";
-		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $hash);
+		$sql = "INSERT INTO usuarios_anuncios(nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, clave_usuario, telefono, whatssapp) VALUES(?, ?, ?, ?, ?, ?, ?)";
+		$params = array($this->nombres, $this->apellidos, $this->correo, $hash, $this->alias, $this->tel, $this->wha);
 		return Database::executeRow($sql, $params);
 	}
 	public function readUsuario(){

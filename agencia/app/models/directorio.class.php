@@ -120,7 +120,8 @@ class Producto extends Validator{
 	}
 
 	public function getDirectorio(){
-		$sql = "SELECT id_anuncio, nombre_anuncio, imagen_producto, email_anuncio, id_plan, estado_anuncio from anuncio ORDER BY id_plan";
+		$sql = "SELECT a.id_anuncio, a.nombre_anuncio, a.imagen_producto, a.email_anuncio, p.nombre_plan, a.estado_anuncio from anuncio a, planes p 
+		WHERE a.id_plan= p.id_plan";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
