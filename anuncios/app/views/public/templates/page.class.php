@@ -52,11 +52,11 @@ class Page extends Component{
 						</nav>
 					</div>
 					<ul class='side-nav' id='mobile'>
-						<li><a href='../public/cotiza_seguro.php'><i class='material-icons left'>view_module</i>Cotiza tu Seguro</a></li>
-						<li><a href='../public/index.php'><i class='material-icons left'>view_module</i>Directorio</a></li>
-						<li><a href='../public/vehiculos_v.php'><i class='material-icons left'>view_module</i>Vehiculos en Venta</a></li>
-						<li><a href='../public/propiedades_v.php'><i class='material-icons left'>view_module</i>Propiedades en Venta</a></li>
-						<li><a href='../public/propiedades_alqui.php'><i class='material-icons left'>view_module</i>Propiedades en Alquiler</a></li>
+						<li><a href='../public/cotiza_seguro.php'><i class='material-icons left'>attach_money</i>Cotiza tu Seguro</a></li>
+						<li><a href='../public/index.php'><i class='material-icons left'>library_books</i>Directorio</a></li>
+						<li><a href='../public/vehiculos_v.php'><i class='material-icons left'>directions_car</i>Vehiculos en Venta</a></li>
+						<li><a href='../public/propiedades_v.php'><i class='material-icons left'>home</i>Propiedades en Venta</a></li>
+						<li><a href='../public/propiedades_alqui.php'><i class='material-icons left'>home</i>Propiedades en Alquiler</a></li>
 
 					</ul>
 					
