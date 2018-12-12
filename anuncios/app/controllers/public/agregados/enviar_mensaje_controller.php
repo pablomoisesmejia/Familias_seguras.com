@@ -8,28 +8,30 @@ try
     $contacto = new Contactos;
     $vehiculo = new Vehiculos;
     $propiedad = new Propiedad;
-    if(isset($_GET['id']))
+    if(isset($_GET['id']) && $_GET['id'] != 0 && $_GET['id'] != null)
     {
-        $url = $_SESSION['url'];
-        if($url == 'vehiculos_detalle_v.php')
+        if(isset($_GET['cat']))
         {
-            $categoria = 1;
+            if($_GET['cat'] != 0 && $_GET['cat'] != null)
+            {
+                $categoria = $_GET['cat'];       
+                require_once('../app/views/public/producto/enviar_mensaje_view.php');
+            }
+            else
+            {
+                Page::showMessage(2, 'No se encontro la categoria del anuncio', 'index.php');
+            }
         }
-        if($url == 'pagina.php')
+        else
         {
-            $categoria = 2;
+            Page::showMessage(2, 'No se encontro la categoria del anuncio', 'index.php');
         }
-        require_once('../app/views/public/producto/enviar_mensaje_view.php');
     }
     else
     {
-        print("
-        <script>
-            location.href = 'index.php';
-        </script>
-        ");
+        Page::showMessage(2, 'No se encontro el anuncio', 'index.php');
     }
-
+    
     if(isset($_POST['enviar']))
     {
         $datos_usuario = '';

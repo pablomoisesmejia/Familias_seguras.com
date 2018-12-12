@@ -22,11 +22,19 @@ function getUrlVars()
 }
 
 getUrlVars();
-
-
+var categoria = 0;
+var filename = location.pathname.substr(location.pathname.lastIndexOf("/")+1);
+if(filename == 'vehiculos_detalle_v.php')
+{
+  categoria = 1;
+}
+if(filename == 'pagina.php')
+{
+  categoria = 2;
+}
 $('#enviar_mensaje').click(function(){
   id = decodeURI(getUrlVars()['id']);
-  location.href =  'enviar_mensaje.php?id='+id+'';
+  location.href =  'enviar_mensaje.php?id='+id+'&cat='+categoria+'';
 });
 
 

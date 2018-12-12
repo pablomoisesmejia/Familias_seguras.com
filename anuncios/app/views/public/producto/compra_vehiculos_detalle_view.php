@@ -32,7 +32,7 @@
                             </div>
                             <p onclick='' style='margin-top:30px;' class='botom_img_c_p' >Prima de Seguro:</p>
                             <p onclick='' id='enviar_mensaje' class='botom_img_c_p' >Enviar Mensaje al Vendedor</p>
-                            <p onclick='' class='botom_img_c_p' >Programar Cita para Verlo</p>
+                            <p onclick='' id='cita' class='botom_img_c_p' >Programar Cita para Verlo</p>
                             <p onclick='' id='wha_vehiprop_btn'  class='botom_img_c_p' >Contactar por Whatsapp</p>
                             <p onclick='' id='tel_btn' class='botom_img_c_p' >Llamada Telefónica</p>
                     
