@@ -142,7 +142,7 @@ main{
   min-height: 600px;
   height: 100vh;
   padding-right: 360px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .side-dashav{
   height: 106vh;
@@ -240,7 +240,7 @@ main{
     
     opacity: 1;
     
-    filter: brightness(0.4);
+    
     
     
     transition: opacity 0.5s;

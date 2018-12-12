@@ -86,7 +86,7 @@
                         <h5 class='titles'><a href='index.php' id='btn_lines'>Directorio ></a> <a href='productos.php?id=7' id='btn_lines'>".$producto->getNombre_categoria()." ></a> ".$producto->getNombre()."</h5>
     
                         <div id='img_cont'>
-                        <img width='100%' height='300' src='../web/img/productos/".$producto->getImagen()."'>
+                        <img width='100%' height='auto' src='../web/img/productos/".$producto->getImagen()."'>
                         </div>
                         
                         <p class='botom_img_static' >".$producto->getNombre()."");

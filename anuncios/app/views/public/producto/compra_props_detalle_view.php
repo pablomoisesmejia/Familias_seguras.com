@@ -38,10 +38,10 @@
                                     <div class='icon_prop_props'><img class='proper_ico' src='../web/img/ico/banera.png'><span class='proper_ico_txt'>$data[baños]</span></div>
                                     <div class='icon_prop_props'><img class='proper_ico' src='../web/img/ico/bed.png'><span class='proper_ico_txt'>$data[habitaciones]</span></div>    
                                 </div> 
-                                <p id='txt_primas_1' class='txt_primas'>Prima Seguro de Incendios $225.000 / Mes</p>
+                                <p id='txt_primas_1' class='txt_primas'>Prima Seguro de Incendio $225.000 / Mes</p>
                             </a>
                             <a class='botom_img_static_c_p_asegs' >
-                                <p class='txt_primas'>Prima Seguro de Incendios $225.000 / Mes</p>
+                                <p class='txt_primas'>Prima Seguro de Incendio $225.000 / Mes</p>
                             </a>
                             <div>
                                 <p onclick='' id='enviar_mensaje' class='botom_img_c_p' >Enviar Mensaje al Vendedor <a href='whatsapp://send/?phone=503' id='wha_vehiprop_btn'><img class='icoredss' src='../web/img/ico/wha_icon.png'></a><a id='tel_btn' href='tel:+503' class='icoredss'><i style='color:white; font-size:22px;' class='material-icons prefix '>phone</i></a></p>

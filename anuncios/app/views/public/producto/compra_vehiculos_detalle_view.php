@@ -12,7 +12,7 @@
           $filename = basename($_SERVER['PHP_SELF']);
           $_SESSION['url'] = $filename;
           print("
-            <div style=' width:100%' class=''>
+            <div style=' width:100%' >
                 <div class='col s12 m6 l5'>
                     <div style='margin-top:8px;' class='row'>
                         
@@ -47,7 +47,7 @@
             </div>
             <div class='col s12 m6 l4'><!--inicio del fin de informacion-->
             
-                <div style='margin-top:48px;' class='row'>
+                <div id='colco' class='row' >
                     <div class='col s6 maxed'> <h5 class='title'>Marca: </h5>  </div>
                     <div class='col s6'>   <p class='title_2'>$data[marca_vehiculo]</p></div>
                 </div>

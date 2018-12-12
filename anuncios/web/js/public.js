@@ -66,13 +66,16 @@ function closetipscot(){
       
     
       if(isMobile.mobilecheck() == true){
-     
+        $("#colco").css({"margin-top":"120px"});
       }
       else{
       
         $("#wha_btn_s").css({"display":"none"});
         $("#wha_vehiprop_btn").css({"display":"none"});
         $("#tel_btn").css({"display":"none"});
+        
+        $("#colco").css({"margin-top":"48px"});
+        
         
       }
     }

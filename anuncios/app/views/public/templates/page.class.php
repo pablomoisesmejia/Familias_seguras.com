@@ -68,7 +68,11 @@ class Page extends Component{
 							<li><a href='../public/index.php'><i class='material-icons left'>library_books</i>Directorio</a></li>
 							<li><a href='../public/vehiculos_v.php'><i class='material-icons left'>directions_car</i>Vehiculos en Venta</a></li>
 							<li><a href='../public/propiedades_v.php'><i class='material-icons left'>home</i>Propiedades en Venta</a></li>
-							<li><a href='../public/propiedades_alqui.php'><i class='material-icons left'>home</i>Propiedades en Alquiler</a></li>
+							<li style='margin-bottom:20px;'><a href='../public/propiedades_alqui.php'><i class='material-icons left'>home</i>Propiedades en Alquiler</a></li>
+
+							<a class='btn_hdd_r' style='filter:brightness(0.2);position:fixed; right:226px;' target='_blank' href='https://www.facebook.com/FamiliasSegurascom-322957035155872/'><img width='24px' src='../web/img/ico/fb_icon.png'></a>
+							<a class='btn_hdd_r' style='filter:brightness(0.2);position:fixed; right:180px;' target='_blank' href='https://www.instagram.com/familiasseguras/'><img width='24px' src='../web/img/ico/insta_icon.png'></a>
+							<a class='btn_hdd_r' style=' filter:brightness(1); position:fixed; right:136px;'  href='../dashboard/account/login.php'><img width='24px' src='../web/img/ico/key.png'></a>
 
 					</ul>
 					
@@ -80,7 +84,7 @@ class Page extends Component{
 				$filename = basename($_SERVER['PHP_SELF']);
 				if($filename != 'enviar_mensaje.php')
 				{
-					print("<div id='banner_top'><img id='banner_set' width='100%' height='auto' src=''></div></div>");
+					print("<div id='banner_top' class='materialboxed'><img id='banner_set' width='100%' height='auto' src=''></div></div>");
 				}
 				print("
 				
@@ -98,11 +102,11 @@ class Page extends Component{
 					
 						<div class='container'>
 						
-							<div style='float:left; margin-top:30px;' class='left-align'>
+							<div style='float:left; margin-top:30px; padding-left:3%' class='left-align'>
 							
 							<a style='float:left' class='btn_hdd2' href='../dashboard/account/login.php'>Nosotros</a>
 							<a style='float:left' class='btn_hdd2' href='../dashboard/account/register.php'>Servicios</a>
-							<a style='float:left' class='btn_hdd2' href='../dashboard/account/register.php'>Anunciate</a>
+							<a style='float:left' class='btn_hdd2' href='../dashboard/account/register.php'>Publicidad</a>
 							<a style='float:left' class='btn_hdd2' href='../dashboard/account/register.php'>Contactanos</a>
 							
 								
