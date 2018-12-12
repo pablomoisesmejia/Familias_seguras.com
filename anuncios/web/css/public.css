@@ -803,11 +803,13 @@ font-size: 1.2em;
   }
   
   .fc td {
-    border-width: 0 !important;
+    /*border-right-width: 0 !important; 
+    border-left-width: 0 !important;*/
   }
+
   
   .fc th {
-    border-width: 0 !important;
+   /* border-width: 0 !important;*/
   }
   
   .fc-state-active {
@@ -838,7 +840,11 @@ font-size: 1.2em;
 
     .fc-view-container
     {
-        height: 400px !important;
+        height: 350px !important;
+    }
+    .fc-day-grid-container
+    {
+        height: 336px !important;
     }
     
     .modal.open{
