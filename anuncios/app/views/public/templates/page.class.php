@@ -34,6 +34,7 @@ class Page extends Component{
 				<link type='text/css' rel='stylesheet' href='../web/css/materialize.min.css'/>
 				<link type='text/css' rel='stylesheet' href='../web/css/material_icons.css'/>
 				<link type='text/css' rel='stylesheet' href='../web/css/public.css'/>
+				<link type='text/css' rel='stylesheet' href='../web/css/fullcalendar.min.css'/>
 				<script type='text/javascript' src='../web/js/sweetalert.min.js'></script>
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 			</head>
@@ -117,6 +118,19 @@ class Page extends Component{
 				<script type='text/javascript' src='../web/js/jquery-3.2.1.min.js'></script>
 				<script type='text/javascript' src='../web/js/materialize.min.js'></script>
 				<script type='text/javascript' src='../web/js/public.js'></script>
+				");
+				$filename = basename($_SERVER['PHP_SELF']);
+				if($filename == 'citas.php')
+				{
+					print("
+					<script src='../web/js/moment.min.js'></script>
+					<script src='../web/js/fullcalendar.min.js'></script>
+					<script src='../web/js/es.js'></script>
+					<script src='../web/js/calendario.js'></script>
+					");
+				}
+				print("
+				
 			</body>
 			</html>
 		");
@@ -140,7 +154,7 @@ class Page extends Component{
 			<link rel='stylesheet' href='../../web/css/material_icons.css'>
 			<link rel='stylesheet' href='../../web/css/materialize.css'>
 			<link rel='stylesheet' href='../web/css/public_style.css'>
-			
+
 		
 		</head>
 		

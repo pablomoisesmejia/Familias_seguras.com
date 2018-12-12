@@ -759,4 +759,95 @@ font-size: 1.2em;
     }
  }
 
+ /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    Calender
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+#full-calendar {
+    padding-top: 30px;
+  }
+  
+  /*.fc-unthemed .fc-content, .fc-unthemed .fc-divider, .fc-unthemed .fc-list-heading td, .fc-unthemed .fc-list-view, .fc-unthemed .fc-popover, .fc-unthemed .fc-row, .fc-unthemed tbody, .fc-unthemed td, .fc-unthemed th, .fc-unthemed thead
+  {
+    border-color: rgb(109, 83, 255) !important;
+    color: rgb(109, 83, 255) !important;
+  }*/
+  
+  #calendar h2 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    line-height: 35px;
+  }
+  
+  #calendar .fc-day-header {
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  
+  #external-events {
+    padding-top: 50px;
+  }
+  
+  #external-events .fc-event {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+    margin-bottom: 10px;
+    cursor: all-scroll;
+    border: none;
+  }
+  
+  .fc button {
+    background: rgb(109, 83, 255);
+    color: white;
+    border-color: white;
+  }
+  
+  .fc td {
+    border-width: 0 !important;
+  }
+  
+  .fc th {
+    border-width: 0 !important;
+  }
+  
+  .fc-state-active {
+    color: #b7bbd1 !important;
+  }
+  
+  .fc-state-down {
+    color: #3f51b5 !important;
+  }
+  /*Tamaño del calendario*/
+  #calendario {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+  
+  .fc-unthemed td.fc-today
+  {
+    background: rgb(187, 175, 255) !important;
+  }
+
+    .fc-day-grid-container
+    {
+        overflow: unset !important;
+    }
+
+  @media only screen and (max-width: 565px) {
+
+    .fc-view-container
+    {
+        height: 400px !important;
+    }
+
+    
+
+  }
+  @media only screen and (max-width: 1000px) {
+    #calendario
+    {
+        width: 90% !important;
+    }
+  }
 
