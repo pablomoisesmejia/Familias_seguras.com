@@ -47,7 +47,7 @@
                                 <p onclick='' id='enviar_mensaje' class='botom_img_c_p' >Enviar Mensaje al Vendedor <a href='whatsapp://send/?phone=503' id='wha_vehiprop_btn'><img class='icoredss' src='../web/img/ico/wha_icon.png'></a><a id='tel_btn' href='tel:+503' class='icoredss'><i style='color:white; font-size:22px;' class='material-icons prefix '>phone</i></a></p>
                                 
                             </div>
-                            <p onclick='' class='botom_img_c_p' >Programar Cita para Verlo</p>
+                            <p onclick='' id='cita' class='botom_img_c_p' >Programar Cita para Verlo</p>
                         </div>
                     </div>
                     <div class='col s12 m4   l4'>

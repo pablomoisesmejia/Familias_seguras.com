@@ -37,6 +37,11 @@ $('#enviar_mensaje').click(function(){
   location.href =  'enviar_mensaje.php?id='+id+'&cat='+categoria+'';
 });
 
+$('#cita').click(function(){
+  id = decodeURI(getUrlVars()['id']);
+  location.href =  'citas.php?id='+id+'&cat='+categoria+'';
+});
+
 
 function opentipscot(){
   
