@@ -6,10 +6,9 @@ class Citas extends Validator
     private $title = null;
     private $nombres = null;
     private $correo = null;
-    private $color = null;
-    private $textColor = null;
+    private $color = 'rgb(117, 38, 120)';
+    private $textColor = 'white';
     private $start = null;
-    private $end = null;
     private $lugar_reunion = null;
     private $asunto = null;
     private $FK_id_usuario = null;
@@ -127,22 +126,6 @@ class Citas extends Validator
 		return $this->start;
     }
 
-    public function setEnd($value)
-    {
-        if($this->validateAlphanumeric($value, 1, 20))
-        {
-			$this->end = $value;
-			return true;
-        }
-        else
-        {
-			return false;
-		}
-	}
-	public function getEnd(){
-		return $this->end;
-    }
-
     public function setLugarReunion($value)
     {
         if($this->validateAlphanumeric($value, 1, 100))
@@ -190,6 +173,21 @@ class Citas extends Validator
     public function getIdUsuario()
     {
 		return $this->FK_id_usuario;
+    }
+
+    public function getCitas()
+    {
+        $sql = 'SELECT PK_id_cita, title, nombres, correo, color, textColor, start, lugar_reunion, asunto, FK_id_usuario FROM citas c INNER JOIN usuarios_anuncios ua ON c.FK_id_usuario = ua.id_usuario WHERE ua.id_usuario = ?';
+        $params = array($this->FK_id_usuario);
+        return Database::getRows($sql, $params);
+    }
+
+    public function createCita()
+    {
+        $sql = 'INSERT INTO citas(title, nombres, correo, color, textColor, start, lugar_reunion, asunto, FK_id_usuario) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->title, $this->nombres, $this->correo, $this->color, $this->textColor, $this->start, $this->lugar_reunion, $this->asunto, $this->FK_id_usuario);
+        return Database::executeRow($sql, $params);
     }
 }
 
