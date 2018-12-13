@@ -19,7 +19,7 @@ $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, 
 $mail->Port = 465;
 
 $mail->AddAddress($datos_usuario['correo_usuario']);
-if($calendario)
+if($tipo == 1)
 {
     $mail->Subject = 'Cita para ver tú publicación';
     $mail->MsgHTML("
@@ -73,7 +73,7 @@ if($calendario)
         echo 0;
     }
 }
-else
+if($tipo == 2)
 {
     $mail->Subject = 'Cliente interesado por tu publicación';
     $mail->MsgHTML("
@@ -96,7 +96,7 @@ else
                 <h3 style='	color:rgb(78, 78, 78);
                 font-weight: 50;
                 text-align:center; margin-top: 40px; padding-left: 5%; padding-right: 5%;'>
-                El nombre es $_POST[nombres] $_POST[apellidos], su número de teléfono es $_POST[telefono], el correo electrónico es $_POST[correo].
+                El nombre es $_POST[nombres], su número de teléfono es $_POST[telefono], el correo electrónico es $_POST[correo].
                 <p>
                 <p>
                 El mensaje es el siguiente:

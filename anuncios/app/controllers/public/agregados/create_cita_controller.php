@@ -12,7 +12,7 @@ try
     $propiedad = new Propiedad;
 
     $titulo = '';
-    $calendario = true;
+    $tipo = 1;//Esto verificar el tipo de correo ha enviar. tipo 1 es de cita y tipo 2 es de enviar mensaje
     $categoria = $_POST['categoria'];
     $cita->setNombres($_POST['nombres']);
     $cita->setCorreo($_POST['correo']);
