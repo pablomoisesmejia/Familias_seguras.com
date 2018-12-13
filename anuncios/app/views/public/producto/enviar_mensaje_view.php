@@ -28,7 +28,20 @@
             </div>
         </div>
         <div class='row center-align'>
-            <a href='../account/index.php' class='btn waves-effect grey'>Cancelar</a>
+            <?php
+            if($_GET['cat'] == 1)
+            {
+                print("
+                <a href='vehiculos_detalle_v.php?id=$_GET[id]' class='btn waves-effect grey'>Cancelar</a>
+                ");
+            }
+            if($_GET['cat'] == 2)
+            {
+                print("
+                <a href='pagina.php?id=$_GET[id]' class='btn waves-effect grey'>Cancelar</a>
+                ");
+            }
+            ?>
             <button id='enviar' name='enviar'  type='submit' class='btn waves-effect purple'>Enviar</button>
         </div>
     </form>

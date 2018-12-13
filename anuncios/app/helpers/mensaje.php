@@ -117,6 +117,27 @@ if($tipo == 2)
     </body>
 
     ");
-    $mail->Send();
+    if($mail->Send())
+    {
+        if($_GET['cat'] == 1)
+        {
+            Page::showMessage(1, 'Espere a que el anunciante vea su correo', 'vehiculos_detalle_v.php?id='.$_GET['id'].'');
+        }
+        if($_GET['cat'] == 2)
+        {
+            Page::showMessage(1, 'Espere a que el anunciante vea su correo', 'pagina.php?id='.$_GET['id'].'');
+        }
+    }
+    else
+    {
+        if($_GET['cat'] == 1)
+        {
+            Page::showMessage(1, 'No se envio el correo pero se guardaron sus datos', 'vehiculos_detalle_v.php?id='.$_GET['id'].'');
+        }
+        if($_GET['cat'] == 2)
+        {
+            Page::showMessage(1, 'No se envio el correo pero se guardaron sus datos', 'pagina.php?id='.$_GET['id'].'');
+        }
+    }
 }
 ?>
