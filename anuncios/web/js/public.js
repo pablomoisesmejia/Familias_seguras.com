@@ -42,6 +42,15 @@ $('#cita').click(function(){
   location.href =  'citas.php?id='+id+'&cat='+categoria+'';
 });
 
+function llamada(numero)
+{
+  location.href ='tel:+503'+numero+'';
+}
+
+function whatsapp(numero)
+{
+  location.href ='whatsapp://send/?phone=503'+numero+'';
+}
 
 function opentipscot(){
   
