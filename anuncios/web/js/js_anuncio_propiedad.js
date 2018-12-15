@@ -6,8 +6,6 @@ $(document).ready(function(){
     $('#habitaciones').mask('000');
     $('#baños').mask('00');
     $('#cochera').mask('00');
-    $('#whatsapp').mask('00000000');
-    $('#telefono').mask('00000000');
     $('#valor_propiedad').mask('#,#00.00', {reverse: true});
 
     getTiposPropiedad();
@@ -101,8 +99,6 @@ $(document).ready(function(){
     var cochera = '';
     var descripcion = '';
     var amenidades = '';
-    var whatsapp = '';
-    var telefono = '';
     var valor = '';
     var id_propiedad = '';
 
@@ -121,8 +117,6 @@ $(document).ready(function(){
         cochera = $('#cochera').val();
         descripcion = $('#descripcion').val();
         amenidades = $('#amenidades').val();
-        whatsapp = $('#whatsapp').val();
-        telefono = $('#telefono').val();
         valor = $('#valor_propiedad').val();
 
         if(imagenes != 0)
@@ -149,42 +143,28 @@ $(document).ready(function(){
                                                 {
                                                     if(cochera != '')
                                                     {
-                                                        if(whatsapp != '')
+                                                        if(valor != '')
                                                         {
-                                                            if(telefono != '')
+                                                            if(descripcion != '')
                                                             {
-                                                                if(valor != '')
+                                                                if(amenidades != '')
                                                                 {
-                                                                    if(descripcion != '')
-                                                                    {
-                                                                        if(amenidades != '')
-                                                                        {
-                                                                            $('#crear').attr("disabled", "disabled");
-                                                                            creeatePropiedad();
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            AlertaSweet(3, 'Ingrese la amenidades de la propiedad');
-                                                                        }
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        AlertaSweet(3, 'Haga una detallada descripción de la propiedad(plus, defectos, etc)');
-                                                                    }
+                                                                    $('#crear').attr("disabled", "disabled");
+                                                                    creeatePropiedad();
                                                                 }
                                                                 else
                                                                 {
-                                                                    AlertaSweet(3, 'Ingrese el valor de la propiedad');
+                                                                    AlertaSweet(3, 'Ingrese la amenidades de la propiedad');
                                                                 }
                                                             }
                                                             else
                                                             {
-                                                                AlertaSweet(3, 'Ingrese un número de telefono ó celular');
+                                                                AlertaSweet(3, 'Haga una detallada descripción de la propiedad(plus, defectos, etc)');
                                                             }
                                                         }
                                                         else
                                                         {
-                                                            AlertaSweet(3, 'Ingrese su número de whatsapp');
+                                                            AlertaSweet(3, 'Ingrese el valor de la propiedad');
                                                         }
                                                     }
                                                     else
@@ -264,8 +244,6 @@ $(document).ready(function(){
             cochera:cochera,
             descripcion:descripcion,
             amenidades:amenidades,
-            telefono:telefono,
-            whatsapp:whatsapp,
             valor:valor
         }
 

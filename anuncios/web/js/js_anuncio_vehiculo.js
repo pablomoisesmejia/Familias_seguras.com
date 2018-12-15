@@ -9,9 +9,6 @@ $(document).ready(function(){
 
     $('#motor').mask('0.0');
     $('#valor_vehiculo').mask('#,#00.00', {reverse: true});
-    $('#placa').mask('000000');
-    $('#whatsapp').mask('00000000');
-    $('#telefono').mask('00000000');
     $('#kilometraje').mask('##,#00', {reverse: true});
     
     var marca_vehiculo = '';
@@ -22,9 +19,6 @@ $(document).ready(function(){
     var transmision = '';
     var motor = '';
     var valor_vehiculo = '';
-    var placa = '';
-    var whatsapp = '';
-    var telefono = '';
     //Variables para los chechbox
     var vidrios_electricos = 'No';
     var espejos_electricos = 'No';
@@ -295,9 +289,6 @@ $(document).ready(function(){
         transmision = $('#transmision').val();
         motor = $('#motor').val();
         valor_vehiculo = $('#valor_vehiculo').val();
-        placa = $('#placa').val();
-        whatsapp = $('#whatsapp').val();
-        telefono = $('#telefono').val();
 
         if($('#vehiculos').val() != 0)
         {
@@ -317,29 +308,8 @@ $(document).ready(function(){
                                     {
                                         if(valor_vehiculo != '')
                                         {
-                                            if(placa != '')
-                                            {
-                                                if(whatsapp != '')
-                                                {
-                                                    if(telefono != '')
-                                                    {
-                                                        $('#crear').attr("disabled", "disabled");
-                                                        createVehiculo();
-                                                    }
-                                                    else
-                                                    {
-                                                        AlertaSweet(3, 'Ingrese su número de telefono o celular');
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    AlertaSweet(3, 'Ingrese su número de whatsapp');
-                                                }
-                                            }
-                                            else
-                                            {
-                                                AlertaSweet(3, 'Ingrese la placa del vehiculo, esto se mostrará al publico');
-                                            }
+                                            $('#crear').attr("disabled", "disabled");
+                                            createVehiculo();
                                         }
                                         else
                                         {
@@ -399,9 +369,6 @@ $(document).ready(function(){
             transmision:transmision,
             motor:motor,
             valor_vehiculo:valor_vehiculo,
-            placa:placa,
-            whatsapp:whatsapp,
-            telefono:telefono,
             vidrios_electricos:vidrios_electricos,
             espejos_electricos:espejos_electricos,
             aire_acondicionado:aire_acondicionado,

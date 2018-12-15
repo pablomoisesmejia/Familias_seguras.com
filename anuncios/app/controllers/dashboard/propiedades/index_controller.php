@@ -12,7 +12,7 @@ try
     }
     else
     {
-        Page::showMessage(4, "No tienes vehiculos disponibles", 'create_propiedad.php');
+        Page::showMessage(4, "No tienes propiedades disponibles", 'create_propiedad.php');
     }
 }
 catch(Exception $error)

@@ -48,19 +48,55 @@ $(document).ready(function(){
           
           if(tipo == 'image/jpeg' || tipo == 'image/jpg')
           {
-              
             reader.onload = function(e)
             {
                 $('#banner_top').append('<img id="banner_set" width="100%" height="auto" src="'+e.target.result+'">');
                 $('.materialboxed').materialbox();
             }
+            reader.readAsDataURL(imagenes[i]);
           }
           else
           {
-              AlertasSwal('El archivo '+nombre+' no es un tipo de imagen(jpg, jpeg, png ó gif)');
+              AlertaSweet(3, 'El archivo '+nombre+' no es un tipo de imagen(jpg ó jpeg)');
+              $('#imagenes').val('');
           }
-          reader.readAsDataURL(imagenes[i]);
+          
       }
   });
 });
+
+function AlertaSweet(icono, texto)
+{
+  var icon = '';
+  var titulo = '';
+  if(icono == 1)
+  {
+    titulo = "Éxito";
+    icon = "success";
+  }
+  if(icono == 2)
+  {
+    titulo = "Error";
+    icon = "error";
+  }
+  if(icono == 3)
+  {
+    titulo = "Advertencia";
+    icon = "warning";
+  }
+  if(icono == 4)
+  {
+    titulo = "Aviso";
+    icon = "info";
+  }
+
+  swal({
+    title: titulo,
+    text: texto,
+    icon: icon,
+    button: 'Aceptar',
+    closeOnClickOutside: false,
+    closeOnEsc: false
+  });
+}
 

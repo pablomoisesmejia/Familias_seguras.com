@@ -19,9 +19,6 @@ try
     $vehiculo->setTransmision($_POST['transmision']);
     $vehiculo->setMotor($_POST['motor']);
     $vehiculo->setValor($_POST['valor_vehiculo']);
-    $vehiculo->setPlaca($_POST['placa']);
-    $vehiculo->setWhatsapp($_POST['whatsapp']);
-    $vehiculo->setTelefono($_POST['telefono']);
     $vehiculo->setVidriosElectricos($_POST['vidrios_electricos']);
     $vehiculo->setEspejosElectricos($_POST['espejos_electricos']);
     $vehiculo->setAireAcondicionado($_POST['aire_acondicionado']);

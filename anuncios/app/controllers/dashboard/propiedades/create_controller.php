@@ -25,8 +25,6 @@ try
     $propiedad->setDescripcion($_POST['descripcion']);
     $propiedad->setAmenidades($_POST['amenidades']);
     $propiedad->setValor($_POST['valor']);
-    $propiedad->setTelefono($_POST['telefono']);
-    $propiedad->setWhatsapp($_POST['whatsapp']);
 
     if($propiedad->createPropiedad())
     {

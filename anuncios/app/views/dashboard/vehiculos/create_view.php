@@ -67,24 +67,6 @@
             <input id="valor_vehiculo" type="text" class="validate" required/>
             <label class="" for="valor_vehiculo">Valor del Vehiculo</label>
         </div>
-
-        <div class='input-field col s12 l6'>
-            <i style="color:black;"class="material-icons prefix">directions_car</i>
-            <input id="placa" type="text" class="validate" required/>
-            <label class="" for="placa">Número de placa(Esto no se mostrará)</label>
-        </div>
-
-        <div class='input-field col s12 l6'>
-            <i style="color:black;"class="material-icons prefix">account_circle</i>
-            <input id="whatsapp" type="text" class="validate" required/>
-            <label class="" for="whatsapp">whatsapp</label>
-        </div>
-
-        <div class='input-field col s12 l6'>
-            <i  style="color:black;"class="material-icons prefix">phone</i>
-            <input id="telefono" type="text" class="validate" required/>
-            <label class="" for="telefono">Teléfono ó celular</label>      
-        </div>
     </div>
     <div class='row'>
         <div class='center'>

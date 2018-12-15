@@ -337,7 +337,7 @@ class Propiedad extends Validator
     
     public function getPropiedades()
     {
-        $sql = 'SELECT p.PK_id_propiedad, tp.tipo_propiedad, p.FK_id_usuario, t.transaccion, p.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.amenidades, p.valor, p.telefono
+        $sql = 'SELECT p.PK_id_propiedad, tp.tipo_propiedad, p.FK_id_usuario, t.transaccion, p.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.amenidades, p.valor
         FROM propiedades p INNER JOIN tipo_propiedad tp ON p.FK_id_tipo_propiedad = tp.PK_id_tipo_propiedad 
         INNER JOIN transaccion t ON p.FK_id_transaccion = t.PK_id_transaccion 
         WHERE FK_id_usuario = ?';
@@ -354,9 +354,10 @@ class Propiedad extends Validator
 
     public function getPropiedadDetalle()
     {
-        $sql = 'SELECT p.PK_id_propiedad, p.FK_id_usuario, tp.tipo_propiedad, t.transaccion, p.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.amenidades, p.valor, p.telefono, p.whatsapp 
+        $sql = 'SELECT p.PK_id_propiedad, p.FK_id_usuario, tp.tipo_propiedad, t.transaccion, p.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.amenidades, p.valor, ua.whatsapp, ua.telefono
         FROM propiedades p INNER JOIN tipo_propiedad tp ON p.FK_id_tipo_propiedad = tp.PK_id_tipo_propiedad 
         INNER JOIN transaccion t ON p.FK_id_transaccion = t.PK_id_transaccion 
+        INNER JOIN usuarios_anuncios ua ON p.FK_id_usuario = ua.id_usuario
         WHERE p.PK_id_propiedad = ? ';
         $params = array($this->PK_id_propiedad);
         return Database::getRow($sql, $params);
@@ -364,7 +365,7 @@ class Propiedad extends Validator
 
     public function getPropiedadesTransaccion()
     {
-        $sql = 'SELECT PK_id_propiedad, colonia, municipio, departamento, niveles, habitaciones, baños, cochera, valor, telefono, whatsapp 
+        $sql = 'SELECT PK_id_propiedad, colonia, municipio, departamento, niveles, habitaciones, baños, cochera, valor
         FROM propiedades 
         WHERE FK_id_transaccion = ?';
         $params = array($this->FK_id_transaccion);
@@ -387,9 +388,9 @@ class Propiedad extends Validator
 
     public function createPropiedad()
     {
-        $sql = 'INSERT INTO propiedades(FK_id_tipo_propiedad, FK_id_usuario, FK_id_transaccion, colonia, municipio, departamento, terreno, construccion, niveles, habitaciones, baños, cochera, descripcion, amenidades, valor, telefono, whatsapp) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->FK_id_tipo_propiedad, $this->FK_id_usuario, $this->FK_id_transaccion, $this->colonia, $this->municipio, $this->departamento, $this->terreno, $this->construccion, $this->niveles, $this->habitaciones, $this->baños, $this->cochera, $this->descripcion, $this->amenidades, $this->valor, $this->telefono, $this->whatsapp);
+        $sql = 'INSERT INTO propiedades(FK_id_tipo_propiedad, FK_id_usuario, FK_id_transaccion, colonia, municipio, departamento, terreno, construccion, niveles, habitaciones, baños, cochera, descripcion, amenidades, valor) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->FK_id_tipo_propiedad, $this->FK_id_usuario, $this->FK_id_transaccion, $this->colonia, $this->municipio, $this->departamento, $this->terreno, $this->construccion, $this->niveles, $this->habitaciones, $this->baños, $this->cochera, $this->descripcion, $this->amenidades, $this->valor);
         $propiedad = Database::executeRow($sql, $params);
         if($propiedad)
         {

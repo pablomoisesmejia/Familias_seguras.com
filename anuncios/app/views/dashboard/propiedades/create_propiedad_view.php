@@ -81,18 +81,6 @@
         </div>
 
         <div class='input-field col s12 l6'>
-            <i style="color:black;"class="material-icons prefix">phone</i>
-            <input id="whatsapp" type="text" class="validate" required/>
-            <label class="" for="whatsapp">whatsapp</label>
-        </div>
-
-        <div class='input-field col s12 l6'>
-            <i  style="color:black;"class="material-icons prefix">phone</i>
-            <input id="telefono" type="number" class="validate" required/>
-            <label class="" for="telefono">Teléfono ó celular</label>      
-        </div>
-
-        <div class='input-field col s12 l6'>
             <i style="color:black;"class="material-icons prefix">attach_money</i>
             <input id="valor_propiedad" type="text" class="validate" required/>
             <label class="" for="valor_propiedad">Valor de la Propiedad</label>
