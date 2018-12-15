@@ -1,10 +1,10 @@
 <form method='post' enctype='multipart/form-data'>
     <div class='row'>
-
+    <div id='banner_top' class='materialboxed'></div>
     <div class='file-field input-field col s12 m6'>
             <div class='btn waves-effect'>
                 <span><i class='material-icons'>image</i></span>
-                <input type='file' name='archivo' required/>
+                <input type='file' name='archivo' id='imagenes' required/>
             </div>
             <div class='file-path-wrapper'>
                 <input type='text' class='file-path validate' placeholder='Selecciona imagen del anuncio'/>

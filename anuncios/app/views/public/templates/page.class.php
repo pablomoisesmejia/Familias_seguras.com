@@ -82,7 +82,7 @@ class Page extends Component{
 				<div class='container'>
 				");
 				$filename = basename($_SERVER['PHP_SELF']);
-				if($filename != 'enviar_mensaje.php')
+				if($filename != 'enviar_mensaje.php' && $filename != 'citas.php')
 				{
 					print("<div id='banner_top' class='materialboxed'><img id='banner_set' width='100%' height='auto' src=''></div></div>");
 				}
