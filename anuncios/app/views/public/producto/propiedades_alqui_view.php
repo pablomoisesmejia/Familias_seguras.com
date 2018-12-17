@@ -21,7 +21,7 @@
                     <div class='purple darken-3 lop'>
                         <a style='color:white; height:80px;' href='pagina.php?id=$row[PK_id_propiedad]'>
                             <div class='col s7' id='previnfo_vehi'>
-                                <div class='row' style='padding:0; margin:0;  font-size:1em'>CV-201811_0002</div>
+                                <div class='row' style='padding:0; margin:0;  font-size:1em'>CA-201811_0002</div>
                                 <div class='row' id='name_dir_style' style='padding:0; margin:0; font-size:0.8em'>Colonia $row[colonia]</div>
                             </div>
                             <div class=''>
