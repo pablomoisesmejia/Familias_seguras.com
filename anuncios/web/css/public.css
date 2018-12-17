@@ -427,6 +427,12 @@ color: #A2A2A2;
     
     
 }
+.fot_lets{
+    
+    float:left; 
+    margin-top:30px; 
+    padding-left:0%;
+}
 #menu_txt_side{
 font-size: 1.3em;
 margin-left: 38px;
@@ -582,7 +588,7 @@ max-width: 250px;
     color: #FFFFFF;
     
     padding: 0;
-    padding-left: 10px;
+    padding-left: 0px;
     padding-right: 10px;
     font-family: calibrily;
    
@@ -769,6 +775,15 @@ width: 100%;
        float: left;
        padding-left: 15vw
     }
+    .fot_lets{
+        padding-left:3%;
+    }
+    .btn_hdd2{
+      
+        padding-left: 10px;
+ 
+       
+        }
  }
 
  /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------

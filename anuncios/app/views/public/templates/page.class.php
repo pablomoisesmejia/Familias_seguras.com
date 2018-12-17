@@ -102,7 +102,7 @@ class Page extends Component{
 					
 						<div class='container'>
 						
-							<div style='float:left; margin-top:30px; padding-left:3%' class='left-align'>
+							<div  class='left-align fot_lets' id=''>
 							
 							<a style='float:left' class='btn_hdd2' href='../dashboard/account/login.php'>Nosotros</a>
 							<a style='float:left' class='btn_hdd2' href='../dashboard/account/register.php'>Servicios</a>
