@@ -10,6 +10,8 @@ class Banners extends Validator
     private $hora_inicio = null;
     private $estado_banner = null;
     private $dia_especifico = null;
+    private $FK_id_tipo_banner = null;
+    private $FK_id_seccion = null;
 
     private $ruta = "../../web/img/banners/";
 
@@ -30,9 +32,9 @@ class Banners extends Validator
 		return $this->PK_id_banner;
     }
     
-    public function setImagen($file)
+    public function setImagen($file, $width, $height)
 	{
-		if($this->validateImage($file, $this->imagen, 5000, 5000))
+		if($this->validateImage($file, $this->imagen, $width, $height))
 		{
 			$this->imagen = $this->getImageName();
 			return true;
@@ -152,6 +154,40 @@ class Banners extends Validator
         return $this->dia_especifico;
     }
 
+    public function setIdTipoBanner($value)
+    {
+        if($this->validateId($value))
+        {
+			$this->FK_id_tipo_banner = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getIdTipoBanner()
+    {
+		return $this->FK_id_tipo_banner;
+    }
+
+    public function setIdSeccion($value)
+    {
+        if($this->validateId($value))
+        {
+			$this->FK_id_seccion = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getIdSeccion()
+    {
+		return $this->FK_id_seccion;
+    }
+
     public function getIntervalosFecha()
     {
         $sql = 'SELECT i.PK_id_intervalo_fecha, i.intervalos_fecha FROM intervalos_fecha i';
@@ -160,18 +196,41 @@ class Banners extends Validator
     }
     public function getBanners()
     {
-        $sql = 'SELECT b.PK_id_banner, b.imagen, i.intervalos_fecha, b.cant_intervalo_fecha, b.fecha_inicio, b.hora_inicio, b.estado_banner, b.dia_especifico 
+        $sql = 'SELECT b.PK_id_banner, b.imagen, i.intervalos_fecha, b.cant_intervalo_fecha, b.fecha_inicio, b.hora_inicio, b.estado_banner, tb.tipo_banner, s.nombre_seccion, s.nombre_carpeta
         FROM banners b INNER JOIN intervalos_fecha i ON b.FK_id_intervalo_fecha = i.PK_id_intervalo_fecha 
+        INNER JOIN tipo_banner tb ON b.FK_id_tipo_banner = tb.PK_id_tipo_banner
+        INNER JOIN secciones s ON b.FK_id_seccion = s.PK_id_seccion
         WHERE estado_banner = 1';
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
+
+    public function getNombreCarpeta()
+    {
+        $sql = 'SELECT s.nombre_carpeta FROM secciones s WHERE s.PK_id_seccion = ?';
+        $params = array($this->FK_id_seccion);
+        return Database::getRow($sql, $params);
+    }
+
+    public function getTiposBanners()
+    {
+        $sql = 'SELECT tb.PK_id_tipo_banner, tb.tipo_banner FROM tipo_banner tb';
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
+
+    public function getSecciones()
+    {
+        $sql = 'SELECT PK_id_seccion, nombre_seccion FROM secciones';
         $params = array(null);
         return Database::getRows($sql, $params);
     }
 
     public function createBanner()
     {
-        $sql = 'INSERT INTO banners(imagen, FK_id_intervalo_fecha, cant_intervalo_fecha, fecha_inicio, hora_inicio, estado_banner, dia_especifico)
-        VALUES (?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->imagen, $this->FK_id_intervalo_fecha, $this->cant_intervalo_fecha, $this->fecha_inicio, $this->hora_inicio, 1, $this->dia_especifico);
+        $sql = 'INSERT INTO banners(imagen, FK_id_intervalo_fecha, cant_intervalo_fecha, fecha_inicio, hora_inicio, estado_banner, FK_id_tipo_banner, FK_id_seccion)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->imagen, $this->FK_id_intervalo_fecha, $this->cant_intervalo_fecha, $this->fecha_inicio, $this->hora_inicio, 1, $this->FK_id_tipo_banner, $this->FK_id_seccion);
         return Database::executeRow($sql, $params);
     }
 }

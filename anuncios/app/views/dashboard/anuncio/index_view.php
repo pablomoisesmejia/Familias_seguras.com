@@ -27,7 +27,7 @@
 	foreach($data as $row){
 		print("
 		<tr>
-			<td><img src='../../web/img/banners/$row[imagen]' class='materialboxed' width='100' height='100'></td>
+			<td><img src='../../web/img/banners/$row[nombre_carpeta]/$row[imagen]' class='materialboxed' width='100' height='100'></td>
 			<td>$row[cant_intervalo_fecha] $row[intervalos_fecha]</td>
 			<td>$row[fecha_inicio] $row[hora_inicio]</td>
 			<td>

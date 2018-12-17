@@ -7,63 +7,94 @@ try
     $banner = new Banners;
     if(isset($_POST['crear']))
     {
-        $_POST = $banner->validateForm($_POST);
-        if($banner->setIdIntervaloFecha($_POST['intervalo']))
+        $width = 0;
+        $height = 0;
+
+
+        if($_POST['tipo_banner'] == 1)
         {
-            if($banner->setCantIntervaloFecha($_POST['cant_intervalo']))
+            $width = 250;
+            $height = 250;
+        }
+        if($_POST['tipo_banner'] == 2)
+        {
+            $width = 1250;
+            $height = 400;
+        }
+
+        $_POST = $banner->validateForm($_POST);
+        if($banner->setIdTipoBanner($_POST['tipo_banner']))
+        {
+            if($banner->setIdSeccion($_POST['seccion']))
             {
-                if($banner->setFechaInicio($_POST['fecha_inicio']))
+                $nombre_carpeta = $banner->getNombreCarpeta();
+                if($banner->setIdIntervaloFecha($_POST['intervalo']))
                 {
-                    if($banner->setHoraInicio($_POST['hora_inicio']))
+                    if($banner->setCantIntervaloFecha($_POST['cant_intervalo']))
                     {
-                        if(is_uploaded_file($_FILES['archivo']['tmp_name']))
+                        if($banner->setFechaInicio($_POST['fecha_inicio']))
                         {
-                            if($banner->setImagen($_FILES['archivo']))
+                            if($banner->setHoraInicio($_POST['hora_inicio']))
                             {
-                                if($banner->createBanner())
+                                if(is_uploaded_file($_FILES['archivo']['tmp_name']))
                                 {
-                                    if(Utility::saveFile($_FILES['archivo'], $banner->getRuta(), $banner->getImagen()))
+                                    if($banner->setImagen($_FILES['archivo'], $width, $height))
                                     {
-                                        Page::showMessage(1, "Se creo correctamente", "index.php");
+                                        $ruta = $banner->getRuta().$nombre_carpeta[0].'/';
+                                        if($banner->createBanner())
+                                        {
+                                            if(Utility::saveFile($_FILES['archivo'], $ruta, $banner->getImagen()))
+                                            {
+                                                Page::showMessage(1, "Se creo correctamente", "index.php");
+                                            }
+                                            else
+                                            {
+                                                Page::showMessage(3, "Se guardaron los datos pero no se guardó la imagen", "index.php");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            throw new Exception(Database::getException());
+                                        }
                                     }
                                     else
                                     {
-                                        Page::showMessage(3, "Producto creado pero no se guardó el archivo", "index.php");
+                                        throw new Exception($banner->getImageError());
                                     }
                                 }
                                 else
                                 {
-                                    throw new Exception(Database::getException());
+                                    throw new Exception("Seleccione una imagen");
                                 }
                             }
                             else
                             {
-                                throw new Exception($producto->getImageError());
+                                throw new Exception('Seleccione la hora de inicio de su banner');
                             }
                         }
                         else
                         {
-                            throw new Exception("Seleccione una imagen");
+                            throw new Exception('Seleccione la fecha de inicio de su banner');
                         }
                     }
                     else
                     {
-                        throw new Exception('Seleccione la hora de inicio de su banner');
+                        throw new Exception('Seleccione la cantidad de intervalos');
                     }
                 }
                 else
                 {
-                    throw new Exception('Seleccione la fecha de inicio de su banner');
+                    throw new Exception('Seleccione un intervalo de fecha para mostrar su banner');
                 }
             }
             else
             {
-                throw new Exception('Seleccione la cantidad de intervalos');
+                throw new Exception("Seleccione la sección del banner");
             }
         }
         else
         {
-            throw new Exception('Seleccione un intervalo de fecha para mostrar su banner');
+            throw new Exception("Seleccione el tipo del banner");
         }
     }
 }
