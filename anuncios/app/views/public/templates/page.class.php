@@ -16,15 +16,6 @@ class Page extends Component{
 		    $imagen = $banners[$banner_aleatorio]['imagen'];
 		}
 		ini_set("date.timezone","America/El_Salvador");
-		$filename = basename($_SERVER['PHP_SELF']);
-		if($filename == 'propiedades_v.php')
-		{
-			$_SESSION['tipo_transaccion'] = 1;
-		}
-		if($filename == 'propiedades_alqui.php')
-		{
-			$_SESSION['tipo_transaccion'] = 2;
-		}
 		print("
 			<!DOCTYPE html>
 			<html lang='es'>

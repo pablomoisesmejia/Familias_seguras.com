@@ -365,9 +365,9 @@ class Propiedad extends Validator
 
     public function getPropiedadesTransaccion()
     {
-        $sql = 'SELECT PK_id_propiedad, colonia, municipio, departamento, niveles, habitaciones, baños, cochera, valor
-        FROM propiedades 
-        WHERE FK_id_transaccion = ?';
+        $sql = 'SELECT p.PK_id_propiedad, p.colonia, p.municipio, p.departamento, p.niveles, p.habitaciones, p.baños, p.cochera, p.valor, ip.nombre_imagen_prop
+        FROM propiedades p LEFT JOIN imagenes_propiedad ip ON p.PK_id_propiedad = ip.FK_id_propiedad
+        WHERE FK_id_transaccion = ?  GROUP BY p.PK_id_propiedad';
         $params = array($this->FK_id_transaccion);
         return Database::getRows($sql, $params);
     }

@@ -1,18 +1,29 @@
 <?php
-require_once("../app/models/vehiculos.class.php");
-
+require_once("../../../models/database.class.php");
+require_once("../../../helpers/validator.class.php");
+require_once("../../../models/vehiculos.class.php");
+require_once("../../../models/propiedad.class.php");
 try
 {
     $vehiculo = new Vehiculos;
-    $data = $vehiculo->getVehiculo();
-    if($data)
+    $propiedad = new Propiedad;
+    $anuncios = '';
+    $seccion = $_POST['seccion'];
+    if($seccion == 1)
     {
-        require_once("../app/views/public/producto/compra_vehiculos_view.php");
+        $anuncios = $vehiculo->getVehiculo();
     }
-    else
+    if($seccion == 2)
     {
-		Page::showMessage(4, "No hay vehiculos en venta disponibles", null);
-	}
+        $propiedad->setIdTransaccion(1);
+        $anuncios = $propiedad->getPropiedadesTransaccion();
+    }
+    if($seccion == 3)
+    {
+        $propiedad->setIdTransaccion(2);
+        $anuncios = $propiedad->getPropiedadesTransaccion();
+    }
+    echo json_encode($anuncios);
 }
 catch(Exception $error)
 {
