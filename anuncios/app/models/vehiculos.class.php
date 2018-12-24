@@ -571,16 +571,15 @@ class Vehiculos extends Validator
         return Database::getRow($sql, $params);
     }
 
-    public function getVehiculo()
+    public function getVehiculo($orden)
     {
         $sql = 'SELECT v.PK_id_vehiculo, v.FK_id_usuario, mv.modelos_vehiculo, mar.marca_vehiculo, v.anio, v.valor, iv.nombre_imagen
         FROM vehiculos v INNER JOIN modelos_vehiculos mv ON v.FK_id_modelo = mv.PK_id_modelo_vehiculo 
         INNER JOIN marcas_vehiculos mar ON mv.FK_id_marca_vehiculo = mar.PK_id_marca_vehiculo
-        LEFT JOIN imagenes_vehiculo iv ON v.PK_id_vehiculo = iv.FK_id_vehiculo GROUP BY PK_id_vehiculo';
+        LEFT JOIN imagenes_vehiculo iv ON v.PK_id_vehiculo = iv.FK_id_vehiculo  GROUP BY PK_id_vehiculo '.$orden.'';
         $params = array(null);
         return Database::getRows($sql, $params);
     }
-
     public function getImgVehiculos()
     {
         $sql = 'SELECT nombre_imagen FROM imagenes_vehiculo WHERE FK_id_vehiculo = ?';
@@ -590,9 +589,10 @@ class Vehiculos extends Validator
 
     public function createVehiculo()
     {
-        $sql = 'INSERT INTO vehiculos(FK_id_usuario, FK_id_modelo, anio, color, kilometraje, transmision, motor, vidrios_electricos, espejos_electricos, aire_acondicionado, bolsas_aire, sistema_eco, mandos_timon, rines_especiales, camara_trasera, sensores_parqueo, bluetooth, combustible, sunroof, luces_xenon, cruise_control, mando_distancia, gps, tapiceria_cuero, dvd_trasero, valor) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->FK_id_usuario, $this->FK_id_modelo, $this->anio, $this->color, $this->kilometraje, $this->transmision, $this->motor, $this->vidrios_electricos, $this->espejos_electricos, $this->aire_acondicionado, $this->bolsas_aire, $this->sistema_eco, $this->mandos_timon, $this->rines_especiales, $this->camara_trasera, $this->sensores_parqueo, $this->bluetooth, $this->combustible, $this->sunroof, $this->luces_xenon, $this->cruise_control, $this->mando_distancia, $this->gps, $this->tapiceria_cuero, $this->dvd_trasero, $this->valor);
+        $fecha = date('Y-m-d');
+        $sql = 'INSERT INTO vehiculos(FK_id_usuario, FK_id_modelo, anio, color, kilometraje, transmision, motor, vidrios_electricos, espejos_electricos, aire_acondicionado, bolsas_aire, sistema_eco, mandos_timon, rines_especiales, camara_trasera, sensores_parqueo, bluetooth, combustible, sunroof, luces_xenon, cruise_control, mando_distancia, gps, tapiceria_cuero, dvd_trasero, valor, fecha_crecion) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->FK_id_usuario, $this->FK_id_modelo, $this->anio, $this->color, $this->kilometraje, $this->transmision, $this->motor, $this->vidrios_electricos, $this->espejos_electricos, $this->aire_acondicionado, $this->bolsas_aire, $this->sistema_eco, $this->mandos_timon, $this->rines_especiales, $this->camara_trasera, $this->sensores_parqueo, $this->bluetooth, $this->combustible, $this->sunroof, $this->luces_xenon, $this->cruise_control, $this->mando_distancia, $this->gps, $this->tapiceria_cuero, $this->dvd_trasero, $this->valor, $fecha);
         $vehiculo = Database::executeRow($sql, $params);
         if($vehiculo)
         {

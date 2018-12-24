@@ -6,13 +6,17 @@
     <div class='row'>
         <div class='col s12 m4' class='left-align'>
             <div class="input-field">
-                <select>
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
+                <select id = 'ordenar'>
+                <option value="" disabled selected>Ordenar vehículos por</option>
+                <option value="maa-z">Marcas de la A-Z</option>
+                <option value="maz-a">Marcas de la Z-A</option>
+                <option value="moa-z">Modelos de la A-Z</option>
+                <option value="moz-a">Modelos de la Z-A</option>
+                <option value="reciente">Vehículos mas recientes</option>
+                <option value="antiguo">Vehículos mas antiguos</option>
+                <option value="menor">Menor a mayor precio</option>
+                <option value="mayor">Mayor a menor precio</option>
                 </select>
-                <label>Materialize Select</label>
             </div>
         </div>
     </div>

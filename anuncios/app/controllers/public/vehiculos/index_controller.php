@@ -8,19 +8,67 @@ try
     $vehiculo = new Vehiculos;
     $propiedad = new Propiedad;
     $anuncios = '';
+    $filtro = '';
+    $ordenar = '';
+    if(isset($_POST['ordenar']))
+    {
+        $ordenar = $_POST['ordenar'];
+    }
+    
     $seccion = $_POST['seccion'];
     if($seccion == 1)
     {
-        $anuncios = $vehiculo->getVehiculo();
+        if($ordenar == '')
+        {
+            $anuncios = $vehiculo->getVehiculo('');
+        }
+        else
+        {
+            if($ordenar == 'maa-z')
+            {
+                $anuncios = $vehiculo->getVehiculo('ORDER BY mar.marca_vehiculo ASC');
+            }
+            if($ordenar == 'maz-a')
+            {
+                $anuncios = $vehiculo->getVehiculo('ORDER BY mar.marca_vehiculo DESC');
+            }
+            if($ordenar == 'moa-z')
+            {
+                $anuncios = $vehiculo->getVehiculo('ORDER BY mv.modelos_vehiculo ASC');
+            }
+            if($ordenar == 'moz-a')
+            {
+                $anuncios = $vehiculo->getVehiculo('ORDER BY mv.modelos_vehiculo DESC');
+            }
+            if($ordenar == 'reciente')
+            {
+                $anuncios = $vehiculo->getVehiculo('ORDER BY v.anio DESC');
+            }
+            if($ordenar == 'antiguo')
+            {
+                $anuncios = $vehiculo->getVehiculo('ORDER BY v.anio ASC');
+            }
+            if($ordenar == 'menor')
+            {
+                $anuncios = $vehiculo->getVehiculo('ORDER BY v.valor ASC');
+            }
+            if($ordenar == 'mayor')
+            {
+                $anuncios = $vehiculo->getVehiculo('ORDER BY v.valor DESC');
+            }
+        }
+        
     }
-    if($seccion == 2)
+    else
     {
-        $propiedad->setIdTransaccion(1);
-        $anuncios = $propiedad->getPropiedadesTransaccion();
-    }
-    if($seccion == 3)
-    {
-        $propiedad->setIdTransaccion(2);
+        if($seccion == 2)
+        {
+            $propiedad->setIdTransaccion(1);
+        }
+        if($seccion == 3)
+        {
+            $propiedad->setIdTransaccion(2);
+        }
         $anuncios = $propiedad->getPropiedadesTransaccion();
     }
     echo json_encode($anuncios);

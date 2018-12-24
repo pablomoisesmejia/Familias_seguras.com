@@ -6,7 +6,6 @@
     $propiedad->setIdPropiedad($data['PK_id_propiedad']);
     $imgPropiedad = $propiedad->getImgPropiedad();
     $filename = basename($_SERVER['PHP_SELF']);
-    $_SESSION['url'] = $filename;
     print("
     <!-- DIV IZQUIERDO -->
         <div class='col s12 m12 l9'>
@@ -15,9 +14,17 @@
                 <div style=' width:100%' class=''>
                     <div class='col s12 m8 l8' style=''>
                         <div style='margin-top:10px;' class='row'>
-                        
-                            <h5 class='titles'> <a href='vehiculos_v.php' id='btn_lines'>Propiedades Asegurables en Venta   ></a> Propiedad Seleccionada</h5>
-                    
+                        ");
+                        if($data['transaccion'] == 'Venta')
+                        {
+                            print("<h5 class='titles'> <a href='propiedades_v.php' id='btn_lines'>Propiedades Asegurables en Venta   ></a> Propiedad Seleccionada</h5>");
+                        }
+                        if($data['transaccion'] == 'Alquiler')
+                        {
+                            print("<h5 class='titles'> <a href='propiedades_alqui.php' id='btn_lines'>Propiedades Asegurables en Alquiler   ></a> Propiedad Seleccionada</h5>");
+                        }
+                                                
+                        print("
                             <div id='img_cont_detail_prop'>
                             <img width='100%' height='auto' src='../web/img/propiedades/$imgPropiedad[0]'>
                                     
