@@ -1,23 +1,21 @@
 <?php
-require_once("../app/models/producto.class.php");
+require_once("../../../models/database.class.php");
+require_once("../../../helpers/validator.class.php");
+require_once("../../../models/producto.class.php");
 try{
-	if(isset($_GET['id'])){
-		$producto = new Producto;
-		if($producto->setCategoria($_GET['id'])){
-			$productos = $producto->getCategoriaProductos();
-			if($productos){
-				require_once("../app/views/public/producto/productos_view.php");
-			}else{
-				throw new Exception("No hay anuncios de esta categoria disponibles");
-			
-			}
-		}else{
-			throw new Exception("Categoría incorrecta");
-		}
-	}else{
-		throw new Exception("Seleccione categoría");
+	$producto = new Producto;
+	$anuncios = '';
+	$filtro = '';
+	$ordenar = '';
+
+
+	if($producto->setCategoria($_GET['id']))
+	{
+		$anuncios = $producto->getCategoriaProductos();
+		echo json_encode($anuncios);
 	}
-}catch(Exception $error){
-	Page::showMessage(3, $error->getMessage(), "index.php");
+}
+catch(Exception $error){
+	echo json_encode($error->getMessage());
 }
 ?>

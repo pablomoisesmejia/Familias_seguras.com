@@ -3,29 +3,22 @@
 <?php
 $categoria = 'Categoria';
 print(" <div style='margin-top:22px;' ><h5 class='titles'><a href='index.php' id='btn_lines'>Directorio ></a>$categoria</h5></div>");
-
-print("<div class='row'>");
-foreach($productos as $producto){
-    print("
-        <div class='col s12 m4 l3'>
-        <a href='detalle_producto.php?id=$producto[id_anuncio]'>
-            <div class='card hoverable'>
-            <div class='card-image'>
-                <img href='detalle_producto.php?id=$producto[id_anuncio]' src='../web/img/productos/$producto[imagen_producto]' class=''>
-                <a href='detalle_producto.php?id=$producto[id_anuncio]' class='btn-floating halfway-fab waves-effect waves-light purple tooltipped' data-tooltip='Ver detalle'><i class='material-icons'>add</i></a>
-            </div>
-            <div style='color:white;' class='card-content purple darken-3' href='detalle_producto.php?id=$producto[id_anuncio]'>
-                <span style='font-size:1.2em;' class='card-title'>$producto[nombre_anuncio]</span>
-            
-            </div>
-            </div>
-            </a>
-        </div>
-
-        
-    ");
-}
 ?>
+    <div class='row'>
+        <div class='col s12 m4' class='left-align'>
+            <div class="input-field">
+                <select id = 'ordenar'>
+                <option value="" disabled selected>Ordenar por</option>
+                <option value="na-z">Nombre de la A-Z</option>
+                <option value="nz-a">Nombre de la Z-A</option>
+                <option value="reciente">Anuncios del mas recientes al mas antiguos</option>
+                <option value="antiguo">Anuncios del mas antiguos al mas reciente</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class='row' id='anuncios'>
+
     </div>
      <!-- Aqui incluyo el codigo php de random -->
      <?php

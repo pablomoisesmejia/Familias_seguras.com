@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2018 a las 05:22:58
+-- Tiempo de generación: 04-01-2019 a las 18:26:19
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -94,15 +94,19 @@ CREATE TABLE `banners` (
   `fecha_inicio` date NOT NULL,
   `hora_inicio` time NOT NULL,
   `estado_banner` int(11) NOT NULL,
-  `dia_especifico` int(11) NOT NULL
+  `FK_id_tipo_banner` int(11) NOT NULL,
+  `FK_id_seccion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `banners`
 --
 
-INSERT INTO `banners` (`PK_id_banner`, `imagen`, `FK_id_intervalo_fecha`, `cant_intervalo_fecha`, `fecha_inicio`, `hora_inicio`, `estado_banner`, `dia_especifico`) VALUES
-(1, '5bf5ff2fe9359.jpg', 1, 1, '2018-12-05', '03:00:00', 0, 0);
+INSERT INTO `banners` (`PK_id_banner`, `imagen`, `FK_id_intervalo_fecha`, `cant_intervalo_fecha`, `fecha_inicio`, `hora_inicio`, `estado_banner`, `FK_id_tipo_banner`, `FK_id_seccion`) VALUES
+(1, '5bf5ff2fe9359.jpg', 1, 1, '2018-12-05', '03:00:00', 1, 2, 1),
+(2, '5c08b38466d41.jpeg', 1, 1, '2018-12-05', '18:30:00', 1, 1, 1),
+(3, '5c15d1c620983.jpeg', 1, 1, '2018-12-15', '23:15:00', 1, 2, 1),
+(4, '5c16994dcee40.jpeg', 1, 1, '2018-12-16', '12:30:00', 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -216,6 +220,33 @@ INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`, `imagen`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `citas`
+--
+
+CREATE TABLE `citas` (
+  `PK_id_cita` int(11) NOT NULL,
+  `title` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `nombres` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `color` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `textColor` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `start` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `lugar_reunion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `asunto` varchar(1000) COLLATE utf8_spanish_ci NOT NULL,
+  `FK_id_usuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `citas`
+--
+
+INSERT INTO `citas` (`PK_id_cita`, `title`, `nombres`, `correo`, `color`, `textColor`, `start`, `lugar_reunion`, `asunto`, `FK_id_usuario`) VALUES
+(1, 'Cita', 'Xavier Canjura', 'fernanxavi58@hotmail.com', 'rgb(117, 38, 120)', 'white', '2018-12-24 12:00', 'Metrocentro San Salvador', 'Me interesó tu anuncio ', 1),
+(2, 'Cita', 'Xavier Canjura', 'fernanxavi58@hotmail.com', 'rgb(117, 38, 120)', 'white', '2018-12-12 12:00', 'Metrocentro San Salvador', 'Me interesó tu anuncio ', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `clientes_prospectos`
 --
 
@@ -297,6 +328,33 @@ INSERT INTO `companias_interes` (`PK_id_compania_interes`, `compania_interes`, `
 (13, 'MAPFRE', '2', 21),
 (14, 'ASSA', '3', 21),
 (15, 'ASESUISA', '4', 21);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contactos`
+--
+
+CREATE TABLE `contactos` (
+  `PK_id_contacto` int(11) NOT NULL,
+  `nombres` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `mensaje` varchar(1000) COLLATE utf8_spanish_ci NOT NULL,
+  `FK_id_usuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `contactos`
+--
+
+INSERT INTO `contactos` (`PK_id_contacto`, `nombres`, `telefono`, `correo`, `mensaje`, `FK_id_usuario`) VALUES
+(1, 'Fernando Xavier Canjura', '12345678', 'fernanxavi58@gmail.com', 'gsdfdfgdsfg', 1),
+(16, 'Xavier Canjura', '78146171', 'fernanxavi58@hotmail.com', 'Hola estoy interesado en la propiedad', 2),
+(17, 'Xavier Canjura', '78146171', 'fernanxavi58@hotmail.com', 'Hola estoy interesado en la propiedad', 2),
+(18, 'Xavier Canjura', '78146171', 'fernanxavi58@hotmail.com', 'Hola estoy interesado en la propiedad', 2),
+(19, 'Xavier Canjura', '78146171', 'fernanxavi58@hotmail.com', 'Hola estoy interesado en la propiedad', 2),
+(20, 'Xavier Canjura', '78146171', 'fernanxavi58@hotmail.com', 'Hola estoy interesado en la propiedad', 2);
 
 -- --------------------------------------------------------
 
@@ -564,9 +622,18 @@ INSERT INTO `gerencias` (`PK_id_gerencia`, `nombre_gerencia`) VALUES
 
 CREATE TABLE `imagenes_propiedad` (
   `PK_id_imagen_propiedad` int(11) NOT NULL,
-  `nombre_imagen_prop` int(11) NOT NULL,
+  `nombre_imagen_prop` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `FK_id_propiedad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `imagenes_propiedad`
+--
+
+INSERT INTO `imagenes_propiedad` (`PK_id_imagen_propiedad`, `nombre_imagen_prop`, `FK_id_propiedad`) VALUES
+(1, '5c0d4f0780b14.jpg', 2),
+(2, '5c0d4f0780b14.jpg', 1),
+(3, '5c0d4f0780b14.jpg', 5);
 
 -- --------------------------------------------------------
 
@@ -579,6 +646,16 @@ CREATE TABLE `imagenes_vehiculo` (
   `nombre_imagen` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `FK_id_vehiculo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `imagenes_vehiculo`
+--
+
+INSERT INTO `imagenes_vehiculo` (`PK_id_imagen_vehiculo`, `nombre_imagen`, `FK_id_vehiculo`) VALUES
+(19, '5c0c4f07527bb.jpg', 7),
+(20, '5c0c4f075ef5e.jpg', 7),
+(23, '5c0d53177b1d4.jpg', 9),
+(24, '5c0d9d16f33de.jpg', 10);
 
 -- --------------------------------------------------------
 
@@ -739,11 +816,54 @@ CREATE TABLE `propiedades` (
   `baños` int(11) NOT NULL,
   `cochera` int(11) NOT NULL,
   `descripcion` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
-  `amenidades` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `valor` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `telefono` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `direccion` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `fecha_creacion` date NOT NULL,
+  `comunidad_privada` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `piscina` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `cancha_basketball` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `cancha_tennis` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `cancha_futbol` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `gimnasio` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `spa_sauna` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `barbacoa` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `deck` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `sistema_riego` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `ac_central` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `ac_independiente` varchar(10) COLLATE utf8_unicode_ci DEFAULT '0',
+  `atico` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `portico` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `sotano` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `bodega` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `estudio` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `area_servicio` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `pantrie` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `closets` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `walking_closet` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `cocina_isla` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `desayunador` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `terraza_nivel_inferior` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `terraza_nivel_superior` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `sala_nivel_superior` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `calentador_agua` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `cisterna` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `triturador_basura` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `lavadora_platos` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `sistema_gas` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `conexion` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `paneles_solares` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `ventiladores_techo` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `acceso_discapacitados` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `ascensor` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `propiedades`
+--
+
+INSERT INTO `propiedades` (`PK_id_propiedad`, `FK_id_tipo_propiedad`, `FK_id_usuario`, `FK_id_transaccion`, `colonia`, `municipio`, `departamento`, `terreno`, `construccion`, `niveles`, `habitaciones`, `baños`, `cochera`, `descripcion`, `valor`, `fecha_creacion`, `comunidad_privada`, `piscina`, `cancha_basketball`, `cancha_tennis`, `cancha_futbol`, `gimnasio`, `spa_sauna`, `barbacoa`, `deck`, `sistema_riego`, `ac_central`, `ac_independiente`, `atico`, `portico`, `sotano`, `bodega`, `estudio`, `area_servicio`, `pantrie`, `closets`, `walking_closet`, `cocina_isla`, `desayunador`, `terraza_nivel_inferior`, `terraza_nivel_superior`, `sala_nivel_superior`, `calentador_agua`, `cisterna`, `triturador_basura`, `lavadora_platos`, `sistema_gas`, `conexion`, `paneles_solares`, `ventiladores_techo`, `acceso_discapacitados`, `ascensor`) VALUES
+(1, 1, 2, 1, 'Escalon', 'Santa Tecla', 'La libertad', '2000', '1500', 1, 6, 2, 2, 'La casa es un muy grande, en esta casa ha vivido cada integrante de la familia de los ROdriguez', '85000', '0000-00-00', '1', '0', '0', '1', '1', '1', '0', '0', '0', '1', '0', '1', '0', '0', '1', '0', '0', '0', '1', '1', '0', '0', '1', '0', '1', '0', '1', '1', '0', '1', '0', '1', '0', '0', '1', '0'),
+(2, 1, 2, 1, 'fdasf', 'fasdf', 'fasdf', '5000', '4000', 1, 6, 2, 2, 'hdgdfgh', '95000', '0000-00-00', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'),
+(5, 2, 2, 2, 'Flor Blanca', 'San Salvador', 'San Salvador', '4000', '3500', 2, 10, 3, 2, 'dasdads', '65000', '0000-00-00', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -764,6 +884,29 @@ CREATE TABLE `referidos` (
   `observaciones` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   `FK_id_cliente_prospecto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `secciones`
+--
+
+CREATE TABLE `secciones` (
+  `PK_id_seccion` int(11) NOT NULL,
+  `nombre_seccion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre_carpeta` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `secciones`
+--
+
+INSERT INTO `secciones` (`PK_id_seccion`, `nombre_seccion`, `nombre_carpeta`) VALUES
+(1, 'Portada', 'portada'),
+(2, 'Directorio', 'directorio'),
+(3, 'Venta de Vehículos', 'venta_vehiculos'),
+(4, 'Venta de Propiedades', 'venta_propiedades'),
+(5, 'Alquiler de Propiedades', 'alquiler_propiedades');
 
 -- --------------------------------------------------------
 
@@ -914,6 +1057,25 @@ INSERT INTO `tipos_team` (`PK_id_tipo_team`, `tipo_team`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo_banner`
+--
+
+CREATE TABLE `tipo_banner` (
+  `PK_id_tipo_banner` int(11) NOT NULL,
+  `tipo_banner` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tipo_banner`
+--
+
+INSERT INTO `tipo_banner` (`PK_id_tipo_banner`, `tipo_banner`) VALUES
+(1, 'Pequeño'),
+(2, 'Grande');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tipo_propiedad`
 --
 
@@ -921,6 +1083,14 @@ CREATE TABLE `tipo_propiedad` (
   `PK_id_tipo_propiedad` int(11) NOT NULL,
   `tipo_propiedad` varchar(25) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tipo_propiedad`
+--
+
+INSERT INTO `tipo_propiedad` (`PK_id_tipo_propiedad`, `tipo_propiedad`) VALUES
+(1, 'Casa'),
+(2, 'Apartamento');
 
 -- --------------------------------------------------------
 
@@ -932,6 +1102,14 @@ CREATE TABLE `transaccion` (
   `PK_id_transaccion` int(11) NOT NULL,
   `transaccion` varchar(25) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `transaccion`
+--
+
+INSERT INTO `transaccion` (`PK_id_transaccion`, `transaccion`) VALUES
+(1, 'Venta'),
+(2, 'Alquiler');
 
 -- --------------------------------------------------------
 
@@ -1014,15 +1192,19 @@ CREATE TABLE `usuarios_anuncios` (
   `apellidos_usuario` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `correo_usuario` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `alias_usuario` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `clave_usuario` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `clave_usuario` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `imagen` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `whatsapp` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `telefono` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios_anuncios`
 --
 
-INSERT INTO `usuarios_anuncios` (`id_usuario`, `nombres_usuario`, `apellidos_usuario`, `correo_usuario`, `alias_usuario`, `clave_usuario`) VALUES
-(1, 'Fernando Xavier', 'Maldonado Canjura', 'fernanxavi58@gmail.com', 'XaviCaM', '$2y$10$p3rLJ1UwXiAydrwHGJeyTu9Xt.NXqhwoq.T1bgEcoHQfOaM4gb0NG');
+INSERT INTO `usuarios_anuncios` (`id_usuario`, `nombres_usuario`, `apellidos_usuario`, `correo_usuario`, `alias_usuario`, `clave_usuario`, `imagen`, `whatsapp`, `telefono`) VALUES
+(1, 'Fernando Xavier', 'Maldonado Canjura', 'fernanxavi58@gmail.com', 'XaviCaM', '$2y$10$p3rLJ1UwXiAydrwHGJeyTu9Xt.NXqhwoq.T1bgEcoHQfOaM4gb0NG', 'default.jpg', '76147161', '76147161'),
+(2, 'Don Larry', 'Kapiga', 'fernanxavi58@hotmail.com', 'FernanXavi', '$2y$10$p3rLJ1UwXiAydrwHGJeyTu9Xt.NXqhwoq.T1bgEcoHQfOaM4gb0NG', 'default.jpg', '76147161', '76147161');
 
 -- --------------------------------------------------------
 
@@ -1039,26 +1221,36 @@ CREATE TABLE `vehiculos` (
   `kilometraje` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `transmision` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `motor` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `vidrios_electricos` int(11) NOT NULL,
-  `sistema_eco` int(11) NOT NULL,
-  `mandos_timon` int(11) NOT NULL,
-  `rines_especiales` int(11) NOT NULL,
-  `camara_trasera` int(11) NOT NULL,
-  `sensores_parqueo` int(11) NOT NULL,
-  `bluetooth` int(11) NOT NULL,
+  `vidrios_electricos` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `espejos_electricos` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `aire_acondicionado` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `bolsas_aire` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `sistema_eco` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `mandos_timon` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `rines_especiales` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `camara_trasera` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `sensores_parqueo` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `bluetooth` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `combustible` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `sunroof` int(11) NOT NULL,
-  `luces_xenon` int(11) NOT NULL,
-  `cruise_control` int(11) NOT NULL,
-  `mando_distancia` int(11) NOT NULL,
-  `gps` int(11) NOT NULL,
-  `tapiceria_cuero` int(11) NOT NULL,
-  `dvd_trasero` int(11) NOT NULL,
+  `sunroof` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `luces_xenon` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `cruise_control` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `mando_distancia` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `gps` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `tapiceria_cuero` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `dvd_trasero` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `valor` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `direccion` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `telefono` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `placa` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `fecha_creacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `vehiculos`
+--
+
+INSERT INTO `vehiculos` (`PK_id_vehiculo`, `FK_id_usuario`, `FK_id_modelo`, `anio`, `color`, `kilometraje`, `transmision`, `motor`, `vidrios_electricos`, `espejos_electricos`, `aire_acondicionado`, `bolsas_aire`, `sistema_eco`, `mandos_timon`, `rines_especiales`, `camara_trasera`, `sensores_parqueo`, `bluetooth`, `combustible`, `sunroof`, `luces_xenon`, `cruise_control`, `mando_distancia`, `gps`, `tapiceria_cuero`, `dvd_trasero`, `valor`, `fecha_creacion`) VALUES
+(7, 1, 44, 2016, 'Azul', '45000', 'Manual', '2.1', 'Si', 'Si', 'Si', 'No', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Si', '7,000.00', '0000-00-00'),
+(9, 2, 44, 2017, 'Azul', '15000', 'Manual', '2.5', 'No', 'Si', 'No', 'No', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', '7500', '0000-00-00'),
+(10, 2, 44, 2015, 'Azul', '1,500,000', 'Manual', '2.5', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', '8,400.00', '0000-00-00');
 
 --
 -- Índices para tablas volcadas
@@ -1084,7 +1276,9 @@ ALTER TABLE `aseguradoras`
 --
 ALTER TABLE `banners`
   ADD PRIMARY KEY (`PK_id_banner`),
-  ADD KEY `FK_id_intervalo_fecha` (`FK_id_intervalo_fecha`);
+  ADD KEY `FK_id_intervalo_fecha` (`FK_id_intervalo_fecha`),
+  ADD KEY `FK_id_tipo_banner` (`FK_id_tipo_banner`),
+  ADD KEY `FK_id_seccion` (`FK_id_seccion`);
 
 --
 -- Indices de la tabla `cantidad_solicitud_dias`
@@ -1107,6 +1301,13 @@ ALTER TABLE `categorias`
   ADD UNIQUE KEY `nombre` (`nombre_categoria`);
 
 --
+-- Indices de la tabla `citas`
+--
+ALTER TABLE `citas`
+  ADD PRIMARY KEY (`PK_id_cita`),
+  ADD KEY `FK_id_usuario` (`FK_id_usuario`);
+
+--
 -- Indices de la tabla `clientes_prospectos`
 --
 ALTER TABLE `clientes_prospectos`
@@ -1127,6 +1328,13 @@ ALTER TABLE `comisiones_pactadas`
 ALTER TABLE `companias_interes`
   ADD PRIMARY KEY (`PK_id_compania_interes`),
   ADD KEY `FK_id_cliente_prospecto` (`FK_id_cliente_prospecto`);
+
+--
+-- Indices de la tabla `contactos`
+--
+ALTER TABLE `contactos`
+  ADD PRIMARY KEY (`PK_id_contacto`),
+  ADD KEY `FK_id_usuario` (`FK_id_usuario`);
 
 --
 -- Indices de la tabla `contrataciones`
@@ -1281,6 +1489,12 @@ ALTER TABLE `referidos`
   ADD KEY `FK_id_cliente_prospecto` (`FK_id_cliente_prospecto`);
 
 --
+-- Indices de la tabla `secciones`
+--
+ALTER TABLE `secciones`
+  ADD PRIMARY KEY (`PK_id_seccion`);
+
+--
 -- Indices de la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
@@ -1319,6 +1533,12 @@ ALTER TABLE `tipos_seguro`
 --
 ALTER TABLE `tipos_team`
   ADD PRIMARY KEY (`PK_id_tipo_team`);
+
+--
+-- Indices de la tabla `tipo_banner`
+--
+ALTER TABLE `tipo_banner`
+  ADD PRIMARY KEY (`PK_id_tipo_banner`);
 
 --
 -- Indices de la tabla `tipo_propiedad`
@@ -1376,7 +1596,7 @@ ALTER TABLE `aseguradoras`
 -- AUTO_INCREMENT de la tabla `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `PK_id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `PK_id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `cantidad_solicitud_dias`
@@ -1397,6 +1617,12 @@ ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT de la tabla `citas`
+--
+ALTER TABLE `citas`
+  MODIFY `PK_id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `clientes_prospectos`
 --
 ALTER TABLE `clientes_prospectos`
@@ -1413,6 +1639,12 @@ ALTER TABLE `comisiones_pactadas`
 --
 ALTER TABLE `companias_interes`
   MODIFY `PK_id_compania_interes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de la tabla `contactos`
+--
+ALTER TABLE `contactos`
+  MODIFY `PK_id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `contrataciones`
@@ -1490,13 +1722,13 @@ ALTER TABLE `gerencias`
 -- AUTO_INCREMENT de la tabla `imagenes_propiedad`
 --
 ALTER TABLE `imagenes_propiedad`
-  MODIFY `PK_id_imagen_propiedad` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_imagen_propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `imagenes_vehiculo`
 --
 ALTER TABLE `imagenes_vehiculo`
-  MODIFY `PK_id_imagen_vehiculo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_imagen_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `intervalos_fecha`
@@ -1538,13 +1770,19 @@ ALTER TABLE `primas`
 -- AUTO_INCREMENT de la tabla `propiedades`
 --
 ALTER TABLE `propiedades`
-  MODIFY `PK_id_propiedad` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `referidos`
 --
 ALTER TABLE `referidos`
   MODIFY `PK_id_referido` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `secciones`
+--
+ALTER TABLE `secciones`
+  MODIFY `PK_id_seccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitudes`
@@ -1577,16 +1815,22 @@ ALTER TABLE `tipos_team`
   MODIFY `PK_id_tipo_team` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT de la tabla `tipo_banner`
+--
+ALTER TABLE `tipo_banner`
+  MODIFY `PK_id_tipo_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `tipo_propiedad`
 --
 ALTER TABLE `tipo_propiedad`
-  MODIFY `PK_id_tipo_propiedad` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_tipo_propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `transaccion`
 --
 ALTER TABLE `transaccion`
-  MODIFY `PK_id_transaccion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_transaccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -1595,10 +1839,16 @@ ALTER TABLE `usuarios`
   MODIFY `PK_id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
+-- AUTO_INCREMENT de la tabla `usuarios_anuncios`
+--
+ALTER TABLE `usuarios_anuncios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  MODIFY `PK_id_vehiculo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PK_id_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas
@@ -1608,21 +1858,29 @@ ALTER TABLE `vehiculos`
 -- Filtros para la tabla `anuncio`
 --
 ALTER TABLE `anuncio`
-  ADD CONSTRAINT `anuncio_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios_anuncios` (`id_usuario`),
   ADD CONSTRAINT `anuncio_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`),
-  ADD CONSTRAINT `anuncio_ibfk_3` FOREIGN KEY (`id_plan`) REFERENCES `planes` (`id_plan`);
+  ADD CONSTRAINT `anuncio_ibfk_3` FOREIGN KEY (`id_plan`) REFERENCES `planes` (`id_plan`),
+  ADD CONSTRAINT `anuncio_ibfk_4` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios_anuncios` (`id_usuario`);
 
 --
 -- Filtros para la tabla `banners`
 --
 ALTER TABLE `banners`
-  ADD CONSTRAINT `banners_ibfk_1` FOREIGN KEY (`FK_id_intervalo_fecha`) REFERENCES `intervalos_fecha` (`PK_id_intervalo_fecha`);
+  ADD CONSTRAINT `banners_ibfk_1` FOREIGN KEY (`FK_id_intervalo_fecha`) REFERENCES `intervalos_fecha` (`PK_id_intervalo_fecha`),
+  ADD CONSTRAINT `banners_ibfk_2` FOREIGN KEY (`FK_id_seccion`) REFERENCES `secciones` (`PK_id_seccion`),
+  ADD CONSTRAINT `banners_ibfk_3` FOREIGN KEY (`FK_id_tipo_banner`) REFERENCES `tipo_banner` (`PK_id_tipo_banner`);
 
 --
 -- Filtros para la tabla `cargos_gerencias`
 --
 ALTER TABLE `cargos_gerencias`
   ADD CONSTRAINT `cargos_gerencias_ibfk_1` FOREIGN KEY (`FK_id_gerencia`) REFERENCES `gerencias` (`PK_id_gerencia`);
+
+--
+-- Filtros para la tabla `citas`
+--
+ALTER TABLE `citas`
+  ADD CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`FK_id_usuario`) REFERENCES `usuarios_anuncios` (`id_usuario`);
 
 --
 -- Filtros para la tabla `clientes_prospectos`
@@ -1642,6 +1900,12 @@ ALTER TABLE `comisiones_pactadas`
 --
 ALTER TABLE `companias_interes`
   ADD CONSTRAINT `companias_interes_ibfk_1` FOREIGN KEY (`FK_id_cliente_prospecto`) REFERENCES `clientes_prospectos` (`PK_id_cliente_prospecto`);
+
+--
+-- Filtros para la tabla `contactos`
+--
+ALTER TABLE `contactos`
+  ADD CONSTRAINT `contactos_ibfk_1` FOREIGN KEY (`FK_id_usuario`) REFERENCES `usuarios_anuncios` (`id_usuario`);
 
 --
 -- Filtros para la tabla `contrataciones`
@@ -1723,9 +1987,9 @@ ALTER TABLE `primas`
 -- Filtros para la tabla `propiedades`
 --
 ALTER TABLE `propiedades`
-  ADD CONSTRAINT `propiedades_ibfk_1` FOREIGN KEY (`FK_id_usuario`) REFERENCES `usuarios_anuncios` (`id_usuario`),
   ADD CONSTRAINT `propiedades_ibfk_2` FOREIGN KEY (`FK_id_tipo_propiedad`) REFERENCES `tipo_propiedad` (`PK_id_tipo_propiedad`),
-  ADD CONSTRAINT `propiedades_ibfk_3` FOREIGN KEY (`FK_id_transaccion`) REFERENCES `transaccion` (`PK_id_transaccion`);
+  ADD CONSTRAINT `propiedades_ibfk_3` FOREIGN KEY (`FK_id_transaccion`) REFERENCES `transaccion` (`PK_id_transaccion`),
+  ADD CONSTRAINT `propiedades_ibfk_4` FOREIGN KEY (`FK_id_usuario`) REFERENCES `usuarios_anuncios` (`id_usuario`);
 
 --
 -- Filtros para la tabla `referidos`

@@ -1,26 +1,28 @@
 <?php
-
-require_once('../app/models/propiedad.class.php');
-
+require_once("../../../models/database.class.php");
+require_once("../../../helpers/validator.class.php");
+require_once("../../../models/propiedad.class.php");
 try
 {
     $propiedad = new Propiedad;
-    
-    $propiedad->setIdTransaccion($_SESSION['tipo_transaccion']);
-    $data = $propiedad->getPropiedadesTransaccion();
-    if($data)
+    $anuncios = '';
+    $filtro = '';
+    $ordenar = '';
+
+    if(isset($_POST['ordenar']))
     {
-        require_once("../app/views/public/producto/propiedades_view.php");
+        $ordenar = $_POST['ordenar'];
     }
-    else
-    {
-        Page::showMessage(4, "No hay propiedades", null);
-    }    
+    
+    $seccion = $_POST['seccion'];
+    $propiedad->setIdTransaccion($seccion);
+
+    $anuncios = $propiedad->getPropiedadesTransaccion();
+    echo json_encode($anuncios);
     
 }
 catch(Exception $error)
 {
-    Page::showMessage(2, $error->getMessage(), null);
+    echo json_encode($error->getMessage());
 }
-
 ?>
