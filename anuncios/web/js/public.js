@@ -350,4 +350,15 @@ function closetipscot(){
         
       }
     }
+    function showhide_advance_filter(){
+      if($("#btn_advance").text() == 'Avanzado'){
+        $("#btn_advance").text('Basico');
+        $("#advanced_div").css({"max-height":"600px", "border":" 1px solid #5B2C60"});
+      }
+      else{
+        $("#btn_advance").text('Avanzado');
+        $("#advanced_div").css({"max-height":"0px", "border":" 1px solid #FFFFFF"});
+      }
+      
+    }
     

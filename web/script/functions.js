@@ -1146,4 +1146,6 @@ function stop_select_segs(){
     $('#aseguradoras option[value="ACSA"]').prop('selected', false);
     $("#aseguradoras option:selected").removeAttr("selected");
 }
+
+
 var tipo_seguro=0;

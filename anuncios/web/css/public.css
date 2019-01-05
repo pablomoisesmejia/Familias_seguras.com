@@ -99,6 +99,17 @@ font-family: calibrily;
 background-color: rgba(102, 51, 153, 0.00);
 color: #A2A2A2;
 }
+#advanced_div{
+    max-height: 0px;
+    height: auto;
+    overflow: hidden;
+    transition: 0.7s;
+    border: 1px solid #FFFFFF;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
 #banner_top{
     width: 100%;
     margin-top: 20px;
@@ -109,6 +120,26 @@ color: #A2A2A2;
     color: white;
     text-align: center;
     
+}
+#btn_advance{
+    cursor: pointer;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding-top: 8px;
+    border-radius: 4px;
+    height: 40px;
+    background-color: #69206F;
+}
+#btn_advanced2{
+    cursor: pointer;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding-top: 8px;
+    border-radius: 4px;
+    height: 40px;
+    background-color: #69206F;
 }
 #panel_cotis{
     z-index: 999;
