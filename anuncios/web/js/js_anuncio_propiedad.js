@@ -98,9 +98,60 @@ $(document).ready(function(){
     var banos = '';
     var cochera = '';
     var descripcion = '';
-    var amenidades = '';
     var valor = '';
     var id_propiedad = '';
+
+    /*Amenidades*/
+    var comunidad_privada = '0';
+    var piscina = '0';
+    var cancha_basketball = '0';
+    var cancha_tennis = '0';
+    var cancha_futbol = '0';
+    var gimnasio = '0';
+    var spa_sauna = '0';
+    var barbacoa = '0';
+    var deck = '0';
+    var sistema_riego = '0';
+    var ac_central = '0';
+    var ac_independiente = '0';
+    var atico = '0';
+    var portico = '0';
+    var sotano = '0';
+    var bodega = '0';
+    var estudio = '0';
+    var area_sevicio = '0';
+    var pantrie = '0';
+    var closets = '0';
+    var walking_closet = '0';
+    var cocina_isla = '0';
+    var desayunador = '0';
+    var terraza_nivel_inferior = '0';
+    var terraza_nivel_superior = '0';
+    var sala_nivel_superior = '0';
+    var calentador_agua = '0';
+    var cisterna = '0';
+    var triturador_basura = '0';
+    var lavadora_platos = '0';
+    var sistema_gas = '0';
+    var conexion = '0';
+    var paneles_solares = '0';
+    var ventiladores_techo = '0';
+    var acceso_discapacitados = '0';
+    var ascensor = '0';
+
+    $('input[type="checkbox"]').on('change', function(e){
+        if(this.checked)
+        {
+            variable = $(e.currentTarget).attr('id');
+            $('#'+variable+'').val(1);
+
+        }
+        else
+        {
+            variable = $(e.currentTarget).attr('id');
+            $('#'+variable+'').val(0);
+        }
+    });
 
     $('#crear').click(function(){
         imagenes = $('#propiedades').val();
@@ -116,8 +167,44 @@ $(document).ready(function(){
         banos = $('#baños').val();
         cochera = $('#cochera').val();
         descripcion = $('#descripcion').val();
-        amenidades = $('#amenidades').val();
         valor = $('#valor_propiedad').val();
+
+        comunidad_privada = $('#comunidad_privada').val();
+        piscina = $('#piscina').val();
+        cancha_basketball = $('#cancha_basketball').val();
+        cancha_tennis = $('#cancha_tennis').val();
+        cancha_futbol = $('#cancha_futbol').val();
+        gimnasio = $('#gimnasio').val();
+        spa_sauna = $('#spa_sauna').val();
+        barbacoa = $('#barbacoa').val();
+        deck = $('#deck').val();
+        sistema_riego = $('#sistema_riego').val();
+        ac_central = $('#ac_central').val();
+        ac_independiente = $('#ac_independiente').val();
+        atico = $('#atico').val();
+        portico = $('#portico').val();
+        sotano = $('#sotano').val();
+        bodega = $('#bodega').val();
+        estudio = $('#estudio').val();
+        area_sevicio = $('#area_sevicio').val();
+        pantrie = $('#pantrie').val();
+        closets = $('#closets').val();
+        walking_closet = $('#walking_closet').val();
+        cocina_isla = $('#cocina_isla').val();
+        desayunador = $('#desayunador').val();
+        terraza_nivel_inferior = $('#terraza_nivel_inferior').val();
+        terraza_nivel_superior = $('#terraza_nivel_superior').val();
+        sala_nivel_superior = $('#sala_nivel_superior').val();
+        calentador_agua = $('#calentador_agua').val();
+        cisterna = $('#cisterna').val();
+        triturador_basura = $('#triturador_basura').val();
+        lavadora_platos = $('#lavadora_platos').val();
+        sistema_gas = $('#sistema_gas').val();
+        conexion = $('#conexion').val();
+        paneles_solares = $('#paneles_solares').val();
+        ventiladores_techo = $('#ventiladores_techo').val();
+        acceso_discapacitados = $('#acceso_discapacitados').val();
+        ascensor = $('#ascensor').val();
 
         if(imagenes != 0)
         {
@@ -147,15 +234,8 @@ $(document).ready(function(){
                                                         {
                                                             if(descripcion != '')
                                                             {
-                                                                if(amenidades != '')
-                                                                {
-                                                                    $('#crear').attr("disabled", "disabled");
-                                                                    creeatePropiedad();
-                                                                }
-                                                                else
-                                                                {
-                                                                    AlertaSweet(3, 'Ingrese la amenidades de la propiedad');
-                                                                }
+                                                                $('#crear').attr("disabled", "disabled");
+                                                                creeatePropiedad();
                                                             }
                                                             else
                                                             {
@@ -243,8 +323,43 @@ $(document).ready(function(){
             banos:banos,
             cochera:cochera,
             descripcion:descripcion,
-            amenidades:amenidades,
-            valor:valor
+            valor:valor,
+            comunidad_privada:comunidad_privada,
+            piscina:piscina,
+            cancha_basketball:cancha_basketball,
+            cancha_tennis:cancha_tennis,
+            cancha_futbol:cancha_futbol,
+            gimnasio:gimnasio,
+            spa_sauna:spa_sauna,
+            barbacoa:barbacoa,
+            deck:deck,
+            sistema_riego:sistema_riego,
+            ac_central:ac_central,
+            ac_independiente:ac_independiente,
+            atico:atico,
+            portico:portico,
+            sotano:sotano,
+            bodega:bodega,
+            estudio:estudio,
+            area_sevicio:area_sevicio,
+            pantrie:pantrie,
+            closets:closets,
+            walking_closet:walking_closet,
+            cocina_isla:cocina_isla,
+            desayunador:desayunador,
+            terraza_nivel_inferior:terraza_nivel_inferior,
+            terraza_nivel_superior:terraza_nivel_superior,
+            sala_nivel_superior:sala_nivel_superior,
+            calentador_agua:calentador_agua,
+            cisterna:cisterna,
+            triturador_basura:triturador_basura,
+            lavadora_platos:lavadora_platos,
+            sistema_gas:sistema_gas,
+            conexion:conexion,
+            paneles_solares:paneles_solares,
+            ventiladores_techo:ventiladores_techo,
+            acceso_discapacitados:acceso_discapacitados,
+            ascensor:ascensor
         }
 
         $.ajax({

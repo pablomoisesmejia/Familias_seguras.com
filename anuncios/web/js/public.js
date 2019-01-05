@@ -65,11 +65,128 @@ var filtro = '';
 var ordenar = '';
 var anuncios = '';
 var url = '';
+var cantidad = '';
 
 $('#ordenar').change(function(){
   ordenar = $('#ordenar').val();
   CargarAnuncios();
 });
+
+$('#cantidad').change(function(){
+  cantidad = $('#cantidad').val();
+  Paginacion(anuncios, cantidad);
+});
+
+function Paginacion(anuncios, cantidad)
+{
+  if(cantidad == '')
+  {
+    cantidad = 3;
+  }
+  else
+  {
+    cantidad = cantidad;
+  }
+  $('#paginacion').pagination({
+    dataSource: anuncios,
+    pageSize: cantidad,
+    callback: function(anuncios, pagination)
+    {
+      if(filename == 'productos.php')
+      {
+        $('#anuncios').empty();
+        for(i = 0; i<anuncios.length; i++)
+        {
+          var card = '';
+          card = card.concat(
+            '<div class="col s12 m4 l3">',
+              '<a href="detalle_producto.php?id='+anuncios[i].id_anuncio+'">',
+                  '<div class="card hoverable">',
+                      '<div class="card-image">',
+                          '<img href="detalle_producto.php?id='+anuncios[i].id_anuncio+'" src="../web/img/productos/'+anuncios[i].imagen_producto+'" class="">',
+                          '<a href="detalle_producto.php?id='+anuncios[i].id_anuncio+'" class="btn-floating halfway-fab waves-effect waves-light purple tooltipped" data-tooltip="Ver detalle"><i class="material-icons">add</i></a>',
+                      '</div>',
+                      '<div style="color:white;" class="card-content purple darken-3" href="detalle_producto.php?id='+anuncios[i].id_anuncio+'">',
+                          '<span style="font-size:1.2em;" class="card-title">'+anuncios[i].nombre_anuncio+'</span>',
+                      '</div>',
+                  '</div>',
+                '</a>',
+            '</div>'
+          );
+          $('#anuncios').append(card);
+        }
+      }
+      if(filename == 'vehiculos_v.php')
+      {
+        $('#anuncios').empty();
+        for(i = 0; i<anuncios.length; i++)
+        {
+          var card = '';
+          card = card.concat(
+            '<div class="col s12 m12 l4">',
+                '<a href="vehiculos_detalle_v.php?id='+anuncios[i].PK_id_vehiculo+'">',
+                    '<div class="card hoverable">',
+                        '<div class="card-image waves-effect waves-block waves-light">',
+                          '<img class="activator" src="../web/img/vehiculos/'+anuncios[i].nombre_imagen+'">',
+                        '</div>',
+                        '<div class="purple darken-3">',
+                            '<a style="color:white; height:80px;" href="vehiculos_detalle_v.php?id='+anuncios[i].PK_id_vehiculo+'">',
+                                '<div class="col s7" id="previnfo_vehi">',
+                                    '<div class="row" style="padding:0; margin:0;  font-size:1em">'+anuncios[i].modelos_vehiculo+'</div>',
+                                    '<div class="row" style="padding:0; margin:0; font-size:0.8em">'+anuncios[i].marca_vehiculo+'-'+anuncios[i].anio+'</div>',
+                                '</div>',
+                                '<div class="">',
+                                    '<div class="row" style="text-align:center; font-size:1.2em; padding-top:12px;">$ '+anuncios[i].valor+'</div>',
+                                '</div>',
+                            '</a>',
+                        '</div>',
+                    '</div>',
+                '</a>',
+            '</div>'
+          );
+          $('#anuncios').append(card);
+        }
+      }
+      if(filename == 'propiedades_v.php' || filename == 'propiedades_alqui.php')
+      {
+        $('#anuncios').empty();
+        for(i = 0; i<anuncios.length; i++)
+        {
+          var card = '';
+          card = card.concat(
+            '<div class="col s12 m12 l4">',
+              '<a href="pagina.php?id='+anuncios[i].PK_id_propiedad+'">',
+                  '<div class="card hoverable">',
+                      '<div class="card-image waves-effect waves-block waves-light">',
+                      '<img class="activator" src="../web/img/propiedades/'+anuncios[i].nombre_imagen_prop+'"> ',
+                      '</div>',
+                    
+                      '<div class="purple darken-3 lop">',
+                          '<a style="color:white; height:80px;" href="pagina.php?id='+anuncios[i].PK_id_propiedad+'">',
+                              '<div class="col s7" id="previnfo_vehi">',
+                                  '<div class="row" style="padding:0; margin:0;  font-size:1em">CA-201811_0002</div>',
+                                  '<div class="row" id="name_dir_style" style="padding:0; margin:0; font-size:0.8em">Colonia '+anuncios[i].colonia+'</div>',
+                              '</div>',
+                              '<div class="">',
+                                  '<div class="row" style="text-align:center; font-size:1.2em; padding-top:12px;">$ '+anuncios[i].valor+'</div>',
+                              '</div>',
+                          '</a>',
+                      '</div>',
+                      '<div class="block_proper">',
+                          '<div class=" icon_prop"><img class="proper_ico" src="../web/img/ico/garage.png"><span class="proper_ico_txt">'+anuncios[i].cochera+'</span></div>',
+                          '<div class="icon_prop"><img class="proper_ico" src="../web/img/ico/banera.png"><span class="proper_ico_txt">'+anuncios[i].baños+'</span></div>',
+                          '<div class="icon_prop"><img class="proper_ico" src="../web/img/ico/bed.png"><span class="proper_ico_txt">'+anuncios[i].habitaciones+'</span></div>',
+                      '</div> ',
+                  '</div>',
+                '</a>',
+            '</div>'
+          );
+          $('#anuncios').append(card);
+        }
+      }
+    }
+  });
+}
 
 function CargarAnuncios()
 {
@@ -83,27 +200,7 @@ function CargarAnuncios()
     getDatos();
     if(anuncios != '')
     {
-      $('#anuncios').empty();
-      for(i = 0; i<anuncios.length; i++)
-      {
-        var card = '';
-        card = card.concat(
-          '<div class="col s12 m4 l3">',
-            '<a href="detalle_producto.php?id='+anuncios[i].id_anuncio+'">',
-                '<div class="card hoverable">',
-                    '<div class="card-image">',
-                        '<img href="detalle_producto.php?id='+anuncios[i].id_anuncio+'" src="../web/img/productos/'+anuncios[i].imagen_producto+'" class="">',
-                        '<a href="detalle_producto.php?id='+anuncios[i].id_anuncio+'" class="btn-floating halfway-fab waves-effect waves-light purple tooltipped" data-tooltip="Ver detalle"><i class="material-icons">add</i></a>',
-                    '</div>',
-                    '<div style="color:white;" class="card-content purple darken-3" href="detalle_producto.php?id='+anuncios[i].id_anuncio+'">',
-                        '<span style="font-size:1.2em;" class="card-title">'+anuncios[i].nombre_anuncio+'</span>',
-                    '</div>',
-                '</div>',
-              '</a>',
-          '</div>'
-        );
-        $('#anuncios').append(card);
-      }
+      Paginacion(anuncios);
     }
     else
     {
@@ -120,34 +217,7 @@ function CargarAnuncios()
     getDatos();
     if(anuncios != '')
     {
-      $('#anuncios').empty();
-      for(i = 0; i<anuncios.length; i++)
-      {
-        var card = '';
-        card = card.concat(
-          '<div class="col s12 m12 l4">',
-              '<a href="vehiculos_detalle_v.php?id='+anuncios[i].PK_id_vehiculo+'">',
-                  '<div class="card hoverable">',
-                      '<div class="card-image waves-effect waves-block waves-light">',
-                        '<img class="activator" src="../web/img/vehiculos/'+anuncios[i].nombre_imagen+'">',
-                      '</div>',
-                      '<div class="purple darken-3">',
-                          '<a style="color:white; height:80px;" href="vehiculos_detalle_v.php?id='+anuncios[i].PK_id_vehiculo+'">',
-                              '<div class="col s7" id="previnfo_vehi">',
-                                  '<div class="row" style="padding:0; margin:0;  font-size:1em">'+anuncios[i].modelos_vehiculo+'</div>',
-                                  '<div class="row" style="padding:0; margin:0; font-size:0.8em">'+anuncios[i].marca_vehiculo+'-'+anuncios[i].anio+'</div>',
-                              '</div>',
-                              '<div class="">',
-                                  '<div class="row" style="text-align:center; font-size:1.2em; padding-top:12px;">$ '+anuncios[i].valor+'</div>',
-                              '</div>',
-                          '</a>',
-                      '</div>',
-                  '</div>',
-              '</a>',
-          '</div>'
-        );
-        $('#anuncios').append(card);
-      }
+      Paginacion(anuncios);
     }
     else
     {
@@ -172,40 +242,7 @@ function CargarAnuncios()
     getDatos();
     if(anuncios != '')
     {
-      $('#anuncios').empty();
-      for(i = 0; i<anuncios.length; i++)
-      {
-        var card = '';
-        card = card.concat(
-          '<div class="col s12 m12 l4">',
-            '<a href="pagina.php?id='+anuncios[i].PK_id_propiedad+'">',
-                '<div class="card hoverable">',
-                    '<div class="card-image waves-effect waves-block waves-light">',
-                    '<img class="activator" src="../web/img/propiedades/'+anuncios[i].nombre_imagen_prop+'"> ',
-                    '</div>',
-                  
-                    '<div class="purple darken-3 lop">',
-                        '<a style="color:white; height:80px;" href="pagina.php?id='+anuncios[i].PK_id_propiedad+'">',
-                            '<div class="col s7" id="previnfo_vehi">',
-                                '<div class="row" style="padding:0; margin:0;  font-size:1em">CA-201811_0002</div>',
-                                '<div class="row" id="name_dir_style" style="padding:0; margin:0; font-size:0.8em">Colonia '+anuncios[i].colonia+'</div>',
-                            '</div>',
-                            '<div class="">',
-                                '<div class="row" style="text-align:center; font-size:1.2em; padding-top:12px;">$ '+anuncios[i].valor+'</div>',
-                            '</div>',
-                        '</a>',
-                    '</div>',
-                    '<div class="block_proper">',
-                        '<div class=" icon_prop"><img class="proper_ico" src="../web/img/ico/garage.png"><span class="proper_ico_txt">'+anuncios[i].cochera+'</span></div>',
-                        '<div class="icon_prop"><img class="proper_ico" src="../web/img/ico/banera.png"><span class="proper_ico_txt">'+anuncios[i].baños+'</span></div>',
-                        '<div class="icon_prop"><img class="proper_ico" src="../web/img/ico/bed.png"><span class="proper_ico_txt">'+anuncios[i].habitaciones+'</span></div>',
-                    '</div> ',
-                '</div>',
-              '</a>',
-          '</div>'
-        );
-        $('#anuncios').append(card);
-      }
+      Paginacion(anuncios);
     }
     else
     {

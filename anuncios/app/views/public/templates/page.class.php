@@ -25,6 +25,7 @@ class Page extends Component{
 				<link type='text/css' rel='stylesheet' href='../web/css/materialize.min.css'/>
 				<link type='text/css' rel='stylesheet' href='../web/css/material_icons.css'/>
 				<link type='text/css' rel='stylesheet' href='../web/css/public.css'/>
+				<link type='text/css' rel='stylesheet' href='../web/css/pagination.css'/>
 				<link type='text/css' rel='stylesheet' href='../web/css/fullcalendar.min.css'/>
 				<script type='text/javascript' src='../web/js/sweetalert.min.js'></script>
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
@@ -112,7 +113,9 @@ class Page extends Component{
 				</footer>
 				<script type='text/javascript' src='../web/js/jquery-3.2.1.min.js'></script>
 				<script type='text/javascript' src='../web/js/materialize.min.js'></script>
+				<script type='text/javascript' src='../web/js/pagination.min.js'></script>
 				<script type='text/javascript' src='../web/js/public.js'></script>
+
 				");
 				$filename = basename($_SERVER['PHP_SELF']);
 				if($filename == 'citas.php')

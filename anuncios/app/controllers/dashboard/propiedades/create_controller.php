@@ -23,8 +23,45 @@ try
     $propiedad->setBaños($_POST['banos']);
     $propiedad->setCochera($_POST['cochera']);
     $propiedad->setDescripcion($_POST['descripcion']);
-    $propiedad->setAmenidades($_POST['amenidades']);
     $propiedad->setValor($_POST['valor']);
+
+    $propiedad->setComunidadPrivada($_POST['comunidad_privada']);
+    $propiedad->setPiscina($_POST['piscina']);
+    $propiedad->setCanchaBasketball($_POST['cancha_basketball']);
+    $propiedad->setCanchaTennis($_POST['cancha_tennis']);
+    $propiedad->setCanchaFutbol($_POST['cancha_futbol']);
+    $propiedad->setGimnasio($_POST['gimnasio']);
+    $propiedad->setSpa($_POST['spa_sauna']);
+    $propiedad->setBarbacoa($_POST['barbacoa']);
+    $propiedad->setDeck($_POST['deck']);
+    $propiedad->setSistemaRiego($_POST['sistema_riego']);
+    $propiedad->setACCentral($_POST['ac_central']);
+    $propiedad->setACIndependiente($_POST['ac_independiente']);
+    $propiedad->setAtico($_POST['atico']);
+    $propiedad->setPortico($_POST['portico']);
+    $propiedad->setSotano($_POST['sotano']);
+    $propiedad->setBodega($_POST['bodega']);
+    $propiedad->setEstudio($_POST['estudio']);
+    $propiedad->setAreaServicio($_POST['area_sevicio']);
+    $propiedad->setPantrie($_POST['pantrie']);
+    $propiedad->setClosets($_POST['closets']);
+    $propiedad->setWalkingCloset($_POST['walking_closet']);
+    $propiedad->setCocinaIsla($_POST['cocina_isla']);
+    $propiedad->setDesayunador($_POST['desayunador']);
+    $propiedad->setTerrazaInferior($_POST['terraza_nivel_inferior']);
+    $propiedad->setTerrazaSuperior($_POST['terraza_nivel_superior']);
+    $propiedad->setSalaSuperior($_POST['sala_nivel_superior']);
+    $propiedad->setCalentadorAgua($_POST['calentador_agua']);
+    $propiedad->setCisterna($_POST['cisterna']);
+    $propiedad->setTrituradorBasura($_POST['triturador_basura']);
+    $propiedad->setLavadoraPlatos($_POST['lavadora_platos']);
+    $propiedad->setSistemaGas($_POST['sistema_gas']);
+    $propiedad->setConexion($_POST['conexion']);
+    $propiedad->setPanelesSolares($_POST['paneles_solares']);
+    $propiedad->setVentiladoresTecho($_POST['ventiladores_techo']);
+    $propiedad->setAccesoDiscapacitados($_POST['acceso_discapacitados']);
+    $propiedad->setAscensor($_POST['ascensor']);
+
 
     if($propiedad->createPropiedad())
     {
