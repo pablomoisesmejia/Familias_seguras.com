@@ -79,14 +79,6 @@ $('#cantidad').change(function(){
 
 function Paginacion(anuncios, cantidad)
 {
-  if(cantidad == '')
-  {
-    cantidad = 3;
-  }
-  else
-  {
-    cantidad = cantidad;
-  }
   $('#paginacion').pagination({
     dataSource: anuncios,
     pageSize: cantidad,
@@ -190,6 +182,14 @@ function Paginacion(anuncios, cantidad)
 
 function CargarAnuncios()
 {
+  if(cantidad == '')
+  {
+    cantidad = 3;
+  }
+  else
+  {
+    cantidad = $('#cantidad').val();
+  }
   /********************************************************************************************************************************************************
   ***********************************************PARA DIRECTORIO********************************************************************************************
   *********************************************************************************************************************************************************/
@@ -200,7 +200,7 @@ function CargarAnuncios()
     getDatos();
     if(anuncios != '')
     {
-      Paginacion(anuncios);
+      Paginacion(anuncios, cantidad);
     }
     else
     {
@@ -217,7 +217,7 @@ function CargarAnuncios()
     getDatos();
     if(anuncios != '')
     {
-      Paginacion(anuncios);
+      Paginacion(anuncios, cantidad);
     }
     else
     {
@@ -242,7 +242,7 @@ function CargarAnuncios()
     getDatos();
     if(anuncios != '')
     {
-      Paginacion(anuncios);
+      Paginacion(anuncios, cantidad);
     }
     else
     {

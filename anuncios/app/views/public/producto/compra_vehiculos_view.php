@@ -23,7 +23,7 @@
             <div class="input-field">
                 <select id = 'cantidad'>
                     <option value="" disabled selected>Cantidad a mostrar</option>
-                    <option value="1">3</option>
+                    <option value="3">3</option>
                     <option value="9">9</option>
                     <option value="15">15</option>
                     <option value="30">30</option>
