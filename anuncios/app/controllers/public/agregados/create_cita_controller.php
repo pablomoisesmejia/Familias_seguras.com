@@ -16,7 +16,11 @@ try
     $categoria = $_POST['categoria'];
     $cita->setNombres($_POST['nombres']);
     $cita->setCorreo($_POST['correo']);
-    $cita->setStart($_POST['fecha'].' '.$_POST['hora']);
+    $hora = $_POST['hora'];
+    $formato = substr($hora, -2);
+    $hora = str_replace(['AM', 'PM'], '', $hora);
+    $cita->setStart($_POST['fecha'].' '.$hora);
+    $cita->setFormato($formato);
     $cita->setLugarReunion($_POST['lugar_reunion']);
     $cita->setAsunto($_POST['asunto']);
     if($categoria == 1)

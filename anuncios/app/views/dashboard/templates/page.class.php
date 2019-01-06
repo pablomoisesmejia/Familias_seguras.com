@@ -15,6 +15,7 @@ class Page extends Component{
 				<link type='text/css' rel='stylesheet' href='../../web/css/materialized.min.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/material_icons.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/dashboard.css'/>
+				<link type='text/css' rel='stylesheet' href='../../web/css/fullcalendar.min.css'/>
 				<script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 			</head>
@@ -31,6 +32,7 @@ class Page extends Component{
 								<li><a href='../producto'><i class='material-icons left'>shop</i>Directorios</a></li>
 								<li><a href='../vehiculos'><i class='material-icons left'>shop</i>Vehiculos</a></li>
 								<li><a href='../propiedades'><i class='material-icons left'>shop</i>Propiedades</a></li>
+								<li><a href='../citas/cita.php?id=$_SESSION[id_usuario]'><i class='material-icons left'>shop</i>Citas</a></li>
 								<li><a href='../anuncio'><i class='material-icons left'>shop</i>Banners</a></li>
 							
 								<li><a href='#' class='dropdown-button' data-activates='dropdown'><i class='material-icons left'>verified_user</i>Cuenta: <b>$_SESSION[alias_usuario]</b></a></li>
@@ -115,6 +117,15 @@ class Page extends Component{
 				{
 					print("
 					<script type='text/javascript' src='../../web/js/js_anuncio_propiedad.js'></script>
+					");
+				}
+				if($filename == 'cita.php')
+				{
+					print("
+					<script src='../../web/js/moment.min.js'></script>
+					<script src='../../web/js/fullcalendar.min.js'></script>
+					<script src='../../web/js/es.js'></script>
+					<script src='../../web/js/calendario.js'></script>
 					");
 				}
 			print("

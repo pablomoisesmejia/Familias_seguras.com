@@ -14,13 +14,13 @@ $(document).ready(function(){
     id = decodeURI(getUrlVars()['id']);
 
 
-    setTimeout(function(){ $('#fecha-label').addClass('active'); }, 1);//Para activar el label de los input
+    //setTimeout(function(){ $('#hora-label').addClass('active'); }, 1);//Para activar el label de los input
 
     //para el reloj
     $('.timepicker').pickatime({
         default: 'now', // Set default time: 'now', '1:30AM', '16:30'
         fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
-        twelvehour: false, // Use AM/PM or 24-hour format
+        twelvehour: true, // Use AM/PM or 24-hour format
         donetext: 'OK', // text for done-button
         cleartext: 'Limpiar', // text for clear-button
         canceltext: 'Cancelar', // Text for cancel-button,
@@ -29,123 +29,241 @@ $(document).ready(function(){
         ampmclickable: true, // make AM PM clickable
         aftershow: function(){} //Function for after opening timepicker
     });
-    
-    //Para cargar las citas del usuario
-    var citas = '';
-    getCitas();
-    function getCitas()
-    {
-        $.ajax({
-            type: 'POST',
-            url: '../app/controllers/public/agregados/get_cita_controller.php',
-            data: {categoria:categoria,
-                id:id},
-            dataType: 'json',
-            success: function(eventos)
-            {
-                if(eventos)
-                {
-                    citas = eventos
-                    CargarCalendario();
-                }
-                else
-                {
-                    CargarCalendario();
-                }
-            }
-        });
-    }
-    
 
-    //funcion para inicializar el calendario 
-    function CargarCalendario()
+    var date = new Date();
+    var min = date.getFullYear()+','+(date.getMonth()+1)+','+(date.getDate());//Validacion de fecha minima del datepicker
+    $('.datepicker').pickadate({
+        selectMonths:true,
+        selectYears:100,
+        today:'',
+        clear:'Limpiar',
+        close:'Aceptar',
+        formatSubmit: 'yyyy-mm-dd',
+        closeOnSelect:false,
+        container:undefined,
+        min: new Date(min),
+      });
+    
+    
+    var filename = location.pathname.substr(location.pathname.lastIndexOf("/")+1);
+    
+    if(filename == 'cita.php')
     {
-        $('#calendario').fullCalendar({
-            header:{
-                left:'prev,today,next',
-                center:'title',
-                right:'month,basicWeek,basicDay'
-            },
-            dayClick:function(date,jsEvent,view){
-                console.log(date.format());
-                fecha = $('#fecha').val(date.format());
-                if(fecha != '')
+
+        $('#id_cita').hide(0);
+        //Para cargar las citas del usuario
+        var citas = '';
+        getCitas();
+        function getCitas()
+        {
+            $.ajax({
+                type: 'POST',
+                url: '../../app/controllers/dashboard/citas/get_cita_controller.php',
+                data: {id:id},
+                dataType: 'json',
+                success: function(eventos)
                 {
+                    if(eventos)
+                    {
+                        citas = eventos
+                        CargarCalendario();
+                    }
+                    else
+                    {
+                        CargarCalendario();
+                    }
+                }
+            });
+        }
+
+        //funcion para inicializar el calendario 
+        function CargarCalendario()
+        {
+            $('#calendario').fullCalendar({
+                header:{
+                    left:'prev,today,next',
+                    center:'title',
+                    right:'month,basicWeek,basicDay'
+                },       
+                //Cargar datos de la base de datos hacia el calendario 
+                events:citas,
+                eventClick: function(calEvent, jsEvent, view)
+                {
+                    LimpiarInputs();
+                    setTimeout(function(){ 
+                        $('.label').addClass('active');
+                    }, 1);
+                    $('#id_cita').val(calEvent.PK_id_cita);
+                    FechaHora = calEvent.start._i.split(" ");
+                    $('#fecha').val(FechaHora[0]);
+                    $('#hora').val(FechaHora[1]+' '+calEvent.formato);
+                    $('#nombres').val(calEvent.nombres);
+                    $('#correo').val(calEvent.correo);
+                    $('#lugar_reunion').val(calEvent.lugar_reunion);
+                    $('#asunto').val(calEvent.asunto);
                     $('#modalCitas').modal().modal('open');
                 }
-                else
-                {
-                    AlertaSweet(3, 'Ocurrio un problema para programar la cita, contacte al administrador');
-                }
-            },
-    
-            //Cargar datos de la base de datos hacia el calendario 
-            events:citas,
-        });
-    }
-    
+            });
+        }
 
-    $('#agregar').click(function(){
-        emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;//validar correo
-        fecha = $('#fecha').val();
-        hora = $('#hora').val();
-        nombres = $('#nombres').val();
-        correo = $('#correo').val();
-        lugar_reunion = $('#lugar_reunion').val();
-        asunto = $('#asunto').val();
-
-        if(fecha != '')
+        //Funcion para limpiar los inputs
+        function LimpiarInputs()
         {
-            if(hora != '')
-            {
-                if(nombres != '')
+            $('#fecha').val('');
+            $('#hora').val('');
+            $('#nombres').val('');
+            $('#correo').val('');
+            $('#lugar_reunion').val('');
+            $('#asunto').val('');
+        }
+
+        $('#aprobar').click(function(){
+            id = $('#id_cita').val();
+            correo = $('#correo').val();
+            fecha = $('#fecha').val();
+            estado = 2;
+            updateEstado()
+        });
+        $('#rechazar').click(function(){
+            id = $('#id_cita').val();
+            correo = $('#correo').val();
+            fecha = $('#fecha').val();
+            estado = 3;
+            updateEstado()
+        });
+
+        function updateEstado()
+        {
+            $.ajax({
+                type: 'POST',
+                url: '../../app/controllers/dashboard/citas/update_estado_controller.php',
+                data:{id:id,
+                    estado:estado,
+                    correo:correo,
+                    fecha:fecha},
+                dataType: 'json',
+                success: function(datos)
                 {
-                    if(correo != '')
+                    if(datos == 1)
                     {
-                        if(emailRegex.test(correo))
+                        $('#modalCitas').modal().modal('close');
+                    }
+                }
+            });
+        }
+    }
+    if(filename == 'citas.php')
+    {
+        $('#agregar').click(function(){
+            emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;//validar correo
+            fecha = $('#fecha').val();
+            hora = $('#hora').val();
+            nombres = $('#nombres').val();
+            correo = $('#correo').val();
+            lugar_reunion = $('#lugar_reunion').val();
+            asunto = $('#asunto').val();
+    
+            if(fecha != '')
+            {
+                if(hora != '')
+                {
+                    if(nombres != '')
+                    {
+                        if(correo != '')
                         {
-                            if(lugar_reunion != '')
+                            if(emailRegex.test(correo))
                             {
-                                if(asunto != '')
+                                if(lugar_reunion != '')
                                 {
-                                    createCita();
+                                    if(asunto != '')
+                                    {
+                                        createCita();
+                                    }
+                                    else
+                                    {
+                                        AlertaSweet(3, 'Ingrese el asusnto de la cita');
+                                    }
                                 }
                                 else
                                 {
-                                    AlertaSweet(3, 'Ingrese el asusnto de la cita');
+                                    AlertaSweet(3, 'Ingrese un lugar de reunión');
                                 }
                             }
                             else
                             {
-                                AlertaSweet(3, 'Ingrese un lugar de reunión');
+                                AlertaSweet(3, 'Ingrese un correo electrónico valido (Juan123@gmail.com)');
                             }
                         }
                         else
                         {
-                            AlertaSweet(3, 'Ingrese un correo electrónico valido (Juan123@gmail.com)');
+                            AlertaSweet(3, 'Ingrese su correo electrónico');
                         }
                     }
                     else
                     {
-                        AlertaSweet(3, 'Ingrese su correo electrónico');
+                        AlertaSweet(3, 'Ingrese su nombre completo');
                     }
                 }
                 else
                 {
-                    AlertaSweet(3, 'Ingrese su nombre completo');
+                    AlertaSweet(3, 'Seleccione la hora de la cita');
                 }
             }
             else
             {
-                AlertaSweet(3, 'Seleccione la hora de la cita');
+                AlertaSweet(3, 'Seleccione una fecha en el calendario');
+                $('#modalCitas').modal('close');
             }
-        }
-        else
+        });
+
+        $('#cancelar').click(function(){
+            if(categoria == 1)
+            {
+                location.href = 'vehiculos_detalle_v.php?id='+id+'';
+            }
+            if(categoria == 2)
+            {
+                location.href = 'pagina.php?id='+id+'';
+            }
+        });
+
+        //Funcion para crear la cita
+        function createCita()
         {
-            AlertaSweet(3, 'Seleccione una fecha en el calendario');
-            $('#modalCitas').modal('close');
+            $.ajax({
+                type: 'POST',
+                url: '../app/controllers/public/agregados/create_cita_controller.php',
+                data: {
+                    fecha:fecha,
+                    hora:hora,
+                    nombres:nombres,
+                    correo:correo,
+                    lugar_reunion:lugar_reunion,
+                    asunto:asunto,
+                    categoria:categoria,
+                    id:id},
+                dataType: 'json',
+                success: function(cita)
+                {
+                    if(cita == 1)
+                    {
+                        if(categoria == 1)
+                        {
+                            location.href = 'vehiculos_detalle_v.php?id='+id+'';
+                        }
+                        if(categoria == 2)
+                        {
+                            location.href = 'pagina.php?id='+id+'';
+                        }
+                    }
+                    else
+                    {
+                        AlertaSweet(3, 'Ocurrio un error al programar la cita');
+                    }
+                }
+            });
         }
-    });
+    }
 
     //Funcion para obtener las variables del url
     function getUrlVars() 
@@ -159,50 +277,6 @@ $(document).ready(function(){
             vars[hash[0]] = hash[1];
         }
         return vars;
-    }
-    
-
-    //Funcion para crear la cita
-    function createCita()
-    {
-        $.ajax({
-            type: 'POST',
-            url: '../app/controllers/public/agregados/create_cita_controller.php',
-            data: {
-                fecha:fecha,
-                hora:hora,
-                nombres:nombres,
-                correo:correo,
-                lugar_reunion:lugar_reunion,
-                asunto:asunto,
-                categoria:categoria,
-                id:id},
-            dataType: 'json',
-            success: function(cita)
-            {
-                if(cita == 1)
-                {
-                    $('#modalCitas').modal('close');
-                    LimpiarInputs();
-                    getCitas();
-                }
-                else
-                {
-                    AlertaSweet(3, 'Ocurrio un error al programar la cita');
-                }
-            }
-        });
-    }
-
-    //Funcion para limpiar los inputs
-    function LimpiarInputs()
-    {
-        $('#fecha').val('');
-        $('#hora').val('');
-        $('#nombres').val('');
-        $('#correo').val('');
-        $('#lugar_reunion').val('');
-        $('#asunto').val('');
     }
 });
 

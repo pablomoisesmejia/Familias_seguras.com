@@ -9,9 +9,11 @@ class Citas extends Validator
     private $color = 'rgb(117, 38, 120)';
     private $textColor = 'white';
     private $start = null;
+    private $formato = null;
     private $lugar_reunion = null;
     private $asunto = null;
     private $FK_id_usuario = null;
+    private $FK_id_estado_cita = null;
 
     public function setIdCita($value)
     {
@@ -126,6 +128,22 @@ class Citas extends Validator
 		return $this->start;
     }
 
+    public function setFormato($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 10))
+        {
+			$this->formato = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+	public function getFormato(){
+		return $this->formato;
+    }
+
     public function setLugarReunion($value)
     {
         if($this->validateAlphanumeric($value, 1, 100))
@@ -175,18 +193,44 @@ class Citas extends Validator
 		return $this->FK_id_usuario;
     }
 
+    public function setIdEstadoCita($value)
+    {
+        if($this->validateId($value))
+        {
+			$this->FK_id_estado_cita = $value;
+			return true;
+        }
+        else
+        {
+			return false;
+		}
+	}
+    public function getIdEstadoCita()
+    {
+		return $this->FK_id_estado_cita;
+    }
+
     public function getCitas()
     {
-        $sql = 'SELECT PK_id_cita, title, nombres, correo, color, textColor, start, lugar_reunion, asunto, FK_id_usuario FROM citas c INNER JOIN usuarios_anuncios ua ON c.FK_id_usuario = ua.id_usuario WHERE ua.id_usuario = ?';
+        $sql = 'SELECT PK_id_cita, title, nombres, correo, color, textColor, start, formato, lugar_reunion, asunto, FK_id_usuario, ec.estado_cita
+        FROM citas c INNER JOIN usuarios_anuncios ua ON c.FK_id_usuario = ua.id_usuario
+        INNER JOIN estados_citas ec ON c.FK_id_estado_cita = ec.PK_id_estado_cita WHERE ua.id_usuario = ?';
         $params = array($this->FK_id_usuario);
         return Database::getRows($sql, $params);
     }
 
+    public function updateEstadoCita()
+    {
+        $sql = 'UPDATE citas SET FK_id_estado_cita = ? WHERE PK_id_cita = ?';
+        $params = array($this->FK_id_estado_cita, $this->PK_id_cita);
+        return Database::executeRow($sql, $params);
+    }
+
     public function createCita()
     {
-        $sql = 'INSERT INTO citas(title, nombres, correo, color, textColor, start, lugar_reunion, asunto, FK_id_usuario) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->title, $this->nombres, $this->correo, $this->color, $this->textColor, $this->start, $this->lugar_reunion, $this->asunto, $this->FK_id_usuario);
+        $sql = 'INSERT INTO citas(title, nombres, correo, color, textColor, start, formato, lugar_reunion, asunto, FK_id_usuario, FK_id_estado_cita) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)';
+        $params = array($this->title, $this->nombres, $this->correo, $this->color, $this->textColor, $this->start, $this->formato, $this->lugar_reunion, $this->asunto, $this->FK_id_usuario, $this->FK_id_estado_cita);
         return Database::executeRow($sql, $params);
     }
 }
