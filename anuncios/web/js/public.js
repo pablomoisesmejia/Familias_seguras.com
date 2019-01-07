@@ -7,9 +7,6 @@ $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50, position: 'bottom'});
     $('select').material_select();
     CargarAnuncios();
-    $("#wha_btn_s").show(0);
-      $("#wha_vehiprop_btn").show(0);
-      $("#tel_btn").show(0);
 });
 
 //FUNCION PARA OBTENER LAS VARIABLES GET
