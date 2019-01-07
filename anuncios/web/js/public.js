@@ -79,6 +79,10 @@ $('#cantidad').change(function(){
 
 function Paginacion(anuncios, cantidad)
 {
+  for(i = 0; i<anuncios.length; i++)
+  {
+    console.log(anuncios[i])
+  }
   $('#paginacion').pagination({
     dataSource: anuncios,
     pageSize: cantidad,

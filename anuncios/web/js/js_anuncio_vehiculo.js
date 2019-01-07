@@ -8,7 +8,7 @@ var max = date.getFullYear()//Validacion de fecha maxima del datepicker
 $(document).ready(function(){
 
     $('#motor').mask('0.0');
-    $('#valor_vehiculo').mask('#,#00.00', {reverse: true});
+    $('#valor_vehiculo').mask('##00.00', {reverse: true});
     $('#kilometraje').mask('##,#00', {reverse: true});
     
     var marca_vehiculo = '';
@@ -399,7 +399,7 @@ $(document).ready(function(){
                 if(datos[0][0] == 1)
                 {
                     id_vehiculo = datos[0][1];
-                    createImagenVehiculo();
+                    //createImagenVehiculo();
                 }
                 else
                 {
