@@ -56,7 +56,7 @@
 
         <div class='row'>
             <div class='center'>
-                <h5>Seleccione las Amenidades de su propiedad</h5>
+                <h5>Filtro por Amenidades</h5>
             </div>
 
             <div class='col s6 m4 l3'>
@@ -133,7 +133,7 @@
             </div>
             <div class='col s6 m4 l3'>
                 <input type='checkbox' value='0' id='area_sevicio' />
-                <label for='area_sevicio'>Area de servicio</label>
+                <label for='area_servicio'>Area de servicio</label>
             </div>
             <div class='col s6 m4 l3'>
                 <input type='checkbox' value='0' id='pantrie' />

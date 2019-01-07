@@ -7,45 +7,55 @@ try
     $propiedad = new Propiedad;
     $anuncios = '';
     $filtro = '';
-    $ordenar = '';
-
-    if(isset($_POST['ordenar']))
-    {
-        $ordenar = $_POST['ordenar'];
-    }
+    $arreglo = [];
+    $ordenar = $_POST['ordenar'];
     
+    if(isset($_POST['filtro']))
+    {
+        $arreglo = $_POST['filtro'];
+
+        for($i = 0; $i<count($arreglo); $i++)
+        {
+            $filtro = ' AND '.$arreglo[$i].'';
+        }        
+    }
+    else
+    {
+        $filtro = '';
+    }
+
     $seccion = $_POST['seccion'];
     $propiedad->setIdTransaccion($seccion);
 
     if($ordenar == '')
     {
-        $anuncios = $propiedad->getPropiedadesTransaccion('');
+        $anuncios = $propiedad->getPropiedadesTransaccion($filtro, '');
     }
     else
     {
         if($ordenar == 'ca-z')
         {
-            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY c.colonia ASC');
+            $anuncios = $propiedad->getPropiedadesTransaccion($filtro, 'ORDER BY c.colonia ASC');
         }
         if($ordenar == 'cz-a')
         {
-            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY c.colonia DESC');
+            $anuncios = $propiedad->getPropiedadesTransaccion($filtro, 'ORDER BY c.colonia DESC');
         }
         if($ordenar == 'reciente')
         {
-            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY p.PK_id_propiedad DESC');
+            $anuncios = $propiedad->getPropiedadesTransaccion($filtro, 'ORDER BY p.PK_id_propiedad DESC');
         }
         if($ordenar == 'antiguo')
         {
-            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY p.PK_id_propiedad ASC');
+            $anuncios = $propiedad->getPropiedadesTransaccion($filtro, 'ORDER BY p.PK_id_propiedad ASC');
         }
         if($ordenar == 'menor')
         {
-            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY p.valor ASC');
+            $anuncios = $propiedad->getPropiedadesTransaccion($filtro, 'ORDER BY p.valor ASC');
         }
         if($ordenar == 'mayor')
         {
-            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY p.valor DESC');
+            $anuncios = $propiedad->getPropiedadesTransaccion($filtro, 'ORDER BY p.valor DESC');
         }
     }
     
