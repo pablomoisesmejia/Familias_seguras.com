@@ -361,7 +361,6 @@ function closetipscot(){
   
   }
 
-  verificar_telefono_o_pc();
   function verificar_telefono_o_pc(){
     var isMobile = {
       mobilecheck : function() 
