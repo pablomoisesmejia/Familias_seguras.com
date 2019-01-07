@@ -26,10 +26,12 @@
             <label>Tipo de propiedad</label>
         </div>
 
-        <div class='input-field col s12 l6'>
+        <div class="input-field col s12 l6">
             <i style="color:black;"class="material-icons prefix">home</i>
-            <input id="colonia" type="text" class="validate" required/>
-            <label class="" for="colonia">Colonia</label>
+            <select id="colonia">
+            
+            </select>
+            <label>Colonia</label>
         </div>
 
         <div class='input-field col s12 l6'>

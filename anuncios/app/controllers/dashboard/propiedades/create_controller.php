@@ -13,7 +13,7 @@ try
     $propiedad->setIdUsuario($_SESSION['id_usuario']);
     $propiedad->setIdTransaccion($_POST['tipo_transaccion']);
     $propiedad->setIdTipoPropiedad($_POST['tipo_propiedad']);
-    $propiedad->setColonia($_POST['colonia']);
+    $propiedad->setIdColonia($_POST['colonia']);
     $propiedad->setMunicipio($_POST['municipio']);
     $propiedad->setDepartamento($_POST['departamento']);
     $propiedad->setTerreno($_POST['terreno']);

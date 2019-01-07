@@ -6,7 +6,7 @@ class Propiedad extends Validator
     private $FK_id_tipo_propiedad = null;
     private $FK_id_usuario = null;
     private $FK_id_transaccion = null;
-    private $colonia = null;
+    private $FK_id_colonia = null;
     private $municipio = null;
     private $departamento = null;
     private $terreno = null;
@@ -126,11 +126,11 @@ class Propiedad extends Validator
 		return $this->FK_id_transaccion;
     }
 
-    public function setColonia($value)
+    public function setIdColonia($value)
     {
         if($this->validateAlphanumeric($value, 1, 50))
         {
-			$this->colonia = $value;
+			$this->Fk_id_colonia = $value;
 			return true;
         }
         else
@@ -138,9 +138,9 @@ class Propiedad extends Validator
 			return false;
 		}
 	}
-    public function getColonia()
+    public function getIdColonia()
     {
-		return $this->colonia;
+		return $this->Fk_id_colonia;
     }
     
     public function setMunicipio($value)
@@ -976,6 +976,12 @@ class Propiedad extends Validator
 		return $this->ascensor;
     }
 
+    public function getColonias()
+    {
+        $sql = 'SELECT PK_id_colonia, colonia FROM colonias';
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
     public function getCorreoUsuario()
     {
         $sql = 'SELECT ua.id_usuario, ua.correo_usuario FROM usuarios_anuncios ua INNER JOIN propiedades p ON ua.id_usuario = p.FK_id_usuario WHERE p.PK_id_propiedad = ?';
@@ -985,9 +991,10 @@ class Propiedad extends Validator
     
     public function getPropiedades()
     {
-        $sql = 'SELECT p.PK_id_propiedad, tp.tipo_propiedad, p.FK_id_usuario, t.transaccion, p.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.valor
+        $sql = 'SELECT p.PK_id_propiedad, tp.tipo_propiedad, p.FK_id_usuario, t.transaccion, c.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.valor
         FROM propiedades p INNER JOIN tipo_propiedad tp ON p.FK_id_tipo_propiedad = tp.PK_id_tipo_propiedad 
-        INNER JOIN transaccion t ON p.FK_id_transaccion = t.PK_id_transaccion 
+        INNER JOIN transaccion t ON p.FK_id_transaccion = t.PK_id_transaccion
+        INNER JOIN colonias c ON p.FK_id_colonia = c.PK_id_colonia
         WHERE FK_id_usuario = ?';
         $params = array($this->FK_id_usuario);
         return Database::getRows($sql, $params);
@@ -1002,20 +1009,22 @@ class Propiedad extends Validator
 
     public function getPropiedadDetalle()
     {
-        $sql = 'SELECT p.PK_id_propiedad, p.FK_id_usuario, tp.tipo_propiedad, t.transaccion, p.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.valor, ua.whatsapp, ua.telefono, p.comunidad_privada, p.piscina, p.cancha_basketball, p.cancha_tennis, p.cancha_futbol, p.gimnasio, p.spa_sauna, p.barbacoa, p.deck, p.sistema_riego, p.ac_central, p.ac_independiente, p.atico, p.portico, p.sotano, p.bodega, p.estudio, p.area_servicio, p.pantrie, p.closets, p.walking_closet, p.cocina_isla, p.desayunador, p.terraza_nivel_inferior, p.terraza_nivel_superior, p.sala_nivel_superior, p.calentador_agua, p.cisterna, p.triturador_basura, p.lavadora_platos, p.sistema_gas, p.conexion, p.paneles_solares, p.ventiladores_techo, p.acceso_discapacitados, p.ascensor
+        $sql = 'SELECT p.PK_id_propiedad, p.FK_id_usuario, tp.tipo_propiedad, t.transaccion, c.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.valor, ua.whatsapp, ua.telefono, p.comunidad_privada, p.piscina, p.cancha_basketball, p.cancha_tennis, p.cancha_futbol, p.gimnasio, p.spa_sauna, p.barbacoa, p.deck, p.sistema_riego, p.ac_central, p.ac_independiente, p.atico, p.portico, p.sotano, p.bodega, p.estudio, p.area_servicio, p.pantrie, p.closets, p.walking_closet, p.cocina_isla, p.desayunador, p.terraza_nivel_inferior, p.terraza_nivel_superior, p.sala_nivel_superior, p.calentador_agua, p.cisterna, p.triturador_basura, p.lavadora_platos, p.sistema_gas, p.conexion, p.paneles_solares, p.ventiladores_techo, p.acceso_discapacitados, p.ascensor
         FROM propiedades p INNER JOIN tipo_propiedad tp ON p.FK_id_tipo_propiedad = tp.PK_id_tipo_propiedad 
         INNER JOIN transaccion t ON p.FK_id_transaccion = t.PK_id_transaccion 
         INNER JOIN usuarios_anuncios ua ON p.FK_id_usuario = ua.id_usuario
+        INNER JOIN colonias c ON p.FK_id_colonia = c.PK_id_colonia
         WHERE p.PK_id_propiedad = ? ';
         $params = array($this->PK_id_propiedad);
         return Database::getRow($sql, $params);
     }
 
-    public function getPropiedadesTransaccion()
+    public function getPropiedadesTransaccion($orden)
     {
-        $sql = 'SELECT p.PK_id_propiedad, p.colonia, p.municipio, p.departamento, p.niveles, p.habitaciones, p.baños, p.cochera, p.valor, ip.nombre_imagen_prop
+        $sql = 'SELECT p.PK_id_propiedad, c.colonia, p.municipio, p.departamento, p.niveles, p.habitaciones, p.baños, p.cochera, p.valor, ip.nombre_imagen_prop
         FROM propiedades p LEFT JOIN imagenes_propiedad ip ON p.PK_id_propiedad = ip.FK_id_propiedad
-        WHERE FK_id_transaccion = ?  GROUP BY p.PK_id_propiedad';
+        INNER JOIN colonias c ON p.FK_id_colonia = c.PK_id_colonia
+        WHERE FK_id_transaccion = ?  GROUP BY p.PK_id_propiedad '.$orden.'';
         $params = array($this->FK_id_transaccion);
         return Database::getRows($sql, $params);
     }
@@ -1037,9 +1046,9 @@ class Propiedad extends Validator
     public function createPropiedad()
     {
         $fecha = date('Y-m-d');
-        $sql = 'INSERT INTO propiedades(FK_id_tipo_propiedad, FK_id_usuario, FK_id_transaccion, colonia, municipio, departamento, terreno, construccion, niveles, habitaciones, baños, cochera, descripcion, valor, fecha_creacion, comunidad_privada, piscina, cancha_basketball, cancha_tennis, cancha_futbol, gimnasio, spa_sauna, barbacoa, deck, sistema_riego, ac_central, ac_independiente, atico, portico, sotano, bodega, estudio, area_servicio, pantrie, closets, walking_closet, cocina_isla, desayunador, terraza_nivel_inferior, terraza_nivel_superior, sala_nivel_superior, calentador_agua, cisterna, triturador_basura, lavadora_platos, sistema_gas, conexion, paneles_solares, ventiladores_techo, acceso_discapacitados, ascensor) 
+        $sql = 'INSERT INTO propiedades(FK_id_tipo_propiedad, FK_id_usuario, FK_id_transaccion, FK_id_colonia, municipio, departamento, terreno, construccion, niveles, habitaciones, baños, cochera, descripcion, valor, fecha_creacion, comunidad_privada, piscina, cancha_basketball, cancha_tennis, cancha_futbol, gimnasio, spa_sauna, barbacoa, deck, sistema_riego, ac_central, ac_independiente, atico, portico, sotano, bodega, estudio, area_servicio, pantrie, closets, walking_closet, cocina_isla, desayunador, terraza_nivel_inferior, terraza_nivel_superior, sala_nivel_superior, calentador_agua, cisterna, triturador_basura, lavadora_platos, sistema_gas, conexion, paneles_solares, ventiladores_techo, acceso_discapacitados, ascensor) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->FK_id_tipo_propiedad, $this->FK_id_usuario, $this->FK_id_transaccion, $this->colonia, $this->municipio, $this->departamento, $this->terreno, $this->construccion, $this->niveles, $this->habitaciones, $this->baños, $this->cochera, $this->descripcion, $this->valor, $fecha, $this->comunidad_privada, $this->piscina, $this->cancha_basketball, $this->cancha_tennis, $this->cancha_futbol, $this->gimnasio, $this->spa_sauna, $this->barbacoa, $this->deck, $this->sistema_riego, $this->ac_central, $this->ac_independiente, $this->atico, $this->portico, $this->sotano, $this->bodega, $this->estudio, $this->area_sevicio, $this->pantrie, $this->closets, $this->walking_closet, $this->cocina_isla, $this->desayunador, $this->terraza_nivel_inferior, $this->terraza_nivel_superior, $this->sala_nivel_superior, $this->calentador_agua, $this->cisterna, $this->triturador_basura, $this->lavadora_platos, $this->sistema_gas, $this->conexion, $this->paneles_solares, $this->ventiladores_techo, $this->acceso_discapacitados, $this->ascensor);
+        $params = array($this->FK_id_tipo_propiedad, $this->FK_id_usuario, $this->FK_id_transaccion, $this->FK_id_colonia, $this->municipio, $this->departamento, $this->terreno, $this->construccion, $this->niveles, $this->habitaciones, $this->baños, $this->cochera, $this->descripcion, $this->valor, $fecha, $this->comunidad_privada, $this->piscina, $this->cancha_basketball, $this->cancha_tennis, $this->cancha_futbol, $this->gimnasio, $this->spa_sauna, $this->barbacoa, $this->deck, $this->sistema_riego, $this->ac_central, $this->ac_independiente, $this->atico, $this->portico, $this->sotano, $this->bodega, $this->estudio, $this->area_sevicio, $this->pantrie, $this->closets, $this->walking_closet, $this->cocina_isla, $this->desayunador, $this->terraza_nivel_inferior, $this->terraza_nivel_superior, $this->sala_nivel_superior, $this->calentador_agua, $this->cisterna, $this->triturador_basura, $this->lavadora_platos, $this->sistema_gas, $this->conexion, $this->paneles_solares, $this->ventiladores_techo, $this->acceso_discapacitados, $this->ascensor);
         $propiedad = Database::executeRow($sql, $params);
         if($propiedad)
         {

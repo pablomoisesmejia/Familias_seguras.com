@@ -22,14 +22,14 @@
         <div class='col s12 m2 l2'>
             <div class="input-field">
                 <select id = 'cantidad'>
-                    <option value="" disabled selected>Cantidad a mostrar</option>
-                    <option value="3">3</option>
+                    <option value="3" selected>3</option>
                     <option value="9">9</option>
                     <option value="15">15</option>
                     <option value="30">30</option>
                     <option value="60">60</option>
                     <option value="90">90</option>
                 </select>
+                <label for="cantidad">Cantidad a mostrar</label>
             </div>
         </div>
         <div class='col s12 m2 l2'>

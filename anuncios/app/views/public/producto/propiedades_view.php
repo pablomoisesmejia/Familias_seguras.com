@@ -23,12 +23,10 @@
             <div class="input-field">
                 <select id = 'ordenar'>
                 <option value="" disabled selected>Ordenar propiedades por</option>
-                <option value="maa-z">Marcas de la A-Z</option>
-                <option value="maz-a">Marcas de la Z-A</option>
-                <option value="moa-z">Modelos de la A-Z</option>
-                <option value="moz-a">Modelos de la Z-A</option>
-                <option value="reciente">Vehículos mas recientes</option>
-                <option value="antiguo">Vehículos mas antiguos</option>
+                <option value="ca-z">Colonias de la A-Z</option>
+                <option value="cz-a">Colonias de la Z-A</option>
+                <option value="reciente">Propiedades mas recientes</option>
+                <option value="antiguo">Propiedades mas antiguos</option>
                 <option value="menor">Menor a mayor precio</option>
                 <option value="mayor">Mayor a menor precio</option>
                 </select>
@@ -37,16 +35,104 @@
         <div class='col s12 m2 l2'>
             <div class="input-field">
                 <select id = 'cantidad'>
-                    <option value="" disabled selected>Cantidad a mostrar</option>
-                    <option value="3">3</option>
+                    <option value="3" selected>3</option>
                     <option value="9">9</option>
                     <option value="15">15</option>
                     <option value="30">30</option>
                     <option value="60">60</option>
                     <option value="90">90</option>
                 </select>
+                <label for="cantidad">Cantidad a mostrar</label>
             </div>
         </div>
+        <div class='col s12 m2 l2'>
+            <p onclick='showhide_advance_filter();' id='btn_advance'>Avanzado</p>
+        </div>
+    </div>
+    <div id='advanced_div'>
+        
+        <h5>Filtro Avanzado de Búsqueda</h5>
+        <p>El siguiente apartado es para una búsqueda mucho mas precisa sobre lo que estás buscando.</p>
+
+        <div class='row'>
+            <div class='col s12 m3 l3'>
+                <div class="input-field">
+                    <select id = 'cantidad'>
+                        <option value="" disabled selected>Cantidad a mostrar</option>
+                        <option value="3">3</option>
+                        <option value="9">9</option>
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="60">60</option>
+                        <option value="90">90</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class='col s12 m3 l3'>
+                <div class="input-field">
+                    <select id = 'cantidad'>
+                        <option value="" disabled selected>Cantidad a mostrar</option>
+                        <option value="3">3</option>
+                        <option value="9">9</option>
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="60">60</option>
+                        <option value="90">90</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class='col s12 m3 l3'>
+                <div class="input-field">
+                    <select id = 'cantidad'>
+                        <option value="" disabled selected>Cantidad a mostrar</option>
+                        <option value="3">3</option>
+                        <option value="9">9</option>
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="60">60</option>
+                        <option value="90">90</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class='col s12 m3 l3'>
+                <div class="input-field">
+                    <select id = 'cantidad'>
+                        <option value="" disabled selected>Cantidad a mostrar</option>
+                        <option value="3">3</option>
+                        <option value="9">9</option>
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="60">60</option>
+                        <option value="90">90</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class='col s12 m3 l3'>
+                <div class="input-field">
+                    <select id = 'cantidad'>
+                        <option value="" disabled selected>Cantidad a mostrar</option>
+                        <option value="3">3</option>
+                        <option value="9">9</option>
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="60">60</option>
+                        <option value="90">90</option>
+                    </select>
+                </div>
+            </div>
+
+
+        </div>
+        <div class='row'>
+            <div class='col s12 m3 l3'>
+                <p onclick='funcion();' id='btn_advanced2'>Buscar</p>
+            </div>
+        </div>
+
     </div>
     <div class='row' id='anuncios'>
 

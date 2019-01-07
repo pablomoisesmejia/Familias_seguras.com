@@ -17,7 +17,38 @@ try
     $seccion = $_POST['seccion'];
     $propiedad->setIdTransaccion($seccion);
 
-    $anuncios = $propiedad->getPropiedadesTransaccion();
+    if($ordenar == '')
+    {
+        $anuncios = $propiedad->getPropiedadesTransaccion('');
+    }
+    else
+    {
+        if($ordenar == 'ca-z')
+        {
+            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY c.colonia ASC');
+        }
+        if($ordenar == 'cz-a')
+        {
+            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY c.colonia DESC');
+        }
+        if($ordenar == 'reciente')
+        {
+            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY p.PK_id_propiedad DESC');
+        }
+        if($ordenar == 'antiguo')
+        {
+            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY p.PK_id_propiedad ASC');
+        }
+        if($ordenar == 'menor')
+        {
+            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY p.valor ASC');
+        }
+        if($ordenar == 'mayor')
+        {
+            $anuncios = $propiedad->getPropiedadesTransaccion('ORDER BY p.valor DESC');
+        }
+    }
+    
     echo json_encode($anuncios);
     
 }

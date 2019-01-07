@@ -35,6 +35,33 @@ $(document).ready(function(){
         });
     }
 
+    getColonias();
+    function getColonias()
+    {
+        $.ajax({
+            url: '../../app/controllers/dashboard/propiedades/get_colonias_controller.php',
+            dataType: 'json',
+            success: function(colonias)
+            {
+                $('#colonia').empty();
+                $('#colonia').append('<option value="" disabled selected>Seleccione la colonia</option>');
+                if(colonias != '')
+                {
+                    i = 0;
+                    for(i; i<colonias.length; i++)
+                    {
+                        var option = '';
+                        option = option.concat(
+                            '<option value="'+colonias[i].PK_id_colonia+'">'+colonias[i].colonia+'</option>'
+                        );
+                        $('#colonia').append(option);
+                    }
+                    $('select').material_select();
+                }
+            }
+        });
+    }
+
     getTransaccion();
     function getTransaccion()
     {
@@ -212,7 +239,7 @@ $(document).ready(function(){
             {
                 if(tipo_propiedad != null)
                 {
-                    if(colonia != '')
+                    if(colonia != null)
                     {
                         if(municipio != '')
                         {
