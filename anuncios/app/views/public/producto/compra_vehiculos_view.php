@@ -42,83 +42,90 @@
         <p>El siguiente apartado es para una búsqueda mucho mas precisa sobre lo que estás buscando.</p>
 
         <div class='row'>
-            <div class='col s12 m3 l3'>
-                <div class="input-field">
-                    <select id = 'cantidad'>
-                        <option value="" disabled selected>Cantidad a mostrar</option>
-                        <option value="3">3</option>
-                        <option value="9">9</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="60">60</option>
-                        <option value="90">90</option>
-                    </select>
-                </div>
+            <div class='center'>
+                <h5>Seleccione las caracteristicas de su vehículo</h5>
+            </div>
+            <div class='col s6 m4 l5'>
+                <input type="checkbox" id="vidrios_electricos" />
+                <label for="vidrios_electricos">Vidrios Eléctricos</label>
+            </div>
+            <div class='col s6 m4 l4'>
+                <input type="checkbox" id="espejos_electricos" />
+                <label for="espejos_electricos">Espejos Eléctricos</label>
+            </div>
+            <div class='col s6 m4 l3'>
+                <input type="checkbox" id="aire_acondicionado" />
+                <label for="aire_acondicionado">Aire Acondicionado</label>
             </div>
 
-            <div class='col s12 m3 l3'>
-                <div class="input-field">
-                    <select id = 'cantidad'>
-                        <option value="" disabled selected>Cantidad a mostrar</option>
-                        <option value="3">3</option>
-                        <option value="9">9</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="60">60</option>
-                        <option value="90">90</option>
-                    </select>
-                </div>
+            <div class='col s6 m4 l5'>
+                <input type="checkbox" id="bolsas_aire" />
+                <label for="bolsas_aire">Bolsas de aire</label>
+            </div>
+            <div class='col s6 m4 l4'>
+                <input type="checkbox" id="sistema_eco" />
+                <label for="sistema_eco">Sistema ECO</label>
+            </div>
+            <div class='col s6 m4 l3'>
+                <input type="checkbox" id="mandos_timon" />
+                <label for="mandos_timon">Mandos al Timón</label>
             </div>
 
-            <div class='col s12 m3 l3'>
-                <div class="input-field">
-                    <select id = 'cantidad'>
-                        <option value="" disabled selected>Cantidad a mostrar</option>
-                        <option value="3">3</option>
-                        <option value="9">9</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="60">60</option>
-                        <option value="90">90</option>
-                    </select>
-                </div>
+
+            <div class='col s6 m4 l5'>
+                <input type="checkbox" id="rines_especiales" />
+                <label for="rines_especiales">Rines Especiales</label>
+            </div>
+            <div class='col s6 m4 l4'>
+                <input type="checkbox" id="camara_trasera" />
+                <label for="camara_trasera">Camara Trasera</label>
+            </div>
+            <div class='col s6 m4 l3'>
+                <input type="checkbox" id="sensores_parqueo" />
+                <label for="sensores_parqueo">Sensores de Parqueo</label>
             </div>
 
-            <div class='col s12 m3 l3'>
-                <div class="input-field">
-                    <select id = 'cantidad'>
-                        <option value="" disabled selected>Cantidad a mostrar</option>
-                        <option value="3">3</option>
-                        <option value="9">9</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="60">60</option>
-                        <option value="90">90</option>
-                    </select>
-                </div>
+            <div class='col s6 m4 l5'>
+                <input type="checkbox" id="Bluetooth" />
+                <label for="Bluetooth">Bluetooth</label>
+            </div>
+            <div class='col s6 m4 l4'>
+                <input type="checkbox" id="Combustible" />
+                <label for="Combustible">Combustible</label>
+            </div>
+            <div class='col s6 m4 l3'>
+                <input type="checkbox" id="sunroof" />
+                <label for="sunroof">Sunroof</label>
             </div>
 
-            <div class='col s12 m3 l3'>
-                <div class="input-field">
-                    <select id = 'cantidad'>
-                        <option value="" disabled selected>Cantidad a mostrar</option>
-                        <option value="3">3</option>
-                        <option value="9">9</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="60">60</option>
-                        <option value="90">90</option>
-                    </select>
-                </div>
+            <div class='col s6 m4 l5'>
+                <input type="checkbox" id="luces_xenon"/>
+                <label for="luces_xenon">Luces Xenon</label>
+            </div>
+            <div class='col s6 m4 l4'>
+                <input type="checkbox" id="cruise_control" />
+                <label for="cruise_control">Cruise Control</label>
+            </div>
+            <div class='col s6 m4 l3'>
+                <input type="checkbox" id="mando_distancia" />
+                <label for="mando_distancia">Mando a Distancia</label>
             </div>
 
+            <div class='col s6 m4 l5'>
+                <input type="checkbox" id="gps" />
+                <label for="gps">GPS</label>
+            </div>
+            <div class='col s6 m4 l4'>
+                <input type="checkbox" id="tapiceria_cuero" />
+                <label for="tapiceria_cuero">Tapiceria de Cuero</label>
+            </div>
+            <div class='col s6 m4 l3'>
+                <input type="checkbox" id="dvd_trasero" />
+                <label for="dvd_trasero">DVD trasero</label>
+            </div>
 
         </div>
-        <div class='row'>
-            <div class='col s12 m3 l3'>
-                <p onclick='funcion();' id='btn_advanced2'>Buscar</p>
-            </div>
-        </div>
+
 
     </div>
     <div class='row' id='anuncios'>

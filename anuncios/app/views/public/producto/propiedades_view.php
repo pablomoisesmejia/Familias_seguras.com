@@ -212,11 +212,6 @@
                 <label for='ascensor'>Ascensor</label>
             </div>        
         </div>
-        <!-- <div class='row'>
-            <div class='col s12 m3 l3'>
-                <p onclick='funcion();' id='btn_advanced2'>Buscar</p>
-            </div>
-        </div>-->
 
     </div>
     <div class='row' id='anuncios'>

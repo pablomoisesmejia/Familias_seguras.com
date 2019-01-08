@@ -97,6 +97,35 @@ $('input[type="checkbox"]').on('change', function(e){
       CargarAnuncios();  
     }
   }
+  if(filename == 'vehiculos_v.php')
+  {
+    if(this.checked)
+    {
+      variable = $(e.currentTarget).attr('id');
+      $('#'+variable+'').val('Si');
+      arreglo.push(''+variable+' = "'+$('#'+variable+'').val()+'"');
+        filtro = arreglo
+        console.log(filtro);
+        CargarAnuncios();
+    }
+    else
+    {
+      variable = $(e.currentTarget).attr('id');
+      $('#'+variable+'').val('No');
+      var posicion = '';
+      for(i = 0; i<arreglo.length; i++)
+      {
+        if(arreglo[i] == ''+variable+' = "Si"')
+        {
+          posicion = i;
+        }        
+      }
+      arreglo.splice(posicion, 1)
+      filtro = arreglo;
+      console.log(filtro);
+      CargarAnuncios();
+    }
+  }
   
 });
 
@@ -237,7 +266,8 @@ function CargarAnuncios()
     }
     else
     {
-      AlertaSweet(2, 'No se encontraron anuncios en esta seccion');
+      AlertaSweet(2, 'No se encontraron anuncios');
+      $('#anuncios').empty();
     }
   }
 
@@ -254,7 +284,8 @@ function CargarAnuncios()
     }
     else
     {
-      AlertaSweet(2, 'No se encontraron anuncios en esta seccion');
+      AlertaSweet(2, 'No se encontraron anuncios');
+      $('#anuncios').empty();
     }
   }
 

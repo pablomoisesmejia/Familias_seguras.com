@@ -571,12 +571,12 @@ class Vehiculos extends Validator
         return Database::getRow($sql, $params);
     }
 
-    public function getVehiculo($orden)
+    public function getVehiculo($filtro, $orden)
     {
         $sql = 'SELECT v.PK_id_vehiculo, v.FK_id_usuario, mv.modelos_vehiculo, mar.marca_vehiculo, v.anio, v.valor, iv.nombre_imagen
         FROM vehiculos v INNER JOIN modelos_vehiculos mv ON v.FK_id_modelo = mv.PK_id_modelo_vehiculo 
         INNER JOIN marcas_vehiculos mar ON mv.FK_id_marca_vehiculo = mar.PK_id_marca_vehiculo
-        LEFT JOIN imagenes_vehiculo iv ON v.PK_id_vehiculo = iv.FK_id_vehiculo  GROUP BY PK_id_vehiculo '.$orden.'';
+        LEFT JOIN imagenes_vehiculo iv ON v.PK_id_vehiculo = iv.FK_id_vehiculo '.$filtro.'  GROUP BY PK_id_vehiculo '.$orden.'';
         $params = array(null);
         return Database::getRows($sql, $params);
     }
