@@ -11,7 +11,6 @@ try
 
     $compania_interes = new Companias_Interes;
     $companias = $_POST['aseguradoras_select'];
-    print_r($companias);
 
     for($i = 0; $i<count($companias); $i++)
     {

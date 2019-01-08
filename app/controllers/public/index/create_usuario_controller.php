@@ -19,9 +19,14 @@ try
     $usuario->setApellidos($_POST['apellidos']);
     $usuario->setIdTipoTeam(7);
     $usuario->setIdEstado(1);
-    $usuario->setFechaNacimiento($_POST['fecha_nacimiento']);
+
+    if($_POST['fecha_nacimiento'] != '')
+    {
+        $usuario->setFechaNacimiento($_POST['fecha_nacimiento']);
+    }
     $usuario->setCorreo($_POST['correo']);
     $usuario->setTelefono($_POST['telefono']);
+    $usuario->setWhatsapp($_POST['whatsapp']);
     if($usuario->createUsuario())
     {
 

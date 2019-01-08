@@ -12,9 +12,8 @@ try
     {
         $vehiculo->setIdModeloVehiculo($vehiculos[$i][3]);
         $vehiculo->setAnio($vehiculos[$i][4]);
-        $vehiculo->setPlaca($vehiculos[$i][5]);
-        $vehiculo->setIdOrigenVehiculo($vehiculos[$i][6]);
-        $vehiculo->setValor($vehiculos[$i][7]);
+        $vehiculo->setIdOrigenVehiculo($vehiculos[$i][5]);
+        $vehiculo->setValor($vehiculos[$i][6]);
 
         $vehiculo->setIdClienteProspecto($_POST['id_cliente_prospecto']);
         if($vehiculo->createSeguroVehiculo())

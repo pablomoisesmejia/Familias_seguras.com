@@ -91,15 +91,12 @@ function paso2()
 //VALIDACIONES PARA EL PASO 3
 function paso3()
 {
-    if(tipo_seguro == 3 || tipo_seguro == 4)
-    {
-      fecha_nacimiento = $('#fecha_nacimiento').val();
-    }
-    nombres=$('#nombre_segv').val();
-    apellidos=$('#apellido_segv').val();
-    telefono=$('#tel_segv').val();
-    correo=$('#email_segv').val();
-    hora_visita=$('#hora_contacto').val();
+    nombres = $('#nombre_segv').val();
+    apellidos = $('#apellido_segv').val();
+    telefono = $('#tel_segv').val();
+    whatsapp = $('#what_segv').val();
+    correo = $('#email_segv').val();
+    hora_visita = $('#hora_contacto').val();
     if(hora_visita==='manana_1')
     {
       horario = '7:00 - 9:00am';
@@ -115,14 +112,6 @@ function paso3()
     if(hora_visita==='tarde_2')
     {
       horario = '4:00 - 7:00pm'
-    }
-
-    if(tipo_seguro == 3 || tipo_seguro == 4)
-    {
-      if(fecha_nacimiento == '')
-      {
-        AlertaSweet(3, 'Seleccione la fecha de nacimiento');
-      }
     }
 
     if(nombres != '')
@@ -173,7 +162,7 @@ var telefono = '';
 var correo = '';
 var hora_visita = '';
 var horario = '';
-var cantidad_pagos = ''
+var cantidad_pagos = '';
 
 /*-------------------------------------------------------------------------------------------
   -----------------------FUNCION PARA INSERTAR EN LA TABLA USUARIOS--------------------------
@@ -189,7 +178,8 @@ function createUsuario()
             apellidos:apellidos,
             telefono:telefono,
             correo:correo,
-            fecha_nacimiento:fecha_nacimiento
+            fecha_nacimiento:fecha_nacimiento,
+            whatsapp:whatsapp
         },
         dataType: 'json',
         success: function(usuario)
@@ -262,7 +252,8 @@ function enviarCorreo()
     url:'../../app/helpers/correo_cliente.php',
     data:{correo:correo,
     id_cliente_prospecto:id_cliente_prospecto,
-    tipo_seguro:tipo_seguro},
+    tipo_seguro:tipo_seguro,
+    aseguradoras_select:aseguradoras_select},
     success:function(dato)
     {
       console.log(dato);
@@ -389,7 +380,15 @@ $(document).ready(function(){
   });
 
   $('#cotizar').click(function(){
-    paso3();
+    if(id_cliente_prospecto == '')
+    {
+      paso3();
+    }
+    else
+    {
+      enviarCorreo();
+    }
+    
   });
 
 });
@@ -745,383 +744,6 @@ function AlertaSweet(icono, texto)
   });
 }
 
-/*$(document).ready(function(){
-
-  $('.continuar').click(function(){
-    console.log(formulario);
-
-    if(formulario == 1)//VALIDACIONES DEL FORMULARIO DE SEGUROS MEDICOS
-    {
-      fecha_naci_medico = $('#fecha_naci').val();
-      nombre_conyugue = $('#nombre_conyugue_medico').val();
-      nombre_asegurado_medico = $('#nombre_asegurado_medico').val();
-      fecha_naci_conyugue = $('#fecha_naci_conyugue').val();
-      cantidad_hijo = $('#hijos_cantidad_medico').val();
-      cobertura = $('#cobertura').val();
-
-      if(fecha_naci_medico != '')
-      {
-        if(nombre_conyugue != '')
-        {
-          if(nombre_asegurado_medico != '')
-          {
-            if(fecha_naci_conyugue != '')
-            {
-              if(cantidad_hijo != '')
-              {
-                if(cantidad_hijo.indexOf("-") != 0)
-                {
-                  if(cobertura != null)
-                  {
-                    new_frm=2; 
-                    next_frm();
-                  }
-                  else
-                  {
-                    AlertaSweet(3, 'Seleccione una cobertura');
-                  }
-                }
-                else
-                {
-                  AlertaSweet(3, 'La cantidad de hijos no puede ser negativa');
-                }
-              }
-              else
-              {
-                AlertaSweet(3, 'ingrese la cantidad de hijos');
-              }
-            }
-            else
-            {
-              AlertaSweet(3, 'Seleccione la fecha de nacimiento del conyugue');
-            }
-          }
-          else
-          {
-            AlertaSweet(3, 'Escriba el nombre del asegurado principal');
-          }
-        }
-        else
-        {
-          AlertaSweet(3, 'Escriba el nombre del conyugue');
-        }
-      }
-      else
-      {
-        AlertaSweet(3, 'Seleccione la fecha de nacimiento');
-      }
-    }
-    else if(formulario == 2)//VALIDACIONES DEL FORMULARIO DE SEGURO DE VIDA
-    {
-      fecha_naci_vida = $('#fecha_naci_vida').val();
-      nombre_asegurado_vida = $('#nombre_asegurado_vida').val();
-      fumador = $('#fumador').val();
-      suma_asegurada = $('#suma_segv').val();
-      cesion_bancaria = $('#cesion_bancaria').val();
-
-      if(fecha_naci_vida != '')
-      {
-        if(nombre_asegurado_vida != '')
-        {
-          if(fumador != null)
-          {
-            if(suma_asegurada != '')
-            {
-              if(cesion_bancaria != null)
-              {
-                new_frm=2; 
-                next_frm();
-              }
-              else
-              {
-                AlertaSweet(3, 'Seleccione si el seguro lo necesita para un banco');
-              }
-            }
-            else
-            {
-              AlertaSweet(3, 'Ingrese la suma asegurada');
-            }
-          }
-          else
-          {
-            AlertaSweet(3, 'Seleccione si se considera fumador');
-          }
-        }
-        else
-        {
-          AlertaSweet(3, 'Escriba el nombre del asegurado principal');
-        }
-      }
-      else
-      {
-        AlertaSweet(3, 'Seleccione la fecha de nacimiento');
-      }
-
-    }
-    else if(formulario == 3)//VALIDACIONES DEL FORMULARIO DE SEGURO DE INCENDIOS
-    {
-      tipo_inmueble = $('#tipo_inmueble').val();
-      direccion = $('#address').val();
-      valor_construccion = $('#valor_de_constr_segm').val();
-      valor_contenido = $('#valor_contenido').val();
-
-      if(tipo_inmueble != null)
-      {
-        if(direccion != '')
-        {
-          if(valor_contenido != null)
-          {
-            if(valor_construccion != '')
-            {
-              new_frm=2; 
-              next_frm();
-            }
-            else
-            {
-              AlertaSweet(3, 'Escriba el valor de la construcción');
-            }
-          }
-          else
-          {
-            AlertaSweet(3, 'Seleccione el inmueble de calidad'); 
-          }
-        }
-        else
-        {
-          AlertaSweet(3, 'Escriba su dirección');
-        }
-      }
-      else
-      {
-        AlertaSweet(3, 'Seleccione el tipo de inmueble');
-      }
-
-    }
-    else if(formulario == 4)//VALIDACIONES DEL FORMULARIO DE SEGURO DE VEHICULOS
-    {
-      numero_licencia = $('#numero_licencia').val();
-      if(numero_licencia != '')
-      {
-        new_frm=2;
-        next_frm();
-      }
-      else
-      {
-        AlertaSweet(3, 'Ingrese su número de licencia');
-      }
-
-    }
-  });
-  /*-------------------------------------------------------------------------------------------
-  -----------------------FUNCION PARA INSERTAR EL SEGURO Y EL CLIENTE--------------------------
-  -------------------------------------------------------------------------------------------*/
-  /*var id_cliente = "";
-  $('.solicitar').click(function(){
-    console.log(formulario);
-    if(id_cliente == "")
-    {
-      createCliente();
-    }
-    else
-    {
-      enviar();
-    }
-  });
-
-  function createCliente()
-  {
-    nombre=$('#nombre_segv').val();
-    telefono=$('#tel_segv').val();
-    correo=$('#email_segv').val();
-    hora_visita=$('#hora').val();
-    horario = '';
-    if(hora_visita==='manana_1'){
-      horario = '7:00 - 9:00am';
-    }
-    if(hora_visita==='manana_2'){
-      horario = '10:00 - 12:00pm';
-    }
-    if(hora_visita==='tarde_1'){
-      horario = '1:00 - 3:00pm'
-    }
-    if(hora_visita==='tarde_2'){
-      horario = '4:00 - 7:00pm'
-    }
-    if(nombre != '')
-    {
-      if(telefono != '')
-      {
-        if(correo != '')
-        {
-          if(hora_visita != '')
-          {
-            $.ajax({
-              type: 'POST',
-              url: '../../app/controllers/public/index/create_cliente_controller.php',
-              data:{
-                nombre:nombre,
-                telefono:telefono,
-                correo:correo},
-              dataType: 'json',
-              success: function(cliente)
-              {
-                if(cliente[0][0] == 1)
-                {
-                  id_cliente = cliente[0][1];
-                  if(formulario == 1)
-                  {
-                    createSeguroMedico()
-                  }
-                  else if(formulario == 2)
-                  {
-                    createSeguroVida()
-                  }
-                  else if(formulario == 3)
-                  {
-                    createSeguroIncendios();
-                  }
-                  else if(formulario == 4)
-                  {
-                    createSeguroVehiculo()
-                  }
-                }
-              }
-            });
-          }
-          else
-          {
-            AlertaSweet(3, 'Seleccione la hora de visita');
-          }
-        }
-        else
-        {
-          AlertaSweet(3, 'Escriba su correo electrónico');
-        }
-      }
-      else
-      {
-        AlertaSweet(3, 'Escriba su número de teléfono');
-      }
-    }
-    else
-    {
-      AlertaSweet(3, 'Escriba su nombre completo');
-    }
-  }
-
-  /*----------------------------------------------------------------------------------------------------------------------------------
-  -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE INCENDIOS---------------------------------------
-  ------------------------------------------------------------------------------------------------------------------------------------*/
-  /*function createSeguroIncendios()
-  {
-    $.ajax({
-      type: 'POST',
-      url: '../../app/controllers/public/index/create_seguro_incendio.php',
-      data:{
-        tipo_inmueble:tipo_inmueble,
-        direccion:direccion,
-        valor_construccion:valor_construccion,
-        valor_contenido:valor_contenido,
-        id_cliente:id_cliente},
-      success: function(seguro_incendios)
-      {
-        if(seguro_incendios == 1)
-        {
-          enviar();
-        }
-        else
-        {
-          AlertaSweet(2, 'Ocurrio un problema al momento de guardar los datos, contacte con el administrador');
-        }
-      }
-    });
-  }
-  /*----------------------------------------------------------------------------------------------------------------------------------
-  -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE VIDA---------------------------------------
-  ------------------------------------------------------------------------------------------------------------------------------------*/
-  /*function createSeguroVida()
-  {
-    $.ajax({
-      type: 'POST',
-      url: '../../app/controllers/public/index/create_seguro_vida.php',
-      data:{
-        fecha_naci_vida:fecha_naci_vida,
-        nombre_asegurado_vida:nombre_asegurado_vida,
-        fumador:fumador,
-        suma_asegurada:suma_asegurada,
-        cesion_bancaria:cesion_bancaria,
-        id_cliente:id_cliente
-        },
-      success: function(seguro_vida)
-      {
-        if(seguro_vida == 1)
-        {
-          enviar();
-        }
-        else
-        {
-          AlertaSweet(2, 'Ocurrio un problema al momento de guardar los datos, contacte con el administrador');
-        }
-      }
-    });
-  }
-  /*----------------------------------------------------------------------------------------------------------------------------------
-  -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE MEDICO---------------------------------------
-  ------------------------------------------------------------------------------------------------------------------------------------*/
-  /*function createSeguroMedico()
-  {
-    $.ajax({
-      type: 'POST',
-      url: '../../app/controllers/public/index/create_seguro_medico.php',
-      data:{
-        fecha_naci_medico:fecha_naci_medico,
-        nombre_conyugue:nombre_conyugue,
-        nombre_asegurado_medico:nombre_asegurado_medico,
-        fecha_naci_conyugue:fecha_naci_conyugue,
-        cantidad_hijo:cantidad_hijo,
-        cobertura:cobertura,
-        id_cliente:id_cliente
-        },
-      success: function(seguro_medico)
-      {
-        if(seguro_medico == 1)
-        {
-          enviar();
-        }
-        else
-        {
-          AlertaSweet(2, 'Ocurrio un problema al momento de guardar los datos, contacte con el administrador');
-        }
-      }
-    });
-  }
-  /*----------------------------------------------------------------------------------------------------------------------------------
-  -------------------------------FUNCION PARA INSERTAR EN LA TABLA DE COTIZACIONES DE VEHICULO---------------------------------------
-  ------------------------------------------------------------------------------------------------------------------------------------*/
-  /*function createSeguroVehiculo()
-  {
-    $.ajax({
-      type: 'POST',
-      url: '../../app/controllers/public/index/create_seguro_vehiculo.php',
-      data: {
-        numero_licencia:numero_licencia,
-        id_cliente:id_cliente},
-      success: function(seguro_vehiculo)
-      {
-        $('#numero_licencia').val('');
-        if(seguro_vehiculo == 1)
-        {
-          enviar();
-        }
-        else
-        {
-          AlertaSweet(2, 'Ocurrio un problema al momento de guardar los datos, contacte con el administrador');
-        }
-      }
-    });
-  }
-});*/
-
 //NUEVAS FUNCIONES NZ
 function form_contactanos_open(){
   $("#info_block_noinputs").css({"display":"none","opacity":"1"});
@@ -1146,6 +768,3 @@ function stop_select_segs(){
     $('#aseguradoras option[value="ACSA"]').prop('selected', false);
     $("#aseguradoras option:selected").removeAttr("selected");
 }
-
-
-var tipo_seguro=0;

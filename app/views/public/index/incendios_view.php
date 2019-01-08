@@ -4,7 +4,7 @@
         <div class="card">
         <div class="container">
         <div class="card-content">
-          <h4>Seguro de incendios</h4>
+          <h4>Seguro de Incendios</h4>
           <p style="color: black;"> Cotización</p>
         </div>
         </div>
@@ -86,7 +86,7 @@
         </div>
         <div class="row">
             <div class="col s6 m6 l6">
-              <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+              <a href="../../anuncios/public" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
             </div>
             <div class="col push-l4 push-m3">              
               <a id="siguiente2" class="waves-effect waves-light btn light-blue">Siguiente</a>
@@ -132,7 +132,7 @@
     </div>
     <div class="row">
       <div class="col s6 m4 l5">
-        <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+        <a href="../../anuncios/public" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
       </div>
       <div class="col s12 m8 l7 push-l2 push-m2">
         <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>              
@@ -174,7 +174,7 @@
 
         <div class='input-field col s5 '>   
         <div>
-        <input id="tel_segv" type="number" class="validate" />
+        <input id="what_segv" type="number" class="validate" />
               <label class="" for="valor_de_constr_segm">Whatsapp (opcional)</label>   
           </div> 
         
@@ -207,7 +207,7 @@
   </div>
   <div class="row">
     <div class="col s6 m4 l5">
-      <a href="index.php" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
+      <a href="../../anuncios/public" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
     </div>
     <div class="col s12 m8 l7 push-l2 push-m2">
       <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
@@ -230,6 +230,6 @@
 <div class="row">
  
  </div>
-<a onclick=" " href="" id="return_btn">Regresar</a> 
+<a onclick=" " href="../../anuncios/public" id="return_btn">Regresar</a> 
 </div>
 </body>

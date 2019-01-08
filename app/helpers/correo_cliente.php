@@ -33,14 +33,18 @@ $fecha_nacimiento  = $info_cliente['fecha_nacimiento'];
 $telefono = $info_cliente['telefono'];
 $whatsapp = $info_cliente['whatsapp'];
 
+if($info_cliente['whatsapp'] != null)
+{
+    $telefono = $telefono.' Whatsapp es '.$whatsapp;
+}
+
 //Obtiene las compañias seleccionadas por el cliente
-$companias = $cliente_prospecto->getCompaniasInteres();
-$compañias = '';
+$companias = $_POST['aseguradoras_select'];
+$compañia = '';
 for($i = 0; $i<count($companias); $i++)
 {
-    $companias_selec = $companias[$i][1].'-'.$companias[$i][0].'<br>';
-    $compañias .= $companias_selec;
-    
+    $companias_selec = ($i+1).'-'.$companias[$i].'<br>';
+    $compañia .= $companias_selec;
 }
 
 //Declaracion de variables para cada tipo de cotización
@@ -111,7 +115,6 @@ if($tipo_seguro == 4)
                 <th style='padding: 10px 8px; border-radius: 2px;'>Año</th>
                 <th style='padding: 10px 8px; border-radius: 2px;'>Origen</th>
                 <th style='padding: 10px 8px; border-radius: 2px;'>Valor</th>
-                <th style='padding: 10px 8px; border-radius: 2px;'>Placa</th> 
             </tr>
         </thead>
         <tbody>";
@@ -124,7 +127,6 @@ if($tipo_seguro == 4)
                 <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][2]."</td>
                 <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][3]."</td>
                 <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][4]."</td>
-                <td style='padding: 10px 8px; border-radius: 2px;'>".$info_seguro[$i][5]."</td>
             </tr>";
         };
         $tabla_vehiculos .=
@@ -132,16 +134,12 @@ if($tipo_seguro == 4)
         </tbody>
     </table>
     ";
-
     $mensaje = $tabla_vehiculos;
-    echo $tabla_vehiculos;
 }
 
-//print_r($companias);
-//print_r($info_seguro);
 
-
-$correo_osmin = 'Osmin@familiasseguras.com';
+//$correo_osmin = 'Osmin@familiasseguras.com';
+$correo_osmin = 'fernanxavi58@gmail.com';
 $mail = new PHPMailer();                              // Passing `true` enables exceptions
 //Server settings
 $mail->SMTPDebug = 0;                                 // Enable verbose debug output
@@ -237,12 +235,12 @@ if($correo_osmin)
                 font-weight: 50;
                 margin-top: 40px; padding-left: 5%; padding-right: 4%;'>
                     El cliente con nombre $nombres $apellidos hizo una cotización de $seguro y la cantidad de pagos es de $cantidad_pagos, 
-                    su fecha de nacimiento es $fecha_nacimiento, su correo electrónico es $correo, su número de telefono es $telefono
+                    su fecha de nacimiento es $fecha_nacimiento, su correo electrónico es $correo, su número de telefono es $telefono 
                     y lo puedes contactar en el siguiente horario $hora_contacto.
                     <br>
                     <br>
                     Las compañias seleccionadas fueron las siguientes: <br>
-                    $compañias
+                    $compañia
                     <br>
                     <br>
                     Información sobre la cotización

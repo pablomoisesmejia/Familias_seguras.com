@@ -132,9 +132,9 @@ class Cotizaciones_vehiculos extends Validator
 	//FUNCIONES PARA EL SCRUD
 	public function createSeguroVehiculo()
 	{
-		$sql = "INSERT INTO cotizaciones_vehiculos(FK_id_modelo_vehiculo, anio, FK_id_origen_vehiculo, valor, placa, FK_id_cliente_prospecto) 
-		VALUES (?, ?, ?, ?, ?, ?)";
-		$params = array($this->FK_id_modelo_vehiculo, $this->anio, $this->FK_id_origen_vehiculo, $this->valor, $this->placa, $this->FK_id_cliente_prospecto);
+		$sql = "INSERT INTO cotizaciones_vehiculos(FK_id_modelo_vehiculo, anio, FK_id_origen_vehiculo, valor, FK_id_cliente_prospecto) 
+		VALUES (?, ?, ?, ?, ?)";
+		$params = array($this->FK_id_modelo_vehiculo, $this->anio, $this->FK_id_origen_vehiculo, $this->valor, $this->FK_id_cliente_prospecto);
 		$seguro_vehiculo = Database::executeRow($sql, $params);
 		if($seguro_vehiculo)
 		{

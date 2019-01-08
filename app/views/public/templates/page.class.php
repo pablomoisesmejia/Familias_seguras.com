@@ -124,7 +124,7 @@ class Page extends Component{
 			<script src='../../web/script/js_seguro_vida.js'></script>
 			");
 		}
-		else if($filename == "seguro_medico.php")
+		else if($filename == "seguro_Medico.php")
 		{
 			print("
 			<script src='../../web/script/js_seguro_medico.js'></script>
