@@ -593,7 +593,6 @@ class Vehiculos extends Validator
         $sql = 'INSERT INTO vehiculos(FK_id_usuario, FK_id_modelo, anio, color, kilometraje, transmision, motor, vidrios_electricos, espejos_electricos, aire_acondicionado, bolsas_aire, sistema_eco, mandos_timon, rines_especiales, camara_trasera, sensores_parqueo, bluetooth, combustible, sunroof, luces_xenon, cruise_control, mando_distancia, gps, tapiceria_cuero, dvd_trasero, valor, fecha_creacion) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->FK_id_usuario, $this->FK_id_modelo, $this->anio, $this->color, $this->kilometraje, $this->transmision, $this->motor, $this->vidrios_electricos, $this->espejos_electricos, $this->aire_acondicionado, $this->bolsas_aire, $this->sistema_eco, $this->mandos_timon, $this->rines_especiales, $this->camara_trasera, $this->sensores_parqueo, $this->bluetooth, $this->combustible, $this->sunroof, $this->luces_xenon, $this->cruise_control, $this->mando_distancia, $this->gps, $this->tapiceria_cuero, $this->dvd_trasero, $this->valor, $fecha);
-        print_r($params);
         $vehiculo = Database::executeRow($sql, $params);
         if($vehiculo)
         {

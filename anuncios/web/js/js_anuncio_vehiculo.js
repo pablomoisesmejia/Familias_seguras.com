@@ -399,7 +399,7 @@ $(document).ready(function(){
                 if(datos[0][0] == 1)
                 {
                     id_vehiculo = datos[0][1];
-                    //createImagenVehiculo();
+                    createImagenVehiculo();
                 }
                 else
                 {

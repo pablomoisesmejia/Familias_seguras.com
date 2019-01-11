@@ -130,7 +130,7 @@ class Propiedad extends Validator
     {
         if($this->validateAlphanumeric($value, 1, 50))
         {
-			$this->Fk_id_colonia = $value;
+			$this->FK_id_colonia = $value;
 			return true;
         }
         else
@@ -140,7 +140,7 @@ class Propiedad extends Validator
 	}
     public function getIdColonia()
     {
-		return $this->Fk_id_colonia;
+		return $this->FK_id_colonia;
     }
     
     public function setMunicipio($value)
