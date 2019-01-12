@@ -33,10 +33,15 @@ if(filename == 'vehiculos_detalle_v.php')
 if(filename == 'pagina.php')
 {
   categoria = 2;
-}
-if(filename == 'pagina.php')
-{
   document.amenidades.cbx1.disabled=true;
+}
+
+if(filename == 'vehiculos_v.php')
+{
+  $('#minimo_precio').mask('##,#00', {reverse: true});
+  $('#maximo_precio').mask('##,#00', {reverse: true});
+  $('#minimo_año').mask('0000');
+  $('#maximo_año').mask('0000');
 }
 
 $('#enviar_mensaje').click(function(){
@@ -65,11 +70,15 @@ cat = decodeURI(getUrlVars()['id']);
 var seccion = 0;//La seccion 1  es de propiedades en venta y la seccion 2 es de propiedade en alquiler, para vehiculos no se ocupa esta variable
 var filtro = [];
 var ordenar = '';
+var rango = [];
 var anuncios = '';
 var url = '';
 var cantidad = '';
 var arreglo = [];
 
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------
+Filtros Avanzados
+----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 $('input[type="checkbox"]').on('change', function(e){
   if(filename == 'propiedades_v.php' || filename == 'propiedades_alqui.php')
   {
@@ -131,11 +140,16 @@ $('input[type="checkbox"]').on('change', function(e){
   
 });
 
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------
+Ordenar por
+----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 $('#ordenar').change(function(){
   ordenar = $('#ordenar').val();
   CargarAnuncios();
 });
-
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------
+Cantidad por pagina
+----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 $('#cantidad').change(function(){
   cantidad = $('#cantidad').val();
   Paginacion(anuncios, cantidad);

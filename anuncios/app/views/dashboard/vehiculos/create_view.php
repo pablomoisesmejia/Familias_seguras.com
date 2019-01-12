@@ -63,7 +63,7 @@
         </div>
 
         <div class='input-field col s12 l6'>
-            <i style="color:black;"class="material-icons prefix">attach_money</i>
+            <i style="color:black;"class="material-icons prefix">directions_car</i>
             <input id="combustible" type="text" class="validate" required/>
             <label class="" for="combustible">Combustible</label>
         </div>
