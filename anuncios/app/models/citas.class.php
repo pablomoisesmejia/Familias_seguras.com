@@ -219,6 +219,15 @@ class Citas extends Validator
         return Database::getRows($sql, $params);
     }
 
+    public function getCitasProceso()
+    {
+        $sql = 'SELECT PK_id_cita, title, nombres, correo, color, textColor, start, formato, lugar_reunion, asunto, FK_id_usuario, ec.estado_cita
+        FROM citas c INNER JOIN usuarios_anuncios ua ON c.FK_id_usuario = ua.id_usuario
+        INNER JOIN estados_citas ec ON c.FK_id_estado_cita = ec.PK_id_estado_cita WHERE ua.id_usuario = ? AND ec.estado_cita = "Proceso"';
+        $params = array($this->FK_id_usuario);
+        return Database::getRows($sql, $params);
+    }
+
     public function updateEstadoCita()
     {
         $sql = 'UPDATE citas SET FK_id_estado_cita = ? WHERE PK_id_cita = ?';

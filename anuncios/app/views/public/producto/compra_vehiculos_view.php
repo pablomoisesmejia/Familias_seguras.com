@@ -32,6 +32,28 @@
                 <label for="cantidad">Cantidad a mostrar</label>
             </div>
         </div>
+
+        <div class='col s12 l6'>
+            <div class='input-field col s4 l3'>
+                <input id="minimo_precio" type="text" class="validate" required/>
+                <label for="minimo_precio">Precio minimo</label>
+            </div>
+            <div class='input-field col s4 l3'>
+                <input id="maximo_precio" type="text" class="validate" required/>
+                <label for="maximo_precio">Precio maximo</label>
+            </div>
+        </div>
+
+        <div class='col s12 l6'>
+            <div class='input-field col s6 l3'>
+                <input id="minimo_año" type="text" class="validate" required/>
+                <label for="minimo_año">Año minimo</label>
+            </div>
+            <div class='input-field col s6 l3'>
+                <input id="maximo_año" type="text" class="validate" required/>
+                <label for="maximo_año">Año maximo</label>
+            </div>
+        </div>
         <div class='col s12 m2 l2'>
             <p onclick='showhide_advance_filter();' id='btn_advance'>Avanzado</p>
         </div>
@@ -93,8 +115,8 @@
                 <label for="Bluetooth">Bluetooth</label>
             </div>
             <div class='col s6 m4 l4'>
-                <input type="checkbox" id="Combustible" />
-                <label for="Combustible">Combustible</label>
+                <input type="checkbox" id="tapiceria_cuero" />
+                <label for="tapiceria_cuero">Tapiceria de Cuero</label>
             </div>
             <div class='col s6 m4 l3'>
                 <input type="checkbox" id="sunroof" />
@@ -118,15 +140,10 @@
                 <input type="checkbox" id="gps" />
                 <label for="gps">GPS</label>
             </div>
-            <div class='col s6 m4 l4'>
-                <input type="checkbox" id="tapiceria_cuero" />
-                <label for="tapiceria_cuero">Tapiceria de Cuero</label>
-            </div>
             <div class='col s6 m4 l3'>
                 <input type="checkbox" id="dvd_trasero" />
                 <label for="dvd_trasero">DVD trasero</label>
             </div>
-
         </div>
 
 

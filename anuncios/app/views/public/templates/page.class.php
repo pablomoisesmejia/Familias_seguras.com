@@ -112,6 +112,7 @@ class Page extends Component{
 					
 				</footer>
 				<script type='text/javascript' src='../web/js/jquery-3.2.1.min.js'></script>
+				<script type='text/javascript' src='../web/js/jquery.mask.min.js'></script>
 				<script type='text/javascript' src='../web/js/materialize.min.js'></script>
 				<script type='text/javascript' src='../web/js/pagination.min.js'></script>
 				<script type='text/javascript' src='../web/js/public.js'></script>

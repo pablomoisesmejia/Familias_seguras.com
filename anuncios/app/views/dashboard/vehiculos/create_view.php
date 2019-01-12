@@ -63,7 +63,7 @@
         </div>
 
         <div class='input-field col s12 l6'>
-            <i style="color:black;"class="material-icons prefix">attach_money</i>
+            <i style="color:black;"class="material-icons prefix">directions_car</i>
             <input id="combustible" type="text" class="validate" required/>
             <label class="" for="combustible">Combustible</label>
         </div>
@@ -122,6 +122,10 @@
             <input type="checkbox" id="Bluetooth" />
             <label for="Bluetooth">Bluetooth</label>
         </div>
+        <div class='col s6 m4 l4'>
+            <input type="checkbox" id="tapiceria_cuero" />
+            <label for="tapiceria_cuero">Tapiceria de Cuero</label>
+        </div>
         <div class='col s6 m4 l3'>
             <input type="checkbox" id="sunroof" />
             <label for="sunroof">Sunroof</label>
@@ -144,10 +148,7 @@
             <input type="checkbox" id="gps" />
             <label for="gps">GPS</label>
         </div>
-        <div class='col s6 m4 l4'>
-            <input type="checkbox" id="tapiceria_cuero" />
-            <label for="tapiceria_cuero">Tapiceria de Cuero</label>
-        </div>
+        
         <div class='col s6 m4 l3'>
             <input type="checkbox" id="dvd_trasero" />
             <label for="dvd_trasero">DVD trasero</label>

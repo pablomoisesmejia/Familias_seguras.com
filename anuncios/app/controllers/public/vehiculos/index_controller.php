@@ -8,6 +8,7 @@ try
     $anuncios = '';
     $filtro = '';
     $arreglo = [];
+    $rango = '';
     $ordenar = $_POST['ordenar'];
 
     if(isset($_POST['filtro']))
