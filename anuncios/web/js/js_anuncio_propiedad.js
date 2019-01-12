@@ -6,7 +6,7 @@ $(document).ready(function(){
     $('#habitaciones').mask('000');
     $('#baños').mask('00');
     $('#cochera').mask('00');
-    $('#valor_propiedad').mask('#,#00.00', {reverse: true});
+    $('#valor_propiedad').mask('#,#00', {reverse: true});
 
     getTiposPropiedad();
     function getTiposPropiedad()

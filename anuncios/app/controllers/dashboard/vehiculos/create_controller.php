@@ -11,6 +11,7 @@ try
     $excepcion = 0;
 
     $vehiculo = new Vehiculos;
+    $valor = str_replace(',', '', $_POST['valor_vehiculo']);
     $vehiculo->setIdUsuario($_SESSION['id_usuario']);
     $vehiculo->setIdModelo($_POST['modelo_vehiculo']);
     $vehiculo->setAnio($_POST['anio_vehiculo']);
@@ -18,7 +19,7 @@ try
     $vehiculo->setKilometraje($_POST['kilometraje']);
     $vehiculo->setTransmision($_POST['transmision']);
     $vehiculo->setMotor($_POST['motor']);
-    $vehiculo->setValor($_POST['valor_vehiculo']);
+    $vehiculo->setValor($valor);
     $vehiculo->setVidriosElectricos($_POST['vidrios_electricos']);
     $vehiculo->setEspejosElectricos($_POST['espejos_electricos']);
     $vehiculo->setAireAcondicionado($_POST['aire_acondicionado']);

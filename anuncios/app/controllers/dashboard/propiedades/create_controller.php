@@ -10,6 +10,7 @@ try
     $excepcion = 0;
 
     $propiedad = new Propiedad;
+    $valor = str_replace(',', '', $_POST['valor']);
     $propiedad->setIdUsuario($_SESSION['id_usuario']);
     $propiedad->setIdTransaccion($_POST['tipo_transaccion']);
     $propiedad->setIdTipoPropiedad($_POST['tipo_propiedad']);
@@ -63,14 +64,14 @@ try
     $propiedad->setAscensor($_POST['ascensor']);
 
 
-    if($propiedad->createPropiedad())
+    /*if($propiedad->createPropiedad())
     {
 
     }
     else
     {
         $excepcion = Database::getException();
-    }
+    }*/
 
     if($propiedad->getIdPropiedad() != null)
     {
