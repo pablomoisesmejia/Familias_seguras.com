@@ -8,6 +8,23 @@ $(document).ready(function(){
     $('select').material_select();
     $('.tooltipped').tooltip({delay: 50, position: 'bottom'});
 
+    IndicadorCitas()
+    function IndicadorCitas()
+    {
+      $.ajax({
+        url: '../../app/controllers/dashboard/citas/get_citas_proceso_controller.php',
+        dataType: 'json',
+        success: function(indicador)
+        {
+          if(indicador.length > 0)
+          {
+            $('#indicador_cita').css({'display':'inline'});
+            $('#indicador_cita').html(indicador.length);
+          }
+        }
+      });
+    }
+
     $('.datepicker').pickadate({
       selectMonths:true,
       selectYears:100,

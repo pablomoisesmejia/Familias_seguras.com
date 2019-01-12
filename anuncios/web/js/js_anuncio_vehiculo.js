@@ -1,5 +1,5 @@
 var date = new Date();
-var min = date.getFullYear()-50//Validacion de fecha minima del datepicker
+//var min = date.getFullYear()-50//Validacion de fecha minima del datepicker
 var max = date.getFullYear()//Validacion de fecha maxima del datepicker
 
 
@@ -445,7 +445,7 @@ $(document).ready(function(){
         
     }
 
-    for(min; min <= max; min++)
+    for(min = 2010; min <= max; min++)
     {
         var option = '';
         option = option.concat(
