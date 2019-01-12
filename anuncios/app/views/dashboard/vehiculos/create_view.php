@@ -6,7 +6,7 @@
                 <input type='file' name='archivo' id='vehiculos' multiple required/>
             </div>
             <div class='file-path-wrapper'>
-                <input type='text' class='file-path validate' placeholder='Seleccione una imagen'/>
+                <input type='text' class='file-path validate' placeholder='Seleccione una ó varias imagenes'/>
             </div>
         </div>
     
@@ -64,6 +64,12 @@
 
         <div class='input-field col s12 l6'>
             <i style="color:black;"class="material-icons prefix">attach_money</i>
+            <input id="combustible" type="text" class="validate" required/>
+            <label class="" for="combustible">Combustible</label>
+        </div>
+
+        <div class='input-field col s12 l6'>
+            <i style="color:black;"class="material-icons prefix">attach_money</i>
             <input id="valor_vehiculo" type="text" class="validate" required/>
             <label class="" for="valor_vehiculo">Valor del Vehiculo</label>
         </div>
@@ -115,10 +121,6 @@
         <div class='col s6 m4 l5'>
             <input type="checkbox" id="Bluetooth" />
             <label for="Bluetooth">Bluetooth</label>
-        </div>
-        <div class='col s6 m4 l4'>
-            <input type="checkbox" id="Combustible" />
-            <label for="Combustible">Combustible</label>
         </div>
         <div class='col s6 m4 l3'>
             <input type="checkbox" id="sunroof" />

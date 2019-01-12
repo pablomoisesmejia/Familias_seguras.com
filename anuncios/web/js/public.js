@@ -59,6 +59,8 @@ function whatsapp(numero)
   location.href ='whatsapp://send/?phone=503'+numero+'';
 }
 
+cat = decodeURI(getUrlVars()['id']);
+
 //Aqui empieza el ajax
 var seccion = 0;//La seccion 1  es de propiedades en venta y la seccion 2 es de propiedade en alquiler, para vehiculos no se ocupa esta variable
 var filtro = [];
@@ -154,7 +156,7 @@ function Paginacion(anuncios, cantidad)
           var card = '';
           card = card.concat(
             '<div class="col s12 m4 l3">',
-              '<a href="detalle_producto.php?id='+anuncios[i].id_anuncio+'">',
+              '<a href="detalle_producto.php?id='+anuncios[i].id_anuncio+'&cat='+cat+'">',
                   '<div class="card hoverable">',
                       '<div class="card-image">',
                           '<img href="detalle_producto.php?id='+anuncios[i].id_anuncio+'" src="../web/img/productos/'+anuncios[i].imagen_producto+'" class="">',

@@ -83,7 +83,7 @@
                 <div class='col s12 m5 l4'>
                     <div style='margin-top:22px;' class='row'>
                         
-                        <h5 class='titles'><a href='index.php' id='btn_lines'>Directorio ></a> <a href='productos.php?id=7' id='btn_lines'>".$producto->getNombre_categoria()." ></a> ".$producto->getNombre()."</h5>
+                        <h5 class='titles'><a href='index.php' id='btn_lines'>Directorio ></a> <a href='productos.php?id=$_GET[cat]' id='btn_lines'>".$producto->getNombre_categoria()." ></a> ".$producto->getNombre()."</h5>
     
                         <div id='img_cont'>
                         <img width='100%' height='auto' src='../web/img/productos/".$producto->getImagen()."'>
@@ -106,8 +106,13 @@
                         }
                         if($producto->getPlan() == 3)
                         {
-                            print("<p class='botom_img' >Agendar una cita</p>
-                            <p onclick='opentipscot();' class='botom_img' >Solicitar una Cotización</p>");
+                            print("<p class='botom_img' >Agendar una cita</p>");
+                            if($producto->getNombre_categoria() == 'Asesoría de seguros')
+                            {
+                                print("
+                                <p onclick='opentipscot();' class='botom_img' >Solicitar una Cotización</p>
+                                ");
+                            }                            
                         }
                             
                     

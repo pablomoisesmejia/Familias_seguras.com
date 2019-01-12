@@ -6,7 +6,7 @@
                 <input type='file' name='archivo' id='propiedades' multiple required/>
             </div>
             <div class='file-path-wrapper'>
-                <input type='text' class='file-path validate' placeholder='Seleccione una imagen'/>
+                <input type='text' class='file-path validate' placeholder='Seleccione una ó varias imagenes'/>
             </div>
         </div>
 

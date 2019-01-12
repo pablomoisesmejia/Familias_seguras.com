@@ -19,6 +19,7 @@ $(document).ready(function(){
     var transmision = '';
     var motor = '';
     var valor_vehiculo = '';
+    var combustible = '';
     //Variables para los chechbox
     var vidrios_electricos = 'No';
     var espejos_electricos = 'No';
@@ -30,7 +31,6 @@ $(document).ready(function(){
     var camara_trasera = 'No';
     var sensores_parqueo = 'No';
     var bluetooth = 'No';
-    var combustible = 'No';
     var sunroof = 'No';
     var luces_xenon = 'No';
     var cruise_control = 'No';
@@ -158,18 +158,6 @@ $(document).ready(function(){
         }
     });
     
-    $('#combustible').change(function(){
-        var checkeado = $(this).prop("checked");
-        if(checkeado)
-        {
-            combustible = 'Si';
-        }
-        else
-        {
-            combustible = 'No';
-        }
-    });
-    
     $('#sunroof').change(function(){
         var checkeado = $(this).prop("checked");
         if(checkeado)
@@ -289,6 +277,7 @@ $(document).ready(function(){
         transmision = $('#transmision').val();
         motor = $('#motor').val();
         valor_vehiculo = $('#valor_vehiculo').val();
+        combustible = $('#combustible').val();
 
         if($('#vehiculos').val() != 0)
         {
@@ -308,6 +297,14 @@ $(document).ready(function(){
                                     {
                                         if(valor_vehiculo != '')
                                         {
+                                            if(combustible != '')
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                AlertaSweet(3, 'Ingrese el tipo de combustible del vehiculo');
+                                            }
                                             $('#crear').attr("disabled", "disabled");
                                             createVehiculo();
                                         }
