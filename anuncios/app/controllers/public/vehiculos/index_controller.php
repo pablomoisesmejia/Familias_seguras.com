@@ -6,7 +6,7 @@ try
 {
     $vehiculo = new Vehiculos;
     $anuncios = '';
-    $filtro = '';    
+    $filtro = '';
     $arreglo = [];
     $rango = $_POST['rango'];
     $ordenar = $_POST['ordenar'];
@@ -23,7 +23,7 @@ try
             }
             else
             {
-                $filtro = ' AND '.$arreglo[$i].'';
+                $filtro .= ' AND '.$arreglo[$i].'';
             }
         }        
     }

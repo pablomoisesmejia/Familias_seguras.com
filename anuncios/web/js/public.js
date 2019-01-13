@@ -118,7 +118,6 @@ $('input[type="checkbox"]').on('change', function(e){
       $('#'+variable+'').val('Si');
       arreglo.push(''+variable+' = "'+$('#'+variable+'').val()+'"');
         filtro = arreglo
-        console.log(filtro);
         CargarAnuncios();
     }
     else
@@ -135,7 +134,6 @@ $('input[type="checkbox"]').on('change', function(e){
       }
       arreglo.splice(posicion, 1)
       filtro = arreglo;
-      console.log(filtro);
       CargarAnuncios();
     }
   }
