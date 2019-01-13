@@ -90,7 +90,7 @@ $('input[type="checkbox"]').on('change', function(e){
         $('#'+variable+'').val(1);
         
         arreglo.push(''+variable+' = '+$('#'+variable+'').val()+'');
-        filtro = arreglo
+        filtro = arreglo;
         CargarAnuncios();
     }
     else
@@ -117,8 +117,8 @@ $('input[type="checkbox"]').on('change', function(e){
       variable = $(e.currentTarget).attr('id');
       $('#'+variable+'').val('Si');
       arreglo.push(''+variable+' = "'+$('#'+variable+'').val()+'"');
-        filtro = arreglo
-        CargarAnuncios();
+      filtro = arreglo;
+      CargarAnuncios();
     }
     else
     {
@@ -132,7 +132,7 @@ $('input[type="checkbox"]').on('change', function(e){
           posicion = i;
         }        
       }
-      arreglo.splice(posicion, 1)
+      arreglo.splice(posicion, 1);
       filtro = arreglo;
       CargarAnuncios();
     }
@@ -519,6 +519,7 @@ function closetipscot(){
   
   }
 
+  verificar_telefono_o_pc();
   function verificar_telefono_o_pc(){
     var isMobile = {
       mobilecheck : function() 
