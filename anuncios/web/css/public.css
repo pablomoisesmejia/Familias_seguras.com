@@ -121,7 +121,7 @@ color: #A2A2A2;
     text-align: center;
     
 }
-#btn_advance{
+.btn_advance{
     cursor: pointer;
     color: white;
     width: 100%;
@@ -141,7 +141,7 @@ color: #A2A2A2;
     height: 40px;
     background-color: #69206F;
 }
-#btn_advance:hover{
+.btn_advance:hover{
     background-color: #91179A;
 }
 #panel_cotis{

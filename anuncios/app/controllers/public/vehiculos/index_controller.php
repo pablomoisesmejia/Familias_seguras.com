@@ -6,9 +6,9 @@ try
 {
     $vehiculo = new Vehiculos;
     $anuncios = '';
-    $filtro = '';
+    $filtro = '';    
     $arreglo = [];
-    $rango = '';
+    $rango = $_POST['rango'];
     $ordenar = $_POST['ordenar'];
 
     if(isset($_POST['filtro']))
@@ -31,44 +31,53 @@ try
     {
         $filtro = '';
     }
+
+    if($filtro == '' && $rango != '')
+    {
+        $rango = ' WHERE '.$rango;
+    }
+    if($filtro != '' && $rango != '')
+    {
+        $rango = ' AND '.$rango;
+    }
     
     if($ordenar == '')
     {
-        $anuncios = $vehiculo->getVehiculo($filtro,'');
+        $anuncios = $vehiculo->getVehiculo($filtro, $rango, '');
     }
     else
     {
         if($ordenar == 'maa-z')
         {
-            $anuncios = $vehiculo->getVehiculo($filtro,'ORDER BY mar.marca_vehiculo ASC');
+            $anuncios = $vehiculo->getVehiculo($filtro, $rango, 'ORDER BY mar.marca_vehiculo ASC');
         }
         if($ordenar == 'maz-a')
         {
-            $anuncios = $vehiculo->getVehiculo($filtro,'ORDER BY mar.marca_vehiculo DESC');
+            $anuncios = $vehiculo->getVehiculo($filtro, $rango, 'ORDER BY mar.marca_vehiculo DESC');
         }
         if($ordenar == 'moa-z')
         {
-            $anuncios = $vehiculo->getVehiculo($filtro,'ORDER BY mv.modelos_vehiculo ASC');
+            $anuncios = $vehiculo->getVehiculo($filtro, $rango, 'ORDER BY mv.modelos_vehiculo ASC');
         }
         if($ordenar == 'moz-a')
         {
-            $anuncios = $vehiculo->getVehiculo($filtro,'ORDER BY mv.modelos_vehiculo DESC');
+            $anuncios = $vehiculo->getVehiculo($filtro, $rango, 'ORDER BY mv.modelos_vehiculo DESC');
         }
         if($ordenar == 'reciente')
         {
-            $anuncios = $vehiculo->getVehiculo($filtro,'ORDER BY v.anio DESC');
+            $anuncios = $vehiculo->getVehiculo($filtro, $rango, 'ORDER BY v.anio DESC');
         }
         if($ordenar == 'antiguo')
         {
-            $anuncios = $vehiculo->getVehiculo($filtro,'ORDER BY v.anio ASC');
+            $anuncios = $vehiculo->getVehiculo($filtro, $rango, 'ORDER BY v.anio ASC');
         }
         if($ordenar == 'menor')
         {
-            $anuncios = $vehiculo->getVehiculo($filtro,'ORDER BY v.valor ASC');
+            $anuncios = $vehiculo->getVehiculo($filtro, $rango, 'ORDER BY v.valor ASC');
         }
         if($ordenar == 'mayor')
         {
-            $anuncios = $vehiculo->getVehiculo($filtro,'ORDER BY v.valor DESC');
+            $anuncios = $vehiculo->getVehiculo($filtro, $rango, 'ORDER BY v.valor DESC');
         }
     }
     echo json_encode($anuncios);

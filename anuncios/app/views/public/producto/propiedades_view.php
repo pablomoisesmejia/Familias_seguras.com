@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class='col s12 m2 l2'>
-            <p onclick='showhide_advance_filter();' id='btn_advance'>Avanzado</p>
+            <p onclick='showhide_advance_filter();' class='btn_advance' id='filtros_avanzados'>Avanzado</p>
         </div>
     </div>
     <div id='advanced_div'>

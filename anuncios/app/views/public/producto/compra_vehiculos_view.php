@@ -33,33 +33,40 @@
             </div>
         </div>
 
-        <div class='col s12 l6'>
-            <div class='input-field col s4 l3'>
-                <input id="minimo_precio" type="text" class="validate" required/>
-                <label for="minimo_precio">Precio minimo</label>
-            </div>
-            <div class='input-field col s4 l3'>
-                <input id="maximo_precio" type="text" class="validate" required/>
-                <label for="maximo_precio">Precio maximo</label>
-            </div>
+        <div class='input-field col s6 l3'>
+            <input id="minimo_precio" type="text" class="validate" required/>
+            <label for="minimo_precio">Precio minimo</label>
+        </div>
+        <div class='input-field col s6 l3'>
+            <input id="maximo_precio" type="text" class="validate" required/>
+            <label for="maximo_precio">Precio maximo</label>
         </div>
 
-        <div class='col s12 l6'>
-            <div class='input-field col s6 l3'>
-                <input id="minimo_año" type="text" class="validate" required/>
-                <label for="minimo_año">Año minimo</label>
-            </div>
-            <div class='input-field col s6 l3'>
-                <input id="maximo_año" type="text" class="validate" required/>
-                <label for="maximo_año">Año maximo</label>
-            </div>
+        <div class='input-field col s6 l2'>
+            <input id="minimo_año" type="text" class="validate" required/>
+            <label for="minimo_año">Año minimo</label>
+        </div>
+        <div class='input-field col s6 l2'>
+            <input id="maximo_año" type="text" class="validate" required/>
+            <label for="maximo_año">Año maximo</label>
+        </div>
+        <div class='input-field col s6 l2'>
+            <input id="minimo_kilometros" type="text" class="validate" required/>
+            <label for="minimo_kilometros">Kilometros minimo</label>
+        </div>
+        <div class='input-field col s6 l2'>
+            <input id="maximo_kilometros" type="text" class="validate" required/>
+            <label for="maximo_kilometros">Kilometros maximo</label>
+        </div>
+
+        
+        <div class='col s12 m2 l2'>
+            <p class='btn_advance' id='filtrar'>Filtrar</p>
         </div>
         <div class='col s12 m2 l2'>
-            <p onclick='showhide_advance_filter();' id='btn_advance'>Avanzado</p>
+            <p onclick='showhide_advance_filter();' class='btn_advance' id='filtros_avanzados'>Avanzado</p>
         </div>
-        <div class='col s12 m2 l2'>
-            <p onclick='' id='btn_advance'>Filtrar</p>
-        </div>
+        
     </div>
     <div id='advanced_div'>
         

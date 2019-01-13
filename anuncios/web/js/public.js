@@ -42,6 +42,8 @@ if(filename == 'vehiculos_v.php')
   $('#maximo_precio').mask('##,#00', {reverse: true});
   $('#minimo_año').mask('0000');
   $('#maximo_año').mask('0000');
+  $('#minimo_kilometros').mask('##,#00', {reverse: true});
+  $('#maximo_kilometros').mask('##,#00', {reverse: true});
 }
 
 $('#enviar_mensaje').click(function(){
@@ -70,7 +72,7 @@ cat = decodeURI(getUrlVars()['id']);
 var seccion = 0;//La seccion 1  es de propiedades en venta y la seccion 2 es de propiedade en alquiler, para vehiculos no se ocupa esta variable
 var filtro = [];
 var ordenar = '';
-var rango = [];
+var rango = '';
 var anuncios = '';
 var url = '';
 var cantidad = '';
@@ -153,6 +155,115 @@ Cantidad por pagina
 $('#cantidad').change(function(){
   cantidad = $('#cantidad').val();
   Paginacion(anuncios, cantidad);
+});
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------
+Cantidad por pagina
+----------------------------------------------------------------------------------------------------------------------------------------------------------*/
+$('#filtrar').click(function(){
+  rango = '';
+  minimo_precio = $('#minimo_precio').val();
+  maximo_precio = $('#maximo_precio').val();
+  minimo_año = $('#minimo_año').val();
+  maximo_año = $('#maximo_año').val();
+  minimo_kilometros = $('#minimo_kilometros').val();
+  maximo_kilometros = $('#maximo_kilometros').val();
+
+
+  if(minimo_precio != '' || maximo_precio != '' || minimo_año != '' || maximo_año != '' || minimo_kilometros != '' || maximo_kilometros != '')
+  {
+    /*RANGO PRECIO*/
+    if(minimo_precio != '' || maximo_precio != '')
+    {
+      if(minimo_precio != '' && maximo_precio == '' || minimo_precio == '' && maximo_precio != '')
+      {
+        AlertaSweet(2, 'Ingrese el precio minimo y el maximo');
+      }
+      else
+      {
+        minimo_precio = parseInt(minimo_precio.replace(',', ''));
+        maximo_precio = parseInt(maximo_precio.replace(',', ''));
+        if(minimo_precio <= maximo_precio)
+        {
+          rango = rango.concat(' v.valor BETWEEN '+minimo_precio+' AND '+maximo_precio+'');
+        }
+        else
+        {
+          AlertaSweet(2, 'El precio minimo no puede ser mayor que el maximo');
+        }
+      }
+    }
+    
+    
+    /*RANGO AÑO*/
+    if(minimo_año != '' || maximo_año != '')
+    {
+      if(minimo_año != '' && maximo_año == '' || minimo_año == '' && maximo_año != '')
+      {
+        AlertaSweet(2, 'Ingrese el año minimo y el maximo del vehiculo');
+      }
+      else
+      {
+        minimo_año = parseInt(minimo_año.replace(',', ''));
+        maximo_año = parseInt(maximo_año.replace(',', ''));
+        if(minimo_año <= maximo_año)
+        {
+          if(rango == '')
+          {
+            rango = rango.concat(' v.anio BETWEEN '+minimo_año+' AND '+maximo_año+'');
+          }
+          else
+          {
+            rango = rango.concat(' AND v.anio BETWEEN '+minimo_año+' AND '+maximo_año+'');
+          }
+          
+        }
+        else
+        {
+          AlertaSweet(2, 'El año minimo no puede ser mayor que el maximo');
+        }
+      }
+    }
+
+    /*RANGO KILOMETROS*/
+    if(minimo_kilometros != '' || maximo_kilometros != '')
+    {
+      if(minimo_kilometros != '' && maximo_kilometros == '' || minimo_kilometros == '' && maximo_kilometros != '')
+      {
+        AlertaSweet(2, 'Ingrese los kilometros minimo y el maximo del vehiculo');
+      }
+      else
+      {
+        minimo_kilometros = parseInt(minimo_kilometros.replace(',', ''));
+        maximo_kilometros = parseInt(maximo_kilometros.replace(',', ''));
+        if(minimo_kilometros <= maximo_kilometros)
+        {
+          if(rango == '')
+          {
+            rango = rango.concat(' v.kilometraje BETWEEN '+minimo_kilometros+' AND '+maximo_kilometros+'');
+          }
+          else
+          {
+            rango = rango.concat(' AND v.kilometraje BETWEEN '+minimo_kilometros+' AND '+maximo_kilometros+'');
+          }
+          
+        }
+        else
+        {
+          AlertaSweet(2, 'Los kilometros minimo no puede ser mayor que el maximo');
+        }
+      }
+    }
+    if(rango != '')
+    {
+      CargarAnuncios();
+    }
+  }
+  else
+  {
+    AlertaSweet(2, 'Ingrese un rango de precio, año ó kilometros');
+    CargarAnuncios();
+  }
 });
 
 function Paginacion(anuncios, cantidad)
@@ -339,11 +450,13 @@ function getDatos()
   if(filtro == [])
   {
     datos = {filtro:filtro,
+      rango:rango,
       seccion:seccion};
   }
   else
   {
     datos = {ordenar:ordenar,
+      rango:rango,
       filtro:filtro,
       seccion:seccion};
   }  
@@ -431,12 +544,12 @@ function closetipscot(){
   }
 
   function showhide_advance_filter(){
-    if($("#btn_advance").text() == 'Avanzado'){
-      $("#btn_advance").text('Basico');
+    if($("#filtros_avanzados").text() == 'Avanzado'){
+      $("#filtros_avanzados").text('Basico');
       $("#advanced_div").css({"max-height":"600px", "border":" 1px solid #5B2C60"});
     }
     else{
-      $("#btn_advance").text('Avanzado');
+      $("#filtros_avanzados").text('Avanzado');
       $("#advanced_div").css({"max-height":"0px", "border":" 1px solid #FFFFFF"});
     }
     

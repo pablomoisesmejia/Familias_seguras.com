@@ -12,11 +12,12 @@ try
 
     $vehiculo = new Vehiculos;
     $valor = str_replace(',', '', $_POST['valor_vehiculo']);
+    $kilometraje = str_replace(',', '', $_POST['kilometraje']);
     $vehiculo->setIdUsuario($_SESSION['id_usuario']);
     $vehiculo->setIdModelo($_POST['modelo_vehiculo']);
     $vehiculo->setAnio($_POST['anio_vehiculo']);
     $vehiculo->setColor($_POST['color_vehiculo']);
-    $vehiculo->setKilometraje($_POST['kilometraje']);
+    $vehiculo->setKilometraje($kilometraje);
     $vehiculo->setTransmision($_POST['transmision']);
     $vehiculo->setMotor($_POST['motor']);
     $vehiculo->setValor($valor);
