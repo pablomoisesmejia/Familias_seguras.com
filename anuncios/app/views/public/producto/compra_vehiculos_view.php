@@ -163,12 +163,5 @@
             <div class="paginationjs paginationjs-big" id='paginacion'>
             </div>
         </div>
-    </div>
-
-<!-- Aqui incluyo el codigo php de random -->
-    <?php
-    include_once('complemento_random/vehiculos.php');
-    ?>
-
-      
+    </div>      
 </div>

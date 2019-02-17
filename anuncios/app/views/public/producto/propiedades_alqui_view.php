@@ -25,10 +25,7 @@
 
     </div>
 
-     <!-- Aqui incluyo el codigo php de random -->
-     <?php
-    include_once('complemento_random/propiedades_alqui.php');
-    ?>
+
 
      
 </div>

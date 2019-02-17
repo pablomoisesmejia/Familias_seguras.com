@@ -7,14 +7,12 @@ class Page extends Component{
 	public static function templateHeader($title){
 		session_start();
 		$banner = new Banners;
-		$banners = $banner->getBanners();
-		$imagen = '';
-		if($banners)
+		/*if($banners)
 		{
 		    $banner_aleatorio = array_rand($banners, 1);
 
 		    $imagen = $banners[$banner_aleatorio]['imagen'];
-		}
+		}*/
 		ini_set("date.timezone","America/El_Salvador");
 		print("
 			<!DOCTYPE html>
@@ -76,12 +74,31 @@ class Page extends Component{
 				$filename = basename($_SERVER['PHP_SELF']);
 				if($filename != 'enviar_mensaje.php' && $filename != 'citas.php')
 				{
-					print("<div id='banner_top' class='materialboxed'><img id='banner_set' width='100%' height='auto' src=''></div></div>");
+					$seccion = 0;
+					if($filename == 'cotiza_seguro.php')//Portada
+					{
+						$seccion = 1;
+					}
+					if($filename == 'index.php' || $filename == 'productos.php')//Directorio
+					{
+						$seccion = 2;
+					}
+					if($filename == 'vehiculos_v.php' || $filename == 'vehiculos_detalle_v.php')//Vehiculos
+					{
+						$seccion = 3;
+					}
+					if($filename == 'propiedades_v.php' || $filename == 'propiedades_alqui.php' || $filename == 'pagina.php')//Propiedades
+					{
+						$seccion = 4;
+					}
+					$banner->setIdSeccion($seccion);
+					$banners = $banner->getBannersPublic();
+					$imagen = '';
+					$banner_aleatorio = array_rand($banners, 1);
+					$imagen = $banners[$banner_aleatorio]['nombre_carpeta'].'/'.$banners[$banner_aleatorio]['imagen'];
+					print("<div id='banner_top' class='materialboxed'><img id='banner_set' width='100%' height='auto' src='../web/img/banners/$imagen'></div></div>");
 				}
-				print("
-				
-		");
-		require_once("../app/views/public/sections/modals_view.php");
+				require_once("../app/views/public/sections/modals_view.php");
 	}
 
 	

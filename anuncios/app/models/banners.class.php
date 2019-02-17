@@ -204,6 +204,17 @@ class Banners extends Validator
         $params = array(null);
         return Database::getRows($sql, $params);
     }
+    
+    public function getBannersPublic()
+    {
+        $sql = 'SELECT b.PK_id_banner, b.imagen, i.intervalos_fecha, b.cant_intervalo_fecha, b.fecha_inicio, b.hora_inicio, b.estado_banner, tb.tipo_banner, s.nombre_seccion, s.nombre_carpeta
+        FROM banners b INNER JOIN intervalos_fecha i ON b.FK_id_intervalo_fecha = i.PK_id_intervalo_fecha 
+        INNER JOIN tipo_banner tb ON b.FK_id_tipo_banner = tb.PK_id_tipo_banner
+        INNER JOIN secciones s ON b.FK_id_seccion = s.PK_id_seccion
+        WHERE estado_banner = 1 AND b.FK_id_seccion = ?';
+        $params = array($this->FK_id_seccion);
+        return Database::getRows($sql, $params);
+    }
 
     public function getNombreCarpeta()
     {

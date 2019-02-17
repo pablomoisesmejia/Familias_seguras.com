@@ -39,8 +39,4 @@ print(" <div style='margin-top:22px;' ><h5 class='titles'><a href='index.php' id
             </div>
         </div>
     </div>
-     <!-- Aqui incluyo el codigo php de random -->
-     <?php
-    include_once('complemento_random/directorio.php');
-    ?>
 </div>

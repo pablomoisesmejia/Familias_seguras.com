@@ -480,10 +480,6 @@
   
   
     </div>
-     <!-- Aqui incluyo el codigo php de random -->
- <?php
-    include('complemento_random/propiedades_venta.php');
-    ?>
 </div>
 
 </div>

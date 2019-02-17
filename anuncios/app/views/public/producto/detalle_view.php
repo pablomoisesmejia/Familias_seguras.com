@@ -226,8 +226,4 @@
     ?>
     </div>
 </div>
- <!-- Aqui incluyo el codigo php de random -->
- <?php
-    include_once('complemento_random/directorio.php');
-    ?>
 </div>

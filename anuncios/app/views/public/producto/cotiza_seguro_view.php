@@ -93,13 +93,7 @@
                     </div>
                 </div>
             </div>
-            <!-- fin code -->
-    
-    <!-- Aqui incluyo el codigo php de random -->
-    <?php
-    include_once('complemento_random/portada.php');
-    ?>
-   
+            <!-- fin code -->  
   
 
     </div>

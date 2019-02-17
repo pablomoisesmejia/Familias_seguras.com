@@ -188,9 +188,5 @@
             <!-- codigo-->
   
     </div>
-    <!-- Aqui incluyo el codigo php de random -->
-    <?php
-    include_once('complemento_random/vehiculos.php');
-    ?>
 </div>
 </div>
