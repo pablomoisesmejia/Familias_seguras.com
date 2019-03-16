@@ -18,8 +18,8 @@ $(document).ready(function(){
         {
           if(indicador.length > 0)
           {
-            $('#indicador_cita').css({'display':'inline'});
-            $('#indicador_cita').html(indicador.length);
+            $('.indicador_cita').css({'display':'inline'});
+            $('.indicador_cita').html(indicador.length);
           }
         }
       });

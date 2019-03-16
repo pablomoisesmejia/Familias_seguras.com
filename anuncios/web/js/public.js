@@ -36,15 +36,19 @@ if(filename == 'pagina.php')
   document.amenidades.cbx1.disabled=true;
 }
 
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------
+MASCARAS PARA LOS INPUTS
+--------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+$('#minimo_precio').mask('##,#00', {reverse: true});
+$('#maximo_precio').mask('##,#00', {reverse: true});
 if(filename == 'vehiculos_v.php')
 {
-  $('#minimo_precio').mask('##,#00', {reverse: true});
-  $('#maximo_precio').mask('##,#00', {reverse: true});
   $('#minimo_año').mask('0000');
   $('#maximo_año').mask('0000');
   $('#minimo_kilometros').mask('##,#00', {reverse: true});
   $('#maximo_kilometros').mask('##,#00', {reverse: true});
 }
+
 
 $('#enviar_mensaje').click(function(){
   id = decodeURI(getUrlVars()['id']);
@@ -167,7 +171,6 @@ $('#filtrar').click(function(){
   minimo_kilometros = $('#minimo_kilometros').val();
   maximo_kilometros = $('#maximo_kilometros').val();
 
-
   if(minimo_precio != '' || maximo_precio != '' || minimo_año != '' || maximo_año != '' || minimo_kilometros != '' || maximo_kilometros != '')
   {
     /*RANGO PRECIO*/
@@ -193,62 +196,65 @@ $('#filtrar').click(function(){
     }
     
     
-    /*RANGO AÑO*/
-    if(minimo_año != '' || maximo_año != '')
+    /*RANGO AÑO DE VEHICULOS*/
+    if(filename == 'vehiculos_v.php')
     {
-      if(minimo_año != '' && maximo_año == '' || minimo_año == '' && maximo_año != '')
+      if(minimo_año != '' || maximo_año != '')
       {
-        AlertaSweet(2, 'Ingrese el año minimo y el maximo del vehiculo');
-      }
-      else
-      {
-        minimo_año = parseInt(minimo_año.replace(',', ''));
-        maximo_año = parseInt(maximo_año.replace(',', ''));
-        if(minimo_año <= maximo_año)
+        if(minimo_año != '' && maximo_año == '' || minimo_año == '' && maximo_año != '')
         {
-          if(rango == '')
-          {
-            rango = rango.concat(' v.anio BETWEEN '+minimo_año+' AND '+maximo_año+'');
-          }
-          else
-          {
-            rango = rango.concat(' AND v.anio BETWEEN '+minimo_año+' AND '+maximo_año+'');
-          }
-          
+          AlertaSweet(2, 'Ingrese el año minimo y el maximo del vehiculo');
         }
         else
         {
-          AlertaSweet(2, 'El año minimo no puede ser mayor que el maximo');
+          minimo_año = parseInt(minimo_año.replace(',', ''));
+          maximo_año = parseInt(maximo_año.replace(',', ''));
+          if(minimo_año <= maximo_año)
+          {
+            if(rango == '')
+            {
+              rango = rango.concat(' v.anio BETWEEN '+minimo_año+' AND '+maximo_año+'');
+            }
+            else
+            {
+              rango = rango.concat(' AND v.anio BETWEEN '+minimo_año+' AND '+maximo_año+'');
+            }
+            
+          }
+          else
+          {
+            AlertaSweet(2, 'El año minimo no puede ser mayor que el maximo');
+          }
         }
-      }
-    }
+      }  
 
-    /*RANGO KILOMETROS*/
-    if(minimo_kilometros != '' || maximo_kilometros != '')
-    {
-      if(minimo_kilometros != '' && maximo_kilometros == '' || minimo_kilometros == '' && maximo_kilometros != '')
+      /*RANGO KILOMETROS*/
+      if(minimo_kilometros != '' || maximo_kilometros != '')
       {
-        AlertaSweet(2, 'Ingrese los kilometros minimo y el maximo del vehiculo');
-      }
-      else
-      {
-        minimo_kilometros = parseInt(minimo_kilometros.replace(',', ''));
-        maximo_kilometros = parseInt(maximo_kilometros.replace(',', ''));
-        if(minimo_kilometros <= maximo_kilometros)
+        if(minimo_kilometros != '' && maximo_kilometros == '' || minimo_kilometros == '' && maximo_kilometros != '')
         {
-          if(rango == '')
-          {
-            rango = rango.concat(' v.kilometraje BETWEEN '+minimo_kilometros+' AND '+maximo_kilometros+'');
-          }
-          else
-          {
-            rango = rango.concat(' AND v.kilometraje BETWEEN '+minimo_kilometros+' AND '+maximo_kilometros+'');
-          }
-          
+          AlertaSweet(2, 'Ingrese los kilometros minimo y el maximo del vehiculo');
         }
         else
         {
-          AlertaSweet(2, 'Los kilometros minimo no puede ser mayor que el maximo');
+          minimo_kilometros = parseInt(minimo_kilometros.replace(',', ''));
+          maximo_kilometros = parseInt(maximo_kilometros.replace(',', ''));
+          if(minimo_kilometros <= maximo_kilometros)
+          {
+            if(rango == '')
+            {
+              rango = rango.concat(' v.kilometraje BETWEEN '+minimo_kilometros+' AND '+maximo_kilometros+'');
+            }
+            else
+            {
+              rango = rango.concat(' AND v.kilometraje BETWEEN '+minimo_kilometros+' AND '+maximo_kilometros+'');
+            }
+            
+          }
+          else
+          {
+            AlertaSweet(2, 'Los kilometros minimo no puede ser mayor que el maximo');
+          }
         }
       }
     }
@@ -259,7 +265,7 @@ $('#filtrar').click(function(){
   }
   else
   {
-    AlertaSweet(2, 'Ingrese un rango de precio, año ó kilometros');
+    AlertaSweet(2, 'Ingrese un rango de precio, año ó kilometro');
     CargarAnuncios();
   }
 });
@@ -432,6 +438,8 @@ function CargarAnuncios()
     }
     url = '../app/controllers/public/propiedades/index_controller.php'
     getDatos();
+    getColonias();
+    getTipoPropiedad()
     if(anuncios != '')
     {
       Paginacion(anuncios, cantidad);
@@ -470,6 +478,52 @@ function getDatos()
     success: function(datos)
     {
       anuncios = datos;
+    }
+  });
+}
+
+function getColonias()
+{
+  $.ajax({
+    url: '../app/controllers/public/propiedades/get_colonias_controller.php',
+    dataType: 'json',
+    success: function(colonias)
+    {
+      $('#colonias').empty();
+      $('#colonias').append('<option value="" disabled selected>Seleccione una opción</option>');
+
+      for(i = 0; i<colonias.length; i++)
+      {        
+        var select = '';
+        select = select.concat(
+          '<option value="'+colonias[i].PK_id_colonia+'">'+colonias[i].colonia+'</option>'
+        );
+        $('#colonias').append(select);
+      }
+      $('select').material_select();
+    }
+  });
+}
+
+function getTipoPropiedad()
+{
+  $.ajax({
+    url: '../app/controllers/public/propiedades/get_tipo_propiedad_controller.php',
+    dataType: 'json',
+    success: function(tipo_propiedad)
+    {
+      $('#tipos_propiedad').empty();
+      $('#tipos_propiedad').append('<option value="" disabled selected>Seleccione una opción</option>');
+
+      for(i = 0; i<tipo_propiedad.length; i++)
+      {        
+        var select = '';
+        select = select.concat(
+          '<option value="'+tipo_propiedad[i].PK_id_tipo_propiedad+'">'+tipo_propiedad[i].tipo_propiedad+'</option>'
+        );
+        $('#tipos_propiedad').append(select);
+      }
+      $('select').material_select();
     }
   });
 }

@@ -982,6 +982,7 @@ class Propiedad extends Validator
         $params = array(null);
         return Database::getRows($sql, $params);
     }
+
     public function getCorreoUsuario()
     {
         $sql = 'SELECT ua.id_usuario, ua.correo_usuario FROM usuarios_anuncios ua INNER JOIN propiedades p ON ua.id_usuario = p.FK_id_usuario WHERE p.PK_id_propiedad = ?';

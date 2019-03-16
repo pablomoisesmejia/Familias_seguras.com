@@ -32,7 +32,7 @@ class Page extends Component{
 								<li><a href='../producto'><i class='material-icons left'>shop</i>Directorios</a></li>
 								<li><a href='../vehiculos'><i class='material-icons left'>shop</i>Vehiculos</a></li>
 								<li><a href='../propiedades'><i class='material-icons left'>shop</i>Propiedades</a></li>
-								<li><a href='../citas/cita.php?id=$_SESSION[id_usuario]'><i class='material-icons left'>shop</i>Citas <span id='indicador_cita' class='indicador indicador--info'>2</span></a></li>
+								<li><a href='../citas/cita.php?id=$_SESSION[id_usuario]'><i class='material-icons left'>shop</i>Citas <span class='indicador_cita indicador indicador--info'>2</span></a></li>
 								<li><a href='../anuncio'><i class='material-icons left'>shop</i>Banners</a></li>
 							
 								<li><a href='#' class='dropdown-button' data-activates='dropdown'><i class='material-icons left'>verified_user</i>Cuenta: <b>$_SESSION[alias_usuario]</b></a></li>
@@ -46,7 +46,11 @@ class Page extends Component{
 					</nav>
 				</header>
 				<ul class='side-nav' id='mobile'>
-					<li><a href='../producto'><i class='material-icons'>shop</i>Anuncios</a></li>
+					<li><a href='../producto'><i class='material-icons left'>shop</i>Directorios</a></li>
+					<li><a href='../vehiculos'><i class='material-icons left'>shop</i>Vehiculos</a></li>
+					<li><a href='../propiedades'><i class='material-icons left'>shop</i>Propiedades</a></li>
+					<li><a href='../citas/cita.php?id=$_SESSION[id_usuario]'><i class='material-icons left'>shop</i>Citas <span class='indicador_cita indicador indicador--info'>2</span></a></li>
+					<li><a href='../anuncio'><i class='material-icons left'>shop</i>Banners</a></li>
 					<li><a class='dropdown-button' href='#' data-activates='dropdown-mobile'><i class='material-icons'>verified_user</i>Cuenta: <b>$_SESSION[alias_usuario]</b></a></li>
 				</ul>
 				<ul id='dropdown-mobile' class='dropdown-content'>

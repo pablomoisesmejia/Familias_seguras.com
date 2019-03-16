@@ -25,6 +25,7 @@ $(document).ready(function(){
 
     $('.modal').modal();
     cargarMarcas();
+
     function cargarMarcas()
     {
         $.ajax({

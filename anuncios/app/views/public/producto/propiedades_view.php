@@ -45,6 +45,37 @@
                 <label for="cantidad">Cantidad a mostrar</label>
             </div>
         </div>
+
+        <div class='input-field col s6 l3'>
+            <input id="minimo_precio" type="text" class="validate" required/>
+            <label for="minimo_precio">Precio minimo</label>
+        </div>
+        <div class='input-field col s6 l3'>
+            <input id="maximo_precio" type="text" class="validate" required/>
+            <label for="maximo_precio">Precio maximo</label>
+        </div>
+
+        <div class='col s12 m2 l2'>
+            <div class="input-field">
+                <select id = 'tipos_propiedad'>
+                    
+                </select>
+                <label for="tipos_propiedad">Tipos de propiedad</label>
+            </div>
+        </div>
+
+        <div class='col s12 m2 l2'>
+            <div class="input-field">
+                <select id = 'colonias'>
+                    
+                </select>
+                <label for="colonias">Filtro por colonia</label>
+            </div>
+        </div>
+        
+        <div class='col s12 m2 l2'>
+            <p class='btn_advance' id='filtrar'>Filtrar</p>
+        </div>
         <div class='col s12 m2 l2'>
             <p onclick='showhide_advance_filter();' class='btn_advance' id='filtros_avanzados'>Avanzado</p>
         </div>
@@ -54,6 +85,24 @@
         <h5>Filtro Avanzado de Búsqueda</h5>
         <p>El siguiente apartado es para una búsqueda mucho mas precisa sobre lo que estás buscando.</p>
 
+        <div class='row'>
+            <div class='input-field col s6 l2'>
+                <input id="niveles" type="text" class="validate" required/>
+                <label for="niveles">Niveles de propiedad</label>
+            </div>
+            <div class='input-field col s6 l2'>
+                <input id="habitaciones" type="text" class="validate" required/>
+                <label for="habitaciones">Habitaciones</label>
+            </div>
+            <div class='input-field col s6 l2'>
+                <input id="" type="text" class="validate" required/>
+                <label for=""></label>
+            </div>
+            <div class='input-field col s6 l2'>
+                <input id="" type="text" class="validate" required/>
+                <label for=""></label>
+            </div>
+        </div>
         <div class='row'>
             <div class='center'>
                 <h5>Filtro por Amenidades</h5>
