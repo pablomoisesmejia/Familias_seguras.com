@@ -992,7 +992,7 @@ class Propiedad extends Validator
     
     public function getPropiedades()
     {
-        $sql = 'SELECT p.PK_id_propiedad, tp.tipo_propiedad, p.FK_id_usuario, t.transaccion, c.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.valor
+        $sql = 'SELECT p.PK_id_propiedad, tp.tipo_propiedad, p.FK_id_usuario, t.transaccion, c.colonia, p.municipio, p.departamento, p.terreno, p.construccion, p.niveles, p.habitaciones, p.baños, p.cochera, p.descripcion, p.valor, p.fecha_creacion
         FROM propiedades p INNER JOIN tipo_propiedad tp ON p.FK_id_tipo_propiedad = tp.PK_id_tipo_propiedad 
         INNER JOIN transaccion t ON p.FK_id_transaccion = t.PK_id_transaccion
         INNER JOIN colonias c ON p.FK_id_colonia = c.PK_id_colonia
@@ -1020,12 +1020,13 @@ class Propiedad extends Validator
         return Database::getRow($sql, $params);
     }
 
-    public function getPropiedadesTransaccion($filtro, $orden)
+    public function getPropiedadesTransaccion($filtro, $rango, $orden)
     {
-        $sql = 'SELECT p.PK_id_propiedad, c.colonia, p.municipio, p.departamento, p.niveles, p.habitaciones, p.baños, p.cochera, p.valor, ip.nombre_imagen_prop
+        $sql = 'SELECT p.PK_id_propiedad, c.colonia, p.municipio, p.departamento, p.niveles, p.habitaciones, p.baños, p.cochera, p.valor, ip.nombre_imagen_prop, p.fecha_creacion
         FROM propiedades p LEFT JOIN imagenes_propiedad ip ON p.PK_id_propiedad = ip.FK_id_propiedad
         INNER JOIN colonias c ON p.FK_id_colonia = c.PK_id_colonia
-        WHERE FK_id_transaccion = ? '.$filtro.'  GROUP BY p.PK_id_propiedad '.$orden.'';
+        WHERE FK_id_transaccion = ? '.$filtro.' '.$rango.' GROUP BY p.PK_id_propiedad '.$orden.'';
+        //print($sql);
         $params = array($this->FK_id_transaccion);
         return Database::getRows($sql, $params);
     }

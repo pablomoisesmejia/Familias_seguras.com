@@ -57,8 +57,7 @@ font-family: calibrily;
     filter: grayscale(0%);
 }
 .icoreds
-{
-    
+{    
     cursor: pointer;
     float: right;
  width: 32px;
@@ -109,6 +108,19 @@ color: #A2A2A2;
     padding-right: 5%;
     padding-top: 20px;
     padding-bottom: 10px;
+}
+@media only screen and (max-width: 565px) {
+    #advanced_div{
+        max-height: 0px;
+        height: auto;
+        overflow: scroll;
+        transition: 0.7s;
+        border: 1px solid #FFFFFF;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
 }
 #banner_top{
     width: 100%;

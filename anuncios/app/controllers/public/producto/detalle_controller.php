@@ -1,5 +1,6 @@
 <?php
 require_once("../app/models/producto.class.php");
+require_once("../app/models/banners.class.php");
 try{
 	if(isset($_GET['id'])){
 		$producto = new Producto;

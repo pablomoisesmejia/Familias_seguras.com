@@ -287,14 +287,14 @@ class Producto extends Validator{
 
 	//Metodos para el manejo del CRUD
 	public function getCategoriaProductos($orden){
-		$sql = "SELECT nombre_anuncio, id_anuncio, imagen_producto 
+		$sql = "SELECT nombre_anuncio, id_anuncio, imagen_producto, fecha_creacion
 		FROM anuncio 
 		WHERE id_categoria = ? AND estado_anuncio = 1 ORDER BY id_plan DESC ".$orden."";
 		$params = array($this->id_categoria);
 		return Database::getRows($sql, $params);
 	}
 	public function getProductos(){
-		$sql = "SELECT a.id_anuncio, a.nombre_anuncio, a.imagen_producto, c.nombre_categoria FROM anuncio a INNER JOIN categorias c ON a.id_categoria = c.id_categoria WHERE id_usuario = ?";
+		$sql = "SELECT a.id_anuncio, a.nombre_anuncio, a.imagen_producto, c.nombre_categoria, a.fecha_creacion FROM anuncio a INNER JOIN categorias c ON a.id_categoria = c.id_categoria WHERE id_usuario = ?";
 		$params= array($_SESSION['id_usuario']);
 		return Database::getRows($sql, $params);
 	}
@@ -312,8 +312,9 @@ class Producto extends Validator{
 		return Database::getRows($sql, $params);
 	}
 	public function createProducto(){
-		$sql = "INSERT INTO anuncio(nombre_anuncio, direccion, imagen_producto, estado_anuncio, id_categoria, id_usuario, municipio, departamento, tel_fijo, celular, whatsapp, email_anuncio, numero_identidad, facebook, instagram, pagina_web, id_plan, especialidad, experiencia) 
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$fecha = date('Y-m-d');
+		$sql = "INSERT INTO anuncio(nombre_anuncio, direccion, imagen_producto, estado_anuncio, id_categoria, id_usuario, municipio, departamento, tel_fijo, celular, whatsapp, email_anuncio, numero_identidad, facebook, instagram, pagina_web, id_plan, especialidad, experiencia, fecha_creacion) 
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		$params = array($this->nombre_anuncio, $this->direccion, $this->imagen_producto, $this->estado_anuncio, $this->id_categoria, $this->id_usuario, $this->municipio, $this->departamento, $this->tel_fijo, $this->celular, $this->whatsapp, $this->email_anuncio, $this->numero_identidad, $this->facebook, $this->instagram, $this->pagina_web, $this->id_plan, $this->especialidad, $this->experiencia);
 		return Database::executeRow($sql, $params);
 	}

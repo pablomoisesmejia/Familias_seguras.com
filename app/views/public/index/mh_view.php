@@ -58,7 +58,7 @@
                 <a href="../../anuncios/public" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
               </div>
               <div class="col push-l4 push-m3">              
-                <a id="siguiente2" class="waves-effect waves-light btn light-blue">Siguiente</a>
+                <a id="siguiente2" class="btn waves-effect waves-light purple">Siguiente</a>
               </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
              
               <label>Selecciona las aseguras, en las cuales desees cotizar</label>
             </div>
-            <a style="display:none" id="reset_btn_segs" onclick="stop_select_segs();" class="waves-effect waves-light btn light-blue">Seleccionar de nuevo</a>
+            <a style="display:none" id="reset_btn_segs" onclick="stop_select_segs();" class="btn waves-effect waves-light purple">Seleccionar de nuevo</a>
 
             
             <div class="input-field col s12">
@@ -104,8 +104,8 @@
               <a href="../../anuncios/public" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
             </div>
             <div class="col s12 m8 l7 push-l2 push-m2">
-              <a id="anterior1" class="waves-effect waves-light btn light-blue">Anterior</a>              
-              <a id="siguiente3" class="waves-effect waves-light btn light-blue">Siguiente</a>
+              <a id="anterior1" class="btn waves-effect waves-light purple">Anterior</a>              
+              <a id="siguiente3" class="btn waves-effect waves-light purple">Siguiente</a>
             </div>
           </div>
         </div>
@@ -178,7 +178,7 @@
             <a href="../../anuncios/public" class="waves-effect waves-light btn grey darken-1">Cancelar</a>                
           </div>
           <div class="col s12 m8 l7 push-l2 push-m2">
-            <a id="anterior2" class="waves-effect waves-light btn light-blue">Anterior</a>              
+            <a id="anterior2" class="btn waves-effect waves-light purple">Anterior</a>              
             <a id="cotizar" class="waves-effect waves-light btn  light-blue">Cotizar</a>
           </div>
         </div>

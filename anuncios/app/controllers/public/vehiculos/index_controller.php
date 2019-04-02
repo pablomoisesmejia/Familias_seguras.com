@@ -11,6 +11,7 @@ try
     $rango = $_POST['rango'];
     $ordenar = $_POST['ordenar'];
 
+    /*FILTRO POR CARACTERISTICAS DEL VEHICULO*/
     if(isset($_POST['filtro']))
     {
         $arreglo = $_POST['filtro'];
@@ -32,6 +33,7 @@ try
         $filtro = '';
     }
 
+    /*RANGO POR PRECIOS, KILOMETROS Y AÑOS*/
     if($filtro == '' && $rango != '')
     {
         $rango = ' WHERE '.$rango;
@@ -45,7 +47,7 @@ try
     {
         $anuncios = $vehiculo->getVehiculo($filtro, $rango, '');
     }
-    else
+    else/*PARA ORDENAR VEHICULOS POR*/
     {
         if($ordenar == 'maa-z')
         {

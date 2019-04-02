@@ -211,8 +211,8 @@ class Banners extends Validator
         FROM banners b INNER JOIN intervalos_fecha i ON b.FK_id_intervalo_fecha = i.PK_id_intervalo_fecha 
         INNER JOIN tipo_banner tb ON b.FK_id_tipo_banner = tb.PK_id_tipo_banner
         INNER JOIN secciones s ON b.FK_id_seccion = s.PK_id_seccion
-        WHERE estado_banner = 1 AND b.FK_id_seccion = ?';
-        $params = array($this->FK_id_seccion);
+        WHERE estado_banner = 1 AND b.FK_id_seccion = ? AND b.FK_id_tipo_banner = ?';
+        $params = array($this->FK_id_seccion, $this->FK_id_tipo_banner);
         return Database::getRows($sql, $params);
     }
 

@@ -18,7 +18,6 @@ class Page extends Component{
 			<!DOCTYPE html>
 			<html lang='es'>
 			<head>
-				<meta charset='utf-8'>
 				<title>Familias Seguras - $title</title>
 				<link type='text/css' rel='stylesheet' href='../web/css/materialize.min.css'/>
 				<link type='text/css' rel='stylesheet' href='../web/css/material_icons.css'/>
@@ -79,7 +78,7 @@ class Page extends Component{
 					{
 						$seccion = 1;
 					}
-					if($filename == 'index.php' || $filename == 'productos.php')//Directorio
+					if($filename == 'index.php' || $filename == 'productos.php' || $filename == 'detalle_producto.php')//Directorio
 					{
 						$seccion = 2;
 					}
@@ -92,6 +91,7 @@ class Page extends Component{
 						$seccion = 4;
 					}
 					$banner->setIdSeccion($seccion);
+					$banner->setIdTipoBanner(2);
 					$banners = $banner->getBannersPublic();
 					$imagen = '';
 					$banner_aleatorio = array_rand($banners, 1);

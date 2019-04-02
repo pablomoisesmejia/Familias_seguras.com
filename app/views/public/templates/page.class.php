@@ -17,7 +17,7 @@ class Page extends Component{
 			<meta charset='UTF-8'>
 			<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 			<meta http-equiv='X-UA-Compatible' content='ie=edge'>
-			<title>Familias Seguras</title>
+			<title>Familias Seguras - $title</title>
 		
 			
 			<link rel='stylesheet' href='../../web/fonts/roboto/letras.css'>
@@ -93,26 +93,74 @@ class Page extends Component{
 			<meta charset='UTF-8'>
 			<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 			<meta http-equiv='X-UA-Compatible' content='ie=edge'>
-			<title>Familias Seguras</title>
+			<title>Familias Seguras - $title</title>
 		
 			
 			<link rel='stylesheet' href='../../web/fonts/roboto/letras.css'>
 			<link rel='stylesheet' href='../../web/css/material_icons.css'>
-			<link rel='stylesheet' href='../../web/css/materialize.css'>
+			<link type='text/css' rel='stylesheet' href='../../anuncios/web/css/materialize.min.css'/>
 			<link rel='stylesheet' href='../../web/css/public_style.css'>
+			<link type='text/css' rel='stylesheet' href='../../anuncios/web/css/public.css'/>
 			
 		
 		</head>
-		
+		<header>
+			<div class='navbar-fixed'>
+				<nav class='purple'>
+					<div class='nav-wrapper'>
+						<div class='container'>
+							<a href='index.php' class='brand-logo'><img src='../../anuncios/web/img/logo.png' style='margin:0; padding:0; margin-top:19px;' height='60'></a>
+							<a href='#' data-activates='mobile' class='button-collapse'><i class='material-icons'>menu</i></a>
+							<ul class='right hide-on-med-and-down'>
+								<a class='btn_hdd_red' style='position:fixed; right:16%;' target='_blank' href='https://www.facebook.com/FamiliasSegurascom-322957035155872/'><img width='24px' src='../../anuncios/web/img/ico/fb_icon.png'></a>
+								<a class='btn_hdd_red' style='position:fixed; right:13%;' target='_blank' href='https://www.instagram.com/familiasseguras/'><img width='24px' src='../../anuncios/web/img/ico/insta_icon.png'></a>
+								<a class='btn_hdd_red' style=' filter:brightness(10); position:fixed; right:10%;'  href='../dashboard/account/login.php'><img width='24px' src='../../anuncios/web/img/ico/key.png'></a>
+
+								<li><a class='btn_hdd' href='../../anuncios/public/cotiza_seguro.php'>Cotiza tu Seguro |</a></li>
+								<li><a class='btn_hdd' href='../../anuncios/public/index.php'>Directorio |</a></li>
+								<li><a class='btn_hdd' href='../../anuncios/public/vehiculos_v.php'>Vehiculos en venta |</a></li>
+								<li><a class='btn_hdd' href='../../anuncios/public/propiedades_v.php'>Propiedades en Venta |</a></li>
+								<li><a class='btn_hdd' style='margin-right:10px;' href='../public/propiedades_alqui.php'>Propiedades en Alquiler</a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<ul class='side-nav' id='mobile'>
+				<p id='menu_txt_side'>Menú</p>
+				<li><a href='../../anuncios/public/cotiza_seguro.php'><i class='material-icons left'>attach_money</i>Cotiza tu Seguro</a></li>
+				<li><a href='../../anuncios/public/index.php'><i class='material-icons left'>library_books</i>Directorio</a></li>
+				<li><a href='../../anuncios/public/vehiculos_v.php'><i class='material-icons left'>directions_car</i>Vehiculos en Venta</a></li>
+				<li><a href='../../anuncios/public/propiedades_v.php'><i class='material-icons left'>home</i>Propiedades en Venta</a></li>
+				<li style='margin-bottom:20px;'><a href='../../anuncios/public/propiedades_alqui.php'><i class='material-icons left'>home</i>Propiedades en Alquiler</a></li>
+
+				<a class='btn_hdd_r' style='filter:brightness(0.2);position:fixed; right:226px;' target='_blank' href='https://www.facebook.com/FamiliasSegurascom-322957035155872/'><img width='24px' src='../../anuncios/web/img/ico/fb_icon.png'></a>
+				<a class='btn_hdd_r' style='filter:brightness(0.2);position:fixed; right:180px;' target='_blank' href='https://www.instagram.com/familiasseguras/'><img width='24px' src='../../anuncios/web/img/ico/insta_icon.png'></a>
+				<a class='btn_hdd_r' style=' filter:brightness(1); position:fixed; right:136px;'  href='../../anuncios/dashboard/account/login.php'><img width='24px' src='../../anuncios/web/img/ico/key.png'></a>
+			</ul>					
+		</header>
+		<main>
 			 ");
 	}
 
 	//aqui ponemos el footer y sus referencias
 	public static function templateFooter(){
 		print("
-			<footer>
-			
-			</footer>
+		</main>
+		<footer class='page-footer purple'>
+			<div class='container'>				
+				<div  class='left-align fot_lets' id=''>
+					<a style='float:left' class='btn_hdd2' href='../dashboard/account/login.php'>Nosotros</a>
+					<a style='float:left' class='btn_hdd2' href='../dashboard/account/register.php'>Servicios</a>
+					<a style='float:left' class='btn_hdd2' href='../dashboard/account/register.php'>Publicidad</a>
+					<a style='float:left' class='btn_hdd2' href='../dashboard/account/register.php'>Contactanos</a>
+				</div>
+				<div id='foottt' class='col s12 m6'>
+					<img id='log_fot' width='270px;' class='responsive-img' src='../../anuncios/web/img/logo_gaos.png'>
+				</div>
+				<div class='row'>	<p id='allrights' >Todos los derechos reservados ©Familias Seguras</p></div>
+			</div>			
+		</footer>
 			
 			<script src='../../web/script/jquery-3.2.1.min.js'></script>
 			<script src='../../web/script/sweetalert.min.js'></script>

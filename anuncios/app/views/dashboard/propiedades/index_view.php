@@ -28,22 +28,70 @@
 	</thead>
 	<tbody>
 	<?php
+	$renovar = array();
 	foreach($data as $row){
-		print("
+		$fecha = new DateTime($row['fecha_creacion']);
+		$hoy = new DateTime(date("Y-m-d"));
+		$intervalo = date_diff($fecha, $hoy);
+		if($intervalo->format('%R%a dias') < 15)
+		{
+			print("
+			<tr>
+				<td>$row[transaccion]</td>
+				<td>$row[colonia], $row[municipio], $row[departamento]</td>
+				<td>$row[niveles]</td>
+				<td>$row[habitaciones]</td>
+				<td>$row[baños]</td>
+				<td>$row[cochera]</td>
+				<td>$row[valor]</td>
+				<td>
+					<a href='update.php?id=$row[PK_id_propiedad]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
+					<a href='delete.php?id=$row[PK_id_propiedad]' class='red-text'><i class='material-icons'>delete</i></a>
+				</td>
+			</tr>
+			");
+		}
+		else
+		{
+			array_push($renovar, $row);			
+		}
+	}
+	?>
+	</tbody>
+</table>
+<h5 class='center'>Anuncios que necesitan renovación</h5>
+<table class='highlight responsive-table'>
+	<thead>
 		<tr>
-			<td>$row[transaccion]</td>
-			<td>$row[colonia], $row[municipio], $row[departamento]</td>
-			<td>$row[niveles]</td>
-			<td>$row[habitaciones]</td>
-			<td>$row[baños]</td>
-			<td>$row[cochera]</td>
-			<td>$row[valor]</td>
-			<td>
-				<a href='update.php?id=$row[PK_id_propiedad]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
-				<a href='delete.php?id=$row[PK_id_propiedad]' class='red-text'><i class='material-icons'>delete</i></a>
-			</td>
+			<th>Transacción</th>
+			<th>Direccion</th>
+			<th>Niveles</th>
+			<th>Habitaciones</th>
+			<th>Baños</th>
+			<th>Cochera</th>
+			<th>Valor</th>
+			<th>ACCIÓN</th>
 		</tr>
-		");
+	</thead>
+	<tbody>
+	<?php
+	foreach($renovar as $row)
+	{		
+		print("
+			<tr>
+				<td>$row[transaccion]</td>
+				<td>$row[colonia], $row[municipio], $row[departamento]</td>
+				<td>$row[niveles]</td>
+				<td>$row[habitaciones]</td>
+				<td>$row[baños]</td>
+				<td>$row[cochera]</td>
+				<td>$row[valor]</td>
+				<td>
+					<a href='update.php?id=$row[PK_id_propiedad]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
+					<a href='delete.php?id=$row[PK_id_propiedad]' class='red-text'><i class='material-icons'>delete</i></a>
+				</td>
+			</tr>
+			");
 	}
 	?>
 	</tbody>

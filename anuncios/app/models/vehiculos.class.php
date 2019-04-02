@@ -545,7 +545,7 @@ class Vehiculos extends Validator
 
     public function getVehiculos()
     {
-        $sql = 'SELECT v.PK_id_vehiculo, v.FK_id_usuario, mv.modelos_vehiculo, mar.marca_vehiculo, v.anio, v.color, v.kilometraje, v.transmision, v.motor, v.vidrios_electricos, v.espejos_electricos, aire_acondicionado, bolsas_aire, v.sistema_eco, v.mandos_timon, v.rines_especiales, v.camara_trasera, v.sensores_parqueo, v.bluetooth, v.combustible, v.sunroof, v.luces_xenon, v.cruise_control, v.mando_distancia, v.gps, v.tapiceria_cuero, v.dvd_trasero, v.valor
+        $sql = 'SELECT v.PK_id_vehiculo, v.FK_id_usuario, mv.modelos_vehiculo, mar.marca_vehiculo, v.anio, v.color, v.kilometraje, v.transmision, v.motor, v.vidrios_electricos, v.espejos_electricos, aire_acondicionado, bolsas_aire, v.sistema_eco, v.mandos_timon, v.rines_especiales, v.camara_trasera, v.sensores_parqueo, v.bluetooth, v.combustible, v.sunroof, v.luces_xenon, v.cruise_control, v.mando_distancia, v.gps, v.tapiceria_cuero, v.dvd_trasero, v.valor, v.fecha_creacion
         FROM vehiculos v INNER JOIN modelos_vehiculos mv ON v.FK_id_modelo = mv.PK_id_modelo_vehiculo 
         INNER JOIN marcas_vehiculos mar ON mv.FK_id_marca_vehiculo = mar.PK_id_marca_vehiculo
         WHERE v.FK_id_usuario = ?';
@@ -573,7 +573,7 @@ class Vehiculos extends Validator
 
     public function getVehiculo($filtro, $rango, $orden)
     {
-        $sql = 'SELECT v.PK_id_vehiculo, v.FK_id_usuario, mv.modelos_vehiculo, mar.marca_vehiculo, v.anio, v.valor, iv.nombre_imagen
+        $sql = 'SELECT v.PK_id_vehiculo, v.FK_id_usuario, mv.modelos_vehiculo, mar.marca_vehiculo, v.anio, v.valor, iv.nombre_imagen, v.fecha_creacion
         FROM vehiculos v INNER JOIN modelos_vehiculos mv ON v.FK_id_modelo = mv.PK_id_modelo_vehiculo 
         INNER JOIN marcas_vehiculos mar ON mv.FK_id_marca_vehiculo = mar.PK_id_marca_vehiculo
         LEFT JOIN imagenes_vehiculo iv ON v.PK_id_vehiculo = iv.FK_id_vehiculo '.$filtro.' '.$rango.'  GROUP BY PK_id_vehiculo '.$orden.'';

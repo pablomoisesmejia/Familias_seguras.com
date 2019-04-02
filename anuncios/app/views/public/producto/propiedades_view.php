@@ -55,7 +55,7 @@
             <label for="maximo_precio">Precio maximo</label>
         </div>
 
-        <div class='col s12 m2 l2'>
+        <div class='col s12 m3 l2'>
             <div class="input-field">
                 <select id = 'tipos_propiedad'>
                     
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class='col s12 m2 l2'>
+        <div class='col s12 m3 l2'>
             <div class="input-field">
                 <select id = 'colonias'>
                     
@@ -86,21 +86,21 @@
         <p>El siguiente apartado es para una búsqueda mucho mas precisa sobre lo que estás buscando.</p>
 
         <div class='row'>
-            <div class='input-field col s6 l2'>
+            <div class='input-field col s6 l3'>
                 <input id="niveles" type="text" class="validate" required/>
                 <label for="niveles">Niveles de propiedad</label>
             </div>
-            <div class='input-field col s6 l2'>
+            <div class='input-field col s6 l3'>
                 <input id="habitaciones" type="text" class="validate" required/>
-                <label for="habitaciones">Habitaciones</label>
+                <label for="habitaciones">Habitaciones de propiedad</label>
             </div>
-            <div class='input-field col s6 l2'>
-                <input id="" type="text" class="validate" required/>
-                <label for=""></label>
+            <div class='input-field col s6 l3'>
+                <input id="baños" type="text" class="validate" required/>
+                <label for="baños">Baños de propiedad</label>
             </div>
-            <div class='input-field col s6 l2'>
-                <input id="" type="text" class="validate" required/>
-                <label for=""></label>
+            <div class='input-field col s6 l3'>
+                <input id="cochera" type="text" class="validate" required/>
+                <label for="cochera">Cochera de propiedad</label>
             </div>
         </div>
         <div class='row'>
