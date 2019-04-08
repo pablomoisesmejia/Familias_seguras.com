@@ -712,7 +712,7 @@ if(filename == 'detalle_producto.php')
             }
             else
             {
-              AlertaSweet(3, 'Ocurrio un problema al momento de enviar el comentario1');
+              AlertaSweet(3, 'Ocurrio un problema al momento de enviar el comentariol');
               $('#enviar_comentario').removeClass('disabled');
               $('#enviar_comentario').html('Enviar Comentario');
             }
@@ -730,6 +730,71 @@ if(filename == 'detalle_producto.php')
     }
   });
 }
+
+//DE LOS VEHICULOS Y PROPIEDADES
+if(filename == 'vehiculos_detalle_v.php' || filename == 'pagina.php')
+{
+  id_anuncio = decodeURI(getUrlVars()['id']);
+
+  $('#send_mensaje').click(function(){
+    correo = $('#correo').val();
+    mensaje = $('#mensaje').val();
+    url = '';
+
+    if(filename == 'vehiculos_detalle_v.php')
+    {
+      url = '../app/controllers/public/vehiculos/create_mensaje_controller.php';
+    }
+    if(filename == 'pagina.php')
+    {
+      url = '../app/controllers/public/propiedades/create_mensaje_controller.php';
+    }
+    
+    if(correo != '')
+    {
+      if(mensaje != '')
+      {
+        $('#send_mensaje').addClass('disabled');
+        $('#send_mensaje').html('Espere un momento');
+        $.ajax({
+          type: 'POST',
+          data:{id_anuncio:id_anuncio,
+            correo:correo,
+            mensaje:mensaje},
+          url: url,
+          dataType: 'json',
+          success: function(respuesta)
+          {
+            if(respuesta[0][0] == 1)
+            {
+              AlertaSweet(1, 'Su mensaje fue enviado');
+              correo = $('#correo').val('');
+              mensaje = $('#mensaje').val('');
+              $('#send_mensaje').removeClass('disabled');
+              $('#send_mensaje').html('Enviar Comentario');
+
+            }
+            else
+            {
+              AlertaSweet(3, 'Ocurrio un problema al momento de enviar el mensaje');
+              $('#send_mensaje').removeClass('disabled');
+              $('#send_mensaje').html('Enviar Comentario');
+            }
+          }
+        });
+      }
+      else
+      {
+        AlertaSweet(4, 'Ingrese el mensaje');
+      }
+    }
+    else
+    {
+      AlertaSweet(4, 'Ingrese su correo electrónico');
+    }
+
+  });
+} 
     
 
 
@@ -760,7 +825,7 @@ function closetipscot(){
     else
     {
       $("#wha_btn_s").css({"display":"none"});
-      $("#wha_vehiprop_btn").css({"display":"block"});
+      $("#wha_vehiprop_btn").css({"display":"none"});
       $("#tel_btn").css({"display":"none"});
       
       $("#colco").css({"margin-top":"48px"});

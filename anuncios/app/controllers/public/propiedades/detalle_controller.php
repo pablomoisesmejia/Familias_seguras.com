@@ -1,5 +1,6 @@
 <?php
 require_once("../app/models/propiedad.class.php");
+require_once("../app/models/banners.class.php");
 
 try
 {
